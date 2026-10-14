@@ -10,6 +10,67 @@
             <a href="../TrangChu/trangChu.html"><img src="../logo.png" alt="Logo FreshCake" width="180" height="auto"></a>
             <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
             <a href="../GioHang/gioHang.html">Giỏ hàng</a>
+            <a href="../DangKiDangNhap/DangKy.html">Đăng ký</a>
+            <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a>
         </header>
+        <main>
+            <section class="xem-gio-hang">
+                <h2>Giỏ hàng của bạn</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="2">Sản phẩm</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><img src="sanpham"></th>
+                        <td>Pizza gà nướng kiểu thái</td>
+                        <td>98.000đ</td>
+                        <td>
+                            <input
+                                type="number"
+                                name="so-luong-pizza"
+                                min="1"
+                                value="1"
+                                step="1"
+                                aria-label="Số lượng Pizza gà nướng kiểu Thái"
+                            >
+                        </td>
+                        <td>49.000đ</td>
+                    </tr>
+                </tbody>
+            </table>
+            </section>
+            <a href="../ChiTietSanPham/chiTietSanPham.html">Tiếp tục mua sắm</a>
+            <section class="ghi-chu-gio-hang">
+                <label for="customer-note">
+                    Ghi chú đơn hàng
+                </label><br>
+                <textarea
+                    id="customer-note"
+                    name="customer_note"
+                    rows="4"
+                    placeholder="Nhập ghi chú của bạn..."
+                ></textarea>
+            </section>
+            <section class="hen-gio-nhan-hang">
+                <h2>Hẹn giờ nhận hàng</h2>
+                <form action="..//ThanhToan/thanhToan.html" method="get">
+                    <label for="ngay-nhan">Ngày nhận hàng</label>
+                    <input type="date" name="ngay-nhan" id="ngay-nhan"><br>
+                    <p>Thời gian nhận</p>
+                    <label><input type="radio" name="thoi-gian-nhan" value="Càng sớm càng tốt" checked>Càng sớm càng tốt</label>
+                    <label><input type="radio" name="thoi-gian-nhan" value="Sáng:08h00 - 12h00">Sáng:08h00 - 12h00</label>
+                    <label><input type="radio" name="thoi-gian-nhan" value="Chiều:14h00 - 18h00">Chiều:14h00 - 18h00</label>
+                    <label><input type="radio" name="thoi-gian-nhan" value="Tối:19h00-21h00">Tối:19h00-21h00</label>
+                </form>
+            </section>
+            <p>Thành tiền: 49.000đ</p>
+            <a href="../ThanhToan/thanhToan.html">Thanh toán</a>
+        </main>
     </body>
 </html>
