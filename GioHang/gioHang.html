@@ -1,76 +1,433 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width = device - width, intial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FreshCake - Giỏ hàng</title>
+        <style>
+            :root{
+                --bg:white;
+                --text:black;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family:Arial, sans-serif;
+                line-height: 1.65;
+            }
+            header{
+                display: flex;
+                align-items: center;
+                padding: 15px 40px;
+                background: var(--bg);
+                justify-content: space-between;
+                box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+                position: sticky;
+                top: 0;
+            }
+            header .logo{
+                width: 100px;
+            }
+            header nav{
+                display: flex;
+                gap:100px;
+                font-size: 22px;
+                margin-left: 40px;
+            }
+            header nav a{
+                text-decoration: none;
+                color:inherit;
+                font-size: 18px;
+            }
+            header div{
+                display: flex;
+                gap:30px;
+            }
+            header div button{
+                border: none;
+                background: none;
+                cursor: pointer;
+                font-size: 30px;
+            }
+            main section{
+                background:#f2f4f7;
+                padding: 20px 200px;
+            }
+            main section .container{
+                padding: 80px 80px;
+                background: white;
+                margin: 20px 50px;
+            }
+            main section .container img{
+                display: block;
+                width: 70%;
+                aspect-ratio: 1/1;
+                margin: 20px auto;
+                object-fit: cover;
+            }
+            footer{
+                background: white;
+                padding: 50px 200px;
+            }
+            .footer-container{
+                max-width: 1200px;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+            .footer-top{
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+            .footer-top hr{
+                width: 50px;
+                margin: 10px 0px;
+            }
+            .footer-column ul {
+                list-style: none;
+            }
+            .footer-column ul li {
+                margin-bottom: 12px;
+            }
+            .footer-column ul li a {
+                text-decoration: none;
+                color: #444;
+            }
+            .footer-column li a.highlight{
+                color: black;
+            }
+            .footer-buttom{
+                font-size: 12px;
+            }
+            .footer-buttom p{
+                margin-bottom: 12px;
+            }
+            .trang-gio-hang{
+                padding: 40px 120px 64px;
+            }
+            .bo-cuc{
+                display: grid;
+                grid-template-columns: 2.3fr 1fr;
+                grid-template-areas: "san-pham hen-gio";
+                gap: 60px;
+                padding: 16px 30px 30px 0px;
+                background: white;
+            }
+            .vung-san-pham{
+                grid-area: san-pham;
+                min-width: 0px;
+            }
+            .vung-hen-gio{
+                grid-area: hen-gio;
+            }
+            .cuon-bang{
+                overflow-x: auto;
+            }
+            .bang-gio-hang{
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .bang-gio-hang thead th{
+                padding: 12px 10px;
+                font-size: 17px;
+                text-align: center;
+                border-bottom: 2px solid #e8a3a9;
+            }
+            .bang-gio-hang tbody td,
+            .bang-gio-hang tbody th{
+                padding: 30px 10px;
+                vertical-align: top;
+                text-align: center;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            .bang-gio-hang tbody th{
+                font-weight: normal;
+                text-align: left;
+            }
+            .nut-xoa{
+                border: none;
+                background: none;
+                font-size: 30px;
+                line-height: 1;
+                cursor: pointer;
+            }
+            .anh-sp{
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+                background: #f2f2f2;
+            }
+            .ten-sp{
+                font-size: 22px;
+                line-height: 1.3;
+            }
+            .thong-tin-sp{
+                margin-top: 10px;
+                font-size: 15px;
+                color: #555;
+            }
+            .gia{
+                font-size: 20px;
+            }
+            .chon-so-luong{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+            .chon-so-luong button{
+                width: 46px;
+                height: 50px;
+                border: 1px solid black;
+                background: white;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            .chon-so-luong button:hover{
+                background: #f2f2f2;
+            }
+            .chon-so-luong input[type="number"]{
+                width: 50px;
+                border: none;
+                font-size: 20px;
+                text-align: center;
+            }
+            .tiep-tuc{
+                display: block;
+                padding: 30px 10px 30px 150px;
+                border-bottom: 1px solid #e5e5e5;
+                font-weight: bold;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: #1a1a1a;
+            }
+            .tiep-tuc:hover{
+                color: #c8102e;
+            }
+            .ghi-chu{
+                padding: 24px 0px 0px 25px;
+            }
+            .ghi-chu label{
+                display: block;
+                margin-bottom: 8px;
+                font-size: 17px;
+            }
+            .ghi-chu textarea{
+                width: 100%;
+                height: 105px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                font-size: 15px;
+            }
+            .vung-hen-gio h2{
+                margin: 40px 0px 24px;
+                padding-bottom: 2px;
+                border-bottom: 1px solid #333;
+                font-size: 20px;
+                text-transform: uppercase;
+                color: #c8102e;
+            }
+            .vung-hen-gio label{
+                display: block;
+                margin-bottom: 8px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .vung-hen-gio input[type="date"],
+            .vung-hen-gio select{
+                width: 100%;
+                margin-bottom: 22px;
+                padding: 8px 14px;
+                border: 1px solid #d4d4d4;
+                border-radius: 4px;
+                background: #e9e9e9;
+                font-size: 16px;
+            }
+            .vung-hen-gio .hoa-don{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 18px 0px 20px;
+                font-size: 17px;
+            }
+            .hoa-don input[type="checkbox"]{
+                width: 24px;
+                height: 24px;
+            }
+            .thanh-tien-tong{
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                font-size: 17px;
+                color: #444;
+            }
+            .thanh-tien-tong strong{
+                font-size: 28px;
+                font-weight: normal;
+                color: #c8102e;
+            }
+            .ghi-chu-vat{
+                text-align: right;
+                font-size: 14px;
+                font-style: italic;
+                color: #999;
+            }
+            .vung-hen-gio input[type="submit"]{
+                width: 100%;
+                margin-top: 50px;
+                padding: 18px;
+                border: none;
+                background: #0f1b20;
+                color: white;
+                font-size: 26px;
+                cursor: pointer;
+            }
+            .vung-hen-gio input[type="submit"]:hover{
+                background: #263238;
+            }
+            @media (max-width: 900px){
+                .trang-gio-hang{
+                    padding: 24px 16px 40px;
+                }
+                .bo-cuc{
+                    grid-template-columns: 1fr;
+                    grid-template-areas:
+                        "san-pham"
+                        "hen-gio";
+                    gap: 20px;
+                    padding: 16px;
+                }
+                .tiep-tuc{
+                    padding-left: 10px;
+                }
+                .ghi-chu{
+                    padding-left: 0px;
+                }
+            }
+        </style>
     </head>
     <body>
-        <header>
-            <a href="../TrangChu/trangChu.html"><img src="../logo.png" alt="Logo FreshCake" width="180" height="auto"></a>
-            <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
-            <a href="../GioHang/gioHang.html">Giỏ hàng</a>
-            <a href="../DangKiDangNhap/DangKy.html">Đăng ký</a>
-            <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a>
+        <header class="header">
+            <a href="../TrangChu/trangChu.html"><img class="logo" src="../logo.png" alt="logo"></a>
+            <nav>
+                <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
+                <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
+                <a href="#">Danh sách cửa hàng</a>
+                <a href="#">Tin tức</a>
+            </nav>
+            <div>
+                <button type="button">🔍</button>
+                <button type="button">🛍</button>
+            </div>
         </header>
         <main>
-            <section class="xem-gio-hang">
-                <h2>Giỏ hàng của bạn</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="2">Sản phẩm</th>
-                        <th scope="col">Đơn giá</th>
-                        <th scope="col">Số lượng</th>
-                        <th scope="col">Thành tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row"><img src="sanpham"></th>
-                        <td>Pizza gà nướng kiểu thái</td>
-                        <td>98.000đ</td>
-                        <td>
-                            <input
-                                type="number"
-                                name="so-luong-pizza"
-                                min="1"
-                                value="1"
-                                step="1"
-                                aria-label="Số lượng Pizza gà nướng kiểu Thái"
-                            >
-                        </td>
-                        <td>49.000đ</td>
-                    </tr>
-                </tbody>
-            </table>
-            </section>
-            <a href="../ChiTietSanPham/chiTietSanPham.html">Tiếp tục mua sắm</a>
-            <section class="ghi-chu-gio-hang">
-                <label for="customer-note">
-                    Ghi chú đơn hàng
-                </label><br>
-                <textarea
-                    id="customer-note"
-                    name="customer_note"
-                    rows="4"
-                    placeholder="Nhập ghi chú của bạn..."
-                ></textarea>
-            </section>
-            <section class="hen-gio-nhan-hang">
-                <h2>Hẹn giờ nhận hàng</h2>
-                <form action="..//ThanhToan/thanhToan.html" method="get">
-                    <label for="ngay-nhan">Ngày nhận hàng</label>
-                    <input type="date" name="ngay-nhan" id="ngay-nhan"><br>
-                    <p>Thời gian nhận</p>
-                    <label><input type="radio" name="thoi-gian-nhan" value="Càng sớm càng tốt" checked>Càng sớm càng tốt</label>
-                    <label><input type="radio" name="thoi-gian-nhan" value="Sáng:08h00 - 12h00">Sáng:08h00 - 12h00</label>
-                    <label><input type="radio" name="thoi-gian-nhan" value="Chiều:14h00 - 18h00">Chiều:14h00 - 18h00</label>
-                    <label><input type="radio" name="thoi-gian-nhan" value="Tối:19h00-21h00">Tối:19h00-21h00</label>
+            <section class="trang-gio-hang">
+                <form class="bo-cuc" action="../ThanhToan/thanhToan.html" method="get">
+                    <div class="vung-san-pham">
+                        <div class="cuon-bang">
+                            <table class="bang-gio-hang">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan="3">Sản phẩm</th>
+                                        <th scope="col">Đơn&nbsp;giá</th>
+                                        <th scope="col">Số&nbsp;lượng</th>
+                                        <th scope="col">Thành&nbsp;tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><button type="button" class="nut-xoa" aria-label="Xóa sản phẩm">×</button></td>
+                                        <td><img class="anh-sp" src="../logo.png" alt="Bánh kem Mây sữa"></td>
+                                        <th scope="row">
+                                            <p class="ten-sp">Bánh kem Mây sữa</p>
+                                            <p class="thong-tin-sp">Mã SP: 1040050466<br>Nhóm: Size 4 inch - 10cm</p>
+                                        </th>
+                                        <td class="gia">160.000đ</td>
+                                        <td>
+                                            <div class="chon-so-luong">
+                                                <button type="button" aria-label="Giảm số lượng">-</button>
+                                                <input type="number" name="so-luong" min="1" value="1" step="1" aria-label="Số lượng Bánh kem Mây sữa">
+                                                <button type="button" aria-label="Tăng số lượng">+</button>
+                                            </div>
+                                        </td>
+                                        <td class="gia">160.000đ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a class="tiep-tuc" href="../ChiTietSanPham/chiTietSanPham.html">Tiếp tục mua sắm</a>
+                        <div class="ghi-chu">
+                            <label for="ghi-chu">Ghi chú đơn hàng</label>
+                            <textarea id="ghi-chu" name="ghi-chu"></textarea>
+                        </div>
+                    </div>
+                    <div class="vung-hen-gio">
+                        <h2>Hẹn giờ nhận hàng</h2>
+                        <label for="ngay-nhan">Ngày nhận hàng</label>
+                        <input type="date" name="ngay-nhan" id="ngay-nhan">
+                        <label for="thoi-gian-nhan">Thời gian nhận hàng</label>
+                        <select name="thoi-gian-nhan" id="thoi-gian-nhan">
+                            <option value="som-nhat">Càng sớm càng tốt</option>
+                            <option value="sang">Sáng: 08h00 - 12h00</option>
+                            <option value="chieu">Chiều: 14h00 - 18h00</option>
+                            <option value="toi">Tối: 19h00 - 21h00</option>
+                        </select>
+                        <label class="hoa-don"><input type="checkbox" name="xuat-hoa-don" value="co">Xuất hóa đơn công ty</label>
+                        <p class="thanh-tien-tong"><span>Thành tiền</span><strong>160.000đ</strong></p>
+                        <p class="ghi-chu-vat">(Đã bao gồm VAT nếu có)</p>
+                        <input type="submit" value="Thanh toán">
+                    </div>
                 </form>
             </section>
-            <p>Thành tiền: 49.000đ</p>
-            <a href="../ThanhToan/thanhToan.html">Thanh toán</a>
         </main>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-column">
+                        <h4>CHÍNH SÁCH</h4>
+                        <hr>
+                        <ul>
+                            <li><a class="highlight" href="#"><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Điều khoản dịch vụ</a></li>
+                            <li><a href="#">Khách hàng thân thiết</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>THÔNG TIN</h4>
+                        <hr>
+                        <ul>
+                            <li><a class="highlight" href="#"><strong>Tin tức</strong></a></li>
+                            <li><a href="#">Tin khuyến mãi</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>HỖ TRỢ</h4>
+                        <hr>
+                        <ul>
+                            <li><a class="highlight" href="#"><strong>Liên hệ</strong></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Đăng ký nhận thông tin</h4>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="footer-buttom">
+                <p><strong>Công ty TNHH PHD</strong> |
+                    Mã số doanh nghiệp: 0103833363 |
+                    Do Sở Kế hoạch - Đầu tư Hà Nội cấp ngày 14/05/2009.
+                </p>
+                <p>Số điện thoại: 024 3856 3856 |
+                    cskh@freshgarden.vn |
+                    Số 46 phố An Dương, phường Hồng Hà, Thành phố Hà Nội. |
+                    © Bản quyền thuộc về Fresh Garden.
+                </p>
+            </div>
+        </footer>
     </body>
 </html>
