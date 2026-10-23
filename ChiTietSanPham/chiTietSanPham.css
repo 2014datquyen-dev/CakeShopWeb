@@ -1,0 +1,74 @@
+html {
+  font-size: 1rem;
+
+  font-family: sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.header__img--logo {
+  width: 30px;
+  border-radius: 50%;
+}
+.button_giohang {
+  width: 30px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffe6eb;
+  width: 100%;
+  padding: 10px;
+  position: fixed;
+}
+.header_logo_nav {
+  display: flex;
+}
+.header__icon {
+  margin-left: auto;
+}
+.horizontal-nav {
+  text-decoration: none;
+  color: black;
+  font-size: 7px;
+  margin: 10px;
+}
+.horizontal-nav:hover {
+  color: orange;
+}
+/* main */
+.anhSanPham {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+}
+.ten_banh {
+  font-size: 10px;
+  text-align: center;
+}
+.bang_gia {
+  font-size: 7px;
+  color: orange;
+  text-align: center;
+}
+.san_pham {
+  width: 150px;
+  padding: 10px;
+  margin: 10px;
+  border: 0.5px black solid;
+  border-radius: 6px;
+}
+.sanpham__anh {
+  display: flex;
+  justify-content: center;
+}
+.all_sanpham {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.allSP {
+  padding: 3px;
+  text-align: center;
+}
