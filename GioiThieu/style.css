@@ -20,25 +20,25 @@
             top: 0;
         }
 
-        .headerTop{
+        .header-top{
             display: flex;
             margin-left: auto;
             padding: 8px 40px;
             font-size: 10px;
         }
 
-        .headerTop .authLink{
+        .header-top .auth-link{
             margin-left: auto;
             color: black;
         }
 
 
-        .authLink a{
+        .auth-link a{
             text-decoration: none;
             color: black;
         }
 
-        .searchBox {
+        .search-box {
             display: flex;
             align-items: center;
             background: #fff;
@@ -48,7 +48,7 @@
             width: 400px;                 /* Độ dài của thanh tìm kiếm */
         }
 
-        .searchInput {
+        .search-input {
             border: none;
             outline: none;
             background: transparent;
@@ -56,7 +56,7 @@
             font-size: 14px;
         }
 
-        .searchBtn{
+        .search-btn{
             padding: 7px 10px;
             background-color: #531804;
             width: 40px;
@@ -64,11 +64,11 @@
             border-radius: 10px;
         }
 
-        .headerCart{
+        .header-cart{
             padding-top: 8px 0px 2px;
         }
 
-        .headerCart .cartBtn img{
+        .cart-btn img{
             display: block;
             height: 30px;
             width: auto;
@@ -76,7 +76,7 @@
         }
 
 
-        .headerMain{
+        .header-main{
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -128,7 +128,7 @@
         main section .container img{
             display: block;
             width: 70%;
-            aspect-ratio: 1/1;/*tạo tỉ lệ cao rông*/
+            /* aspect-ratio: 1/1;tạo tỉ lệ cao rông */
             margin: 20px auto;
             object-fit: cover;/*cắt hình tạo thành hình vuông như cao rộng có 1 giá trị cụ thể*/
         }
@@ -173,13 +173,44 @@
             color: black;
         }
 
+        .footer-column .social-list{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            list-style: none;
+        }
+
+        .facebook-btn img{
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .insta-btn img{
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+
+
         .footer-buttom{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             font-size: 12px;
+            gap: 30px;
         }
 
 
         .footer-buttom p{
             margin-bottom: 12px;
+        }
+
+        .right-footer-buttom img{
+            height:80px;
+            width: auto;
+            object-fit: contain;
         }
 
         a:hover{
