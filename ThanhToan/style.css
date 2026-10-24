@@ -1,0 +1,331 @@
+:root{
+    --left: white;
+    --right: #f2f4f7;
+    --btn: #531804;
+    --bd: #e1e1e1;
+    --tf: #333;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    line-height: 2.5;
+}
+
+
+.container{
+            display: flex;
+        }
+
+.left{
+    flex: 55%;
+    display: flex;
+    flex-direction: column;
+    border-right: var(--bd) solid 3px;
+    padding: 60px 70px 0px 150px;
+    gap: 15px;
+}
+
+.left input, select{
+    width: 100%;
+    height: 55px;
+    padding: 0px 14px;
+    border: var(--bd) solid 2px;
+    border-radius: 6px;
+    /* background-color: white; */
+    color: var(--tf);
+    font-size: 16px;
+
+    outline: none;
+}
+
+.form-row{
+    display: flex;
+    gap: 12px;
+}
+
+.form-row .left{
+    flex: 2;
+}
+
+.form-row .right{
+    flex: 1;
+}
+
+.address-row{
+    display: flex;
+    gap: 12px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.actions button {
+    background: var(--btn);
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    padding: 12px 28px;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+footer{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.right{
+    flex: 45%;
+    padding: 60px 150px 0px 70px;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+
+.product img {
+    width: 78px;
+    height: 78px;
+    object-fit: contain;
+
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    background-color: #f7f7f7;
+}
+
+/* .quantity {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+
+    background-color: #999;
+    color: white;
+
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    font-size: 14px;
+} */
+
+.product-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.product-info p {
+    line-height: 1.4;
+}
+
+.product-info small {
+    display: block;
+    color: var(--tf);
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+.price {
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+
+/* 12. MÃ GIẢM GIÁ */
+
+.discount {
+    display: flex;
+    gap: 14px;
+
+    padding: 25px 0 16px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.discount input {
+    flex: 1;
+    min-width: 0;
+
+    height: 55px;
+    padding: 0 14px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+
+    font-size: 16px;
+}
+
+.discount button {
+    padding: 0 28px;
+
+    background-color: #c8c8c8;
+    border: none;
+    border-radius: 5px;
+
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* 13. TẠM TÍNH */
+
+.summary {
+    padding: 25px 0;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+    color: #737373;
+}
+
+.summary-row:last-child {
+    margin-bottom: 0;
+}
+
+
+/* 14. TỔNG CỘNG */
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 25px;
+    font-size: 20px;
+}
+
+.total-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.total-price small {
+    color: #999;
+    font-size: 14px;
+}
+
+.total-price strong {
+    font-size: 28px;
+    font-weight: normal;
+}
+
+
+/* 12. MÃ GIẢM GIÁ */
+
+.discount {
+    display: flex;
+    gap: 14px;
+
+    padding: 25px 0 16px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.discount input {
+    flex: 1;
+    min-width: 0;
+
+    height: 55px;
+    padding: 0 14px;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+
+    font-size: 16px;
+}
+
+.discount button {
+    padding: 0 28px;
+
+    background-color: #c8c8c8;
+    border: none;
+    border-radius: 5px;
+
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* 13. TẠM TÍNH */
+
+.summary {
+    padding: 25px 0;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+    color: #737373;
+}
+
+.summary-row:last-child {
+    margin-bottom: 0;
+}
+
+
+/* 14. TỔNG CỘNG */
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 25px;
+    font-size: 20px;
+}
+
+.total-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.total-price small {
+    color: #999;
+    font-size: 14px;
+}
+
+.total-price strong {
+    font-size: 28px;
+    font-weight: normal;
+}
+
+a{
+    text-decoration: none;
+    color: var(--btn);
+}
+
