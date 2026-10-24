@@ -4,195 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        :root{
-            --bg:white;
-            --text:black;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family:Arial, sans-serif;
-            line-height: 1.65;
-        }
-
-        header{
-            padding: 15px 40px;
-            background: var(--bg);
-            box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
-            position: sticky;
-            top: 0;
-        }
-
-        .headerTop{
-            display: flex;
-            margin-left: auto;
-            padding: 8px 40px;
-            font-size: 10px;
-        }
-
-        .headerTop .authLink{
-            margin-left: auto;
-            color: black;
-        }
-
-
-        .headerTop .authLink a{
-            text-decoration: none;
-            color: black;
-        }
-
-        .searchBox {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            border: 1px solid #ccc;       /* Viền ngoài của cả khung tìm kiếm */
-            border-radius: 10px;          /* Bo tròn mềm mại */
-            padding: 5px 15px;            /* Khoảng cách đệm bên trong khung */
-            width: 400px;                 /* Độ dài của thanh tìm kiếm */
-        }
-
-        .searchInput {
-            border: none;
-            outline: none;
-            background: transparent;
-            width: 100%;
-            font-size: 14px;
-        }
-
-        .searchBtn{
-            padding: 7px 10px;
-            background-color: #531804;
-            width: 40px;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .headerCart{
-            padding-top: 8px 0px 2px;
-        }
-
-        .headerCart .cartBtn img{
-            display: block;
-            height: 30px;
-            width: auto;
-            object-fit: contain;
-        }
-
-
-        .headerMain{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        header .logo{
-            width: 100px;
-        }
-
-        header nav{
-            display: flex;
-            gap:100px;
-            font-size: 22px;
-        }
-
-        header nav a{
-            text-decoration: none;
-            color:inherit;
-            font-size: 18px;
-        }
-
-        header div{
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-        }
-
-
-
-        header div button{
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 30px;
-        }
-
-
-        main section{
-            background:#f2f4f7;
-            padding: 20px 200px;
-        }
-
-        main section .container{
-            padding: 80px 80px;
-            background: white;
-            margin: 20px 50px;
-        }
-
-        main section .container img{
-            display: block;
-            width: 70%;
-            aspect-ratio: 1/1;/*tạo tỉ lệ cao rông*/
-            margin: 20px auto;
-            object-fit: cover;/*cắt hình tạo thành hình vuông như cao rộng có 1 giá trị cụ thể*/
-        }
-
-        footer{
-            background: white;
-            padding: 50px 200px;
-        }
-
-        .footer-container{
-            max-width: 1200;
-
-            margin: 0 auto;
-            margin-top: 20px;
-        }
-
-        .footer-top{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .footer-top hr{
-            width: 50px;
-            margin: 10px 0px;
-        }
-
-        .footer-column ul {
-        list-style: none;
-        }
-
-        .footer-column ul li {
-        margin-bottom: 12px;
-        }
-
-        .footer-column ul li a {
-        text-decoration: none;
-        color: #444;
-        }
-
-        .footer-column li a.highlight{
-            color: black;
-        }
-
-        .footer-buttom{
-            font-size: 12px;
-        }
-
-
-        .footer-buttom p{
-            margin-bottom: 12px;
-        }
-
-        a:hover{
-            color: #531804;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <header class="header">
@@ -204,7 +17,7 @@
             </div>
         </div>
         <div class="headerMain">
-            <img class="logo" src="../logo.png" alt="logo">
+            <img class="logo" src="../images/icons/logo.png" alt="logo">
             <nav>
                 
                 <a href="#">Giới thiệu</a>
@@ -215,11 +28,11 @@
             <div>
                 <div class="searchBox">
                     <input class="searchInput" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
-                    <img class="searchBtn" src="../assest/search.png" alt="Tìm kiếm">
+                    <img class="searchBtn" src="../images/icons/search.png" alt="Tìm kiếm">
                 </div>
                 <div class="headerCart">
                     <button class="cartBtn">
-                        <img class="gioHangBtn" src="../assest/gioHang.png" alt="Giỏ hàng">
+                        <img class="gioHangBtn" src="../images/icons/cart2.png" alt="Giỏ hàng">
                     </button>
                 </div>
             </div>
