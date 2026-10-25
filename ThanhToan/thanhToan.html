@@ -4,71 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .container{
-            display: flex;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-        }
-        </style>
+    <link rel="stylesheet" href="style.css">
+        
 </head>
 <body>
     <div class="container">
         <div class="left">
             <h1>Freshcase.vn</h1>
             <nav>
-                <a href="/abc">Giỏ hàng</a>
-                <span>></span>
-                <span>Thông tin giỏ hàng</span>
-                <span>></span>
-                <a href="/abc">Phương thức thanh toán</a>
+                <a href="/abc" style="font-size: 14px">Giỏ hàng</a>
+                <span style="color: #333">    > </span>
+                <span >Thông tin giao hàng</span>
+                <span style="color: #333"> > </span>
+                <a href="/abc" style="font-size: 14px">Phương thức thanh toán</a>
             </nav>
             <h3>Thông tin giao hàng</h3>
-            <p>Bạn đã có tài khoản?<a href="abc">Đăng nhập</a><p>
-            <div>
-                <label>Họ và tên</label>
-                <input type="text">    
+            <p>Bạn đã có tài khoản? <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a><p>
+            <input class="ho-ten" type="text" placeholder="Họ và tên">    
+            <div class="form-row">
+                <input  class="left" type="text" placeholder="Email">            
+                <input class="right" type="text" placeholder="Số điện thoại">
             </div>
-            <div>
-                <label>Email</label>
-                <input type="text">
-            </div>
-            <div>
-                <input type="text" placeholder="Số điện thoại">
-            </div>
-            <div>
                 <input type="text" placeholder="Địa chỉ">
+            <div class="address-row"> 
+                <select id="province" required>
+                    <option value=""> Tỉnh / Thành phố</option>
+                </select>
+                <select id="ward" required>
+                    <option value="">Phường / Xã</option>
+                </select>
             </div>
-            <div>
-                <input type="text" placeholder="Tỉnh/thành">
+            <div class="actions">
+                <a href="/abc">Giỏ hàng</a>
+                <button>Tiếp tục đến phương thức thanh toán</button>
             </div>
-            <div>
-                <input type="text" placeholder="Quận/huyện">
-            </div>
-            <div>
-                <input type="text" placeholder="Phường/xã">
-            </div>
-            <a href="/abc">Giỏ hàng</a>
-            <button>Tiếp tục phương thức thanh toán</button>
-            <hr>
-            <p>Powered by Haravan</p>
+            <footer>
+                <hr>
+                <p>Powered by Haravan</p>
+            </footer>
         </div>
         <div class="right">
-            <div>
-                <img src="/abc">
-                <span>Bánh kem Caramel muối hồng</span>
+            <div class="product-list">
+                <div class="product">
+                    <img src="../abc.png">
+                    <div class="product-info">
+                        <p>Bánh kem Hương mật</p>
+                        <small>Size 4 inch - 10 cm</small>
+                    </div>
+
+                    <span class="price">800,000₫</span>
+
+                </div>
+                <div class="product">
+                    <img src="../abc.png">
+                    <div class="product-info">
+                        <p>Bánh kem Cara cà phê</p>
+                        <small>8 inch - 21 cm</small>
+                    </div>
+                    <span class="price">380,000đ</span>
+                </div>
             </div>
-            <div>
-                <img src="/abc">
-                <span>Bánh kem Cara cà phê</span>
+            <!-- MÃ GIẢM GIÁ -->
+            <div class="discount">
+
+                <input type="text"
+                       placeholder="Mã giảm giá">
+
+                <button type="button">
+                    Sử dụng
+                </button>
+
             </div>
-            <input type="text" placeholder="Mã giảm giá">
-            <button>Sử dụng</button>
-            <hr>
-            <p>Tạm tính           700,000đ</p>
-            <p>Phí vận chuyển           __</p>
-            <hr>
-            <p>Tổng cộng                   vnd 700,000đ<p>
+
+
+            <!-- TÍNH TIỀN -->
+            <div class="summary">
+
+                <div class="summary-row">
+                    <span>Tạm tính</span>
+                    <span>1,180,000₫</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Phí vận chuyển</span>
+                    <span>—</span>
+                </div>
+
+            </div>
+
+
+            <!-- TỔNG CỘNG -->
+            <div class="total">
+
+                <span>Tổng cộng</span>
+
+                <div class="total-price">
+                    <small>VND</small>
+                    <strong>1,180,000₫</strong>
+                </div>
+
+            </div>
+
         </div>
+    </div>
 </body>
 </html>
