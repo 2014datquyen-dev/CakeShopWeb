@@ -5,33 +5,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="DangNhapDangKy.css">
 </head>
 <body>
-    <div>
-        <img src="logo.png">
+<header>
+    <img src="logo.png" class="logo" alt="Logo Freshcake">
+    <nav>
         <a href="TrangChu.html">Trang chủ</a>
         <a href="SanPham.html">Sản phẩm</a>
         <a href="GioHang.html">Giỏ hàng</a>
         <a href="lienHe.html">Liên hệ</a>
-    </div>
-    <div>
+    </nav>
+</header>
+    <div class="form-container">
         <h1>Chào mừng bạn trở lại!</h1>
         <form>
             <p>Email hoặc số điện thoại</p>
             <input type="text" placeholder="Nhập email hoặc số điện thoại" required>
             <p>Mật khẩu</p>
             <input type="password" placeholder="Nhập mật khẩu" required>
-            <p><input type="checkbox">Ghi nhớ đăng nhập?</p>
+            <p><input type="checkbox"> Ghi nhớ đăng nhập?</p>
             <button type="submit">Đăng nhập</button>
-            <p>Hoặc tiếp tục với</p>
+            <p class="mo-ta">Hoặc tiếp tục với</p>
             <a href="Google.blablabla">Google</a>
         </form>
 
         <p>Chưa có tài khoản?<a href="DangKy.html">Đăng ký ngay</a></p>
     </div>
-    <div>
-        <p>Freshcake</p>
-        <p>Bánh tươi mỗi ngày</p>
-    </div>
+     <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h4>CHÍNH SÁCH</h4>
+                    <hr>
+                    <ul>
+                        <li><a class="highlight" href="#"><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản dịch vụ</a></li>
+                        <li><a href="#">Khách hàng thân thiết</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>THÔNG TIN</h4>
+                    <hr>
+                    <ul>
+                        <li><a class="highlight" href="#"><strong>Tin tức</strong></a></li>
+                        <li><a href="#">Tin khuyến mãi</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+                <div class=footer-column>
+                    <h4>HỖ TRỢ</h4>
+                    <hr>
+                    <ul>
+                        <li><a class="highlight" href="#"><strong>Liên hệ</strong></a></li>
+                        <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Đăng ký nhận tin</h4>
+                    <hr>
+                    <ul class="social-list">
+                        <li>
+                            <div class="footer-facebook">
+                                <a class="facebook-btn" href="#">
+                                    <img src="../images/icons/facebook.png" alt="Facebook">
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="footer-insta">
+                                <a class="insta-btn" href="#">
+                                    <img src="../images/icons/instagram.png" alt="Instagram">
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="footer-buttom">
+            <div class="left-footer-buttom">
+                <p><strong>Công ty TNHH Five overTry</strong> |
+                    Mã số doanh nghiệp: 01038333567 |
+                    Do Sở Kế hoạch - Đầu tư Cần Thơ cấp ngày 24/10/2026.
+                </p>
+                <p>Số điện thoại: 032 867 5409 |
+                        quyenb2408813@freshcake.vn |
+                        KTX A - Dãy A2/ Đại học Cần Thơ/ Phường Xuân Khánh/ Ninh Kiều/ Cần Thơ |
+                        © Bản quyền thuộc về Fresh Cake.
+                </p>
+            </div>
+                <div class="right-footer-buttom">
+                    <img src="../images/icons/boCongThuong.png">
+                </div>
+            </div>
+    </footer>
 </body>
 </html>
