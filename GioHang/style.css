@@ -1,0 +1,414 @@
+:root{
+            --bg:white;
+            --text:black;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:Arial, sans-serif;
+            line-height: 1.65;
+        }
+
+        header{
+            padding: 15px 40px;
+            background: var(--bg);
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+        }
+
+        .header-top{
+            display: flex;
+            margin-left: auto;
+            padding: 8px 40px;
+            font-size: 10px;
+        }
+
+        .header-top .auth-link{
+            margin-left: auto;
+            color: black;
+        }
+
+
+        .auth-link a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 5px 15px;
+            width: 400px;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .search-btn{
+            padding: 7px 10px;
+            background-color: #f3efed;
+            width: 40px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .header-cart{
+            padding-top: 8px 0px 2px;
+        }
+
+        .cart-btn img{
+            display: block;
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+
+        .header-main{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .logo{
+            width: 100px;
+        }
+
+        header nav{
+            display: flex;
+            gap:100px;
+            font-size: 22px;
+        }
+
+        header nav a{
+            text-decoration: none;
+            color:inherit;
+            font-size: 18px;
+        }
+
+        header div{
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+
+
+        header div button{
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 30px;
+        }
+            main section{
+                background:#f2f4f7;
+                padding: 20px 200px;
+            }
+            main section .container{
+                padding: 80px 80px;
+                background: white;
+                margin: 20px 50px;
+            }
+            main section .container img{
+                display: block;
+                width: 70%;
+                aspect-ratio: 1/1;
+                margin: 20px auto;
+                object-fit: cover;
+            }
+            footer{
+            background: white;
+            padding: 50px 200px;
+        }
+
+        .footer-container{
+            max-width: 1200;
+
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .footer-top{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .footer-top hr{
+            width: 50px;
+            margin: 10px 0px;
+        }
+
+        .footer-column ul {
+        list-style: none;
+        }
+
+        .footer-column ul li {
+        margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+        text-decoration: none;
+        color: #444;
+        }
+
+        .footer-column li a.highlight{
+            color: black;
+        }
+
+        .footer-column .social-list{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            list-style: none;
+        }
+
+        .facebook-btn img{
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .insta-btn img{
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+
+
+        .footer-buttom{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            gap: 30px;
+        }
+
+
+        .footer-buttom p{
+            margin-bottom: 12px;
+        }
+
+        .right-footer-buttom img{
+            height:80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        a:hover{
+            color: #531804;
+        }
+            .trang-gio-hang{
+                padding: 40px 120px 64px;
+            }
+            .bo-cuc{
+                display: grid;
+                grid-template-columns: 2.3fr 1fr;
+                grid-template-areas: "san-pham hen-gio";
+                gap: 60px;
+                padding: 16px 30px 30px 0px;
+                background: white;
+            }
+            .vung-san-pham{
+                grid-area: san-pham;
+                min-width: 0px;
+            }
+            .vung-hen-gio{
+                grid-area: hen-gio;
+            }
+            .cuon-bang{
+                overflow-x: auto;
+            }
+            .bang-gio-hang{
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .bang-gio-hang thead th{
+                padding: 12px 10px;
+                font-size: 17px;
+                text-align: center;
+                border-bottom: 2px solid #e8a3a9;
+            }
+            .bang-gio-hang tbody td,
+            .bang-gio-hang tbody th{
+                padding: 30px 10px;
+                vertical-align: top;
+                text-align: center;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            .bang-gio-hang tbody th{
+                font-weight: normal;
+                text-align: left;
+            }
+            .nut-xoa{
+                border: none;
+                background: none;
+                font-size: 30px;
+                line-height: 1;
+                cursor: pointer;
+            }
+            .anh-sp{
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+                background: #f2f2f2;
+            }
+            .ten-sp{
+                font-size: 22px;
+                line-height: 1.3;
+            }
+            .thong-tin-sp{
+                margin-top: 10px;
+                font-size: 15px;
+                color: #555;
+            }
+            .gia{
+                font-size: 20px;
+            }
+            .chon-so-luong{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+            .chon-so-luong button{
+                width: 46px;
+                height: 50px;
+                border: 1px solid black;
+                background: white;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            .chon-so-luong button:hover{
+                background: #f2f2f2;
+            }
+            .chon-so-luong input[type="number"]{
+                width: 50px;
+                border: none;
+                font-size: 20px;
+                text-align: center;
+            }
+            .tiep-tuc{
+                display: block;
+                padding: 30px 10px 30px 150px;
+                border-bottom: 1px solid #e5e5e5;
+                font-weight: bold;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: #1a1a1a;
+            }
+            .tiep-tuc:hover{
+                color: #c8102e;
+            }
+            .ghi-chu{
+                padding: 24px 0px 0px 25px;
+            }
+            .ghi-chu label{
+                display: block;
+                margin-bottom: 8px;
+                font-size: 17px;
+            }
+            .ghi-chu textarea{
+                width: 100%;
+                height: 105px;
+                padding: 10px;
+                border: 1px solid #ddd;
+                font-size: 15px;
+            }
+            .vung-hen-gio h2{
+                margin: 40px 0px 24px;
+                padding-bottom: 2px;
+                border-bottom: 1px solid #333;
+                font-size: 20px;
+                text-transform: uppercase;
+                color: #c8102e;
+            }
+            .vung-hen-gio label{
+                display: block;
+                margin-bottom: 8px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .vung-hen-gio input[type="date"],
+            .vung-hen-gio select{
+                width: 100%;
+                margin-bottom: 22px;
+                padding: 8px 14px;
+                border: 1px solid #d4d4d4;
+                border-radius: 4px;
+                background: #e9e9e9;
+                font-size: 16px;
+            }
+            .vung-hen-gio .hoa-don{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 18px 0px 20px;
+                font-size: 17px;
+            }
+            .hoa-don input[type="checkbox"]{
+                width: 24px;
+                height: 24px;
+            }
+            .thanh-tien-tong{
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                font-size: 17px;
+                color: #444;
+            }
+            .thanh-tien-tong strong{
+                font-size: 28px;
+                font-weight: normal;
+                color: #c8102e;
+            }
+            .ghi-chu-vat{
+                text-align: right;
+                font-size: 14px;
+                font-style: italic;
+                color: #999;
+            }
+            .vung-hen-gio input[type="submit"]{
+                width: 100%;
+                margin-top: 50px;
+                padding: 18px;
+                border: none;
+                background: #0f1b20;
+                color: white;
+                font-size: 26px;
+                cursor: pointer;
+            }
+            .vung-hen-gio input[type="submit"]:hover{
+                background: #263238;
+            }
+            @media (max-width: 900px){
+                .trang-gio-hang{
+                    padding: 24px 16px 40px;
+                }
+                .bo-cuc{
+                    grid-template-columns: 1fr;
+                    grid-template-areas:
+                        "san-pham"
+                        "hen-gio";
+                    gap: 20px;
+                    padding: 16px;
+                }
+                .tiep-tuc{
+                    padding-left: 10px;
+                }
+                .ghi-chu{
+                    padding-left: 0px;
+                }
+            }
