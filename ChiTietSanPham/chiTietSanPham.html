@@ -12,39 +12,47 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <div class="header_logo_nav">
-        <img
-          class="header__img--logo"
-          src="../images/logo.jpg"
-          alt="logo FreshCake"
-        />
-        <nav class="header_nav-form">
-          <a class="horizontal-nav" href="#">Giới thiệu</a>
-          <a class="horizontal-nav" href="#">Sản phẩm</a>
-          <a class="horizontal-nav" href="#">Danh sách cửa hàng</a>
-          <a class="horizontal-nav" href="#">Tin tức</a>
+    <header class="header">
+      <div class="header-top">
+        <div class="auth-link">
+          <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
+          <span class="separator">|</span>
+          <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
+        </div>
+      </div>
+      <div class="header-main">
+        <img class="logo" src="../images/icons/logo.png" alt="logo" />
+        <nav>
+          <a href="#" style="color: #531804">Giới thiệu</a>
+          <a href="#">Sản phẩm</a>
+          <a href="#">Danh sách cửa hàng</a>
+          <a href="#">Tin tức</a>
         </nav>
+        <div>
+          <div class="search-box">
+            <input
+              class="search-input"
+              type="text"
+              placeholder="Freshcake bao ship 0đ - Chốt ngay!"
+            />
+            <img
+              class="search-btn"
+              src="../images/icons/search.png"
+              alt="Tìm kiếm"
+            />
+          </div>
+          <div class="header-cart">
+            <button class="cart-btn">
+              <a href="../GioHang/gioHang.html" class="cartBtn">
+                <img src="../images/icons/cart2.png" alt="Giỏ hàng" />
+              </a>
+            </button>
+          </div>
+        </div>
       </div>
-      <!-- kinh lup -->
-      <div class="header__icon">
-        <button
-          class="search-btn"
-          style="background: none; border: none; cursor: pointer"
-        >
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-        <!-- gio hang -->
-        <button
-          class="search-btn"
-          style="background: none; border: none; cursor: pointer"
-        >
-          <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-      </div>
-      <span class="cart-badge"></span>
     </header>
     <main>
       <h3 class="allSP">Tất cả sản phẩm</h3>
