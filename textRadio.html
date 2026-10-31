@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phương thức thanh toán</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 40px;
+    }
+
+    .payment-container {
+      max-width: 450px;
+      background-color: #ffffff;
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #000;
+    }
+
+    /* Checkbox "Có phải đây là một món quà?" */
+    .gift-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .gift-option input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    /* Nhóm các phương thức thanh toán */
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Thiết lập khung (card) cho từng option */
+    .payment-card {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      background-color: #f6f6f6; /* Màu nền xám nhạt */
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      user-select: none;
+    }
+
+    /* Giấu nút radio mặc định của trình duyệt */
+    .payment-card input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border: 2px solid #757575;
+      border-radius: 50%;
+      outline: none;
+      margin-right: 14px;
+      position: relative;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Tùy chỉnh giao diện nút Radio khi ĐƯỢC CHỌN (checked) */
+    .payment-card input[type="radio"]:checked {
+      background-color: #ffc107; /* Màu vàng cam */
+      border-color: #ffc107;
+    }
+
+    /* Tạo dấu tích bên trong nút radio khi checked */
+    .payment-card input[type="radio"]:checked::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 7px;
+      width: 4px;
+      height: 9px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    /* Chữ phương thức thanh toán */
+    .payment-card .method-name {
+      font-size: 15px;
+      font-weight: bold;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="payment-container">
+    <h2>Phương thức thanh toán</h2>
+
+    <!-- Checkbox Quà tặng -->
+    <label class="gift-option">
+      <input type="checkbox" name="is_gift">
+      <span>Có phải đây là một món quà?</span>
+    </label>
+
+    <!-- Danh sách lựa chọn Radio -->
+    <div class="payment-methods">
+      
+      <!-- Option 1: Thanh toán COD -->
+      <label class="payment-card">
+        <input type="radio" name="payment_method" value="COD" checked>
+        <span class="method-name">Thanh toán COD</span>
+      </label>
+
+      <!-- Option 2: VietQR PRO -->
+      <label class="payment-card">
+        <input type="radio" name="payment_method" value="VIETQR">
+        <span class="method-name">Techcombank VietQR PRO</span>
+      </label>
+
+    </div>
+  </div>
+
+</body>
+</html>

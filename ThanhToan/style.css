@@ -1,9 +1,12 @@
 :root{
     --left: white;
-    --right: #f2f4f7;
+    --right: #e6e3e3;
     --btn: #531804;
-    --bd: #e1e1e1;
-    --tf: #333;
+    --link: #531804;
+    --hv: #b73003;
+    --tf: #4c4b4b;
+    --inactive: #c8c8c8;
+    --hr:gray;
 }
 
 *{
@@ -11,34 +14,31 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    line-height: 2.5;
+    line-height: 1;
 }
 
 
 .container{
-            display: flex;
-        }
+    display: flex;
+}
 
 .left{
     flex: 55%;
     display: flex;
     flex-direction: column;
-    border-right: var(--bd) solid 3px;
+    border-right: 2px solid var(--btn);
     padding: 60px 70px 0px 150px;
     gap: 15px;
 }
 
-.left input, select{
+.left input[type="text"], .left select{
     width: 100%;
     height: 55px;
     padding: 0px 14px;
-    border: var(--bd) solid 2px;
+    border: 2px solid var(--inactive);
     border-radius: 6px;
-    /* background-color: white; */
     color: var(--tf);
     font-size: 16px;
-
-    outline: none;
 }
 
 .form-row{
@@ -46,25 +46,85 @@
     gap: 12px;
 }
 
-.form-row .left{
+.form-row .email{
     flex: 2;
 }
 
-.form-row .right{
+.form-row .call{
     flex: 1;
 }
 
 .address-row{
     display: flex;
     gap: 12px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--hr);
 }
+
+.payment-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.payment-methods{
+    display: flex;
+    gap: 12px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--hr);
+}
+
+.payment-card{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    background: var(--inactive);
+    border-radius: 5px;
+    cursor: pointer;
+
+    /* user-select: none; */
+}
+
+.payment-card input[type="radio"]{
+    appearance: none;
+
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--tf);
+    border-radius: 50%;
+    outline: none;
+    margin-right: 14px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+
+.payment-card input[type="radio"]:checked{
+    background: var(--hv);
+    border: var(--hv);
+}
+
+.payment-card input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
 
 .actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 70px;
 }
 
 .actions button {
@@ -74,29 +134,32 @@
     border: none;
     border-radius: 5px;
 
-    padding: 12px 28px;
+    padding: 20px 50px;
     font-size: 16px;
 
     cursor: pointer;
 }
 
 footer{
-    margin-top: 50px;
     text-align: center;
 }
+
+
+/*-----------------------------------------*/
+
 
 .right{
     flex: 45%;
     padding: 60px 150px 0px 70px;
+    background-color: var(--right);
 }
 
 .product-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
-
+    border-bottom: 1px solid var(--hr);
     padding-bottom: 18px;
-    border-bottom: 1px solid #e1e1e1;
 }
 
 .product {
@@ -111,9 +174,7 @@ footer{
     height: 78px;
     object-fit: contain;
 
-    border: 1px solid #ddd;
     border-radius: 9px;
-    background-color: #f7f7f7;
 }
 
 /* .quantity {
@@ -164,7 +225,7 @@ footer{
     gap: 14px;
 
     padding: 25px 0 16px;
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid var(--hr);
 }
 
 .discount input {
@@ -174,7 +235,7 @@ footer{
     height: 55px;
     padding: 0 14px;
 
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--inactive);
     border-radius: 6px;
 
     font-size: 16px;
@@ -183,7 +244,7 @@ footer{
 .discount button {
     padding: 0 28px;
 
-    background-color: #c8c8c8;
+    background-color: var(--inactive);
     border: none;
     border-radius: 5px;
 
@@ -197,15 +258,14 @@ footer{
 
 .summary {
     padding: 25px 0;
-    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid var(--hr);
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
-
+    color: var(--tf);
     margin-bottom: 15px;
-    color: #737373;
 }
 
 .summary-row:last-child {
@@ -231,91 +291,7 @@ footer{
 }
 
 .total-price small {
-    color: #999;
-    font-size: 14px;
-}
-
-.total-price strong {
-    font-size: 28px;
-    font-weight: normal;
-}
-
-
-/* 12. MÃ GIẢM GIÁ */
-
-.discount {
-    display: flex;
-    gap: 14px;
-
-    padding: 25px 0 16px;
-    border-bottom: 1px solid #e1e1e1;
-}
-
-.discount input {
-    flex: 1;
-    min-width: 0;
-
-    height: 55px;
-    padding: 0 14px;
-
-    border: 1px solid #d9d9d9;
-    border-radius: 6px;
-
-    font-size: 16px;
-}
-
-.discount button {
-    padding: 0 28px;
-
-    background-color: #c8c8c8;
-    border: none;
-    border-radius: 5px;
-
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-
-/* 13. TẠM TÍNH */
-
-.summary {
-    padding: 25px 0;
-    border-bottom: 1px solid #e1e1e1;
-}
-
-.summary-row {
-    display: flex;
-    justify-content: space-between;
-
-    margin-bottom: 15px;
-    color: #737373;
-}
-
-.summary-row:last-child {
-    margin-bottom: 0;
-}
-
-
-/* 14. TỔNG CỘNG */
-
-.total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding-top: 25px;
-    font-size: 20px;
-}
-
-.total-price {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.total-price small {
-    color: #999;
+    color: var(--tf);
     font-size: 14px;
 }
 
@@ -326,6 +302,18 @@ footer{
 
 a{
     text-decoration: none;
-    color: var(--btn);
+    color: var(--link);
 }
 
+a:hover{
+    color: var(--hv);
+}
+
+button:hover{
+    background: var(--hv);
+}
+
+.container input:focus, .container select:focus{
+    border: 2px solid var(--btn);
+    outline:none;
+}
