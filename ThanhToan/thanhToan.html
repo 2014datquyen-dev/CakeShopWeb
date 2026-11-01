@@ -9,6 +9,11 @@
 </head>
 <body>
     <div class="container">
+        <!-- ===== BỔ SUNG RESPONSIVE: Tiêu đề riêng cho màn hình <= 1024px ===== -->
+        <header class="mobile-header">
+            <h1>Freshcake.vn</h1>
+        </header>
+        <!-- ===== KẾT THÚC BỔ SUNG ===== -->
         <div class="left">
             <h1>Freshcake.vn</h1>
             <h3>Thông tin giao hàng</h3>
@@ -52,6 +57,19 @@
             </footer>
         </div>
         <div class="right">
+            <!-- ===== BỔ SUNG RESPONSIVE: Nút mở/đóng đơn hàng ===== -->
+            <button class="order-toggle" id="orderToggle" type="button"
+                    aria-expanded="false" aria-controls="orderDetails">
+                <span class="toggle-label">
+                    <span aria-hidden="true">🛒</span>
+                    <span id="toggleText">Hiển thị thông tin đơn hàng</span>
+                    <span id="toggleArrow" aria-hidden="true">⌄</span>
+                </span>
+                <span class="toggle-price">1,180,000₫</span>
+            </button>
+            <!-- ===== KẾT THÚC BỔ SUNG ===== -->
+            <!-- ===== BỔ SUNG RESPONSIVE: Nhóm chi tiết để ẩn/hiện ===== -->
+            <div class="order-details" id="orderDetails">
             <div class="product-list">
                 <div class="product">
                     <img src="../abc.png">
@@ -72,6 +90,8 @@
                     <span class="price">380,000₫</span>
                 </div>
             </div>
+            </div>
+            <!-- ===== KẾT THÚC BỔ SUNG ===== -->
             <!-- MÃ GIẢM GIÁ -->
             <div class="discount">
 
@@ -115,5 +135,22 @@
 
         </div>
     </div>
+    <!-- ===== BỔ SUNG RESPONSIVE: Tương tác mở/đóng đơn hàng ===== -->
+    <script>
+        const orderToggle = document.getElementById("orderToggle");
+        const orderBox = document.querySelector(".right");
+        const toggleText = document.getElementById("toggleText");
+        const toggleArrow = document.getElementById("toggleArrow");
+
+        orderToggle.addEventListener("click", function () {
+            const isOpen = orderBox.classList.toggle("order-open");
+            orderToggle.setAttribute("aria-expanded", String(isOpen));
+            toggleText.textContent = isOpen
+                ? "Ẩn thông tin đơn hàng"
+                : "Hiển thị thông tin đơn hàng";
+            toggleArrow.textContent = isOpen ? "⌃" : "⌄";
+        });
+    </script>
+    <!-- ===== KẾT THÚC BỔ SUNG ===== -->
 </body>
 </html>

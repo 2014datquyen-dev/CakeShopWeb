@@ -2,6 +2,7 @@
         :root{
             --bg:white;
             --text:black;
+            --link:#531804;
         }
 
         * {
@@ -38,6 +39,12 @@
             color: black;
         }
 
+        .auth-link .nav__item:hover{
+            color: var(--link);
+        }
+
+
+
         .search-box {
             display: flex;
             align-items: center;
@@ -58,7 +65,7 @@
 
         .search-btn{
             padding: 7px 10px;
-            /* background-color: #531804; */
+            /* background-color: var(--link); */
             width: 40px;
             height: auto;
             border-radius: 10px;
@@ -169,7 +176,7 @@
         color: #444;
         }
 
-        .footer-column li a.highlight{
+        ul li a.highlight{
             color: black;
         }
 
@@ -213,6 +220,6 @@
             object-fit: contain;
         }
 
-        a:hover{
-            color: #531804;
+        html body a:hover{
+            color: var(--link);
         }

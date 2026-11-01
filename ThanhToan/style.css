@@ -317,3 +317,235 @@ button:hover{
     border: 2px solid var(--btn);
     outline:none;
 }
+
+
+/* ================================================================
+   BỔ SUNG RESPONSIVE - KHÔNG THAY ĐỔI CÁC QUY TẮC CSS GỐC BÊN TRÊN
+   ================================================================ */
+
+/* BỔ SUNG: Các thành phần này chỉ xuất hiện trên tablet/mobile */
+.mobile-header,
+.order-toggle {
+    display: none;
+}
+
+/* BỔ SUNG: Đảm bảo cột và form không gây tràn ngang */
+.left,
+.right,
+.form-row > *,
+.address-row > * {
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    /* BỔ SUNG: Đổi hai cột thành một cột */
+    .container {
+        flex-direction: column;
+    }
+
+    /* BỔ SUNG: Tiêu đề -> đơn hàng -> thông tin giao hàng */
+    .mobile-header {
+        display: block;
+        order: 0;
+        width: 100%;
+        padding: 28px 24px;
+        border-bottom: 1px solid var(--inactive);
+    }
+
+    .mobile-header h1 {
+        max-width: 668px;
+        margin: 0 auto;
+        font-size: 32px;
+        font-weight: normal;
+    }
+
+    .left {
+        order: 2;
+        flex: none;
+        width: 100%;
+        max-width: 716px;
+        margin: 0 auto;
+        padding: 36px 24px 18px;
+        border-right: none;
+    }
+
+    /* BỔ SUNG: Tránh lặp lại tiêu đề desktop */
+    .left > h1 {
+        display: none;
+    }
+
+    .right {
+        order: 1;
+        flex: none;
+        width: 100%;
+        padding: 0 24px 20px;
+        border-bottom: 1px solid var(--inactive);
+    }
+
+    /* BỔ SUNG: Thanh ẩn/hiện thông tin đơn hàng */
+    .order-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+        max-width: 668px;
+        min-height: 68px;
+        margin: 0 auto;
+        padding: 12px 0;
+        border: none;
+        background: transparent;
+        color: var(--link);
+        font-size: 16px;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .order-toggle:hover {
+        background: transparent;
+    }
+
+    .toggle-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .toggle-price {
+        flex-shrink: 0;
+        color: var(--tf);
+        font-size: 20px;
+    }
+
+    /* BỔ SUNG: Mặc định ẩn sản phẩm và các khoản tiền chi tiết */
+    .right .order-details,
+    .right .summary,
+    .right .total {
+        display: none;
+    }
+
+    /* BỔ SUNG: Khi nhấn nút, các chi tiết xuất hiện */
+    .right.order-open .order-details,
+    .right.order-open .summary,
+    .right.order-open .total {
+        display: block;
+    }
+
+    .right.order-open .total {
+        display: flex;
+    }
+
+    /* BỔ SUNG: Giữ mã giảm giá hiển thị cả khi đơn hàng đóng */
+    .right .discount,
+    .right .order-details,
+    .right .summary,
+    .right .total {
+        width: 100%;
+        max-width: 668px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .right .discount {
+        border-top: 1px solid var(--inactive);
+    }
+
+    /* BỔ SUNG: Đưa phần thông tin giao hàng về chiều rộng phù hợp */
+    .left input[type="text"],
+    .left select {
+        min-width: 0;
+    }
+
+    .payment-card {
+        min-width: 0;
+    }
+
+    .actions {
+        margin-top: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* BỔ SUNG: Giảm khoảng cách ngoài trên điện thoại */
+    .mobile-header {
+        padding: 22px 16px;
+    }
+
+    .mobile-header h1 {
+        font-size: 27px;
+    }
+
+    .left {
+        padding: 28px 16px 18px;
+    }
+
+    .right {
+        padding: 0 16px 18px;
+    }
+
+    .order-toggle {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .toggle-price {
+        font-size: 16px;
+    }
+
+    /* BỔ SUNG: Các input và select xếp thành một cột */
+    .form-row,
+    .address-row,
+    .payment-methods {
+        flex-direction: column;
+    }
+
+    .form-row > *,
+    .address-row > * {
+        width: 100%;
+    }
+
+    .form-row .email,
+    .form-row .call {
+        flex: none;
+    }
+
+    .actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .actions button {
+        width: 100%;
+        padding: 17px 12px;
+    }
+
+    .actions a {
+        text-align: center;
+    }
+
+    /* BỔ SUNG: Đơn hàng và mã giảm giá không bị tràn */
+    .product {
+        gap: 10px;
+    }
+
+    .product img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .price {
+        font-size: 13px;
+    }
+
+    .discount {
+        gap: 8px;
+    }
+
+    .discount button {
+        padding: 0 12px;
+    }
+
+    .total-price strong {
+        font-size: 20px;
+    }
+}
