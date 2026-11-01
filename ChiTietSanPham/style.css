@@ -11,10 +11,11 @@ html {
 
 header {
   padding: 15px 40px;
-  background: var(--bg);
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
+  z-index: 1000; /* Đảm bảo header luôn nằm ở lớp trên cùng, không bị ai đè */
 }
 
 .header-top {
@@ -107,36 +108,206 @@ header div button {
 }
 
 /* main */
-.anhSanPham {
-  width: 100px;
-  height: 100px;
-  text-align: center;
+/* --- CSS PHẦN MAIN --- */
+.main-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+  font-family: Arial, sans-serif;
 }
-.ten_banh {
-  font-size: 10px;
-  text-align: center;
-}
-.bang_gia {
-  font-size: 7px;
-  color: orange;
-  text-align: center;
-}
-.san_pham {
-  width: 150px;
-  padding: 10px;
-  margin: 10px;
-  border: 0.5px black solid;
-  border-radius: 6px;
-}
-.sanpham__anh {
+/* Bố cục 2 cột: Sidebar trái, Sản phẩm phải */
+.shop-content {
   display: flex;
-  justify-content: center;
+  gap: 30px;
+  align-items: flex-start;
 }
-.all_sanpham {
+
+/* Sidebar bên trái */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #222;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-list li {
+  margin-bottom: 10px;
+}
+
+.category-list li a {
+  text-decoration: none;
+  color: #555;
+  font-size: 15px;
+  display: block;
+  padding: 6px 0;
+}
+
+.category-list li a:hover,
+.category-list li a.active {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+/* Khu vực danh sách sản phẩm bên phải */
+.product-section {
+  flex-grow: 1;
+}
+
+.section-heading {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Lưới sản phẩm dạng 3 cột */
+.product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
-.allSP {
-  padding: 3px;
+
+/* Thẻ từng sản phẩm */
+.product-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 10px;
   text-align: center;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.product-img-box {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.product-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-name {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.product-price {
+  font-size: 16px;
+  color: #d9534f;
+  font-weight: bold;
+}
+footer {
+  background: white;
+  padding: 50px 200px;
+}
+
+.footer-container {
+  max-width: 1200;
+
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.footer-top hr {
+  width: 50px;
+  margin: 10px 0px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #444;
+}
+
+.footer-column li a.highlight {
+  color: black;
+}
+
+.footer-column .social-list {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+}
+
+.facebook-btn img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+.insta-btn img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-buttom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  gap: 30px;
+}
+
+.footer-buttom p {
+  margin-bottom: 12px;
+}
+
+.right-footer-buttom img {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
+a:hover {
+  color: #531804;
 }
