@@ -1,6 +1,13 @@
 :root{
             --bg:white;
             --text:black;
+            --right: #e6e3e3;
+            --btn: #531804;
+            --link: #531804;
+            --hv: #b73003;
+            --tf: #4c4b4b;
+            --inactive: #c8c8c8;
+            --hr: gray;
         }
 
         * {
@@ -57,14 +64,35 @@
 
         .search-btn{
             padding: 7px 10px;
-            background-color: #f3efed;
             width: 40px;
             height: auto;
             border-radius: 10px;
         }
 
-        .header-cart{
-            padding-top: 8px 0px 2px;
+        .header-main > a{
+            display: flex;
+        }
+
+        .cart-btn{
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .so-luong-gio{
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            min-width: 20px;
+            height: 20px;
+            padding: 0px 5px;
+            border-radius: 10px;
+            background: var(--hv);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 20px;
+            text-align: center;
         }
 
         .cart-btn img{
@@ -112,7 +140,7 @@
             font-size: 30px;
         }
             main section{
-                background:#f2f4f7;
+                background:#efe7ef;
                 padding: 20px 200px;
             }
             main section .container{
@@ -123,7 +151,6 @@
             main section .container img{
                 display: block;
                 width: 70%;
-                aspect-ratio: 1/1;
                 margin: 20px auto;
                 object-fit: cover;
             }
@@ -133,7 +160,7 @@
         }
 
         .footer-container{
-            max-width: 1200;
+            max-width: 1200px;
 
             margin: 0 auto;
             margin-top: 20px;
@@ -217,16 +244,17 @@
                 display: grid;
                 grid-template-columns: 2.3fr 1fr;
                 grid-template-areas: "san-pham hen-gio";
-                gap: 60px;
-                padding: 16px 30px 30px 0px;
+                gap: 50px;
                 background: white;
             }
             .vung-san-pham{
                 grid-area: san-pham;
                 min-width: 0px;
+                padding-top: 16px;
             }
             .vung-hen-gio{
                 grid-area: hen-gio;
+                padding: 30px 30px 30px 0px;
             }
             .cuon-bang{
                 overflow-x: auto;
@@ -239,14 +267,14 @@
                 padding: 12px 10px;
                 font-size: 17px;
                 text-align: center;
-                border-bottom: 2px solid #e8a3a9;
+                border-bottom: 2px solid var(--btn);
             }
             .bang-gio-hang tbody td,
             .bang-gio-hang tbody th{
                 padding: 30px 10px;
                 vertical-align: top;
                 text-align: center;
-                border-bottom: 1px solid #e5e5e5;
+                border-bottom: 1px solid var(--hr);
             }
             .bang-gio-hang tbody th{
                 font-weight: normal;
@@ -257,25 +285,37 @@
                 background: none;
                 font-size: 30px;
                 line-height: 1;
+                color: var(--tf);
                 cursor: pointer;
+            }
+            .nut-xoa:hover{
+                color: var(--hv);
+                transform: scale(1.2);
+            }
+            .gio-trong{
+                padding: 60px 10px;
+                text-align: center;
+                font-size: 18px;
+                color: var(--tf);
             }
             .anh-sp{
                 width: 100px;
                 height: 100px;
                 object-fit: contain;
-                background: #f2f2f2;
+                border-radius: 9px;
+                background: var(--right);
             }
             .ten-sp{
-                font-size: 22px;
+                font-size: 20px;
                 line-height: 1.3;
             }
             .thong-tin-sp{
-                margin-top: 10px;
-                font-size: 15px;
-                color: #555;
+                margin-top: 6px;
+                font-size: 14px;
+                color: var(--tf);
             }
             .gia{
-                font-size: 20px;
+                font-size: 18px;
             }
             .chon-so-luong{
                 display: flex;
@@ -284,131 +324,341 @@
                 gap: 10px;
             }
             .chon-so-luong button{
-                width: 46px;
-                height: 50px;
-                border: 1px solid black;
+                width: 42px;
+                height: 42px;
+                border: 2px solid var(--inactive);
+                border-radius: 6px;
                 background: white;
+                color: var(--tf);
                 font-size: 20px;
                 cursor: pointer;
             }
             .chon-so-luong button:hover{
-                background: #f2f2f2;
+                border-color: var(--btn);
+                color: var(--btn);
+            }
+            .chon-so-luong button:disabled{
+                border-color: var(--inactive);
+                color: var(--inactive);
+                cursor: not-allowed;
             }
             .chon-so-luong input[type="number"]{
                 width: 50px;
                 border: none;
-                font-size: 20px;
+                font-size: 18px;
                 text-align: center;
+                color: var(--tf);
             }
             .tiep-tuc{
                 display: block;
                 padding: 30px 10px 30px 150px;
-                border-bottom: 1px solid #e5e5e5;
+                border-bottom: 1px solid var(--hr);
                 font-weight: bold;
                 text-transform: uppercase;
                 text-decoration: none;
-                color: #1a1a1a;
+                color: var(--link);
             }
             .tiep-tuc:hover{
-                color: #c8102e;
+                color: var(--hv);
             }
             .ghi-chu{
-                padding: 24px 0px 0px 25px;
+                padding: 24px 0px 30px 25px;
             }
             .ghi-chu label{
                 display: block;
-                margin-bottom: 8px;
-                font-size: 17px;
+                margin-bottom: 10px;
+                font-size: 16px;
+                font-weight: bold;
             }
             .ghi-chu textarea{
                 width: 100%;
-                height: 105px;
-                padding: 10px;
-                border: 1px solid #ddd;
-                font-size: 15px;
+                height: 110px;
+                padding: 14px;
+                border: 2px solid var(--inactive);
+                border-radius: 6px;
+                color: var(--tf);
+                font-size: 16px;
             }
             .vung-hen-gio h2{
-                margin: 40px 0px 24px;
-                padding-bottom: 2px;
-                border-bottom: 1px solid #333;
+                margin-bottom: 24px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid var(--hr);
                 font-size: 20px;
                 text-transform: uppercase;
-                color: #c8102e;
+                color: var(--text);
             }
             .vung-hen-gio label{
                 display: block;
-                margin-bottom: 8px;
+                margin-bottom: 10px;
                 font-size: 15px;
                 font-weight: bold;
             }
             .vung-hen-gio input[type="date"],
             .vung-hen-gio select{
                 width: 100%;
+                height: 55px;
                 margin-bottom: 22px;
-                padding: 8px 14px;
-                border: 1px solid #d4d4d4;
-                border-radius: 4px;
-                background: #e9e9e9;
+                padding: 0px 14px;
+                border: 2px solid var(--inactive);
+                border-radius: 6px;
+                background: white;
+                color: var(--tf);
                 font-size: 16px;
+            }
+            .trang-gio-hang input:focus,
+            .trang-gio-hang select:focus,
+            .trang-gio-hang textarea:focus{
+                border: 2px solid var(--btn);
+                outline: none;
             }
             .vung-hen-gio .hoa-don{
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                margin: 18px 0px 20px;
-                font-size: 17px;
+                margin: 4px 0px 24px;
+                padding-bottom: 24px;
+                border-bottom: 1px solid var(--hr);
+                font-size: 16px;
+                cursor: pointer;
             }
             .hoa-don input[type="checkbox"]{
-                width: 24px;
-                height: 24px;
+                width: 22px;
+                height: 22px;
             }
             .thanh-tien-tong{
                 display: flex;
                 justify-content: space-between;
-                align-items: baseline;
-                font-size: 17px;
-                color: #444;
+                align-items: center;
+                font-size: 20px;
             }
             .thanh-tien-tong strong{
                 font-size: 28px;
                 font-weight: normal;
-                color: #c8102e;
             }
             .ghi-chu-vat{
+                margin-top: 6px;
                 text-align: right;
                 font-size: 14px;
                 font-style: italic;
-                color: #999;
+                color: var(--tf);
             }
             .vung-hen-gio input[type="submit"]{
                 width: 100%;
-                margin-top: 50px;
-                padding: 18px;
+                margin-top: 40px;
+                padding: 20px 50px;
                 border: none;
-                background: #0f1b20;
+                border-radius: 5px;
+                background: var(--btn);
                 color: white;
-                font-size: 26px;
+                font-size: 16px;
                 cursor: pointer;
             }
             .vung-hen-gio input[type="submit"]:hover{
-                background: #263238;
+                background: var(--hv);
             }
-            @media (max-width: 900px){
+            .vung-hen-gio input[type="submit"]:active{
+                transform: scale(0.98);
+            }
+
+            .nut-xoa,
+            .chon-so-luong button,
+            .tiep-tuc,
+            .vung-hen-gio input,
+            .vung-hen-gio select,
+            .ghi-chu textarea{
+                transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
+            }
+            @media (max-width: 1024px){
+                header{
+                    padding: 10px 20px;
+                }
+                .header-top{
+                    padding: 4px 0px;
+                }
+                .header-main{
+                    flex-wrap: wrap;
+                    gap: 12px;
+                }
+                header nav{
+                    gap: 28px;
+                }
+                .search-box{
+                    width: 260px;
+                }
+
                 .trang-gio-hang{
-                    padding: 24px 16px 40px;
+                    padding: 24px 20px 40px;
                 }
                 .bo-cuc{
                     grid-template-columns: 1fr;
                     grid-template-areas:
                         "san-pham"
                         "hen-gio";
-                    gap: 20px;
-                    padding: 16px;
+                    gap: 0px;
+                }
+                .vung-san-pham{
+                    padding: 16px 20px 0px;
                 }
                 .tiep-tuc{
                     padding-left: 10px;
                 }
                 .ghi-chu{
                     padding-left: 0px;
+                }
+                .vung-hen-gio{
+                    padding: 28px 24px;
+                }
+
+                footer{
+                    padding: 40px 24px;
+                }
+                .footer-top{
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 24px;
+                }
+            }
+            @media (max-width: 600px){
+                header{
+                    padding: 8px 16px;
+                }
+                header .logo{
+                    width: 80px;
+                }
+                .header-main > div{
+                    flex: 1;
+                    justify-content: flex-end;
+                    gap: 10px;
+                }
+                .search-box{
+                    flex: 1;
+                    width: auto;
+                    min-width: 0;
+                    padding: 4px 10px;
+                }
+                .search-btn{
+                    width: 32px;
+                    padding: 5px 7px;
+                }
+                header nav{
+                    order: 3;
+                    width: 100%;
+                    gap: 0px;
+                    justify-content: space-between;
+                }
+                header nav a{
+                    font-size: 14px;
+                }
+                .trang-gio-hang{
+                    padding: 12px 0px 24px;
+                }
+                .vung-san-pham{
+                    padding: 8px 16px 0px;
+                }
+                .vung-hen-gio{
+                    padding: 22px 16px;
+                }
+                .bang-gio-hang thead{
+                    display: none;
+                }
+                .bang-gio-hang tbody tr{
+                    display: grid;
+                    grid-template-columns: 28px 80px 1fr auto;
+                    grid-template-areas:
+                        "xoa anh ten        ten"
+                        "xoa anh don-gia    don-gia"
+                        "xoa anh so-luong   thanh-tien";
+                    column-gap: 12px;
+                    row-gap: 6px;
+                    padding: 16px 0px;
+                    border-bottom: 1px solid var(--hr);
+                }
+                .bang-gio-hang tbody td,
+                .bang-gio-hang tbody th{
+                    padding: 0px;
+                    border-bottom: none;
+                    text-align: left;
+                }
+                .bang-gio-hang tbody tr > :nth-child(1){
+                    grid-area: xoa;
+                }
+                /* Dòng "Giỏ hàng trống" chỉ có 1 ô -> không chia lưới, cho ô chiếm hết bề ngang */
+                .bang-gio-hang tbody tr.dong-trong{
+                    display: block;
+                }
+                .bang-gio-hang tbody .gio-trong{
+                    display: block;
+                    padding: 40px 0px;
+                    text-align: center;
+                }
+                .bang-gio-hang tbody tr > :nth-child(2){
+                    grid-area: anh;
+                }
+                .bang-gio-hang tbody tr > :nth-child(3){
+                    grid-area: ten;
+                }
+                .bang-gio-hang tbody tr > :nth-child(4){
+                    grid-area: don-gia;
+                    font-size: 15px;
+                    color: var(--tf);
+                }
+                .bang-gio-hang tbody tr > :nth-child(5){
+                    grid-area: so-luong;
+                }
+                .bang-gio-hang tbody tr > :nth-child(6){
+                    grid-area: thanh-tien;
+                    align-self: center;
+                    font-weight: bold;
+                }
+                .nut-xoa{
+                    font-size: 24px;
+                }
+                .anh-sp{
+                    width: 80px;
+                    height: 80px;
+                }
+                .ten-sp{
+                    font-size: 18px;
+                }
+                .thong-tin-sp{
+                    margin-top: 2px;
+                    font-size: 13px;
+                }
+                .gia{
+                    font-size: 16px;
+                }
+                .chon-so-luong{
+                    justify-content: flex-start;
+                    gap: 6px;
+                }
+                .chon-so-luong button{
+                    width: 34px;
+                    height: 36px;
+                    font-size: 18px;
+                }
+                .chon-so-luong input[type="number"]{
+                    width: 36px;
+                    font-size: 16px;
+                }
+                .tiep-tuc{
+                    padding: 18px 0px;
+                    text-align: center;
+                }
+                .thanh-tien-tong strong{
+                    font-size: 24px;
+                }
+                .vung-hen-gio input[type="submit"]{
+                    margin-top: 24px;
+                    padding: 17px 12px;
+                }
+                footer{
+                    padding: 30px 16px;
+                }
+                .footer-top{
+                    grid-template-columns: 1fr;
+                }
+                .footer-buttom{
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 10px;
                 }
             }
