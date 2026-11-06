@@ -13,7 +13,7 @@ function layGiaSo(price) {
 
 function layGioHang() {
   if (localStorage.getItem('cartItems') === null) {
-    return [];   // giỏ hàng chưa tồn tại
+    return [];
   }
   return JSON.parse(localStorage.getItem('cartItems'));
 }
@@ -23,14 +23,24 @@ function luuGioHang(cartItemArr) {
 }
 
 
+// Nút nguồn: bảng và vùng hẹn giờ -> từ đó duyệt tới nút đích
+function layBang() {
+  return document.querySelectorAll('.bang-gio-hang')[0];
+}
+
+function layVungHenGio() {
+  return document.querySelectorAll('.vung-hen-gio')[0];
+}
+
+
 function hienThiGioHang() {
   const customerCart = layGioHang();
-  const tblBody = document.querySelector('.danh-sach-sp');
-  tblBody.innerHTML = '';   // xóa các dòng cũ trước khi vẽ lại
+  const tblBody = layBang().lastElementChild;
+  tblBody.innerHTML = '';
 
   if (customerCart.length === 0) {
     const row = document.createElement('tr');
-    row.className = 'dong-trong';   // để CSS responsive nhận biết dòng thông báo
+    row.className = 'dong-trong';
     const cell = document.createElement('td');
     cell.colSpan = 6;
     cell.className = 'gio-trong';
@@ -49,13 +59,14 @@ function hienThiGioHang() {
 
 function taoDongSanPham(item) {
   const row = document.createElement('tr');
+
   const tdXoa = document.createElement('td');
   const nutXoa = document.createElement('button');
   nutXoa.type = 'button';
   nutXoa.className = 'nut-xoa';
   nutXoa.textContent = '×';
   nutXoa.setAttribute('aria-label', 'Xóa ' + item.name);
-  nutXoa.addEventListener('click', () => xoaSanPham(item.id), false);
+  nutXoa.addEventListener('click', xuLyXoa, false);
   tdXoa.appendChild(nutXoa);
 
   const tdAnh = document.createElement('td');
@@ -70,7 +81,12 @@ function taoDongSanPham(item) {
   const ten = document.createElement('p');
   ten.className = 'ten-sp';
   ten.textContent = item.name;
+  const maSP = document.createElement('p');
+  maSP.className = 'item-id';
+  maSP.hidden = true;
+  maSP.textContent = item.id;
   thTen.appendChild(ten);
+  thTen.appendChild(maSP);
   if (item.id != item.name) {
     const thongTin = document.createElement('p');
     thongTin.className = 'thong-tin-sp';
@@ -91,6 +107,7 @@ function taoDongSanPham(item) {
   nutGiam.textContent = '-';
   nutGiam.setAttribute('aria-label', 'Giảm số lượng');
   nutGiam.disabled = (item.quantity <= 1);
+  nutGiam.addEventListener('click', xuLyGiam, false);
 
   const oSo = document.createElement('input');
   oSo.type = 'number';
@@ -98,15 +115,13 @@ function taoDongSanPham(item) {
   oSo.step = 1;
   oSo.value = item.quantity;
   oSo.setAttribute('aria-label', 'Số lượng ' + item.name);
+  oSo.addEventListener('change', xuLyNhapSo, false);
 
   const nutTang = document.createElement('button');
   nutTang.type = 'button';
   nutTang.textContent = '+';
   nutTang.setAttribute('aria-label', 'Tăng số lượng');
-
-  nutGiam.addEventListener('click', () => capNhatSoLuong(item.id, item.quantity - 1), false);
-  nutTang.addEventListener('click', () => capNhatSoLuong(item.id, item.quantity + 1), false);
-  oSo.addEventListener('change', () => capNhatSoLuong(item.id, Number(oSo.value)), false);
+  nutTang.addEventListener('click', xuLyTang, false);
 
   khung.appendChild(nutGiam);
   khung.appendChild(oSo);
@@ -125,6 +140,40 @@ function taoDongSanPham(item) {
   row.appendChild(tdThanhTien);
   return row;
 }
+
+
+// Từ 1 dòng <tr>: ô thứ 3 (th) -> phần tử con thứ 2 (p.item-id) chứa mã sản phẩm
+function layMaSanPham(row) {
+  return row.children[2].children[1].textContent;
+}
+
+// button -> td -> tr
+function xuLyXoa(evt) {
+  const row = evt.target.parentElement.parentElement;
+  xoaSanPham(layMaSanPham(row));
+}
+
+// button -> div.chon-so-luong -> td -> tr
+function xuLyGiam(evt) {
+  const nut = evt.target;
+  const oSo = nut.nextElementSibling;
+  const row = nut.parentElement.parentElement.parentElement;
+  capNhatSoLuong(layMaSanPham(row), Number(oSo.value) - 1);
+}
+
+function xuLyTang(evt) {
+  const nut = evt.target;
+  const oSo = nut.previousElementSibling;
+  const row = nut.parentElement.parentElement.parentElement;
+  capNhatSoLuong(layMaSanPham(row), Number(oSo.value) + 1);
+}
+
+function xuLyNhapSo(evt) {
+  const oSo = evt.target;
+  const row = oSo.parentElement.parentElement.parentElement;
+  capNhatSoLuong(layMaSanPham(row), Number(oSo.value));
+}
+
 
 function isExistedInCart(id, cartItemArr) {
   let myIndex = -1;
@@ -164,20 +213,24 @@ function xoaSanPham(id) {
   }
 }
 
+
+// Vùng hẹn giờ: [0]h2 [1]label [2]input date [3]label [4]select [5]label [6]p.thanh-tien-tong [7]p [8]submit
 function capNhatTongTien() {
   let total = 0;
   layGioHang().forEach(item => {
     total += layGiaSo(item.price) * Number(item.quantity);
   });
-  document.getElementById('tong-tien').textContent = formatCurrency(total);
+  const tongTien = layVungHenGio().children[6].lastElementChild;
+  tongTien.textContent = formatCurrency(total);
 }
 
+// .header-cart -> a.cart-btn -> span.so-luong-gio
 function capNhatSoLuongTrenIcon() {
   let numberOfItems = 0;
   layGioHang().forEach(item => {
     numberOfItems += Number(item.quantity);
   });
-  const badge = document.querySelector('.so-luong-gio');
+  const badge = document.querySelectorAll('.header-cart')[0].firstElementChild.lastElementChild;
   badge.textContent = numberOfItems;
   badge.hidden = (numberOfItems === 0);
 }
@@ -197,7 +250,7 @@ function kiemTraThanhToan(evt) {
     return;
   }
 
-  const oNgay = document.getElementById('ngay-nhan');
+  const oNgay = layVungHenGio().children[2];
   if (oNgay.value === '') {
     evt.preventDefault();
     alert('Vui lòng chọn ngày nhận hàng.');
@@ -210,7 +263,8 @@ function kiemTraThanhToan(evt) {
 }
 
 function setup() {
-  document.getElementById('ngay-nhan').min = layNgayHomNay();
-  document.querySelector('.bo-cuc').addEventListener('submit', kiemTraThanhToan, false);
+  const vungHenGio = layVungHenGio();
+  vungHenGio.children[2].min = layNgayHomNay();
+  vungHenGio.parentElement.addEventListener('submit', kiemTraThanhToan, false);
   hienThiGioHang();
 }

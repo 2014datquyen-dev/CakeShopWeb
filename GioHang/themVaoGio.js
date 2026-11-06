@@ -10,16 +10,17 @@ function isExistedInCart(item, cartItemArr) {
 }
 
 const orderSelectedProduct = (evt) => {
+  // section.san_pham: [0]div.sanpham__anh > img  [1]p.ten_banh  [2]p.bang_gia  [3]button.add-cart
   const nut = evt.target;
   const sanPham = nut.parentElement;
 
   if (typeof Storage !== undefined) {
-    const ten = sanPham.querySelector('.ten_banh').textContent.trim();
+    const ten = nut.previousElementSibling.previousElementSibling.textContent.trim();
     let newItem = {
       id: ten,
       name: ten,
-      price: sanPham.querySelector('.bang_gia').textContent,
-      image: sanPham.querySelector('img').getAttribute('src'),
+      price: nut.previousElementSibling.textContent,
+      image: sanPham.firstElementChild.firstElementChild.getAttribute('src'),
       quantity: 1
     };
 
