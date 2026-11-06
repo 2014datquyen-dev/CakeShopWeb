@@ -8,17 +8,17 @@
     </head>
     <body>
         <header class="header">
-        <div class=header-top>
+        <div class="header-top">
             <div class="auth-link">
-                <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
+                <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a>
                 <span class="separator">|</span>
-                <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
+                <a href="../DangKiDangNhap/DangKy.html">Đăng ký</a>
             </div>
         </div>
         <div class="header-main">
             <a href="../TrangChu/trangChu.html"><img class="logo" src="../images/icons/logo.png" alt="logo"></a>
             <nav>
-                <a href="../GioiThieu/gioiThieu.html" style="color: #531804">Giới thiệu</a>
+                <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
                 <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
                 <a href="#">Danh sách cửa hàng</a>
                 <a href="#">Tin tức</a>
@@ -29,11 +29,10 @@
                     <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
                 </div>
                 <div class="header-cart">
-                    <button class="cart-btn">
-                        <a href="../GioHang/gioHang.html" class="cartBtn">
-                            <img src="../images/icons/cart2.png" alt="Giỏ hàng">
-                        </a>
-                    </button>
+                    <a href="../GioHang/gioHang.html" class="cart-btn">
+                        <img src="../images/icons/cart2.png" alt="Giỏ hàng">
+                        <span class="so-luong-gio">0</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -52,25 +51,7 @@
                                         <th scope="col">Thành&nbsp;tiền</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><button type="button" class="nut-xoa" aria-label="Xóa sản phẩm">×</button></td>
-                                        <td><img class="anh-sp" src="../image/anhnen.jpg" alt="Bánh kem Mây sữa"></td>
-                                        <th scope="row">
-                                            <p class="ten-sp">Bánh kem Mây sữa</p>
-                                            <p class="thong-tin-sp">Mã SP: 1040050466<br>Nhóm: Size 4 inch - 10cm</p>
-                                        </th>
-                                        <td class="gia">160.000đ</td>
-                                        <td>
-                                            <div class="chon-so-luong">
-                                                <button type="button" aria-label="Giảm số lượng">-</button>
-                                                <input type="number" name="so-luong" min="1" value="1" step="1" aria-label="Số lượng Bánh kem Mây sữa">
-                                                <button type="button" aria-label="Tăng số lượng">+</button>
-                                            </div>
-                                        </td>
-                                        <td class="gia">160.000đ</td>
-                                    </tr>
-                                </tbody>
+                                <tbody class="danh-sach-sp"></tbody>
                             </table>
                         </div>
                         <a class="tiep-tuc" href="../ChiTietSanPham/chiTietSanPham.html">Tiếp tục mua sắm</a>
@@ -91,7 +72,7 @@
                             <option value="toi">Tối: 19h00 - 21h00</option>
                         </select>
                         <label class="hoa-don"><input type="checkbox" name="xuat-hoa-don" value="co">Xuất hóa đơn công ty</label>
-                        <p class="thanh-tien-tong"><span>Thành tiền</span><strong>160.000đ</strong></p>
+                        <p class="thanh-tien-tong"><span>Thành tiền</span><strong id="tong-tien">0 ₫</strong></p>
                         <p class="ghi-chu-vat">(Đã bao gồm VAT nếu có)</p>
                         <input type="submit" value="Thanh toán">
                     </div>
@@ -120,7 +101,7 @@
                         <li><a href="#">Tuyển dụng</a></li>
                     </ul>
                 </div>
-                <div class=footer-column>
+                <div class="footer-column">
                     <h4>HỖ TRỢ</h4>
                     <hr>
                     <ul>
@@ -164,9 +145,13 @@
                 </p>
             </div>
                 <div class="right-footer-buttom">
-                    <img src="../images/icons/boCongThuong.png">
+                    <img src="../images/icons/boCongThuong.png" alt="Đã thông báo Bộ Công Thương">
                 </div>
             </div>
         </footer>
+        <script src="gioHang.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", setup, false);
+        </script>
     </body>
 </html>
