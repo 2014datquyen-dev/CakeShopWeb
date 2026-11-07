@@ -55,76 +55,412 @@
       </div>
     </header>
     <main class="main-container">
-    <div class="shop-content">
-        <aside class="sidebar">
-            <h3 class="sidebar-title">Loại sản phẩm</h3>
-            <ul class="category-list">
-                <li><a href="#">Bánh kem</a></li>
-                <li><a href="#">Bánh mì</a></li>
-                <li><a href="#">Bánh ngọt</a></li>
-                <li><a href="#">Thức uống</a></li>
-            </ul>
-        </aside>
+      <div class="shop-content">
         <section class="product-section">
-            <h2 class="section-heading">Tất cả sản phẩm</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <a href="chiTietSanPham.html" class="product-link">
-                        <div class="product-img-box">
-                            <img src="imagesSP/banhkem/banhkemchocolatehatde(3).png" alt="Bánh kem Chocolate">
-                        </div>
-                        <div class="product-details">
-                            <h4 class="product-name">Bánh kem Chocolate</h4>
-                            <p class="product-price">560.000đ</p>
-                        </div>
-                    </a>
+          <h2 class="section-heading">Tất cả sản phẩm</h2>
+          <div class="product-grid">
+              <!-- Sản phẩm 1 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhkemscl(1).jpg"
+                    alt="Bánh kem Chocolate"
+                  />
                 </div>
-
-                <!-- Sản phẩm mẫu 2: Bánh mì -->
-                <div class="product-card">
-                    <a href="chiTietSanPham.html" class="product-link">
-                        <div class="product-img-box">
-                            <img src="../images/anh_main/banh1.jpg" alt="Bánh mì Mây trắng">
-                        </div>
-                        <div class="product-details">
-                            <h4 class="product-name">Bánh mì Mây trắng</h4>
-                            <p class="product-price">150.000đ</p>
-                        </div>
-                    </a>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh kem Chocolate</h4>
+                  <p class="product-price">560.000đ</p>
                 </div>
-
-                <!-- Sản phẩm mẫu 3: Bánh ngọt -->
-                <div class="product-card">
-                    <a href="chiTietSanPham.html" class="product-link">
-                        <div class="product-img-box">
-                            <img src="../images/anh_main/banh2.jpg" alt="Bánh ngọt Scone">
-                        </div>
-                        <div class="product-details">
-                            <h4 class="product-name">Bánh ngọt Scone</h4>
-                            <p class="product-price">19.000đ</p>
-                        </div>
-                    </a>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh kem Chocolate',
+                      '560.000đ',
+                      'imagesSP/banhkem/banhkemscl(1).jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
                 </div>
+              </div>
 
-                <!-- Sản phẩm mẫu 4: Thức uống -->
-                <div class="product-card">
-                    <a href="chiTietSanPham.html" class="product-link">
-                        <div class="product-img-box">
-                            <img src="../images/anh_main/banh3.jpg" alt="Trà sữa thái xanh">
-                        </div>
-                        <div class="product-details">
-                            <h4 class="product-name">Trà sữa thái xanh</h4>
-                            <p class="product-price">25.000đ</p>
-                        </div>
-                    </a>
+              <!-- Sản phẩm 2 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhkemdautay.jpg"
+                    alt="Bánh kem dâu tây"
+                  />
                 </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh kem dâu tây</h4>
+                  <p class="product-price">450.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh kem dâu tây',
+                      '450.000đ',
+                      'imagesSP/banhkem/banhkemdautay.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
 
-                <!-- Bạn có thể copy tiếp thẻ div.product-card ở trên xuống để thêm các sản phẩm khác -->
+              <!-- Sản phẩm 3 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhkemhatdecuoi(1).png"
+                    alt="Bánh kem hạt dẻ cười"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh kem hạt dẻ cười</h4>
+                  <p class="product-price">500.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh kem hạt dẻ cười',
+                      '500.000đ',
+                      'imagesSP/banhkem/banhkemhatdecuoi.png',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+              <!-- Sản phẩm 4 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhkemredvelvet.png"
+                    alt="Bánh kem redvelvet"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh kem redvelvet</h4>
+                  <p class="product-price">550.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh kem redvelvet',
+                      '550.000đ',
+                      'imagesSP/banhkem/banhkemredvelvet',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+              <!-- Sản phẩm 4 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhmi.jpg"
+                    alt="Bánh bông lan truyền thống"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh bông lan truyền thống</h4>
+                  <p class="product-price">15.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh bông lan truyền thống',
+                      '15.000đ',
+                      'imagesSP/banhkem/banhmi.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
 
+              <!-- Sản phẩm 5 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/donutkemtuoi.jpg"
+                    alt="Bánh donut kem tươi"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh donut kem tươi</h4>
+                  <p class="product-price">35.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh donut kem tươi',
+                      '35.000đ',
+                      'imagesSP/banhkem/donutkemtuoi.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 6 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhmouse.jpg"
+                    alt="Bánh mousse mâm xôi"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh mousse mâm xôi</h4>
+                  <p class="product-price">19.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh mousse mâm xôi',
+                      '19.000đ',
+                      'imagesSP/banhkem/banhmouse.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 7 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhquyscl.jpg"
+                    alt="Bánh quy chocolate"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh quy chocolate</h4>
+                  <p class="product-price">19.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh quy chocolate',
+                      '19.000đ',
+                      'imagesSP/banhkem/banhquyscl.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 8 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="imagesSP/banhkem/cupcake.jpg" alt="Cupcake dâu" />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Cupcake dâu</h4>
+                  <p class="product-price">60.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Cupcake dâu',
+                      '60.000đ',
+                      'imagesSP/banhkem/cupcake.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 9 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhcroissantchocolate(1).png"
+                    alt="Bánh croissant"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh croissant</h4>
+                  <p class="product-price">50.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh croissant',
+                      '50.000đ',
+                      'imagesSP/banhkem/banhcroissantchocolate(1).png',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 10 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/maracon.jpg"
+                    alt="Macaron mùa xuân"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Macaron mùa xuân</h4>
+                  <p class="product-price">130.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Macaron mùa xuân',
+                      '130.000đ',
+                      'imagesSP/banhkem/maracon.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+              <!-- Sản phẩm 11 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhsukem.png"
+                    alt="Bánh su kem"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh su kem</h4>
+                  <p class="product-price">30.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Bánh su kem',
+                      '30.000đ',
+                      'imagesSP/banhkem/banhsukem',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 11 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/sodavietquoc.jpg"
+                    alt="Soda việt quất"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Soda việt quất</h4>
+                  <p class="product-price">25.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Soda việt quất',
+                      '25.000đ',
+                      'imagesSP/banhkem/sodavietquoc.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 12 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="imagesSP/banhkem/travai.jpg" alt="Trà vải" />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Trà vải</h4>
+                  <p class="product-price">30.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Trà vải',
+                      '30.000đ',
+                      'imagesSP/banhkem/travai.jpg',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+               <!-- Sản phẩm 13 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="imagesSP/banhkem/suachuanhietdoi.png" alt="Sữa chua nhiệt đới" />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Sữa chua nhiệt đới</h4>
+                  <p class="product-price">40.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Sữa chua nhiệt đới',
+                      '40.000đ',
+                      'imagesSP/banhkem/suachuanhietdoi',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+               <!-- Sản phẩm 13 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="imagesSP/banhkem/trancamlongnhan.png" alt="Trà cam long nhãn" />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Trà cam long nhãn</h4>
+                  <p class="product-price">35.000đ</p>
+                </div>
+                <div
+                  class="giohang"
+                  onclick="
+                    themVaoGioHang(
+                      'Trà cam long nhãn',
+                      '40.000đ',
+                      'imagesSP/banhkem/trancamlongnhan',
+                    )
+                  "
+                >
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
             </div>
+          </div>
         </section>
-    </div>
-</main>
+      </div>
     </main>
     <footer>
       <div class="footer-container">
@@ -206,5 +542,6 @@
         </div>
       </div>
     </footer>
+    <script src="chiTietSP.js"></script>
   </body>
 </html>
