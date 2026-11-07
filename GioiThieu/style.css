@@ -58,7 +58,7 @@
 
         .search-btn{
             padding: 7px 10px;
-            background-color: #531804;
+            /* background-color: #531804; */
             width: 40px;
             height: auto;
             border-radius: 10px;
@@ -115,7 +115,7 @@
 
 
         main section{
-            background:#efe7ef;
+            background:#f7f5f7;
             padding: 20px 200px;
         }
 
