@@ -61,35 +61,35 @@
             <button class="order-toggle" id="orderToggle" type="button"
                     aria-expanded="false" aria-controls="orderDetails">
                 <span class="toggle-label">
-                    <span aria-hidden="true">🛒</span>
-                    <span id="toggleText">Hiển thị thông tin đơn hàng</span>
-                    <span id="toggleArrow" aria-hidden="true">⌄</span>
+                    <img src="../images/icons/cart2.png"></img>
+                    <span class="toggle-text"></span>
+                    <span class="toggle-arrow"></span>
                 </span>
                 <span class="toggle-price">1,180,000₫</span>
             </button>
             <!-- ===== KẾT THÚC BỔ SUNG ===== -->
             <!-- ===== BỔ SUNG RESPONSIVE: Nhóm chi tiết để ẩn/hiện ===== -->
             <div class="order-details" id="orderDetails">
-            <div class="product-list">
-                <div class="product">
-                    <img src="../abc.png">
-                    <div class="product-info">
-                        <p>Bánh kem Hương mật</p>
-                        <small>Size 4 inch - 10 cm</small>
-                    </div>
+                <div class="product-list">
+                    <div class="product">
+                        <img src="../abc.png">
+                        <div class="product-info">
+                            <p>Bánh kem Hương mật</p>
+                            <small>Size 4 inch - 10 cm</small>
+                        </div>
 
-                    <span class="price">800,000₫</span>
+                        <span class="price">800,000₫</span>
 
-                </div>
-                <div class="product">
-                    <img src="../abc.png">
-                    <div class="product-info">
-                        <p>Bánh kem Cara cà phê</p>
-                        <small>8 inch - 21 cm</small>
                     </div>
-                    <span class="price">380,000₫</span>
+                    <div class="product">
+                        <img src="../abc.png">
+                        <div class="product-info">
+                            <p>Bánh kem Cara cà phê</p>
+                            <small>8 inch - 21 cm</small>
+                        </div>
+                        <span class="price">380,000₫</span>
+                    </div>
                 </div>
-            </div>
             </div>
             <!-- ===== KẾT THÚC BỔ SUNG ===== -->
             <!-- MÃ GIẢM GIÁ -->
@@ -115,7 +115,7 @@
 
                 <div class="summary-row">
                     <span>Phí vận chuyển</span>
-                    <span>—</span>
+                    <span>Miễn phí</span>
                 </div>
 
             </div>
@@ -136,21 +136,7 @@
         </div>
     </div>
     <!-- ===== BỔ SUNG RESPONSIVE: Tương tác mở/đóng đơn hàng ===== -->
-    <script>
-        const orderToggle = document.getElementById("orderToggle");
-        const orderBox = document.querySelector(".right");
-        const toggleText = document.getElementById("toggleText");
-        const toggleArrow = document.getElementById("toggleArrow");
-
-        orderToggle.addEventListener("click", function () {
-            const isOpen = orderBox.classList.toggle("order-open");
-            orderToggle.setAttribute("aria-expanded", String(isOpen));
-            toggleText.textContent = isOpen
-                ? "Ẩn thông tin đơn hàng"
-                : "Hiển thị thông tin đơn hàng";
-            toggleArrow.textContent = isOpen ? "⌃" : "⌄";
-        });
-    </script>
+    <script src="script.js"></script>
     <!-- ===== KẾT THÚC BỔ SUNG ===== -->
 </body>
 </html>
