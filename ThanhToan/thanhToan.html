@@ -9,21 +9,19 @@
 </head>
 <body>
     <div class="container">
+        <!-- ===== BỔ SUNG RESPONSIVE: Tiêu đề riêng cho màn hình <= 1024px ===== -->
+        <header class="mobile-header">
+            <h1>Freshcake.vn</h1>
+        </header>
+        <!-- ===== KẾT THÚC BỔ SUNG ===== -->
         <div class="left">
-            <h1>Freshcase.vn</h1>
-            <nav>
-                <a href="/abc" style="font-size: 14px">Giỏ hàng</a>
-                <span style="color: #333">    > </span>
-                <span >Thông tin giao hàng</span>
-                <span style="color: #333"> > </span>
-                <a href="/abc" style="font-size: 14px">Phương thức thanh toán</a>
-            </nav>
+            <h1>Freshcake.vn</h1>
             <h3>Thông tin giao hàng</h3>
             <p>Bạn đã có tài khoản? <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a><p>
             <input class="ho-ten" type="text" placeholder="Họ và tên">    
             <div class="form-row">
-                <input  class="left" type="text" placeholder="Email">            
-                <input class="right" type="text" placeholder="Số điện thoại">
+                <input  class="email" type="text" placeholder="Email">            
+                <input class="call" type="text" placeholder="Số điện thoại">
             </div>
                 <input type="text" placeholder="Địa chỉ">
             <div class="address-row"> 
@@ -34,9 +32,24 @@
                     <option value="">Phường / Xã</option>
                 </select>
             </div>
+
+            <div class="payment-container">
+                <h3>Phương thức thanh toán</h3>
+                <div class="payment-methods">
+                    <label class="payment-card">
+                        <input type="radio" name="payment-method" value="COD" checked>
+                        <span class="method-name">Thanh toán khi nhận hàng</span>
+                    </label>
+                    <label class="payment-card">
+                        <input type="radio" name="payment-method" valud="Vietcombank">
+                        <span class="payment-name">Vietcombank</span>
+                    </label>
+                </div>
+            </div>
+
             <div class="actions">
-                <a href="/abc">Giỏ hàng</a>
-                <button>Tiếp tục đến phương thức thanh toán</button>
+                <a href="../GioHang/gioHang.html">Giỏ hàng</a>
+                <button style="font-size: 25px;">Thanh toán</button>
             </div>
             <footer>
                 <hr>
@@ -44,26 +57,41 @@
             </footer>
         </div>
         <div class="right">
-            <div class="product-list">
-                <div class="product">
-                    <img src="../abc.png">
-                    <div class="product-info">
-                        <p>Bánh kem Hương mật</p>
-                        <small>Size 4 inch - 10 cm</small>
-                    </div>
+            <!-- ===== BỔ SUNG RESPONSIVE: Nút mở/đóng đơn hàng ===== -->
+            <button class="order-toggle" id="orderToggle" type="button"
+                    aria-expanded="false" aria-controls="orderDetails">
+                <span class="toggle-label">
+                    <img src="../images/icons/cart2.png"></img>
+                    <span class="toggle-text"></span>
+                    <span class="toggle-arrow"></span>
+                </span>
+                <span class="toggle-price">1,180,000₫</span>
+            </button>
+            <!-- ===== KẾT THÚC BỔ SUNG ===== -->
+            <!-- ===== BỔ SUNG RESPONSIVE: Nhóm chi tiết để ẩn/hiện ===== -->
+            <div class="order-details" id="orderDetails">
+                <div class="product-list">
+                    <div class="product">
+                        <img src="../abc.png">
+                        <div class="product-info">
+                            <p>Bánh kem Hương mật</p>
+                            <small>Size 4 inch - 10 cm</small>
+                        </div>
 
-                    <span class="price">800,000₫</span>
+                        <span class="price">800,000₫</span>
 
-                </div>
-                <div class="product">
-                    <img src="../abc.png">
-                    <div class="product-info">
-                        <p>Bánh kem Cara cà phê</p>
-                        <small>8 inch - 21 cm</small>
                     </div>
-                    <span class="price">380,000đ</span>
+                    <div class="product">
+                        <img src="../abc.png">
+                        <div class="product-info">
+                            <p>Bánh kem Cara cà phê</p>
+                            <small>8 inch - 21 cm</small>
+                        </div>
+                        <span class="price">380,000₫</span>
+                    </div>
                 </div>
             </div>
+            <!-- ===== KẾT THÚC BỔ SUNG ===== -->
             <!-- MÃ GIẢM GIÁ -->
             <div class="discount">
 
@@ -87,7 +115,7 @@
 
                 <div class="summary-row">
                     <span>Phí vận chuyển</span>
-                    <span>—</span>
+                    <span>Miễn phí</span>
                 </div>
 
             </div>
@@ -107,5 +135,8 @@
 
         </div>
     </div>
+    <!-- ===== BỔ SUNG RESPONSIVE: Tương tác mở/đóng đơn hàng ===== -->
+    <script src="script.js"></script>
+    <!-- ===== KẾT THÚC BỔ SUNG ===== -->
 </body>
 </html>
