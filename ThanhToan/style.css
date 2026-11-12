@@ -7,8 +7,8 @@
     --hv: #2d0d03;
     --tf: #4c4b4b;
     --inactive: #c8c8c8;
-    --hr:gray;
-    --tb:#dee1e7;
+    --hr:#531804;
+    --tb:#f0f2f5;
 }
 
 *{
@@ -216,13 +216,9 @@ footer{
 .discount input {
     flex: 1;
     min-width: 0;
-
     height: 55px;
     padding: 0 14px;
-
-    border: 1px solid var(--inactive);
     border-radius: 6px;
-
     font-size: 16px;
 }
 
@@ -351,7 +347,7 @@ button:hover{
         order: 0;
         width: 100%;
         padding: 28px 24px;
-        border-bottom: 1px solid var(--inactive);
+        border-bottom: 1px solid var(--hr);
     }
 
     .mobile-header h1 {
@@ -380,7 +376,7 @@ button:hover{
         flex: none;
         width: 100%;
         padding: 0 24px 20px;
-        border-bottom: 1px solid var(--inactive);
+        border-bottom: 1px solid var(--hr);
     }
 
     /* BỔ SUNG: Thanh ẩn/hiện thông tin đơn hàng */
@@ -453,7 +449,7 @@ button:hover{
     }
 
     .right .discount {
-        border-top: 1px solid var(--inactive);
+        border-top: 1px solid var(--hr);
     }
 }
 

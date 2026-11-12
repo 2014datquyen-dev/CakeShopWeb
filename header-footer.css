@@ -2,10 +2,14 @@
 :root{
     --bg:#ffedd6;
     --text:black;
-    --link:#531804;
-    --tb:#f0f2f5;
-    --hv: #b73003;
+    --btn: #531804;
+    --link: #531804;
+    --hv-link: #b73003;
+    --hv: #2d0d03;
+    --tf: #4c4b4b;
+    --inactive: #c8c8c8;
     --hr:#531804;
+    --tb:#f0f2f5;
 }
 
 * {
@@ -200,7 +204,7 @@ a.highlight{
 }
 
 a:hover{
-    color: var(--hv);
+    color: var(--hv-link);
 }
 
 .search-box:focus-within {
