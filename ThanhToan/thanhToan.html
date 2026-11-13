@@ -4,71 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .container{
-            display: flex;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-        }
-        </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
+        <!-- ===== BỔ SUNG RESPONSIVE: Tiêu đề riêng cho màn hình <= 1024px ===== -->
+        <header class="mobile-header">
+            <h1>Freshcake.vn</h1>
+        </header>
+        <!-- ===== KẾT THÚC BỔ SUNG ===== -->
         <div class="left">
-            <h1>Freshcase.vn</h1>
-            <nav>
-                <a href="/abc">Giỏ hàng</a>
-                <span>></span>
-                <span>Thông tin giỏ hàng</span>
-                <span>></span>
-                <a href="/abc">Phương thức thanh toán</a>
-            </nav>
+            <h1>Freshcake.vn</h1>
             <h3>Thông tin giao hàng</h3>
-            <p>Bạn đã có tài khoản?<a href="abc">Đăng nhập</a><p>
+            <p>Bạn đã có tài khoản? <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a></p>
             <div>
-                <label>Họ và tên</label>
-                <input type="text">    
+                <input id="fullname" type="text" placeholder="Họ và tên"> 
+                <span class="error-message" id="nameError"></span>   
+            </div>
+            <div class="form-row">
+                <div class="email">
+                    <input  id="email" type="text" placeholder="Email"> 
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="phone">           
+                    <input id="phone" type="text" placeholder="Số điện thoại">
+                    <span class="error-message" id="phoneError"></span>
+                </div>
             </div>
             <div>
-                <label>Email</label>
-                <input type="text">
+                <input id="address" type="text" placeholder="Địa chỉ">
+                <span class="error-message" id="addressError"></span>
             </div>
-            <div>
-                <input type="text" placeholder="Số điện thoại">
+            <div class="address-row"> 
+                <select id="province" required>
+                    <option value=""> Tỉnh / Thành phố</option>
+                </select>
+                <select id="ward" required>
+                    <option value="">Phường / Xã</option>
+                </select>
             </div>
-            <div>
-                <input type="text" placeholder="Địa chỉ">
+
+            <div class="payment-container">
+                <h3>Phương thức thanh toán</h3>
+                <div class="payment-methods">
+                    <label class="payment-card">
+                        <input type="radio" name="payment-method" value="COD" checked>
+                        <span class="method-name">Thanh toán khi nhận hàng</span>
+                    </label>
+                    <label class="payment-card">
+                        <input type="radio" name="payment-method" valud="Vietcombank">
+                        <span class="payment-name">Vietcombank</span>
+                    </label>
+                </div>
             </div>
-            <div>
-                <input type="text" placeholder="Tỉnh/thành">
+
+            <div class="actions">
+                <a href="../GioHang/gioHang.html">Giỏ hàng</a>
+                <button id="liquidate">Thanh toán</button>
             </div>
-            <div>
-                <input type="text" placeholder="Quận/huyện">
-            </div>
-            <div>
-                <input type="text" placeholder="Phường/xã">
-            </div>
-            <a href="/abc">Giỏ hàng</a>
-            <button>Tiếp tục phương thức thanh toán</button>
-            <hr>
-            <p>Powered by Haravan</p>
+            <footer>
+                <hr>
+                <p>Powered by Haravan</p>
+            </footer>
         </div>
         <div class="right">
-            <div>
-                <img src="/abc">
-                <span>Bánh kem Caramel muối hồng</span>
+            <!-- ===== BỔ SUNG RESPONSIVE: Nút mở/đóng đơn hàng ===== -->
+            <button class="order-toggle" id="orderToggle" type="button"
+                    aria-expanded="false" aria-controls="orderDetails">
+                <span class="toggle-label">
+                    <img src="../images/icons/cart2.png"></img>
+                    <span class="toggle-text"></span>
+                    <span class="toggle-arrow"></span>
+                </span>
+                <span class="toggle-price">1,180,000₫</span>
+            </button>
+            <!-- ===== KẾT THÚC BỔ SUNG ===== -->
+            <!-- ===== BỔ SUNG RESPONSIVE: Nhóm chi tiết để ẩn/hiện ===== -->
+            <div class="order-details" id="orderDetails">
+                <div class="product-list">
+                    <div class="product">
+                        <img src="../abc.png">
+                        <div class="product-info">
+                            <p>Bánh kem Hương mật</p>
+                            <small>Size 4 inch - 10 cm</small>
+                        </div>
+
+                        <span class="price">800,000₫</span>
+
+                    </div>
+                    <div class="product">
+                        <img src="../abc.png">
+                        <div class="product-info">
+                            <p>Bánh kem Cara cà phê</p>
+                            <small>8 inch - 21 cm</small>
+                        </div>
+                        <span class="price">380,000₫</span>
+                    </div>
+                </div>
             </div>
-            <div>
-                <img src="/abc">
-                <span>Bánh kem Cara cà phê</span>
+            <!-- ===== KẾT THÚC BỔ SUNG ===== -->
+            <!-- MÃ GIẢM GIÁ -->
+            <div class="discount-container">
+                <input id="discount" type="text" placeholder="Mã giảm giá">
+                <span class="error-message" id="discountError"></span>
+                <button type="button">Sử dụng</button>
             </div>
-            <input type="text" placeholder="Mã giảm giá">
-            <button>Sử dụng</button>
-            <hr>
-            <p>Tạm tính           700,000đ</p>
-            <p>Phí vận chuyển           __</p>
-            <hr>
-            <p>Tổng cộng                   vnd 700,000đ<p>
+
+
+            <!-- TÍNH TIỀN -->
+            <div class="summary">
+
+                <div class="summary-row">
+                    <span>Tạm tính</span>
+                    <span>1,180,000₫</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Phí vận chuyển</span>
+                    <span>Miễn phí</span>
+                </div>
+
+            </div>
+
+
+            <!-- TỔNG CỘNG -->
+            <div class="total">
+
+                <span>Tổng cộng</span>
+
+                <div class="total-price">
+                    <small>VND</small>
+                    <strong>1,180,000₫</strong>
+                </div>
+
+            </div>
+
         </div>
+    </div>
+    <!-- BỔ SUNG: Popup đặt hàng thành công -->
+    <div class="success-overlay" id="successPopup">
+        <div class="success-popup">
+            <div class="success-icon">✓</div>
+
+            <h2>Đặt hàng thành công!</h2>
+
+            <p>
+                Cảm ơn bạn đã mua hàng tại CakeShop.
+                Đơn hàng của bạn đã được ghi nhận.
+            </p>
+
+            <button type="button" id="closePopup">
+                <a href="../TrangChu/trangChu.html">Quay lại trang chủ</a>
+            </button>
+        </div>
+    </div>
 </body>
 </html>

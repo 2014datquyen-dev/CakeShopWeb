@@ -3,102 +3,589 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FreshCake</title>
+    <style>
+        :root {
+            --bg: white;
+            --text: black;
+            
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif ;
+            line-height: 1.65;
+        }
+
+        header{
+            padding: 15px 40px;
+            background: var(--bg);
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+        }
+
+        .header-top{
+            display: flex;
+            margin-left: auto;
+            padding: 8px 40px;
+            font-size: 10px;
+        }
+
+        .header-top .auth-link{
+            margin-left: auto;
+            color: black;
+        }
+
+        .auth-link a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #ccc;       
+            border-radius: 10px;          
+            padding: 5px 15px;            
+            width: 400px;                 
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .search-btn{
+            padding: 7px 10px;
+            background-color: #fff;
+            width: 40px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .header-cart{
+            padding-top: 8px 0px 2px;
+        }
+
+        .cart-btn img{
+            display: block;
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-main{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header .logo{
+            width: 100px;
+        }
+
+        header nav{
+            display: flex;
+            gap:100px;
+            font-size: 22px;
+        }
+
+        header nav a{
+            text-decoration: none;
+            color:inherit;
+            font-size: 18px;
+        }
+
+        header div{
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        main section{
+                background:#f2f4f7;
+                padding: 20px 200px;
+            }
+        main section .container{
+                padding: 80px 80px;
+                background: white;
+                margin: 20px 50px;
+            }
+        main section .container img{
+                display: block;
+                width: 70%;aspect-ratio: 1/1;
+                margin: 20px auto;
+                object-fit: cover;
+            }
+        footer{
+                background: white;
+                padding: 50px 200px;
+            }
+        .footer-container{
+                max-width: 1200px;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+        .footer-top{
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+        .footer-top hr{
+                width: 50px;
+                margin: 10px 0px;
+            }
+        .footer-column ul {
+                list-style: none;
+            }
+        .footer-column ul li {
+                margin-bottom: 12px;
+            }
+        .footer-column ul li a {
+                text-decoration: none;
+                color: #444;
+            }
+        .footer-column li a.highlight{
+                color: black;
+            }
+        .footer-buttom{
+                font-size: 12px;
+            }
+        .footer-buttom p{
+                margin-bottom: 12px;
+            }
+        header div button{
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        /* CÀI ĐẶT CHUNG CHO TRANG WEB */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #fffcf8;
+    color: #3d302b;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* BANNER TRANG CHỦ */
+.trang-chu {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.banner-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.banner-content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+
+
+.danh-muc {
+    padding: 50px 8%;
+    text-align: center;
+    background-color: #fffcf8;
+}
+
+.danhmuc-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.danhmuc-item {
+    width: 160px;
+}
+
+.danhmuc-item img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f6d5dc;
+    transition: 0.3s;
+}
+
+.danhmuc-item p {
+    margin-top: 12px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.danhmuc-item a:hover {
+    color: #c56b83;
+}
+
+
+
+
+.san-pham {
+    background-color: #fffcf8;
+    padding: 40px 8% 60px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #a95770;
+    text-decoration: underline;
+    text-decoration-color: #e9b8c5;
+    text-underline-offset: 6px;
+}
+
+.san-pham-list {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.san-pham-item {
+    width: 300px;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 0;
+    box-shadow: 0 4px 12px #e8d5d5;
+}
+
+.san-pham-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.san-pham-item h4 {
+    font-size: 20px;
+    margin: 15px 0 10px;
+}
+
+.mo-ta {
+    font-size: 14px;
+    color: black;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.gia {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 12px;
+}
+
+.san-pham-item a {
+    display: inline-block;
+    padding: 9px 20px;
+}
+
+.san-pham-item a:hover {
+    color: #c56b83;
+    text-decoration: underline;
+}
+
+
+.cau-chuyen {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 20px 8% 60px;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px #e8d5d5;
+}
+
+.cau-chuyen img {
+    width: 50%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.cau-chuyen-content {
+    flex: 1;
+}
+
+.nhan-nho {
+    color: #c56b83;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.cau-chuyen-content h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.cau-chuyen-content p {
+    margin-bottom: 20px;
+}
+
+.cau-chuyen-content a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: underline;
+    font-weight: bold;
+    color:black;
+}
+
+.cau-chuyen-content a:hover {
+    color: #97465e;
+}
+
+/* PHẦN ƯU ĐÃI */
+.uu-dai {
+    margin: 0 8% 60px;
+    padding: 45px 20px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 12px #e8d5d5;
+}
+
+.uu-dai-content h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.uu-dai-content p {
+    margin-bottom: 20px;
+}
+
+.uu-dai-content a {
+    display: inline-block;
+    background-color: #bd6b83;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 25px;
+}
+
+.uu-dai-content a:hover {
+    background-color: #97465e;
+}
+
+
+    </style>
 </head>
 <body>
-    <header> 
-        <h1> FRESH CAKE </h1>
-        <p1> Chạm vị ngọt, chạm niềm vui. </p1>
-        <nav> 
-            <a href="trangchu.html" target="_self"> Trang chủ </a> |
-            <a href="gioithieu.html"> Giới thiệu </a> |
-            <a href="sanpham.html"> Sản phẩm </a> |
-            <a href="chinhsach.html"> Chính sách </a> | 
-            <a href="tintuc.html"> Tin tức </a>
+    <header class="header">
+        <div class="header-top">
+            <div class="auth-link">
+                <a href="DangKiDangNhap/DangKy.html">Đăng nhập</a>
+                <span class="separator">|</span> 
+                <a href="DangKiDangNhap/DangNhap.html">Đăng ký</a>
+            </div>
+        <div class="header-main">
+                <a href="../TrangChu/trangChu.html"> <img class="logo" src="../images/icons/logo.png" alt="logo"> </a>
+        <nav>
+            <a href="../GioiThieu/gioiThieu.html">Giới thiệu </a>
+            <a href="../ChiTietSanPham/chiTietSanPham.html"> Sản phẩm </a>
+            <a href="#"> Chính sách </a>
+            <a href="#"> Tin tức </a>
         </nav>
-
-        <hr>
-
-        <form action="sanpham.html"> 
-            <label for="timkiem"> Tìm kiếm: </label>
-            <input type="search" id="timkiem" name="q"
-                placeholder="Nhập tên sản phẩm">
-            <button type="submit">Tìm kiếm</button>
-        </form>
+        </div>
+         <div>
+        <div class="search-box">
+            <input class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
+            <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
+        </div>
+            <div class="header-cart"><button class="cart-btn">
+                        <a href="../GioHang/gioHang.html" class="cartBtn">
+                            <img src="../images/icons/cart2.png" alt="Giỏ hàng">
+                        </a>
+                    </button>
+                </div>
+        </div>
     </header>
     <main> 
-        <section id="trangchu">
-            <h2> Fresh mood, fresh cake! </h2>
-            <img src="anhnen.png" width="1000" height="600">
-            <h3> Hôm nay, cậu muốn ngọt ngào một chút chứ?</h3>
-            <p> Những chiếc bánh tươi ngon, những hương vị đáng yêu và một chút hạnh phúc dành riêng cho bạn. </p>
+        <section class ="trang-chu">
+            <div class="banner-content">
+            <img src="../image/anhnen.jpg" alt="Bộ sưu tập bánh FreshCake">
+            </div>
+           
         </section>
 
-        <section id="danhmuc">
-            <div class="danhmuc-item">
-                <a href="sanpham.html#banhmi">
-                    <img src="banhmi.png" alt="Bánh mì">
+        <section id="danhmuc" class="danh-muc">
+            <div class="danhmuc-list">
+                <div class="danhmuc-item">
+                <a href="ChiTietSanPham/chiTietSanPham.html#banhmi">
+                    <img src="../image/danhmuc/banhmidanhmuc.jpg" alt="Bánh mì">
                     <p> Bánh mì</p>
                 </a>
-            </div>
+                </div>
 
-            <div class="danhmuc-item">
-                <a href="sanpham.html#banhkem">
-                    <img src="banhkem.png" alt="Bánh kem">
+                <div class="danhmuc-item">
+                <a href="ChiTietSanPham/chiTietSanPham.html#banhkem">
+                    <img src="../image/danhmuc/banhkemdanhmuc.jpg" alt="Bánh kem">
                     <p> Bánh kem </p>
                 </a>
             </div>
 
              <div class="danhmuc-item">
-                <a href="sanpham.html#banhngot">
-                    <img src="banhngot.png" alt="Bánh ngọt">
+                <a href="ChiTietSanPham/chiTietSanPham.html#banhngot">
+                    <img src="../image/danhmuc/banhngotdanhmuc.jpg" alt="Bánh ngọt">
                     <p> Bánh ngọt </p>
                 </a>
             </div>
 
-            <div class="danhmuc.item">
-                <a href="sanpham.html#banhquy">
-                    <img src="banhquy.png" alt="Bánh quy">
+            <div class="danhmuc-item">
+                <a href="ChiTietSanPham/chiTietSanPham.html#banhquy">
+                    <img src="../image/danhmuc/banhquydanhmuc.jpg" alt="Bánh quy">
                     <p> Bánh quy </p>
                 </a>
             </div>
-        </section>
 
-        <section id="bestseller">
-            <h3> Sản Phẩm Nổi Bật </h4>
-            <div>
-                <img src="banhkemdautay.png">
+            <div class="danhmuc-item">
+                <a href="chiTietSanPham.html#thucuong">
+                    <img src="thucuong.png" alt="Thức uống">
+                    <p>Thức uống</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+        <section id="bestseller" class="san-pham">
+            <h3 class="section-title"> Sản Phẩm Nổi Bật </h3>
+            <div class="san-pham-list">
+                <div class="san-pham-item">
+                <img src="../anhsanpham/banhkem/banhkemdautay.png" alt="Bánh kem dâu tây">
                 <h4> Bánh kem dâu tây </h4>
-                <p> Phần bánh bông lan mịn màn kết hợp với mứt dâu tây ngọt ngào
-                    kết hợp những quả dâu tây đỏ mọng.
+                <p class="mo-ta"> Phần bánh bông lan mịn màn cùng với mứt dâu tây ngọt ngào và những quả dâu tây đỏ mọng.
                 </p>
-                <p> Giá: 240.000vnd </p>
+                <p class="gia"> 240.000vnd </p>
                 <a href="chitietbanhkemdautay.html"> Xem chi tiết </a>
+                </div>
+            <div class="san-pham-item">
+            <img src="../anhsanpham/banhquy/banhquychocolate.png" alt="Bánh quy chocolate chips">
+            <h4> Bánh quy chocolate chips</h4>
+            <p class="mo-ta"> Phần bánh quy giòn rụm, thơm mùi bơ sữa hòa quyện cùng những viên chocolate ngọt ngào. </p>
+            <p class="gia"> 40.000vnd</p>
+            <a href="chitietbanhquy.html">Xem chi tiết</a>               
+        </div>
+        
+            <div class="san-pham-item">
+                <img src="../anhsanpham/banhngot/banhmoussemamxoi.png" alt="Bánh mousse mâm xôi">
+                <h4> Bánh mousse mâm xôi </h4>
+                <p class="mo-ta"> Lớp bánh mềm mịn, cùng vị chua ngọt thanh mát của mâm xôi mang đến hương vị tinh tế </p>
+                <p class="gia"> 50.000vnd</p>
+                <a href="chitietbanhmousse.html">Xem chi tiết</a>
             </div>
 
-        </section>
+            <div class="san-pham-item"> 
+                <img src="../anhsanpham/banhmi/banhbundtcaramel.png" alt="Bánh bundt caramel">
+                <h4> Bánh bundt caramel </h4>
+                <p class="mo-ta">Bánh bundt caramel mềm xốp,béo nhẹ, thơm vị bơ sữa, phủ lớp caramel ngọt dịu óng ánh. </p>
+                <p class="gia"> 35.000vnd</p>
+                <a href="chitietbanhbundt.html">Xem chi tiết</a>
+            </div>
+    </section>
 
-        <section>
-            <div>
-            <h3> Bạn là thành viên? </h3>
-            <p> Đăng nhập để xem giá ưu đãi và các chính sách khuyến mãi. </p>
-            <a href="dangnhap.html"> Đăng nhập & Đặt hàng </a>
+    
+<section class="cau-chuyen">
+
+    <img src="../image/anhnen.jpg" alt="Bánh ngọt FreshCake">
+
+    <div class="cau-chuyen-content"><p class="nhan-nho">FRESH CAKE</p>
+
+        <h3>Chạm vị ngọt, chạm niềm vui.</h3>
+
+        <p>
+            Mỗi chiếc bánh là một chút ngọt ngào,
+            mang đến niềm vui cho những người bạn yêu thương.
+        </p>
+
+        <a href="gioithieu.html">Tìm hiểu về chúng tôi</a>
+
+    </div>
+
+</section>
+
+
+        <section class="uu-dai">
+            <div class="uu-dai-content">
+            <h3> Bạn đã là thành viên? </h3>
+            <p> Đăng nhập để xem giá ưu đãi và các chương trình khuyến mãi dành riêng cho bạn. </p>
+            <a href="DangKiDangNhap/DangNhap.html"> Đăng nhập &amp; Đặt hàng </a>
             </div>
         </section>
     </main>
-
-    <footer>
-    <h2>FRESH CAKE</h2>
-    <p>Bánh tươi mỗi ngày - Trao gửi yêu thương</p> 
-
-    <h3>Thông tin liên hệ</h3>
-    <p>Website: www.freshcake.vn</p>
-    <p>Địa chỉ: Xem hệ thống cửa hàng trên website chính thức</p>
-
-    <h3>Hỗ trợ khách hàng</h3>
-    <p><a href="lienhe.html">Liên hệ với chúng tôi</a></p>
-    <p><a href="sanpham.html">Danh sách sản phẩm</a></p>
-
-    </footer>
+<footer>
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-column">
+                        <h4>CHÍNH SÁCH</h4>
+                        <hr>
+                        <ul>
+                            <li><a class="highlight" href="#"><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Điều khoản dịch vụ</a></li>
+                            <li><a href="#">Khách hàng thân thiết</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>THÔNG TIN</h4>
+                        <hr>
+                        <ul>
+                            <li><a class="highlight" href="#"><strong>Tin tức</strong></a></li>
+                            <li><a href="#">Tin khuyến mãi</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>HỖ TRỢ</h4>
+                        <hr>
+                        <ul>
+                            <li><a class="highlight" href="#"><strong>Liên hệ</strong></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Đăng ký nhận thông tin</h4>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="footer-buttom">
+                <p><strong>Công ty TNHH PHD</strong> |
+                    Mã số doanh nghiệp: 0103833363 |
+                    Do Sở Kế hoạch - Đầu tư Hà Nội cấp ngày 14/05/2009.
+                </p>
+                <p>Số điện thoại: 024 3856 3856 |
+                    cskh@freshgarden.vn |
+                    Số 46 phố An Dương, phường Hồng Hà, Thành phố Hà Nội. |
+                    © Bản quyền thuộc về Fresh Garden.
+                </p>
+            </div>
+        </footer>
 </body>
 </html>
