@@ -2,12 +2,12 @@
             --bg:white;
             --text:black;
             --right: #e6e3e3;
-            --btn: #531804;
-            --link: #531804;
-            --hv: #b73003;
+            --btn: #bd6b83;
+            --link: #800020;
+            --hv: #c50000;
             --tf: #4c4b4b;
-            --inactive: #c8c8c8;
-            --hr: gray;
+            --inactive: #bd6b83;
+            --hr: #bd6b83;
         }
 
         * {
@@ -18,129 +18,8 @@
             line-height: 1.65;
         }
 
-        header{
-            padding: 15px 40px;
-            background: var(--bg);
-            box-shadow: 0px 2px 10px rgba(0,0,0,0.15);
-            position: sticky;
-            top: 0;
-        }
-
-        .header-top{
-            display: flex;
-            margin-left: auto;
-            padding: 8px 40px;
-            font-size: 10px;
-        }
-
-        .header-top .auth-link{
-            margin-left: auto;
-            color: black;
-        }
-
-
-        .auth-link a{
-            text-decoration: none;
-            color: black;
-        }
-
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 5px 15px;
-            width: 400px;
-        }
-
-        .search-input {
-            border: none;
-            outline: none;
-            background: transparent;
-            width: 100%;
-            font-size: 14px;
-        }
-
-        .search-btn{
-            padding: 7px 10px;
-            width: 40px;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .header-main > a{
-            display: flex;
-        }
-
-        .cart-btn{
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .so-luong-gio{
-            position: absolute;
-            top: -6px;
-            right: -10px;
-            min-width: 20px;
-            height: 20px;
-            padding: 0px 5px;
-            border-radius: 10px;
-            background: var(--hv);
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            line-height: 20px;
-            text-align: center;
-        }
-
-        .cart-btn img{
-            display: block;
-            height: 30px;
-            width: auto;
-            object-fit: contain;
-        }
-
-
-        .header-main{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        header .logo{
-            width: 100px;
-        }
-
-        header nav{
-            display: flex;
-            gap:100px;
-            font-size: 22px;
-        }
-
-        header nav a{
-            text-decoration: none;
-            color:inherit;
-            font-size: 18px;
-        }
-
-        header div{
-            display: flex;
-            justify-content: space-around;
-            gap: 20px;
-        }
-
-
-
-        header div button{
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 30px;
-        }
             main section{
-                background:#efe7ef;
+                background:#fffcf8;
                 padding: 20px 200px;
             }
             main section .container{
@@ -154,85 +33,6 @@
                 margin: 20px auto;
                 object-fit: cover;
             }
-            footer{
-            background: white;
-            padding: 50px 200px;
-        }
-
-        .footer-container{
-            max-width: 1200px;
-
-            margin: 0 auto;
-            margin-top: 20px;
-        }
-
-        .footer-top{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .footer-top hr{
-            width: 50px;
-            margin: 10px 0px;
-        }
-
-        .footer-column ul {
-        list-style: none;
-        }
-
-        .footer-column ul li {
-        margin-bottom: 12px;
-        }
-
-        .footer-column ul li a {
-        text-decoration: none;
-        color: #444;
-        }
-
-        .footer-column li a.highlight{
-            color: black;
-        }
-
-        .footer-column .social-list{
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            list-style: none;
-        }
-
-        .facebook-btn img{
-            height: 30px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .insta-btn img{
-            height: 30px;
-            width: auto;
-            object-fit: contain;
-        }
-
-
-
-        .footer-buttom{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 12px;
-            gap: 30px;
-        }
-
-
-        .footer-buttom p{
-            margin-bottom: 12px;
-        }
-
-        .right-footer-buttom img{
-            height:80px;
-            width: auto;
-            object-fit: contain;
-        }
 
         a:hover{
             color: #531804;
@@ -246,6 +46,7 @@
                 grid-template-areas: "san-pham hen-gio";
                 gap: 50px;
                 background: white;
+                box-shadow: 0 4px 12px #e8d5d5;
             }
             .vung-san-pham{
                 grid-area: san-pham;
@@ -401,7 +202,7 @@
                 padding: 0px 14px;
                 border: 2px solid var(--inactive);
                 border-radius: 6px;
-                background: white;
+                background: #fff;
                 color: var(--tf);
                 font-size: 16px;
             }
@@ -448,13 +249,14 @@
                 padding: 20px 50px;
                 border: none;
                 border-radius: 5px;
-                background: var(--btn);
-                color: white;
+                background: var(--link);
+                color: #fff;
                 font-size: 16px;
                 cursor: pointer;
             }
             .vung-hen-gio input[type="submit"]:hover{
                 background: var(--hv);
+                color: white
             }
             .vung-hen-gio input[type="submit"]:active{
                 transform: scale(0.98);

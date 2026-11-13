@@ -4,39 +4,35 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FreshCake - Giỏ hàng</title>
+        <link rel="stylesheet" href="../header-footer.css">
         <link rel="stylesheet" href="style.css">
+        <script src="../header-footer.js" defer></script>
     </head>
     <body>
-        <header class="header">
-        <div class="header-top">
+    <header class="header">
+        <div class=header-top>
             <div class="auth-link">
-                <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a>
-                <span class="separator">|</span>
-                <a href="../DangKiDangNhap/DangKy.html">Đăng ký</a>
+                <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
+                &nbsp;<span class="separator">|</span>&nbsp;
+                <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
             </div>
         </div>
-        <div class="header-main">
-            <a href="../TrangChu/trangChu.html"><img class="logo" src="../images/icons/logo.png" alt="logo"></a>
-            <nav>
-                <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
-                <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
-                <a href="#">Danh sách cửa hàng</a>
-                <a href="#">Tin tức</a>
-            </nav>
-            <div>
-                <div class="search-box">
-                    <input class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
-                    <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
-                </div>
-                <div class="header-cart">
-                    <a href="../GioHang/gioHang.html" class="cart-btn">
-                        <img src="../images/icons/cart2.png" alt="Giỏ hàng">
-                        <span class="so-luong-gio">0</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-      </div>
+        <img class="logo" src="../images/icons/logo.png" alt="logo">
+        <form class="search-box">
+            <input class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
+            <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
+        </form>
+        <a href="../GioHang/gioHang.html" class="cartBtn">
+            <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
+        </a>
+        <button class="menu-btn" id="menuBtn" type="button">☰</button>
+
+        <nav class="nav-menu" id="navMenu">
+            <a class="active" href="#">Giới thiệu</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Danh sách cửa hàng</a>
+            <a href="#">Tin tức</a>
+        </nav>
     </header>
         <main>
             <section class="trang-gio-hang">
@@ -80,153 +76,59 @@
                 </form>
             </section>
         </main>
-        <footer>
+<footer>
         <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-column">
-                    <h4>CHÍNH SÁCH</h4>
-                    <hr>
-                    <ul>
-                        <li><a class="highlight" href="#"><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a></li>
-                        <li><a href="#">Chính sách bảo mật</a></li>
-                        <li><a href="#">Điều khoản dịch vụ</a></li>
-                        <li><a href="#">Khách hàng thân thiết</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>THÔNG TIN</h4>
-                    <hr>
-                    <ul>
-                        <li><a class="highlight" href="#"><strong>Tin tức</strong></a></li>
-                        <li><a href="#">Tin khuyến mãi</a></li>
-                        <li><a href="#">Tuyển dụng</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>HỖ TRỢ</h4>
-                    <hr>
-                    <ul>
-                        <li><a class="highlight" href="#"><strong>Liên hệ</strong></a></li>
-                        <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Đăng ký nhận tin</h4>
-                    <hr>
-                    <ul class="social-list">
-                        <li>
-                            <div class="footer-facebook">
-                                <a class="facebook-btn" href="#">
-                                    <img src="../images/icons/facebook.png" alt="Facebook">
-                                </a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="footer-insta">
-                                <a class="insta-btn" href="#">
-                                    <img src="../images/icons/instagram.png" alt="Instagram">
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            <div class="footer-column first">
+                <button class="footer-heading" type="button">CHÍNH SÁCH<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản dịch vụ</a></li>
+                    <li><a href="#">Khách hàng thân thiết</a></li>
+                </ul>
             </div>
-            <a class="tiep-tuc" href="../ChiTietSanPham/chiTietSanPham.html"
-              >Tiếp tục mua sắm</a
-            >
-            <div class="ghi-chu">
-              <label for="ghi-chu">Ghi chú đơn hàng</label>
-              <textarea id="ghi-chu" name="ghi-chu"></textarea>
+            <div class="footer-column">
+                <button class="footer-heading" type="button">THÔNG TIN<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Tin tức</strong></a></li>
+                    <li><a href="#">Tin khuyến mãi</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                </ul>
             </div>
-          </div>
-          <div class="vung-hen-gio">
-            <h2>Hẹn giờ nhận hàng</h2>
-            <label for="ngay-nhan">Ngày nhận hàng</label>
-            <input type="date" name="ngay-nhan" id="ngay-nhan" />
-            <label for="thoi-gian-nhan">Thời gian nhận hàng</label>
-            <select name="thoi-gian-nhan" id="thoi-gian-nhan">
-              <option value="som-nhat">Càng sớm càng tốt</option>
-              <option value="sang">Sáng: 08h00 - 12h00</option>
-              <option value="chieu">Chiều: 14h00 - 18h00</option>
-              <option value="toi">Tối: 19h00 - 21h00</option>
-            </select>
-            <label class="hoa-don"
-              ><input type="checkbox" name="xuat-hoa-don" value="co" />Xuất hóa
-              đơn công ty</label
-            >
-            <p class="thanh-tien-tong">
-              <span>Thành tiền</span><strong>160.000đ</strong>
-            </p>
-            <p class="ghi-chu-vat">(Đã bao gồm VAT nếu có)</p>
-            <input type="submit" value="Thanh toán" />
-          </div>
-        </form>
-      </section>
-    </main>
-    <footer>
-      <div class="footer-container">
-        <div class="footer-top">
-          <div class="footer-column">
-            <h4>CHÍNH SÁCH</h4>
-            <hr />
-            <ul>
-              <li>
-                <a class="highlight" href="#"
-                  ><strong
-                    >Chính sách mua hàng, vận chuyển và đổi trả</strong
-                  ></a
-                >
-              </li>
-              <li><a href="#">Chính sách bảo mật</a></li>
-              <li><a href="#">Điều khoản dịch vụ</a></li>
-              <li><a href="#">Khách hàng thân thiết</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>THÔNG TIN</h4>
-            <hr />
-            <ul>
-              <li>
-                <a class="highlight" href="#"><strong>Tin tức</strong></a>
-              </li>
-              <li><a href="#">Tin khuyến mãi</a></li>
-              <li><a href="#">Tuyển dụng</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>HỖ TRỢ</h4>
-            <hr />
-            <ul>
-              <li>
-                <a class="highlight" href="#"><strong>Liên hệ</strong></a>
-              </li>
-              <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Đăng ký nhận tin</h4>
-            <hr />
-            <ul class="social-list">
-              <li>
-                <div class="footer-facebook">
-                  <a class="facebook-btn" href="#">
-                    <img src="../images/icons/facebook.png" alt="Facebook" />
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div class="footer-insta">
-                  <a class="insta-btn" href="#">
-                    <img src="../images/icons/instagram.png" alt="Instagram" />
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <div class=footer-column>
+                <button class="footer-heading" type="button">HỖ TRỢ<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Liên hệ</strong></a></li>
+                    <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
+                </ul>
+            </div>
+            <div class="footer-column">
+                <button class="footer-heading" type="button">ĐĂNG KÝ NHẬN TIN<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="social-list">
+                    <li>
+                        <a class="facebook-btn" href="#">
+                            <img src="../images/icons/facebook.png" alt="Facebook">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="insta-btn" href="#">
+                            <img src="../images/icons/instagram.png" alt="Instagram">
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <br>
-        <div class="footer-buttom">
-            <div class="left-footer-buttom">
+        <div class="footer-legal">
+            <div class="legal-info">
                 <p><strong>Công ty TNHH Five overTry</strong> |
                     Mã số doanh nghiệp: 01038333567 |
                     Do Sở Kế hoạch - Đầu tư Cần Thơ cấp ngày 24/10/2026.
@@ -237,11 +139,11 @@
                         © Bản quyền thuộc về Fresh Cake.
                 </p>
             </div>
-                <div class="right-footer-buttom">
-                    <img src="../images/icons/boCongThuong.png" alt="Đã thông báo Bộ Công Thương">
+                <div>
+                    <img class="legal-badge" src="../images/icons/boCongThuong.png">
                 </div>
             </div>
-        </footer>
+    </footer>
         <script src="gioHang.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", setup, false);
