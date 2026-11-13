@@ -119,13 +119,13 @@ header div {
 .product-section {
   width: 100%;
 }
-
-.section-heading {
+/* .section-heading {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #222;
-}
+  color: ;
+  text-align: center;
+} */
 
 /* Lưới sản phẩm - 4 cột cho Laptop */
 .product-grid {
@@ -152,7 +152,47 @@ header div {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
+/* --- CSS CHO CỤM TĂNG GIẢM SỐ LƯỢNG --- */
+.quantity-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px; /* Tạo khoảng cách với nút giỏ hàng phía dưới */
+}
 
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  background-color: #ffd1dc; /* Màu hồng giống nút giỏ hàng của bạn */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.qty-btn:hover {
+  background-color: #ffb6c1; /* Đậm hơn một chút khi di chuột vào */
+}
+
+.qty-input {
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #ffd1dc;
+  margin: 0 8px;
+  border-radius: 5px;
+  /* Ẩn mũi tên mặc định của thẻ input */
+  -moz-appearance: textfield;
+}
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .product-img-box {
   width: 100%;
   height: 200px;
