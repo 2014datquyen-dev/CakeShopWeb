@@ -18,31 +18,51 @@
             <h1>Freshcake.vn</h1>
             <h3>Thông tin giao hàng</h3>
             <p>Bạn đã có tài khoản? <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a></p>
-            <div>
-                <input id="fullname" type="text" placeholder="Họ và tên"> 
+            <div class="form-group">
+                <input id="fullname" type="text" placeholder=""> 
+                <label >Họ và tên<span class="required"> *</span></label>
                 <span class="error-message" id="nameError"></span>   
             </div>
             <div class="form-row">
-                <div class="email">
-                    <input  id="email" type="text" placeholder="Email"> 
+                <div class="form-group email">
+                    <input  id="email" type="text" placeholder="">
+                    <label >Email<span class="required"> *</span></label> 
                     <span class="error-message" id="emailError"></span>
                 </div>
-                <div class="phone">           
-                    <input id="phone" type="text" placeholder="Số điện thoại">
+                <div class="form-group phone">           
+                    <input id="phone" type="text" placeholder="">
+                    <label >Số điện thoại<span class="required"> *</span></label>
                     <span class="error-message" id="phoneError"></span>
                 </div>
             </div>
-            <div>
-                <input id="address" type="text" placeholder="Địa chỉ">
+            <div class="form-group">
+                <input id="address" type="text" placeholder="">
+                <label>Địa chỉ<span class="required"> *</span></label>
                 <span class="error-message" id="addressError"></span>
             </div>
             <div class="address-row"> 
-                <select id="province" required>
-                    <option value=""> Tỉnh / Thành phố</option>
-                </select>
-                <select id="ward" required>
-                    <option value="">Phường / Xã</option>
-                </select>
+                <div class="form-group">
+                    <select id="province" required>
+                        <option value="" selected disabled></option>
+                        <option value="1">Cần Thơ</option>
+                        <option value="2">TP. Hồ Chí Minh</option>
+                    </select>
+
+                    <label for="province">
+                        Tỉnh/Thành phố<span class="required"> *</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <select id="ward" required>
+                        <option value="" selected disabled></option>
+                        <option value="1">Cần Thơ</option>
+                        <option value="2">TP. Hồ Chí Minh</option>
+                    </select>
+
+                    <label for="ward">
+                        Phường Xã<span class="required"> *</span>
+                    </label>
+                </div>
             </div>
 
             <div class="payment-container">
@@ -105,8 +125,9 @@
             </div>
             <!-- ===== KẾT THÚC BỔ SUNG ===== -->
             <!-- MÃ GIẢM GIÁ -->
-            <div class="discount-container">
-                <input id="discount" type="text" placeholder="Mã giảm giá">
+            <div class="form-group discount-container">
+                <input id="discount" type="text" placeholder="">
+                <label>Mã giảm giá</label>
                 <span class="error-message" id="discountError"></span>
                 <button type="button">Sử dụng</button>
             </div>

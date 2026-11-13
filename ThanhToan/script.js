@@ -46,7 +46,7 @@ const validationEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
 
     const email = emailInput.value;
-    const emailError = emailInput.nextElementSibling;
+    const emailError = emailInput.nextElementSibling.nextElementSibling;
     if (emailRegex.test(email)){
         emailInput.classList.remove('input-error');
         emailError.innerText = '';
@@ -62,7 +62,7 @@ const validationPhone = () => {
     const phoneRegex = /^0\d{9}$/;
     
     const phone = phoneInput.value;
-    const phoneError = phoneInput.nextElementSibling;
+    const phoneError = phoneInput.nextElementSibling.nextElementSibling;
     
     if (phoneRegex.test(phone)){
         phoneInput.classList.remove('input-error');
@@ -78,7 +78,7 @@ const validationPhone = () => {
 function validationAddress(){
     
     const address=addressInput.value;
-    const addressError=addressInput.nextElementSibling;
+    const addressError=addressInput.nextElementSibling.nextElementSibling;
     
     if (address!==''){
         addressInput.classList.remove('input-error');
