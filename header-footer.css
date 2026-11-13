@@ -1,6 +1,6 @@
 /*------------------------------------------------------------*/
 :root{
-    --bg:#ffedd6;
+    --bg:#fffcf8;
     --text:black;
     --btn: #531804;
     --link: #531804;
@@ -56,6 +56,9 @@ header{
 
 .logo{
     order: -2;
+}
+
+.logo img{
     width: 100px;
 }
 
@@ -63,8 +66,9 @@ header{
 .nav-menu{
     order: -1;
     display: flex;
-    gap:100px;
+    flex: 1;
     font-size: 22px;
+    justify-content: space-between;
 }
 
 .nav-menu a{
@@ -79,7 +83,7 @@ header{
 
 .search-box {
     height: 45px;
-    flex: 1;
+    width: 200px;
     display: flex;
     align-items: center;
     background: var(--tb);
@@ -229,6 +233,10 @@ a:hover{
 
     .nav-menu.open {
         display: flex;
+    }
+
+    .search-box{
+        flex: 1;
     }
 
     .footer-container{
