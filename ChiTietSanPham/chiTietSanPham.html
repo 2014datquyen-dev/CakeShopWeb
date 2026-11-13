@@ -4,414 +4,449 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tất cả sản phẩm - FreshCake</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../header-footer.css">
+
+    <script src="../header-footer.js" defer></script>
   </head>
   <body>
-    <header>
-      <div class="header_logo_nav">
-        <img
-          class="header__img--logo"
-          src="../images/logo.jpg"
-          alt="logo FreshCake"
-        />
-        <nav class="header_nav-form">
-          <a class="horizontal-nav" href="#">Giới thiệu</a>
-          <a class="horizontal-nav" href="#">Sản phẩm</a>
-          <a class="horizontal-nav" href="#">Danh sách cửa hàng</a>
-          <a class="horizontal-nav" href="#">Tin tức</a>
+    <header class="header">
+        <div class=header-top>
+            <div class="auth-link">
+                <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
+                &nbsp;<span class="separator">|</span>&nbsp;
+                <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
+            </div>
+        </div>
+        <img class="logo" src="../images/icons/logo.png" alt="logo">
+        <form class="search-box">
+            <input class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
+            <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
+        </form>
+        <a href="../GioHang/gioHang.html" class="cartBtn">
+            <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
+        </a>
+        <button class="menu-btn" id="menuBtn" type="button">☰</button>
+
+        <nav class="nav-menu" id="navMenu">
+            <a class="active" href="#">Giới thiệu</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Danh sách cửa hàng</a>
+            <a href="#">Tin tức</a>
         </nav>
-      </div>
-      <!-- kinh lup -->
-      <div class="header__icon">
-        <button
-          class="search-btn"
-          style="background: none; border: none; cursor: pointer"
-        >
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-        <!-- gio hang -->
-        <button
-          class="search-btn"
-          style="background: none; border: none; cursor: pointer"
-        >
-          <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-      </div>
-      <span class="cart-badge"></span>
     </header>
-    <main>
-      <h3 class="allSP">Tất cả sản phẩm</h3>
-      <div class="all_sanpham">
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh1.jpg"
-              alt="Hinh banh 1"
-            />
+    <main class="main-container">
+      <div class="shop-content">
+        <section class="product-section">
+          <!-- <h2 class="section-heading">Tất cả sản phẩm</h2> -->
+          <div class="product-grid">
+              <!-- Sản phẩm 1 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhkemscl(1).jpg"
+                    alt="Bánh kem Chocolate"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh kem Chocolate</h4>
+                  <p class="product-price">560.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+              <!-- Sản phẩm 2 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhkemdautay.jpg"
+                    alt="Bánh kem dâu tây"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh kem dâu tây</h4>
+                  <p class="product-price">450.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 3 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhkemhatdecuoi(1).png"
+                    alt="Bánh kem hạt dẻ cười"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh kem hạt dẻ cười</h4>
+                  <p class="product-price">500.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+              <!-- Sản phẩm 4 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhkemredvelvet.png"
+                    alt="Bánh kem redvelvet"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh kem redvelvet</h4>
+                  <p class="product-price">550.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+              <!-- Sản phẩm 4 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhmi.jpg"
+                    alt="Bánh bông lan truyền thống"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh bông lan truyền thống</h4>
+                  <p class="product-price">15.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 5 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/donutkemtuoi.jpg"
+                    alt="Bánh donut kem tươi"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh donut kem tươi</h4>
+                  <p class="product-price">35.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 6 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhmouse.jpg"
+                    alt="Bánh mousse mâm xôi"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh mousse mâm xôi</h4>
+                  <p class="product-price">19.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 7 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhquyscl.jpg"
+                    alt="Bánh quy chocolate"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh quy chocolate</h4>
+                  <p class="product-price">19.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 8 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="imagesSP/banhkem/cupcake.jpg" alt="Cupcake dâu" />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Cupcake dâu</h4>
+                  <p class="product-price">60.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 9 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhcroissantchocolate(1).png"
+                    alt="Bánh croissant"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh croissant</h4>
+                  <p class="product-price">50.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 10 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/maracon.jpg"
+                    alt="Macaron mùa xuân"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Macaron mùa xuân</h4>
+                  <p class="product-price">130.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+              <!-- Sản phẩm 11 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/banhsukem.png"
+                    alt="Bánh su kem"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Bánh su kem</h4>
+                  <p class="product-price">30.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 11 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img
+                    src="imagesSP/banhkem/sodavietquoc.jpg"
+                    alt="Soda việt quất"
+                  />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Soda việt quất</h4>
+                  <p class="product-price">25.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+
+              <!-- Sản phẩm 12 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="imagesSP/banhkem/travai.jpg" alt="Trà vải" />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Trà vải</h4>
+                  <p class="product-price">30.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+               <!-- Sản phẩm 13 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="imagesSP/banhkem/suachuanhietdoi.png" alt="Sữa chua nhiệt đới" />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Sữa chua nhiệt đới</h4>
+                  <p class="product-price">40.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+               <!-- Sản phẩm 13 -->
+              <div class="product-card">
+                <div class="product-img-box">
+                  <img src="imagesSP/banhkem/trancamlongnhan.png" alt="Trà cam long nhãn" />
+                </div>
+                <div class="product-details">
+                  <h4 class="product-name">Trà cam long nhãn</h4>
+                  <p class="product-price">35.000đ</p>
+                </div>
+                <div class="quantity-container">
+                  <button class="qty-btn minus-btn">-</button>
+                  <input type="number" class="qty-input" value="1" min="1" readonly>
+                  <button class="qty-btn plus-btn">+</button>
+                </div>
+                <div class="giohang add-cart">
+                  <p>Thêm vào giỏ hàng</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <p class="ten_banh">Bánh kem Caramel</p>
-          <p class="bang_gia">160.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh2.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Bánh kem Mây trắng</p>
-          <p class="bang_gia">180.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh3.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Bánh kem Bông tuyết</p>
-          <p class="bang_gia">200.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh4.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Bánh kem Mây hồng</p>
-          <p class="bang_gia">250.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh5.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Bánh kem Kỳ lân</p>
-          <p class="bang_gia">300.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh6.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Bánh kem Vàng anh</p>
-          <p class="bang_gia">400.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh7.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Bánh cuộn đào</p>
-          <p class="bang_gia">16.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh8.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Bánh scone</p>
-          <p class="bang_gia">19.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh9.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Bánh pizza</p>
-          <p class="bang_gia">50.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh10.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Bánh burger</p>
-          <p class="bang_gia">30.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh11.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Bánh gối sữa dừa</p>
-          <p class="bang_gia">45.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh12.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Bánh mì thịt heo</p>
-          <p class="bang_gia">35.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh13.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Bánh bao nhân thịt</p>
-          <p class="bang_gia">45.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh14.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Bánh bao chay</p>
-          <p class="bang_gia">10.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh15.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Bánh quy nướng</p>
-          <p class="bang_gia">39.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh16.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Bánh quy dừa</p>
-          <p class="bang_gia">39.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh17.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Bánh quy sô cô la</p>
-          <p class="bang_gia">49.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh18.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Bánh mochi</p>
-          <p class="bang_gia">25.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh19.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Bánh mì phô mai</p>
-          <p class="bang_gia">30.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/banh20.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Bánh mì ruốc tơ</p>
-          <p class="bang_gia">19.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/nuoc1.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Trà sữa thái xanh</p>
-          <p class="bang_gia">25.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/nuoc2.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Trà đào</p>
-          <p class="bang_gia">25.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/nuoc3.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Trà sữa truyền thống</p>
-          <p class="bang_gia">25.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/nuoc4.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Nước ion kiềm</p>
-          <p class="bang_gia">20.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/dungcu1.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Bộ dao dĩa</p>
-          <p class="bang_gia">20.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/dungcu2.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Topper happy birthday</p>
-          <p class="bang_gia">7.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/dungcu3.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Nến que sáp ong</p>
-          <p class="bang_gia">5.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/dungcu4.jpg"
-              alt="Hinh banh 1"
-            />
-          </div>
-          <p class="ten_banh">Bộ nến chữ</p>
-          <p class="bang_gia">15.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/dungcu5.jpg"
-              alt="Hinh banh 2"
-            />
-          </div>
-          <p class="ten_banh">Nến số</p>
-          <p class="bang_gia">15.000VNĐ</p>
-        </section>
-        <section class="san_pham">
-          <div class="sanpham__anh">
-            <img
-              class="anhSanPham"
-              src="../images/anh_main/dungcu6.jpg"
-              alt="Hinh banh 3"
-            />
-          </div>
-          <p class="ten_banh">Mũ sinh nhật</p>
-          <p class="bang_gia">25.000VNĐ</p>
         </section>
       </div>
     </main>
     <footer>
-      <div class="chinh_sach">
-        <h4>CHÍNH SÁCH</h4>
-        <p>Chính sách mua hàng, vận chuyển và đổi trả</p>
-        <p>Chính sách an toàn thực phẩm</p>
-        <p>Chính sách bảo mật</p>
-        <p>Điều khoản dịch vụ</p>
-        <p>Khách hàng thân thiết</p>
-      </div>
-      <div class="thong_tin">
-        <p>Tin tức</p>
-        <p>Tin khuyến mãi</p>
-        <p>Tuyển dụng</p>
-      </div>
-      <div class="ho_tro">
-        <p>Liên hệ</p>
-      </div>
-      <div class="dangky_nhantin">
-        <a
-          class="facebook"
-          href="https://www.facebook.com/freshgardenbanhvacaphe"
-          ><button>
-            <i class="fa-brands fa-square-facebook"></i></button
-        ></a>
-        <a
-          class="instagram"
-          href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Ffreshgarden_banhvacaphe%2F&is_from_rle"
-          ><button>
-            <i class="fa-brands fa-square-instagram"></i></button
-        ></a>
-      </div>
+        <div class="footer-container">
+            <div class="footer-column first">
+                <button class="footer-heading" type="button">CHÍNH SÁCH<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản dịch vụ</a></li>
+                    <li><a href="#">Khách hàng thân thiết</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <button class="footer-heading" type="button">THÔNG TIN<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Tin tức</strong></a></li>
+                    <li><a href="#">Tin khuyến mãi</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div class=footer-column>
+                <button class="footer-heading" type="button">HỖ TRỢ<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Liên hệ</strong></a></li>
+                    <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
+                </ul>
+            </div>
+            <div class="footer-column">
+                <button class="footer-heading" type="button">ĐĂNG KÝ NHẬN TIN<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="social-list">
+                    <li>
+                        <a class="facebook-btn" href="#">
+                            <img src="../images/icons/facebook.png" alt="Facebook">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="insta-btn" href="#">
+                            <img src="../images/icons/instagram.png" alt="Instagram">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="footer-legal">
+            <div class="legal-info">
+                <p><strong>Công ty TNHH Five overTry</strong> |
+                    Mã số doanh nghiệp: 01038333567 |
+                    Do Sở Kế hoạch - Đầu tư Cần Thơ cấp ngày 24/10/2026.
+                </p>
+                <p>Số điện thoại: 032 867 5409 |
+                        quyenb2408813@freshcake.vn |
+                        KTX A - Dãy A2/ Đại học Cần Thơ/ Phường Xuân Khánh/ Ninh Kiều/ Cần Thơ |
+                        © Bản quyền thuộc về Fresh Cake.
+                </p>
+            </div>
+                <div>
+                    <img class="legal-badge" src="../images/icons/boCongThuong.png">
+                </div>
+            </div>
     </footer>
+    <script src="chiTietSP.js"></script>
   </body>
 </html>
