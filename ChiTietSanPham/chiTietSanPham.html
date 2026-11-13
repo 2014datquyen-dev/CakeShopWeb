@@ -4,55 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tất cả sản phẩm - FreshCake</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
+  
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../header-footer.css">
+
+    <script src="../header-footer.js" defer></script>
   </head>
   <body>
     <header class="header">
-      <div class="header-top">
-        <div class="auth-link">
-          <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
-          <span class="separator">|</span>
-          <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
+        <div class=header-top>
+            <div class="auth-link">
+                <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
+                &nbsp;<span class="separator">|</span>&nbsp;
+                <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
+            </div>
         </div>
-      </div>
-      <div class="header-main">
-        <img class="logo" src="../images/icons/logo.png" alt="logo" />
-        <nav>
-          <a href="#" style="color: #531804">Giới thiệu</a>
-          <a href="#">Sản phẩm</a>
-          <a href="#">Danh sách cửa hàng</a>
-          <a href="#">Tin tức</a>
+        <img class="logo" src="../images/icons/logo.png" alt="logo">
+        <form class="search-box">
+            <input class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
+            <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
+        </form>
+        <a href="../GioHang/gioHang.html" class="cartBtn">
+            <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
+        </a>
+        <button class="menu-btn" id="menuBtn" type="button">☰</button>
+
+        <nav class="nav-menu" id="navMenu">
+            <a class="active" href="#">Giới thiệu</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Danh sách cửa hàng</a>
+            <a href="#">Tin tức</a>
         </nav>
-        <div>
-          <div class="search-box">
-            <input
-              class="search-input"
-              type="text"
-              placeholder="Freshcake bao ship 0đ - Chốt ngay!"
-            />
-            <img
-              class="search-btn"
-              src="../images/icons/search.png"
-              alt="Tìm kiếm"
-            />
-          </div>
-          <div class="header-cart">
-            <button class="cart-btn">
-              <a href="../GioHang/gioHang.html" class="cartBtn">
-                <img src="../images/icons/cart2.png" alt="Giỏ hàng" />
-              </a>
-            </button>
-          </div>
-        </div>
-      </div>
     </header>
     <main class="main-container">
       <div class="shop-content">
@@ -398,84 +380,72 @@
       </div>
     </main>
     <footer>
-      <div class="footer-container">
-        <div class="footer-top">
-          <div class="footer-column">
-            <h4>CHÍNH SÁCH</h4>
-            <hr />
-            <ul>
-              <li>
-                <a class="highlight" href="#"
-                  ><strong
-                    >Chính sách mua hàng, vận chuyển và đổi trả</strong
-                  ></a
-                >
-              </li>
-              <li><a href="#">Chính sách bảo mật</a></li>
-              <li><a href="#">Điều khoản dịch vụ</a></li>
-              <li><a href="#">Khách hàng thân thiết</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>THÔNG TIN</h4>
-            <hr />
-            <ul>
-              <li>
-                <a class="highlight" href="#"><strong>Tin tức</strong></a>
-              </li>
-              <li><a href="#">Tin khuyến mãi</a></li>
-              <li><a href="#">Tuyển dụng</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>HỖ TRỢ</h4>
-            <hr />
-            <ul>
-              <li>
-                <a class="highlight" href="#"><strong>Liên hệ</strong></a>
-              </li>
-              <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Đăng ký nhận tin</h4>
-            <hr />
-            <ul class="social-list">
-              <li>
-                <div class="footer-facebook">
-                  <a class="facebook-btn" href="#">
-                    <img src="../images/icons/facebook.png" alt="Facebook" />
-                  </a>
+        <div class="footer-container">
+            <div class="footer-column first">
+                <button class="footer-heading" type="button">CHÍNH SÁCH<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản dịch vụ</a></li>
+                    <li><a href="#">Khách hàng thân thiết</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <button class="footer-heading" type="button">THÔNG TIN<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Tin tức</strong></a></li>
+                    <li><a href="#">Tin khuyến mãi</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div class=footer-column>
+                <button class="footer-heading" type="button">HỖ TRỢ<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="footer-links">
+                    <li><a class="highlight" href="#"><strong>Liên hệ</strong></a></li>
+                    <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
+                </ul>
+            </div>
+            <div class="footer-column">
+                <button class="footer-heading" type="button">ĐĂNG KÝ NHẬN TIN<span class="toggle-arrow"></span>
+                </button>
+                <hr>
+                <ul class="social-list">
+                    <li>
+                        <a class="facebook-btn" href="#">
+                            <img src="../images/icons/facebook.png" alt="Facebook">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="insta-btn" href="#">
+                            <img src="../images/icons/instagram.png" alt="Instagram">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="footer-legal">
+            <div class="legal-info">
+                <p><strong>Công ty TNHH Five overTry</strong> |
+                    Mã số doanh nghiệp: 01038333567 |
+                    Do Sở Kế hoạch - Đầu tư Cần Thơ cấp ngày 24/10/2026.
+                </p>
+                <p>Số điện thoại: 032 867 5409 |
+                        quyenb2408813@freshcake.vn |
+                        KTX A - Dãy A2/ Đại học Cần Thơ/ Phường Xuân Khánh/ Ninh Kiều/ Cần Thơ |
+                        © Bản quyền thuộc về Fresh Cake.
+                </p>
+            </div>
+                <div>
+                    <img class="legal-badge" src="../images/icons/boCongThuong.png">
                 </div>
-              </li>
-              <li>
-                <div class="footer-insta">
-                  <a class="insta-btn" href="#">
-                    <img src="../images/icons/instagram.png" alt="Instagram" />
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <br />
-      <div class="footer-buttom">
-        <div class="left-footer-buttom">
-          <p>
-            <strong>Công ty TNHH Five overTry</strong> | Mã số doanh nghiệp:
-            01038333567 | Do Sở Kế hoạch - Đầu tư Cần Thơ cấp ngày 24/10/2026.
-          </p>
-          <p>
-            Số điện thoại: 032 867 5409 | quyenb2408813@freshcake.vn | KTX A -
-            Dãy A2/ Đại học Cần Thơ/ Phường Xuân Khánh/ Ninh Kiều/ Cần Thơ | ©
-            Bản quyền thuộc về Fresh Cake.
-          </p>
-        </div>
-        <div class="right-footer-buttom">
-          <img src="../images/icons/boCongThuong.png" />
-        </div>
-      </div>
+            </div>
     </footer>
     <script src="chiTietSP.js"></script>
   </body>
