@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-        
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -17,13 +17,25 @@
         <div class="left">
             <h1>Freshcake.vn</h1>
             <h3>Thông tin giao hàng</h3>
-            <p>Bạn đã có tài khoản? <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a><p>
-            <input class="ho-ten" type="text" placeholder="Họ và tên">    
-            <div class="form-row">
-                <input  class="email" type="text" placeholder="Email">            
-                <input class="call" type="text" placeholder="Số điện thoại">
+            <p>Bạn đã có tài khoản? <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a></p>
+            <div>
+                <input id="fullname" type="text" placeholder="Họ và tên"> 
+                <span class="error-message" id="nameError"></span>   
             </div>
-                <input type="text" placeholder="Địa chỉ">
+            <div class="form-row">
+                <div class="email">
+                    <input  id="email" type="text" placeholder="Email"> 
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="phone">           
+                    <input id="phone" type="text" placeholder="Số điện thoại">
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+            </div>
+            <div>
+                <input id="address" type="text" placeholder="Địa chỉ">
+                <span class="error-message" id="addressError"></span>
+            </div>
             <div class="address-row"> 
                 <select id="province" required>
                     <option value=""> Tỉnh / Thành phố</option>
@@ -49,7 +61,7 @@
 
             <div class="actions">
                 <a href="../GioHang/gioHang.html">Giỏ hàng</a>
-                <button style="font-size: 25px;">Thanh toán</button>
+                <button id="liquidate">Thanh toán</button>
             </div>
             <footer>
                 <hr>
@@ -93,15 +105,10 @@
             </div>
             <!-- ===== KẾT THÚC BỔ SUNG ===== -->
             <!-- MÃ GIẢM GIÁ -->
-            <div class="discount">
-
-                <input type="text"
-                       placeholder="Mã giảm giá">
-
-                <button type="button">
-                    Sử dụng
-                </button>
-
+            <div class="discount-container">
+                <input id="discount" type="text" placeholder="Mã giảm giá">
+                <span class="error-message" id="discountError"></span>
+                <button type="button">Sử dụng</button>
             </div>
 
 
@@ -135,8 +142,22 @@
 
         </div>
     </div>
-    <!-- ===== BỔ SUNG RESPONSIVE: Tương tác mở/đóng đơn hàng ===== -->
-    <script src="script.js"></script>
-    <!-- ===== KẾT THÚC BỔ SUNG ===== -->
+    <!-- BỔ SUNG: Popup đặt hàng thành công -->
+    <div class="success-overlay" id="successPopup">
+        <div class="success-popup">
+            <div class="success-icon">✓</div>
+
+            <h2>Đặt hàng thành công!</h2>
+
+            <p>
+                Cảm ơn bạn đã mua hàng tại CakeShop.
+                Đơn hàng của bạn đã được ghi nhận.
+            </p>
+
+            <button type="button" id="closePopup">
+                <a href="../TrangChu/trangChu.html">Quay lại trang chủ</a>
+            </button>
+        </div>
+    </div>
 </body>
 </html>
