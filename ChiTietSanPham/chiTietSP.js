@@ -20,7 +20,7 @@ const orderSelectedProduct = (evt) => {
     const gia = sanPham.querySelector(".product-price").textContent.trim();
     const anh = sanPham.querySelector("img").getAttribute("src");
 
-    // ILẤY SỐ LƯỢNG MÀ NGƯỜ DÙNG VỪA BẤM CHỌN
+    // LẤY SỐ LƯỢNG MÀ NGƯỜI DÙNG VỪA BẤM CHỌN
     const soLuongInput = sanPham.querySelector(".qty-input");
     const soLuongChon = parseInt(soLuongInput.value);
 
