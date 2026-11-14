@@ -20,6 +20,11 @@
   line-height: 1.65;
 }
 
+main{
+  background: var(--bg);
+  padding: 50px 0px 20px;
+}
+
 /*HEADER---------------------------------------------------*/
 header {
   padding: 15px 3%;
