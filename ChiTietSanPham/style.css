@@ -40,11 +40,13 @@ body {
 /* Thẻ sản phẩm */
 .product-card {
   background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-  padding: 10px;
+  border: none; /* XÓA viền cứng */
+  border-radius: 8px; /* Giữ bo góc khung */
+  overflow: hidden; /* Cực kỳ quan trọng để ảnh ở trên cùng bo theo góc khung */
+  padding: 0; /* XÓA padding để ảnh được tràn sát ra lề */
+  padding-bottom: 15px; /* Chỉ giữ lại khoảng cách ở dưới đáy card */
   text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Thêm đổ bóng nhẹ thay cho viền */
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -52,7 +54,7 @@ body {
 
 .product-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng đậm hơn khi hover */
 }
 /* --- CSS CHO CỤM TĂNG GIẢM SỐ LƯỢNG --- */
 .quantity-container {
@@ -98,7 +100,7 @@ body {
 .product-img-box {
   /*hinh anh sp*/
   width: 100%;
-  height: 200px;
+  height: 300px;
   overflow: hidden;
   background: #f9f9f9;
   margin-bottom: 10px;
