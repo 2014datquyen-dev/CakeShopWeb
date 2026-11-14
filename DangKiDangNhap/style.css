@@ -1,17 +1,23 @@
 *{
     line-height: 1;
-    min-width: 0;
 }
 
-.form-container{
-    width: 600px;
+.container{
+    width: min(90%, 600px);
     padding: 80px 80px;
     background: white;
     margin: auto;
     border-radius: 20px;
 }
 
+.error-message{
+    color: red;
+    font-size: 14px;
+}
 
+input[type="text"].input-error {
+    border: 1px solid red;
+}
 
 .google-btn{
     display: flex;
@@ -19,7 +25,6 @@
     justify-content: center;
     gap: 10px;
     padding: 12px;
-    margin-bottom: 20px;
     border: 1px solid var(--inactive);
     border-radius: 30px;
     color: black;
@@ -71,8 +76,8 @@ select{
     outline:none;
 }
 
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label {
+input:focus + label,
+input:not(:placeholder-shown) + label {
     top: 8px;
     transform: translateY(0);
     font-size: 13px;
@@ -84,6 +89,11 @@ select{
 
 p{
     margin: 30px auto;
+}
+
+.form-name{
+    margin: 10px auto;
+    font-weight: bold;
 }
 
 h1{
@@ -104,6 +114,7 @@ button[type="submit"]{
     color: white;
     font-size: 26px;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 button[type="submit"]:hover{
@@ -115,25 +126,30 @@ a{
 }
 
 .toggle-password {
+    display: none;
     position: absolute;
     right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    /* top: 50%;
+    transform: translateY(-50%); */
+    top: 16px;
     border: none;
     background: transparent;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #555;
+    color: black;
 }
 
-.toggle-password{
-    width: auto;
-    color: inherit;
+input:not(:placeholder-shown)~.toggle-password{
+    display: block;
 }
 
 .toggle-password svg {
     width: 22px;
     height: 22px;
 }
+
+
+/* @media (max-width: 800px){
+    .container{
+        width: 90%;
+    }
+} */

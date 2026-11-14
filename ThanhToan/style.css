@@ -37,11 +37,6 @@ a:hover{
     color: var(--hv-link);
 }
 
-.container{
-    display: flex;
-}
-
-
 .form-group {
     position: relative;
     width: 100%;
@@ -83,6 +78,15 @@ select{
     top: 8px;
     transform: translateY(0);
     font-size: 13px;
+}
+
+body{
+    height: 100vh;
+}
+
+.container{
+    display: flex;
+    height: 100%;
 }
 
 
@@ -223,7 +227,7 @@ footer{
     flex: 45%;
     padding: 60px 150px 0px 70px;
     background-color: var(--right);
-}
+    }
 
 .product-list {
     display: flex;
