@@ -1,4 +1,3 @@
-// 1. Hàm kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
 function isExistedInCart(item, cartItemArr) {
   let myIndex = -1;
   for (let i = 0; i < cartItemArr.length; i++) {
@@ -10,7 +9,6 @@ function isExistedInCart(item, cartItemArr) {
   return myIndex;
 }
 
-// 2. Hàm xử lý khi người dùng click "Thêm vào giỏ hàng"
 const orderSelectedProduct = (evt) => {
   const nut = evt.currentTarget;
   const sanPham = nut.closest(".product-card");
@@ -20,7 +18,6 @@ const orderSelectedProduct = (evt) => {
     const gia = sanPham.querySelector(".product-price").textContent.trim();
     const anh = sanPham.querySelector("img").getAttribute("src");
 
-    // LẤY SỐ LƯỢNG MÀ NGƯỜI DÙNG VỪA BẤM CHỌN
     const soLuongInput = sanPham.querySelector(".qty-input");
     const soLuongChon = parseInt(soLuongInput.value);
 
@@ -29,7 +26,7 @@ const orderSelectedProduct = (evt) => {
       name: ten,
       price: gia,
       image: anh,
-      quantity: soLuongChon, // Sử dụng số lượng người dùng đã chọn thay vì mặc định là 1
+      quantity: soLuongChon,
     };
 
     let updatedCartItems = [];
@@ -39,7 +36,6 @@ const orderSelectedProduct = (evt) => {
 
     let index = isExistedInCart(newItem, updatedCartItems);
     if (index >= 0) {
-      // Có rồi thì cộng thêm số lượng vừa chọn mới vào
       updatedCartItems[index].quantity += soLuongChon;
     } else {
       updatedCartItems.push(newItem);
@@ -52,38 +48,64 @@ const orderSelectedProduct = (evt) => {
   }
 };
 
-// 3. Hàm tạo chức năng cho các nút [+], [-] và nút "Thêm vào giỏ hàng"
 function initializeStoreEvents() {
-  // Gắn sự kiện cho các nút Thêm vào giỏ hàng
   const add2CartList = document.querySelectorAll(".add-cart");
   for (let i = 0; i < add2CartList.length; i++) {
     add2CartList[i].addEventListener("click", orderSelectedProduct, false);
   }
-
-  // Gắn sự kiện cho nút Trừ (-)
   const minusBtns = document.querySelectorAll(".minus-btn");
   minusBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
-      // Tìm ô input nằm ngay bên cạnh nút trừ
       const input = this.nextElementSibling;
       let val = parseInt(input.value);
       if (val > 1) {
-        input.value = val - 1; // Chỉ giảm nếu giá trị đang lớn hơn 1
+        input.value = val - 1;
       }
     });
   });
 
-  // Gắn sự kiện cho nút Cộng (+)
   const plusBtns = document.querySelectorAll(".plus-btn");
   plusBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
-      // Tìm ô input nằm ngay đằng trước nút cộng
       const input = this.previousElementSibling;
       let val = parseInt(input.value);
-      input.value = val + 1; // Tăng thêm 1
+      input.value = val + 1;
     });
   });
 }
 
-// Khi trang web tải xong HTML thì tự động chạy hàm gắn chức năng
+function locSanPham(arry) {
+  const data = document.querySelectorAll(".product-card");
+  data.forEach((e) => {
+    var check = false;
+    arry.forEach((i) => {
+      const currloai = e.getAttribute("data-loai");
+      if (currloai === i) {
+        check = true;
+        e.classList.remove("hidden");
+      }
+    });
+    if (!check) e.classList.add("hidden");
+  });
+}
+var temp;
+window.addEventListener("load", initializeStoreEvents, false);
+const loais = document.querySelectorAll('input[name="loai"]');
+loais.forEach((e) => {
+  e.addEventListener("change", function () {
+    const duocchon = document.querySelectorAll('input[name="loai"]:checked');
+    var temp = Array.from(duocchon).map(function (item) {
+      return item.value;
+    });
+    if (temp.length) {
+      locSanPham(temp);
+    } else {
+      const data = document.querySelectorAll(".product-card");
+      data.forEach((e) => {
+        e.classList.add("hidden");
+      });
+    }
+  });
+});
+
 window.addEventListener("load", initializeStoreEvents, false);
