@@ -224,13 +224,13 @@ function capNhatTongTien() {
   tongTien.textContent = formatCurrency(total);
 }
 
-// .header-cart -> a.cart-btn -> span.so-luong-gio
+// a.cartBtn: [0]img.cart  [1]span.so-luong-gio
 function capNhatSoLuongTrenIcon() {
   let numberOfItems = 0;
   layGioHang().forEach(item => {
     numberOfItems += Number(item.quantity);
   });
-  const badge = document.querySelectorAll('.header-cart')[0].firstElementChild.lastElementChild;
+  const badge = document.querySelectorAll('.cartBtn')[0].lastElementChild;
   badge.textContent = numberOfItems;
   badge.hidden = (numberOfItems === 0);
 }
