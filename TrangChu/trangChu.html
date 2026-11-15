@@ -6,9 +6,11 @@
     <title>FreshCake</title>
     <link rel="stylesheet" href="../header-footer.css">
     <link rel="stylesheet" href="style.css">
-    <script src="trangChu.js"></script>
+    <script src="trangChu.js" defer></script>
 </head>
 <body>
+    <button id="nutLenDau" type="button">&#8593;</button>
+
     <header class="header">
         <div class=header-top>
             <div class="auth-link">
@@ -30,7 +32,7 @@
         <button class="menu-btn" id="menuBtn" type="button">☰</button>
 
         <nav class="nav-menu" id="navMenu">
-            <a class="active" href="#">Giới thiệu</a>
+            <a class="active" href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
             <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
             <a href="#">Danh sách cửa hàng</a>
             <a href="#">Tin tức</a>
@@ -40,7 +42,7 @@
         <section class ="trang-chu">
             <div class="banner-container">
                 <a id="bannerLink" href="../TrangChu/trangChu.html?loai=banh-mi">
-                <img id="bannerImg" src="../images/banner_img/no3.png" alt="Banner">
+                    <img id="bannerImg" src="../images/banner_img/no3.png" alt="Banner">
                 </a>
             </div>
         </section>
@@ -48,8 +50,8 @@
             <div class="danhmuc-list">
 
                 <div class="danhmuc-item">
-                    <a href="../ChiTietSanPham/chiTietSanPham.html">
-                        <img src="../images/danhmuc/banhmidanhmuc.jpg?loai=banh-mi" alt="Bánh mì">
+                    <a href="../ChiTietSanPham/chiTietSanPham.html?loai=banh-mi">
+                        <img src="../images/danhmuc/banhmidanhmuc.jpg" alt="Bánh mì">
                             <p> Bánh mì</p>
                     </a>
                 </div>
@@ -92,49 +94,80 @@
                     <p class="mo-ta"> Phần bánh bông lan mịn màn cùng với mứt dâu tây ngọt ngào và những quả dâu tây đỏ mọng.
                     </p>
                     <p class="gia"> 240.000vnd </p>
-                    <a href="chitietbanhkemdautay.html"></a>
                 </div>
 
                 <div class="san-pham-item">
                 <img src="../images/anhsanpham/banhquy/banhquychocolate.png" alt="Bánh quy chocolate chips">
                 <h4> Bánh quy chocolate chips</h4>
                 <p class="mo-ta"> Phần bánh quy giòn rụm, thơm mùi bơ sữa hòa quyện cùng những viên chocolate ngọt ngào. </p>
-                <p class="gia"> 40.000vnd</p>
-                <a href="chitietbanhquy.html"></a>               
+                <p class="gia"> 40.000vnd</p>            
                 </div>
-            <div class="san-pham-item">
+
+                <div class="san-pham-item">
                 <img src="../images/anhsanpham/banhngot/banhmoussemamxoi.png" alt="Bánh mousse mâm xôi">
                 <h4> Bánh mousse mâm xôi </h4>
                 <p class="mo-ta"> Lớp bánh mềm mịn, cùng vị chua ngọt thanh mát của mâm xôi mang đến hương vị tinh tế </p>
                 <p class="gia"> 50.000vnd</p>
-                <a href="chitietbanhmousse.html"></a>
             </div>
+
             <div class="san-pham-item"> 
                 <img src="../images/anhsanpham/banhmi/banhbundtcaramel.png" alt="Bánh bundt caramel">
                 <h4> Bánh bundt caramel </h4>
                 <p class="mo-ta">Bánh bundt caramel mềm xốp,béo nhẹ, thơm vị bơ sữa, phủ lớp caramel ngọt dịu óng ánh. </p>
                 <p class="gia"> 35.000vnd</p>
-                <a href="chitietbanhbundt.html"></a>
+            </div>
+
+            <div class="xem-them">
+                <a href="../ChiTietSanPham/chiTietSanPham.html" > Xem thêm </a>   
             </div>
     </section>
-<section class="cau-chuyen">
-    <img src="../images/anhnen.jpg" alt="Bánh ngọt FreshCake">
-    <div class="cau-chuyen-content"><p class="nhan-nho">FRESH CAKE</p>
-        <h3>Chạm vị ngọt, chạm niềm vui.</h3>
-        <p>
-            Mỗi chiếc bánh là một chút ngọt ngào,
-            mang đến niềm vui cho những người bạn yêu thương.
-        </p>
-        <a href="gioithieu.html">Tìm hiểu về chúng tôi</a>
-    </div>
-</section>
+
+    <section class="cau-chuyen">
+        <img src="../images/anhnen.jpg" alt="Bánh ngọt FreshCake">
+            <div class="cau-chuyen-content"><p class="nhan-nho">FRESH CAKE</p>
+                <h3>Chạm vị ngọt, chạm niềm vui.</h3>
+                <p>
+                Mỗi chiếc bánh là một chút ngọt ngào,
+                mang đến niềm vui cho những người bạn yêu thương.
+                </p>
+                <a href="../GioiThieu/gioiThieu.html">Tìm hiểu về chúng tôi</a>
+            </div>
+    </section>
         <section class="uu-dai">
             <div class="uu-dai-content">
             <h3> Bạn đã là thành viên? </h3>
             <p> Đăng nhập để xem giá ưu đãi và các chương trình khuyến mãi dành riêng cho bạn. </p>
-            <a href="DangKiDangNhap/DangNhap.html"> Đăng nhập &amp; Đặt hàng </a>
+            <a href="../DangKiDangNhap/DangNhap.html"> Đăng nhập &amp; Đặt hàng </a>
             </div>
         </section>
+
+    <section class="hoi-dap">
+        <h3 class="hoi-dap-container">Quyền lợi thành viên</h3>
+        <p class="hoi-dap-extra">Nâng hạng để nhận nhiều ưu đãi hơn</p>
+
+        <div class="hd-item">
+            <button class="cau-hoi" type="button">Làm sao để trở thành thành viên</button>
+            <p class="tra-loi">Bạn chỉ cần đăng tài khoản FreshCake và đăng nhập</p>
+        </div>
+
+        <div class="hd-item">
+            <button class="cau-hoi" type="button">Cách tích điểm như thế nào?</button>
+            <p class="tra-loi">Mỗi đơn hàng thành công sẽ được tích điểm tương ứng.
+                                Hạng thành viên càng cao, hệ số tích điểm càng lớn. </p>
+        </div>
+
+        <div class="hd-item">
+            <button class="cau-hoi" type="button">Tôi có thể đổi điểm thành gì?</button>
+            <p class="tra-loi">Điểm có thể đổi thành voucher giảm giá khi mua hàng hoặc nhận quà.</p>
+        </div>
+
+        <div class="hd-item">
+            <button class="cau-hoi" type="button">Làm sao để lên hạng thành viên?</button>
+            <p class="tra-loi">Hạng thành viên được tính dựa trên doanh số chi tiêu và số đơn hàng trong kỳ đánh giá.
+                            Mua sắm nhiều hơn để lên hạng cao hơn và nhận hệ số tích điểm cao hơn.</p>
+        </div>
+    </section>
+
     </main>
     <footer>
         <div class="footer-container">
