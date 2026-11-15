@@ -116,3 +116,20 @@ addressInput.addEventListener('input', () => {
     addressError.innerText = '';
 });
 
+
+const data = localStorage.getItem('cartItems');
+const products = JSON.parse(data) || [];
+const productList = document.querySelector('.product-list');
+
+products.forEach((product) => {
+    productList.innerHTML += `
+        <div class="product">
+            <img src="${product.image}">
+            <div class="product-info">
+                <p>${product.name}</p>
+                <small>Số lượng: ${product.quantity}</small>
+            </div>
+            <span class="price">${product.price}</span>
+        </div>
+    `;
+});

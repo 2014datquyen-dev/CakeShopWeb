@@ -102,10 +102,28 @@ loais.forEach((e) => {
     } else {
       const data = document.querySelectorAll(".product-card");
       data.forEach((e) => {
-        e.classList.add("hidden");
+        e.classList.remove("hidden");
       });
     }
   });
 });
 
 window.addEventListener("load", initializeStoreEvents, false);
+
+
+const params = new URLSearchParams(window.location.search);
+const keyword = params.get("search");
+if (keyword) {
+    const products = document.querySelectorAll(".product-card");
+
+    products.forEach((product) => {
+        const name = product.querySelector(".product-name")
+                            .textContent.toLowerCase();
+
+        if (name.includes(keyword.toLowerCase())) {
+            product.style.display = "";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}
