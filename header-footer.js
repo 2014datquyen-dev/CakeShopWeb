@@ -1,11 +1,6 @@
 const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("navMenu");
 
-// const searchForm = document.getElementById("searchForm");
-// const searchInput = document.getElementById("searchInput");
-// const searchResult = document.getElementById("searchResult");
-
-// Đóng / mở menu
 menuBtn.addEventListener("click", () => {
     navMenu.classList.toggle("open");
 
@@ -13,7 +8,6 @@ menuBtn.addEventListener("click", () => {
 
     menuBtn.textContent = isOpen ? "✕" : "☰";
 });
-
 
 
 const headings = document.querySelectorAll(".footer-heading");
@@ -26,3 +20,19 @@ headings.forEach((heading) => {
         column.classList.toggle("active");
     });
 });
+
+
+const authLink = document.querySelector('.auth-link');
+const name = localStorage.getItem('name');
+
+if (name){
+    authLink.innerHTML = 
+        `<a>${name}</a>
+        &nbsp;<span class="separator">|</span>&nbsp;
+        <a >Đăng xuất</a>`
+} else {
+    authLink.innerHTML =
+        `<a href="../DangKiDangNhap/dangNhap.html">Đăng nhập</a>
+        &nbsp;<span class="separator">|</span>&nbsp;
+        <a href="../DangKiDangNhap/dangKy.html">Đăng ký</a>`
+}

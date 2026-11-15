@@ -1,35 +1,22 @@
-//  const orderToggle = document.getElementById("orderToggle");
-//         const orderBox = document.querySelector(".right");
-//         const toggleText = document.getElementById("toggleText");
-//         const toggleArrow = document.getElementById("toggleArrow");
-
-//         orderToggle.addEventListener("click", function () {
-//             const isOpen = orderBox.classList.toggle("order-open");
-//             // orderToggle.setAttribute("aria-expanded", String(isOpen));
-//             // toggleText.textContent = isOpen
-//             //     ? "Ẩn thông tin đơn hàng"
-//             //     : "Hiển thị thông tin đơn hàng";
-//             // toggleArrow.textContent = isOpen ? "⌃" : "⌄";
-//         });
-
-
 document.getElementById("orderToggle").addEventListener("click", function () {
     const orderBox = document.querySelector(".right");
     orderBox.classList.toggle("order-open");
 });
 
-
-
+btn=document.getElementById('liquidate');
 const nameInput = document.getElementById('fullname');
+const nameError = nameInput.nextElementSibling.nextElementSibling;
 const emailInput = document.getElementById('email');
+const emailError = emailInput.nextElementSibling.nextElementSibling;
 const phoneInput = document.getElementById('phone');
+const phoneError = phoneInput.nextElementSibling.nextElementSibling;
 const addressInput = document.getElementById('address');
+const addressError = addressInput.nextElementSibling.nextElementSibling;
+
 
 
 const validationFullname = () => {
-    
     const name = nameInput.value;
-    const nameError = document.getElementById('nameError');
 
     if (name!==""){
         nameInput.classList.remove('input-error');
@@ -44,9 +31,8 @@ const validationFullname = () => {
 
 const validationEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
-
     const email = emailInput.value;
-    const emailError = emailInput.nextElementSibling.nextElementSibling;
+
     if (emailRegex.test(email)){
         emailInput.classList.remove('input-error');
         emailError.innerText = '';
@@ -59,10 +45,8 @@ const validationEmail = () => {
 }
 
 const validationPhone = () => {
-    const phoneRegex = /^0\d{9}$/;
-    
+    const phoneRegex = /^0\d{9}$/;    
     const phone = phoneInput.value;
-    const phoneError = phoneInput.nextElementSibling.nextElementSibling;
     
     if (phoneRegex.test(phone)){
         phoneInput.classList.remove('input-error');
@@ -76,9 +60,7 @@ const validationPhone = () => {
 }
 
 function validationAddress(){
-    
     const address=addressInput.value;
-    const addressError=addressInput.nextElementSibling.nextElementSibling;
     
     if (address!==''){
         addressInput.classList.remove('input-error');
@@ -91,41 +73,46 @@ function validationAddress(){
     }
 }
 
-document.getElementById('liquidate').addEventListener('click', (event) => {
+btn.addEventListener('click', (event) => {
     event.preventDefault();
 
-    validationFullname();
-    validationEmail();
-    validationPhone();
-    validationAddress();
+    btn.style.opacity = '0.7';
+    btn.style.cursor='wait';
+    document.body.style.cursor = 'wait';
+    setTimeout( () => {
+        btn.style.opacity = '';
+        btn.style.cursor='';      
+        document.body.style.cursor = '';
 
-    if (validationFullname()&&validationEmail()&&validationPhone()&&validationAddress()){
-        document.getElementById("successPopup").classList.add("show");
-    }
-
-});
-
-nameInput.addEventListener('blur', () => {
-    if (nameInput.classList.contains('input-error')){
         validationFullname();
-    }
-});
-
-emailInput.addEventListener('blur', () => {
-    if (emailInput.classList.contains('input-error')){
         validationEmail();
-    }
-});
-
-phoneInput.addEventListener('blur', () => {
-    if (phoneInput.classList.contains('input-error')){
         validationPhone();
-    }
+        validationAddress();
+
+        if (validationFullname()&&validationEmail()&&validationPhone()&&validationAddress()){
+            document.getElementById("successPopup").classList.add("show");
+        }
+    }, 750);
+
 });
 
-addressInput.addEventListener('blur', () => {
-    if (addressInput.classList.contains('input-error')){
-        validationAddress();
-    }
+nameInput.addEventListener('input', () => {
+    nameInput.classList.remove('input-error');
+    nameError.innerText = '';
+});
+
+emailInput.addEventListener('input', () => {
+    emailInput.classList.remove('input-error');
+    emailError.innerText = '';
+});
+
+phoneInput.addEventListener('input', () => {
+    phoneInput.classList.remove('input-error');
+    phoneError.innerText = '';
+});
+
+addressInput.addEventListener('input', () => {
+    addressInput.classList.remove('input-error');
+    addressError.innerText = '';
 });
 
