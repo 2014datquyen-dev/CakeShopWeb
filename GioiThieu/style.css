@@ -7,11 +7,10 @@
     width: 80%;
     margin: auto;
 }
+
 .container img{
     display: block;
-    /* width: 600px; */
     width:70%;
-    /* aspect-ratio: 1/1;tạo tỉ lệ cao rông */
     margin: 20px auto;
     object-fit: cover;/*cắt hình tạo thành hình vuông như cao rộng có 1 giá trị cụ thể*/
 }
