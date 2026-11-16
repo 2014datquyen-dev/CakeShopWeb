@@ -1,30 +1,32 @@
 .trang-gio-hang {
-  padding: 40px 120px 64px;
-  background: #fffcf8;
+  background: var(--bg);
 }
+/* Khung trắng giống .container của trang Giới thiệu */
 .bo-cuc {
   display: grid;
-  grid-template-columns: 2.3fr 1fr;
+  grid-template-columns: minmax(0px, 1fr) 300px;
   grid-template-areas: "san-pham hen-gio";
-  gap: 50px;
+  gap: 40px;
+  width: 80%;
+  margin: auto;
+  padding: 40px;
   background: white;
-  box-shadow: 0 4px 12px #e8d5d5;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 }
 .vung-san-pham {
   grid-area: san-pham;
   min-width: 0px;
-  padding-top: 16px;
 }
 .vung-hen-gio {
   grid-area: hen-gio;
-  padding: 30px 30px 30px 0px;
 }
 .dong-tieu-de,
 .san-pham {
   display: grid;
-  grid-template-columns: 40px 100px minmax(0px, 1fr) 110px 160px 120px;
+  grid-template-columns: 32px 90px minmax(0px, 1fr) 105px 150px 115px;
   align-items: center;
-  column-gap: 16px;
+  column-gap: 12px;
 }
 .dong-tieu-de {
   padding: 12px 0px;
@@ -67,13 +69,14 @@
   color: var(--tf);
 }
 .anh-sp {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
   border-radius: 9px;
   background: var(--tb);
 }
 .ten-sp {
+  overflow-wrap: anywhere;
   font-size: 20px;
   line-height: 1.3;
 }
@@ -242,41 +245,18 @@
     border-color 0.2s,
     transform 0.2s;
 }
-@media (max-width: 1024px) {
-  .trang-gio-hang {
-    padding: 24px 20px 40px;
-  }
-  .bo-cuc {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "san-pham"
-      "hen-gio";
-    gap: 0px;
-  }
-  .vung-san-pham {
-    padding: 16px 20px 0px;
-  }
-  .tiep-tuc {
-    padding-left: 10px;
-  }
-  .ghi-chu {
-    padding-left: 0px;
-  }
-  .vung-hen-gio {
-    padding: 28px 24px;
-  }
-}
-@media (max-width: 768px) {
+/* Dưới 1400px khung không đủ rộng cho 6 cột -> mỗi sản phẩm hiển thị dạng thẻ */
+@media (max-width: 1399px) {
   .dong-tieu-de {
     display: none;
   }
   .san-pham {
-    grid-template-columns: 28px 80px 1fr auto;
+    grid-template-columns: 24px 70px minmax(0px, 1fr) auto;
     grid-template-areas:
-      "xoa anh ten        ten"
-      "xoa anh don-gia    don-gia"
-      "xoa anh so-luong   thanh-tien";
-    column-gap: 12px;
+      "xoa anh ten       ten"
+      "xoa anh don-gia   thanh-tien"
+      "xoa anh so-luong  so-luong";
+    column-gap: 10px;
     row-gap: 6px;
     align-items: start;
     padding: 16px 0px;
@@ -301,7 +281,7 @@
   }
   .san-pham > :nth-child(6) {
     grid-area: thanh-tien;
-    align-self: center;
+    justify-self: end;
     font-weight: bold;
   }
   .gio-trong {
@@ -311,8 +291,8 @@
     font-size: 24px;
   }
   .anh-sp {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
   .ten-sp {
     font-size: 18px;
@@ -326,28 +306,42 @@
   }
   .chon-so-luong {
     justify-content: flex-start;
-    gap: 6px;
+    gap: 4px;
   }
   .chon-so-luong button {
-    width: 34px;
-    height: 36px;
-    font-size: 18px;
+    flex-shrink: 0;
+    width: 30px;
+    height: 32px;
+    font-size: 16px;
   }
   .chon-so-luong input[type="number"] {
-    width: 36px;
-    font-size: 16px;
+    width: 32px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 1024px) {
+  .bo-cuc {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "san-pham"
+      "hen-gio";
+    gap: 10px;
+  }
+  .tiep-tuc {
+    padding-left: 10px;
+  }
+  .ghi-chu {
+    padding-left: 0px;
+  }
+}
+/* Cùng mốc 800px với trang Giới thiệu */
+@media (max-width: 800px) {
+  .bo-cuc {
+    width: 90%;
+    padding: 20px;
   }
 }
 @media (max-width: 600px) {
-  .trang-gio-hang {
-    padding: 12px 0px 24px;
-  }
-  .vung-san-pham {
-    padding: 8px 16px 0px;
-  }
-  .vung-hen-gio {
-    padding: 22px 16px;
-  }
   .tiep-tuc {
     padding: 18px 0px;
     text-align: center;
