@@ -148,8 +148,72 @@ input:not(:placeholder-shown)~.toggle-password{
 }
 
 
-/* @media (max-width: 800px){
-    .container{
-        width: 90%;
-    }
-} */
+.success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.success-overlay.show {
+    display: flex;
+}
+
+.success-popup {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    animation: popupShow 0.3s ease;
+}
+
+.success-icon {
+    width: 75px;
+    height: 75px;
+    background: #e8f7ed;
+    color: #20a65a;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 45px;
+    margin: 0 auto 20px;
+}
+
+.success-popup h2 {
+    margin-bottom: 30px;
+}
+
+.success-popup p {
+    color: var(--tf);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.success-popup button {
+    background: #531804;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.success-popup button:hover {
+    background: var(--hv);
+}
+
+.success-popup a{
+    color: white;
+    text-decoration: none;
+}
