@@ -64,6 +64,8 @@ const handleLogin = () => {
 
         if (emailPhoneValid&&passwordValid){
             localStorage.setItem('isLogin', 'true');
+            const saved = localStorage.getItem('cartBackup');
+            if (saved) localStorage.setItem('cartItems', saved);
             window.location.href='../TrangChu/trangChu.html';
         }
     }, 1000);
