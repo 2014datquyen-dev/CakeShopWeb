@@ -12,28 +12,37 @@
   </head>
   <body>
     <header class="header">
-        <div class=header-top>
-            <div class="auth-link">
-                <a href="../DangKiDangNhap/dangNhap.html">Đăng nhập</a>
-                &nbsp;<span class="separator">|</span>&nbsp;
-                <a href="../DangKiDangNhap/dangKy.html">Đăng ký</a>
-            </div>
+      <div class="header-top">
+        <div class="auth-link">
+          <a href="../DangKiDangNhap/dangNhap.html">Đăng nhập</a>
+          &nbsp;<span class="separator">|</span>&nbsp;
+          <a href="../DangKiDangNhap/dangKy.html">Đăng ký</a>
         </div>
-        <a class="logo" href="../TrangChu/trangChu.html">
-            <img src="../images/icons/logo.png" alt="logo">
-        </a>
-        <form class="search-box" action="../ChiTietSanPham/chiTietSanPham.html" method="get">
-            <input name="search" class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
-            <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
-        </form>
-        <a href="../GioHang/gioHang.html" class="cartBtn">
-            <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
-        </a>
-        <button class="menu-btn" id="menuBtn" type="button">☰</button>
+      </div>
+      <a class="logo" href="../TrangChu/trangChu.html">
+        <img src="../images/icons/logo.png" alt="logo" />
+      </a>
+      <form class="search-box" action="../SanPham/sanPham.html" method="get">
+        <input
+          name="search"
+          class="search-input"
+          type="text"
+          placeholder="Freshcake bao ship 0đ - Chốt ngay!"
+        />
+        <img
+          class="search-btn"
+          src="../images/icons/search.png"
+          alt="Tìm kiếm"
+        />
+      </form>
+      <a href="../GioHang/gioHang.html" class="cartBtn">
+        <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng" />
+      </a>
+      <button class="menu-btn" id="menuBtn" type="button">☰</button>
 
       <nav class="nav-menu" id="navMenu">
-        <a class="active" href="#">Giới thiệu</a>
-        <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
+        <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
+        <a class="active" href="../SanPham/sanPham.html">Sản phẩm</a>
         <a href="#">Danh sách cửa hàng</a>
         <a href="#">Tin tức</a>
       </nav>
@@ -43,23 +52,23 @@
         <h4>Fresh Cake</h4>
         <h5>PHÂN LOẠI</h5>
         <form>
-          <input type="checkbox" name="loai" value="banh-kem"/>
+          <input type="checkbox" name="loai" value="banh-kem" />
           <label>Bánh kem</label>
         </form>
         <form>
-          <input type="checkbox" name="loai" value="banh-mi"/>
+          <input type="checkbox" name="loai" value="banh-mi" />
           <label>Bánh mì</label>
         </form>
         <form>
-          <input type="checkbox" name="loai" value="banh-ngot"/>
+          <input type="checkbox" name="loai" value="banh-ngot" />
           <label>Bánh ngọt</label>
         </form>
         <form>
-          <input type="checkbox" name="loai" value="banh-quy"/>
+          <input type="checkbox" name="loai" value="banh-quy" />
           <label>Bánh quy</label>
         </form>
         <form>
-          <input type="checkbox" name="loai" value="thuc-uong"/>
+          <input type="checkbox" name="loai" value="thuc-uong" />
           <label>Thức uống</label>
         </form>
       </aside>
@@ -668,6 +677,6 @@
         </div>
       </div>
     </footer>
-    <script src="chiTietSP.js"></script>
+    <script src="sanPham.js"></script>
   </body>
 </html>
