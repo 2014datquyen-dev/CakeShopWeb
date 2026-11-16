@@ -127,3 +127,17 @@ if (keyword) {
         }
     });
 }
+
+// ===== ĐỌC LOẠI TỪ TRANG CHỦ =====
+var loaiTuTrangChu = new URLSearchParams(window.location.search).get("loai");
+console.log("loai nhan duoc:", loaiTuTrangChu);
+
+if (loaiTuTrangChu) {
+  var oTick = document.querySelector('input[name="loai"][value="' + loaiTuTrangChu + '"]');
+  console.log("o tick tim duoc:", oTick);
+
+  if (oTick) {
+    oTick.checked = true;
+    locSanPham([loaiTuTrangChu]);
+  }
+}
