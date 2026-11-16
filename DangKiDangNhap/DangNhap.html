@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập</title>
     <link rel="stylesheet" href="../header-footer.css">
-    <link rel="stylesheet" href="DangNhapDangKy.css">
+    <link rel="stylesheet" href="style.css">
 
     <script src="../header-footer.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="login.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -32,34 +34,37 @@
         <button class="menu-btn" id="menuBtn" type="button">☰</button>
 
         <nav class="nav-menu" id="navMenu">
-            <a href="#">Giới thiệu</a>
+            <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
             <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
             <a href="#">Danh sách cửa hàng</a>
             <a href="#">Tin tức</a>
         </nav>
     </header>
     <main>
-        <div class="form-container">
+        <div class="container">
             <h1>Chào mừng bạn trở lại!</h1>
             <p>Nhập thông tin tài khoản của bạn vào đây.</p>
+            <p class="form-name">Email hoặc số điện thoại</p>
             <form>
                 <div class="form-group">
                     <input id="emailPhone" type="text" placeholder=""> 
                     <label >Email hoặc số điện thoại<span class="required"> *</span></label>
-                    <span class="error-message" id="nameError"></span>   
+                    <span class="error-message"></span>   
                 </div>
+                <p class="form-name">Mật khẩu</p>
                 <div class="form-group">
-                    <input id="password" type="text" placeholder=""> 
+                    <input id="password" class="password-input" type="password" placeholder=""> 
                     <label >Mật khẩu<span class="required"> *</span></label>
-                    <span class="error-message" id="nameError"></span>   
+                    <span class="error-message"></span>  
+                    <button type="button" class="toggle-password"><i data-lucide="eye-off"></i></button>
                 </div>
                 <p><input type="checkbox"> Ghi nhớ đăng nhập?</p>
                 <button type="submit">Đăng nhập</button>
                 <p class="mo-ta">Hoặc tiếp tục với</p>
                 <a class="google-btn" href="#">
-        <img src="../images/icons/google_logo.png" alt="Google">
-        Tiếp tục với Google
-    </a>
+                    <img src="../images/icons/google_logo.png" alt="Google">
+                    Tiếp tục với Google
+                </a>
             </form>
 
             <p>Chưa có tài khoản?<a href="DangKy.html"> Đăng ký ngay</a></p>
@@ -133,5 +138,9 @@
                 </div>
             </div>
     </footer>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+    lucide.createIcons();
+    </script>
 </body>
 </html>

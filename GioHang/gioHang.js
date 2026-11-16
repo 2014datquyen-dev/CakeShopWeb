@@ -23,9 +23,10 @@ function luuGioHang(cartItemArr) {
 }
 
 
-// Nút nguồn: bảng và vùng hẹn giờ -> từ đó duyệt tới nút đích
-function layBang() {
-  return document.querySelectorAll('.bang-gio-hang')[0];
+// Nút nguồn: khối danh sách và vùng hẹn giờ -> từ đó duyệt tới nút đích
+// .danh-sach-gio: [0]div.dong-tieu-de  [1]ul.ds-san-pham
+function layDanhSach() {
+  return document.querySelectorAll('.danh-sach-gio')[0].lastElementChild;
 }
 
 function layVungHenGio() {
@@ -35,21 +36,17 @@ function layVungHenGio() {
 
 function hienThiGioHang() {
   const customerCart = layGioHang();
-  const tblBody = layBang().lastElementChild;
-  tblBody.innerHTML = '';
+  const danhSach = layDanhSach();
+  danhSach.innerHTML = '';
 
   if (customerCart.length === 0) {
-    const row = document.createElement('tr');
-    row.className = 'dong-trong';
-    const cell = document.createElement('td');
-    cell.colSpan = 6;
-    cell.className = 'gio-trong';
-    cell.textContent = 'Giỏ hàng của bạn đang trống.';
-    row.appendChild(cell);
-    tblBody.appendChild(row);
+    const dong = document.createElement('li');
+    dong.className = 'gio-trong';
+    dong.textContent = 'Giỏ hàng của bạn đang trống.';
+    danhSach.appendChild(dong);
   } else {
     customerCart.forEach(item => {
-      tblBody.appendChild(taoDongSanPham(item));
+      danhSach.appendChild(taoDongSanPham(item));
     });
   }
 
@@ -57,27 +54,25 @@ function hienThiGioHang() {
   capNhatSoLuongTrenIcon();
 }
 
+// li.san-pham: [0]nút xóa [1]ảnh [2]div.thong-tin [3]đơn giá [4]div.chon-so-luong [5]thành tiền
 function taoDongSanPham(item) {
-  const row = document.createElement('tr');
+  const dong = document.createElement('li');
+  dong.className = 'san-pham';
 
-  const tdXoa = document.createElement('td');
   const nutXoa = document.createElement('button');
   nutXoa.type = 'button';
   nutXoa.className = 'nut-xoa';
   nutXoa.textContent = '×';
   nutXoa.setAttribute('aria-label', 'Xóa ' + item.name);
   nutXoa.addEventListener('click', xuLyXoa, false);
-  tdXoa.appendChild(nutXoa);
 
-  const tdAnh = document.createElement('td');
   const anh = document.createElement('img');
   anh.className = 'anh-sp';
   anh.src = item.image || '../image/anhnen.jpg';
   anh.alt = item.name;
-  tdAnh.appendChild(anh);
 
-  const thTen = document.createElement('th');
-  thTen.scope = 'row';
+  const thongTin = document.createElement('div');
+  thongTin.className = 'thong-tin';
   const ten = document.createElement('p');
   ten.className = 'ten-sp';
   ten.textContent = item.name;
@@ -85,20 +80,19 @@ function taoDongSanPham(item) {
   maSP.className = 'item-id';
   maSP.hidden = true;
   maSP.textContent = item.id;
-  thTen.appendChild(ten);
-  thTen.appendChild(maSP);
+  thongTin.appendChild(ten);
+  thongTin.appendChild(maSP);
   if (item.id != item.name) {
-    const thongTin = document.createElement('p');
-    thongTin.className = 'thong-tin-sp';
-    thongTin.textContent = 'Mã SP: ' + item.id;
-    thTen.appendChild(thongTin);
+    const phu = document.createElement('p');
+    phu.className = 'thong-tin-sp';
+    phu.textContent = 'Mã SP: ' + item.id;
+    thongTin.appendChild(phu);
   }
 
-  const tdGia = document.createElement('td');
-  tdGia.className = 'gia';
-  tdGia.textContent = formatCurrency(layGiaSo(item.price));
+  const donGia = document.createElement('p');
+  donGia.className = 'gia don-gia';
+  donGia.textContent = formatCurrency(layGiaSo(item.price));
 
-  const tdSoLuong = document.createElement('td');
   const khung = document.createElement('div');
   khung.className = 'chon-so-luong';
 
@@ -126,52 +120,52 @@ function taoDongSanPham(item) {
   khung.appendChild(nutGiam);
   khung.appendChild(oSo);
   khung.appendChild(nutTang);
-  tdSoLuong.appendChild(khung);
 
-  const tdThanhTien = document.createElement('td');
-  tdThanhTien.className = 'gia';
-  tdThanhTien.textContent = formatCurrency(layGiaSo(item.price) * item.quantity);
+  const thanhTien = document.createElement('p');
+  thanhTien.className = 'gia thanh-tien';
+  thanhTien.textContent = formatCurrency(layGiaSo(item.price) * item.quantity);
 
-  row.appendChild(tdXoa);
-  row.appendChild(tdAnh);
-  row.appendChild(thTen);
-  row.appendChild(tdGia);
-  row.appendChild(tdSoLuong);
-  row.appendChild(tdThanhTien);
-  return row;
+  dong.appendChild(nutXoa);
+  dong.appendChild(anh);
+  dong.appendChild(thongTin);
+  dong.appendChild(donGia);
+  dong.appendChild(khung);
+  dong.appendChild(thanhTien);
+  return dong;
 }
 
 
-// Từ 1 dòng <tr>: ô thứ 3 (th) -> phần tử con thứ 2 (p.item-id) chứa mã sản phẩm
-function layMaSanPham(row) {
-  return row.children[2].children[1].textContent;
+// Từ 1 dòng <li>: phần tử con thứ 3 (div.thong-tin) -> con thứ 2 (p.item-id) chứa mã sản phẩm
+function layMaSanPham(dong) {
+  return dong.children[2].children[1].textContent;
 }
 
-// button -> td -> tr
+// button -> li
 function xuLyXoa(evt) {
-  const row = evt.target.parentElement.parentElement;
-  xoaSanPham(layMaSanPham(row));
+  const dong = evt.target.parentElement;
+  xoaSanPham(layMaSanPham(dong));
 }
 
-// button -> div.chon-so-luong -> td -> tr
+// button -> div.chon-so-luong -> li ; ô số nằm ngay sau nút giảm
 function xuLyGiam(evt) {
   const nut = evt.target;
   const oSo = nut.nextElementSibling;
-  const row = nut.parentElement.parentElement.parentElement;
-  capNhatSoLuong(layMaSanPham(row), Number(oSo.value) - 1);
+  const dong = nut.parentElement.parentElement;
+  capNhatSoLuong(layMaSanPham(dong), Number(oSo.value) - 1);
 }
 
+// ô số nằm ngay trước nút tăng
 function xuLyTang(evt) {
   const nut = evt.target;
   const oSo = nut.previousElementSibling;
-  const row = nut.parentElement.parentElement.parentElement;
-  capNhatSoLuong(layMaSanPham(row), Number(oSo.value) + 1);
+  const dong = nut.parentElement.parentElement;
+  capNhatSoLuong(layMaSanPham(dong), Number(oSo.value) + 1);
 }
 
 function xuLyNhapSo(evt) {
   const oSo = evt.target;
-  const row = oSo.parentElement.parentElement.parentElement;
-  capNhatSoLuong(layMaSanPham(row), Number(oSo.value));
+  const dong = oSo.parentElement.parentElement;
+  capNhatSoLuong(layMaSanPham(dong), Number(oSo.value));
 }
 
 
@@ -224,13 +218,13 @@ function capNhatTongTien() {
   tongTien.textContent = formatCurrency(total);
 }
 
-// .header-cart -> a.cart-btn -> span.so-luong-gio
+// a.cartBtn: [0]img.cart  [1]span.so-luong-gio
 function capNhatSoLuongTrenIcon() {
   let numberOfItems = 0;
   layGioHang().forEach(item => {
     numberOfItems += Number(item.quantity);
   });
-  const badge = document.querySelectorAll('.header-cart')[0].firstElementChild.lastElementChild;
+  const badge = document.querySelectorAll('.cartBtn')[0].lastElementChild;
   badge.textContent = numberOfItems;
   badge.hidden = (numberOfItems === 0);
 }

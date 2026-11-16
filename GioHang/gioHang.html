@@ -10,26 +10,29 @@
     </head>
     <body>
     <header class="header">
-        <div class=header-top>
+        <div class="header-top">
             <div class="auth-link">
-                <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
+                <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập</a>
                 &nbsp;<span class="separator">|</span>&nbsp;
-                <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
+                <a href="../DangKiDangNhap/DangKy.html">Đăng ký</a>
             </div>
         </div>
-        <img class="logo" src="../images/icons/logo.png" alt="logo">
-        <form class="search-box">
-            <input class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
+        <a class="logo" href="../TrangChu/trangChu.html">
+            <img src="../images/icons/logo.png" alt="logo">
+        </a>
+        <form class="search-box" action="../ChiTietSanPham/chiTietSanPham.html" method="get">
+            <input name="search" class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
             <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
         </form>
         <a href="../GioHang/gioHang.html" class="cartBtn">
             <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
+            <span class="so-luong-gio">0</span>
         </a>
         <button class="menu-btn" id="menuBtn" type="button">☰</button>
 
         <nav class="nav-menu" id="navMenu">
-            <a class="active" href="#">Giới thiệu</a>
-            <a href="#">Sản phẩm</a>
+            <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
+            <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
             <a href="#">Danh sách cửa hàng</a>
             <a href="#">Tin tức</a>
         </nav>
@@ -38,18 +41,14 @@
             <section class="trang-gio-hang">
                 <form class="bo-cuc" action="../ThanhToan/thanhToan.html" method="get">
                     <div class="vung-san-pham">
-                        <div class="cuon-bang">
-                            <table class="bang-gio-hang">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" colspan="3">Sản phẩm</th>
-                                        <th scope="col">Đơn&nbsp;giá</th>
-                                        <th scope="col">Số&nbsp;lượng</th>
-                                        <th scope="col">Thành&nbsp;tiền</th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                        <div class="danh-sach-gio">
+                            <div class="dong-tieu-de">
+                                <p class="cot-san-pham">Sản phẩm</p>
+                                <p>Đơn giá</p>
+                                <p>Số lượng</p>
+                                <p>Thành tiền</p>
+                            </div>
+                            <ul class="ds-san-pham"></ul>
                         </div>
                         <a class="tiep-tuc" href="../ChiTietSanPham/chiTietSanPham.html">Tiếp tục mua sắm</a>
                         <div class="ghi-chu">
@@ -76,7 +75,7 @@
                 </form>
             </section>
         </main>
-<footer>
+    <footer>
         <div class="footer-container">
             <div class="footer-column first">
                 <button class="footer-heading" type="button">CHÍNH SÁCH<span class="toggle-arrow"></span>
@@ -99,7 +98,7 @@
                     <li><a href="#">Tuyển dụng</a></li>
                 </ul>
             </div>
-            <div class=footer-column>
+            <div class="footer-column">
                 <button class="footer-heading" type="button">HỖ TRỢ<span class="toggle-arrow"></span>
                 </button>
                 <hr>
@@ -140,7 +139,7 @@
                 </p>
             </div>
                 <div>
-                    <img class="legal-badge" src="../images/icons/boCongThuong.png">
+                    <img class="legal-badge" src="../images/icons/boCongThuong.png" alt="Đã thông báo Bộ Công Thương">
                 </div>
             </div>
     </footer>

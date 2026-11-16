@@ -12,32 +12,24 @@
   </head>
   <body>
     <header class="header">
-      <div class="header-top">
-        <div class="auth-link">
-          <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
-          &nbsp;<span class="separator">|</span>&nbsp;
-          <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
+        <div class=header-top>
+            <div class="auth-link">
+                <a href="../DangKiDangNhap/dangNhap.html">Đăng nhập</a>
+                &nbsp;<span class="separator">|</span>&nbsp;
+                <a href="../DangKiDangNhap/dangKy.html">Đăng ký</a>
+            </div>
         </div>
-      </div>
-      <a class="logo" href="../TrangChu/trangChu.html">
-        <img src="../images/icons/logo.jpg" alt="logo" />
-      </a>
-      <form class="search-box">
-        <input
-          class="search-input"
-          type="text"
-          placeholder="Freshcake bao ship 0đ - Chốt ngay!"
-        />
-        <img
-          class="search-btn"
-          src="../images/icons/search.png"
-          alt="Tìm kiếm"
-        />
-      </form>
-      <a href="../GioHang/gioHang.html" class="cartBtn">
-        <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng" />
-      </a>
-      <button class="menu-btn" id="menuBtn" type="button">☰</button>
+        <a class="logo" href="../TrangChu/trangChu.html">
+            <img src="../images/icons/logo.png" alt="logo">
+        </a>
+        <form class="search-box" action="../ChiTietSanPham/chiTietSanPham.html" method="get">
+            <input name="search" class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
+            <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
+        </form>
+        <a href="../GioHang/gioHang.html" class="cartBtn">
+            <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
+        </a>
+        <button class="menu-btn" id="menuBtn" type="button">☰</button>
 
       <nav class="nav-menu" id="navMenu">
         <a class="active" href="#">Giới thiệu</a>
@@ -47,12 +39,33 @@
       </nav>
     </header>
     <main class="main-container">
-      <!-- 1. KHU VỰC BÁNH KEM -->
-      <section id="banh-mi" class="product-section">
-        <h2>Bánh Kem</h2>
-        <div class="product-grid">
-          <!-- Sản phẩm 156655 -->
-          <div class="product-card">
+      <aside class="main-aside">
+        <h4>Fresh Cake</h4>
+        <h5>PHÂN LOẠI</h5>
+        <form>
+          <input type="checkbox" name="loai" value="banh-kem"/>
+          <label>Bánh kem</label>
+        </form>
+        <form>
+          <input type="checkbox" name="loai" value="banh-mi"/>
+          <label>Bánh mì</label>
+        </form>
+        <form>
+          <input type="checkbox" name="loai" value="banh-ngot"/>
+          <label>Bánh ngọt</label>
+        </form>
+        <form>
+          <input type="checkbox" name="loai" value="banh-quy"/>
+          <label>Bánh quy</label>
+        </form>
+        <form>
+          <input type="checkbox" name="loai" value="thuc-uong"/>
+          <label>Thức uống</label>
+        </form>
+      </aside>
+      <div class="main-section">
+        <section class="product-section product-grid">
+          <div class="product-card" data-loai="banh-kem">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhkem/banhkemchocolatehatde.png"
@@ -78,8 +91,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 2 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-kem">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhkem/banhkemdautay.png"
@@ -105,9 +117,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-
-          <!-- Sản phẩm 3 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-kem">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhkem/banhkemhatdecuoi.png"
@@ -133,8 +143,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 4 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-kem">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhkem/banhkemredvelvet.png"
@@ -160,14 +169,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- 2. KHU VỰC BÁNH MÌ -->
-      <section id="banh-mi" class="product-section">
-        <h2>Bánh Mì</h2>
-        <div class="product-grid">
-          <!-- Sản phẩm 4 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-mi">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhmi/banhbonglantruyenthong.png"
@@ -193,9 +195,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-
-          <!-- Sản phẩm 5 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-mi">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhmi/banhdonutkemtuoi.png"
@@ -221,8 +221,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 6 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-mi">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhmi/banhbundtcaramel.png"
@@ -248,8 +247,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 7 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-mi">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhmi/banhcroissantchocolate.png"
@@ -275,14 +273,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- 3. KHU VỰC BÁNH NGỌT -->
-      <section id="banh-ngot" class="product-section">
-        <h2>Bánh Ngọt</h2>
-        <div class="product-grid">
-          <!-- Sản phẩm 8 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-ngot">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhngot/banhtartchocolatehatde.png"
@@ -308,8 +299,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 9 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-ngot">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhngot/cupcakekemdau.png"
@@ -335,8 +325,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 10 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-ngot">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhngot/banhsukem.png"
@@ -362,12 +351,11 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 11 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-ngot">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhngot/banhmoussemamxoi.png"
-                alt="Bánh su kem"
+                alt="Bánh mousse mâm xôi"
               />
             </div>
             <div class="product-details">
@@ -389,14 +377,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- 4. KHU VỰC BÁNH QUY -->
-      <section id="banh-quy" class="product-section">
-        <h2>Bánh Quy</h2>
-        <div class="product-grid">
-          <!-- Sản phẩm 12 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-quy">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhquy/banhquychocolate.png"
@@ -422,8 +403,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 13 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-quy">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhquy/macaronmuaxuan.png"
@@ -449,8 +429,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 14 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-quy">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhquy/banhquykemdau.png"
@@ -476,8 +455,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 15 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="banh-quy">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/banhquy/banhquykemvani.png"
@@ -503,14 +481,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-        </div>
-      </section>
-      <!-- 5. KHU VỰC THỨC UỐNG -->
-      <section id="thuc-uong" class="product-section">
-        <h2>Thức Uống</h2>
-        <div class="product-grid">
-          <!-- Sản phẩm 11 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="thuc-uong">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/thucuong/sodavietquat.png"
@@ -536,9 +507,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-
-          <!-- Sản phẩm 12 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="thuc-uong">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/thucuong/travai.png"
@@ -564,8 +533,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 13 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="thuc-uong">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/thucuong/suachuanhietdoi.png"
@@ -591,8 +559,7 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-          <!-- Sản phẩm 13 -->
-          <div class="product-card">
+          <div class="product-card" data-loai="thuc-uong">
             <div class="product-img-box">
               <img
                 src="../images/anhsanpham/thucuong/travai.png"
@@ -618,8 +585,8 @@
               <p>Thêm vào giỏ hàng</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
     <footer>
       <div class="footer-container">

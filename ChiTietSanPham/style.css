@@ -3,32 +3,81 @@ body {
   background-color: #fffcf8;
 }
 .main-container {
-  max-width: 1200px;
-  margin: 20px auto;
+  display: flex;
+  max-width: 1290px;
+  margin: 10px auto;
   padding: 0 15px;
-  font-family: Arial, sans-serif; /*font chữ */
+  gap: 40px;
+  font-family: Arial, sans-serif;
 }
-.product-section {
-  width: 100%;
+
+.main-aside {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 17%;
+  margin-top: 5px;
+  margin-right: 50px;
+}
+.main-aside h4 {
+  color: #531804;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.main-aside h5 {
+  color: #57667a;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.main-aside form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.main-aside input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  margin-right: 12px;
+  border-radius: 4px;
+  accent-color: var(--btn);
+}
+.main-aside label {
+  font-size: 18px;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.main-aside label:hover {
+  color: #531804;
+}
+.main-section {
+  flex: 1;
 }
 
 /* Lưới sản phẩm - 4 cột cho Laptop */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  width: 100%;
 }
 /* 4. MEDIA QUERIES (CO GIÃN MÀN HÌNH THỦ CÔNG) */
 @media screen and (max-width: 992px) {
   .product-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
 }
 
 @media screen and (max-width: 768px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .main-container {
+    flex-direction: column;
   }
 }
 
@@ -89,12 +138,10 @@ body {
   border: 1px solid #ffd1dc;
   margin: 0 8px;
   border-radius: 5px;
-  /* Ẩn mũi tên mặc định của thẻ input */
-  -moz-appearance: textfield;
 }
-.qty-input::-webkit-outer-spin-button, /*sử dụng phần tử giả để lấy 2 mũi tên trong thẻ input */
+.qty-input::-webkit-outer-spin-button,
 .qty-input::-webkit-inner-spin-button {
-  -webkit-appearance: none; /*ko hiển thị giao diện mặc định của phần tử này nữa, kết quả là các mũi tên bị tàng hình*/
+  -webkit-appearance: none;
   margin: 0;
 }
 .product-img-box {
@@ -141,4 +188,8 @@ body {
   border-radius: 10px;
   font-size: 14px;
   font-weight: 500;
+}
+
+.hidden {
+  display: none;
 }

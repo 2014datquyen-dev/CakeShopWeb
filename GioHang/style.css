@@ -1,4 +1,4 @@
-:root{
+.trang-gio-hang{
             --bg:white;
             --text:black;
             --right: #e6e3e3;
@@ -10,35 +10,27 @@
             --hr: #bd6b83;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family:Arial, sans-serif;
-            line-height: 1.65;
-        }
-
-            main section{
-                background:#fffcf8;
-                padding: 20px 200px;
+            .cartBtn{
+                position: relative;
             }
-            main section .container{
-                padding: 80px 80px;
-                background: white;
-                margin: 20px 50px;
+            .so-luong-gio{
+                position: absolute;
+                top: -4px;
+                right: -10px;
+                min-width: 20px;
+                height: 20px;
+                padding: 0px 5px;
+                border-radius: 10px;
+                background: #800020;
+                color: white;
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 20px;
+                text-align: center;
             }
-            main section .container img{
-                display: block;
-                width: 70%;
-                margin: 20px auto;
-                object-fit: cover;
-            }
-
-        a:hover{
-            color: #531804;
-        }
             .trang-gio-hang{
                 padding: 40px 120px 64px;
+                background: #fffcf8;
             }
             .bo-cuc{
                 display: grid;
@@ -57,28 +49,32 @@
                 grid-area: hen-gio;
                 padding: 30px 30px 30px 0px;
             }
-            .cuon-bang{
-                overflow-x: auto;
+            .dong-tieu-de,
+            .san-pham{
+                display: grid;
+                grid-template-columns: 40px 100px minmax(0px, 1fr) 110px 160px 120px;
+                align-items: center;
+                column-gap: 16px;
             }
-            .bang-gio-hang{
-                width: 100%;
-                border-collapse: collapse;
-            }
-            .bang-gio-hang thead th{
-                padding: 12px 10px;
-                font-size: 17px;
-                text-align: center;
+            .dong-tieu-de{
+                padding: 12px 0px;
                 border-bottom: 2px solid var(--btn);
-            }
-            .bang-gio-hang tbody td,
-            .bang-gio-hang tbody th{
-                padding: 30px 10px;
-                vertical-align: top;
+                font-size: 17px;
+                font-weight: bold;
                 text-align: center;
-                border-bottom: 1px solid var(--hr);
             }
-            .bang-gio-hang tbody th{
-                font-weight: normal;
+            .dong-tieu-de .cot-san-pham{
+                grid-column: 1 / 4;
+            }
+            .ds-san-pham{
+                list-style: none;
+            }
+            .san-pham{
+                padding: 30px 0px;
+                border-bottom: 1px solid var(--hr);
+                text-align: center;
+            }
+            .thong-tin{
                 text-align: left;
             }
             .nut-xoa{
@@ -95,6 +91,7 @@
             }
             .gio-trong{
                 padding: 60px 10px;
+                border-bottom: 1px solid var(--hr);
                 text-align: center;
                 font-size: 18px;
                 color: var(--tf);
@@ -271,23 +268,6 @@
                 transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s;
             }
             @media (max-width: 1024px){
-                header{
-                    padding: 10px 20px;
-                }
-                .header-top{
-                    padding: 4px 0px;
-                }
-                .header-main{
-                    flex-wrap: wrap;
-                    gap: 12px;
-                }
-                header nav{
-                    gap: 28px;
-                }
-                .search-box{
-                    width: 260px;
-                }
-
                 .trang-gio-hang{
                     padding: 24px 20px 40px;
                 }
@@ -310,60 +290,12 @@
                 .vung-hen-gio{
                     padding: 28px 24px;
                 }
-
-                footer{
-                    padding: 40px 24px;
-                }
-                .footer-top{
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 24px;
-                }
             }
-            @media (max-width: 600px){
-                header{
-                    padding: 8px 16px;
-                }
-                header .logo{
-                    width: 80px;
-                }
-                .header-main > div{
-                    flex: 1;
-                    justify-content: flex-end;
-                    gap: 10px;
-                }
-                .search-box{
-                    flex: 1;
-                    width: auto;
-                    min-width: 0;
-                    padding: 4px 10px;
-                }
-                .search-btn{
-                    width: 32px;
-                    padding: 5px 7px;
-                }
-                header nav{
-                    order: 3;
-                    width: 100%;
-                    gap: 0px;
-                    justify-content: space-between;
-                }
-                header nav a{
-                    font-size: 14px;
-                }
-                .trang-gio-hang{
-                    padding: 12px 0px 24px;
-                }
-                .vung-san-pham{
-                    padding: 8px 16px 0px;
-                }
-                .vung-hen-gio{
-                    padding: 22px 16px;
-                }
-                .bang-gio-hang thead{
+            @media (max-width: 768px){
+                .dong-tieu-de{
                     display: none;
                 }
-                .bang-gio-hang tbody tr{
-                    display: grid;
+                .san-pham{
                     grid-template-columns: 28px 80px 1fr auto;
                     grid-template-areas:
                         "xoa anh ten        ten"
@@ -371,45 +303,34 @@
                         "xoa anh so-luong   thanh-tien";
                     column-gap: 12px;
                     row-gap: 6px;
+                    align-items: start;
                     padding: 16px 0px;
-                    border-bottom: 1px solid var(--hr);
-                }
-                .bang-gio-hang tbody td,
-                .bang-gio-hang tbody th{
-                    padding: 0px;
-                    border-bottom: none;
                     text-align: left;
                 }
-                .bang-gio-hang tbody tr > :nth-child(1){
+                .san-pham > :nth-child(1){
                     grid-area: xoa;
                 }
-                /* Dòng "Giỏ hàng trống" chỉ có 1 ô -> không chia lưới, cho ô chiếm hết bề ngang */
-                .bang-gio-hang tbody tr.dong-trong{
-                    display: block;
-                }
-                .bang-gio-hang tbody .gio-trong{
-                    display: block;
-                    padding: 40px 0px;
-                    text-align: center;
-                }
-                .bang-gio-hang tbody tr > :nth-child(2){
+                .san-pham > :nth-child(2){
                     grid-area: anh;
                 }
-                .bang-gio-hang tbody tr > :nth-child(3){
+                .san-pham > :nth-child(3){
                     grid-area: ten;
                 }
-                .bang-gio-hang tbody tr > :nth-child(4){
+                .san-pham > :nth-child(4){
                     grid-area: don-gia;
                     font-size: 15px;
                     color: var(--tf);
                 }
-                .bang-gio-hang tbody tr > :nth-child(5){
+                .san-pham > :nth-child(5){
                     grid-area: so-luong;
                 }
-                .bang-gio-hang tbody tr > :nth-child(6){
+                .san-pham > :nth-child(6){
                     grid-area: thanh-tien;
                     align-self: center;
                     font-weight: bold;
+                }
+                .gio-trong{
+                    padding: 40px 0px;
                 }
                 .nut-xoa{
                     font-size: 24px;
@@ -441,6 +362,17 @@
                     width: 36px;
                     font-size: 16px;
                 }
+            }
+            @media (max-width: 600px){
+                .trang-gio-hang{
+                    padding: 12px 0px 24px;
+                }
+                .vung-san-pham{
+                    padding: 8px 16px 0px;
+                }
+                .vung-hen-gio{
+                    padding: 22px 16px;
+                }
                 .tiep-tuc{
                     padding: 18px 0px;
                     text-align: center;
@@ -451,16 +383,5 @@
                 .vung-hen-gio input[type="submit"]{
                     margin-top: 24px;
                     padding: 17px 12px;
-                }
-                footer{
-                    padding: 30px 16px;
-                }
-                .footer-top{
-                    grid-template-columns: 1fr;
-                }
-                .footer-buttom{
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 10px;
                 }
             }

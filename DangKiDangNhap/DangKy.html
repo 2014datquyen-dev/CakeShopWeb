@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký</title>
     <link rel="stylesheet" href="../header-footer.css">
-    <link rel="stylesheet" href="DangNhapDangKy.css">
+    <link rel="stylesheet" href="style.css">
 
     <script src="../header-footer.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="register.js" defer></script>
 </head>
 <body>
-    <header class="header">
+    src="../images/icons/cart2.png" alt="Giỏ hàng">
+        </a>
+        <button class="menu-btn" id="menuBtn" type="button">☰</button>
+<header class="header">
         <div class=header-top>
             <div class="auth-link">
                 <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
@@ -28,62 +32,72 @@
             <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
         </form>
         <a href="../GioHang/gioHang.html" class="cartBtn">
-            <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
-        </a>
-        <button class="menu-btn" id="menuBtn" type="button">☰</button>
-
+            <img class="cart" 
         <nav class="nav-menu" id="navMenu">
-            <a href="../TrangChu/trangChu.html">Giới thiệu</a>
+            <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
             <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
             <a href="#">Danh sách cửa hàng</a>
             <a href="#">Tin tức</a>
         </nav>
     </header>
     <main>
-        <div class="form-container">
+        <div class="container">
             <h1>Tạo tài khoản mới</h1>
             <p>Đăng ký để nhận ưu đãi dành riêng cho bạn.</p>
             <form>
+                <p class="form-name">Họ và tên</p>
                 <div class="form-group">
                     <input id="fullname" type="text" placeholder=""> 
                     <label >Họ và tên<span class="required"> *</span></label>
-                    <span class="error-message" id="nameError"></span>   
+                    <span class="error-message"></span>   
                 </div>
+                <p class="form-name">Email</p>
                 <div class="form-group">
                     <input id="email" type="text" placeholder=""> 
                     <label >Email<span class="required"> *</span></label>
-                    <span class="error-message" id="nameError"></span>   
+                    <span class="error-message"></span>   
                 </div>
+                <p class="form-name">Số điện thoại</p>
                 <div class="form-group">
                     <input id="phone" type="text" placeholder=""> 
                     <label >Số điện thoại<span class="required"> *</span></label>
-                    <span class="error-message" id="nameError"></span>   
+                    <span class="error-message"></span>   
                 </div>
+                <p class="form-name">Mật khẩu</p>
                 <div class="form-group">
-                    <input id="password" type="password" placeholder=""> 
+                    <input id="password" class="password-input" type="password" placeholder=""> 
                     <label >Mật khẩu<span class="required"> *</span></label>
-                    <button type="button" class="toggle-password" aria-label="Hiện mật khẩu">
-                        <i data-lucide="eye"></i>
-                    </button>
-                    <span class="error-message" id="nameError"></span>   
+                    <span class="error-message"></span> 
+                    <button type="button" class="toggle-password"><i data-lucide="eye-off"></i></button>  
                 </div>
+                <p class="form-name">Xác minh mật khẩu</p>
                 <div class="form-group">
-                    <input id="confirmPassword" type="password" placeholder=""> 
+                    <input id="confirmPassword" class="password-input" type="password" placeholder=""> 
                     <label >Xác nhận mật khẩu<span class="required"> *</span></label>
-                    <span class="error-message" id="nameError"></span>   
+                    <span class="error-message"></span>                    
+                    <button type="button" class="toggle-password"><i data-lucide="eye-off"></i></button>
                 </div>
                 <p><input type="checkbox" required>Tôi đồng ý với điều khoản và chính sách bảo mật</p>
 
                 <button type="submit">Đăng ký</button>
             </form>
             <p>Hoặc đăng ký với</p>
-                <a class="google-btn" href="www.google.com">
-                    <img src="../images/icons/google_logo.png" alt="Google">
-                    Tiếp tục với Google
-                </a>
+            <a class="google-btn" href="www.google.com">
+                <img src="../images/icons/google_logo.png" alt="Google">
+                Tiếp tục với Google
+            </a>
             <p>Đã có tài khoản?<a href="DangNhap.html"> Đăng nhập ngay</a></p>
         </div>
     </main>
+    <div class="success-overlay" id="successPopup">
+        <div class="success-popup">
+            <div class="success-icon">✓</div>
+            <h2>Đăng ký thành công!</h2>
+            <button type="button" id="closePopup">
+                <a href="dangNhap.html">Đăng nhập ngay</a>
+            </button>
+        </div>
+    </div>
     <footer>
         <div class="footer-container">
             <div class="footer-column first">
@@ -153,8 +167,8 @@
             </div>
     </footer>
     <script src="https://unpkg.com/lucide@latest"></script>
-<script>
+    <script>
     lucide.createIcons();
-</script>
+    </script>
 </body>
 </html>
