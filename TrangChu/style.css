@@ -1,5 +1,5 @@
 body {
-    background-color: #fffcf8;
+    background-color: var(--bg);
 }
 #nutLenDau {
     position: fixed;      /* cố định, cuộn trang nút vẫn đứng yên */
@@ -253,7 +253,7 @@ body {
 }
 
 .cau-chuyen-content a:hover {
-    color: #97465e;
+    color: var(--hv-link);
     transform: translateX(6px);
 }
 

@@ -1,174 +1,175 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đăng Ký</title>
-    <link rel="stylesheet" href="../header-footer.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../header-footer.css" />
+    <link rel="stylesheet" href="style.css" />
 
     <script src="../header-footer.js" defer></script>
     <script src="script.js" defer></script>
     <script src="register.js" defer></script>
-</head>
-<body>
-    src="../images/icons/cart2.png" alt="Giỏ hàng">
-        </a>
-        <button class="menu-btn" id="menuBtn" type="button">☰</button>
-<header class="header">
-        <div class=header-top>
-            <div class="auth-link">
-                <a href="../DangKiDangNhap/DangKy.html">Đăng nhập</a>
-                &nbsp;<span class="separator">|</span>&nbsp;
-                <a href="../DangKiDangNhap/DangNhap.html">Đăng ký</a>
-            </div>
-        </div>
-        <a class="logo" href="../TrangChu/trangChu.html">
-            <img src="../images/icons/logo.png" alt="logo">
-        </a>
-        <form class="search-box">
-            <input class="search-input" type="text" placeholder="Freshcake bao ship 0đ - Chốt ngay!">
-            <img class="search-btn" src="../images/icons/search.png" alt="Tìm kiếm">
-        </form>
-        <a href="../GioHang/gioHang.html" class="cartBtn">
-            <img class="cart" 
-        <nav class="nav-menu" id="navMenu">
-            <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
-            <a href="../ChiTietSanPham/chiTietSanPham.html">Sản phẩm</a>
-            <a href="#">Danh sách cửa hàng</a>
-            <a href="#">Tin tức</a>
-        </nav>
-    </header>
+  </head>
+  <body>
     <main>
-        <div class="container">
-            <h1>Tạo tài khoản mới</h1>
-            <p>Đăng ký để nhận ưu đãi dành riêng cho bạn.</p>
-            <form>
-                <p class="form-name">Họ và tên</p>
-                <div class="form-group">
-                    <input id="fullname" type="text" placeholder=""> 
-                    <label >Họ và tên<span class="required"> *</span></label>
-                    <span class="error-message"></span>   
-                </div>
-                <p class="form-name">Email</p>
-                <div class="form-group">
-                    <input id="email" type="text" placeholder=""> 
-                    <label >Email<span class="required"> *</span></label>
-                    <span class="error-message"></span>   
-                </div>
-                <p class="form-name">Số điện thoại</p>
-                <div class="form-group">
-                    <input id="phone" type="text" placeholder=""> 
-                    <label >Số điện thoại<span class="required"> *</span></label>
-                    <span class="error-message"></span>   
-                </div>
-                <p class="form-name">Mật khẩu</p>
-                <div class="form-group">
-                    <input id="password" class="password-input" type="password" placeholder=""> 
-                    <label >Mật khẩu<span class="required"> *</span></label>
-                    <span class="error-message"></span> 
-                    <button type="button" class="toggle-password"><i data-lucide="eye-off"></i></button>  
-                </div>
-                <p class="form-name">Xác minh mật khẩu</p>
-                <div class="form-group">
-                    <input id="confirmPassword" class="password-input" type="password" placeholder=""> 
-                    <label >Xác nhận mật khẩu<span class="required"> *</span></label>
-                    <span class="error-message"></span>                    
-                    <button type="button" class="toggle-password"><i data-lucide="eye-off"></i></button>
-                </div>
-                <p><input type="checkbox" required>Tôi đồng ý với điều khoản và chính sách bảo mật</p>
+      <div class="container">
+        <h1>Tạo tài khoản mới</h1>
+        <p>Đăng ký để nhận ưu đãi dành riêng cho bạn.</p>
+        <form>
+          <p class="form-name">Họ và tên</p>
+          <div class="form-group">
+            <input id="fullname" type="text" placeholder="" />
+            <label>Họ và tên<span class="required"> *</span></label>
+            <span class="error-message"></span>
+          </div>
+          <p class="form-name">Email</p>
+          <div class="form-group">
+            <input id="email" type="text" placeholder="" />
+            <label>Email<span class="required"> *</span></label>
+            <span class="error-message"></span>
+          </div>
+          <p class="form-name">Số điện thoại</p>
+          <div class="form-group">
+            <input id="phone" type="text" placeholder="" />
+            <label>Số điện thoại<span class="required"> *</span></label>
+            <span class="error-message"></span>
+          </div>
+          <p class="form-name">Mật khẩu</p>
+          <div class="form-group">
+            <input
+              id="password"
+              class="password-input"
+              type="password"
+              placeholder=""
+            />
+            <label>Mật khẩu<span class="required"> *</span></label>
+            <span class="error-message"></span>
+            <button type="button" class="toggle-password">
+              <i data-lucide="eye-off"></i>
+            </button>
+          </div>
+          <p class="form-name">Xác minh mật khẩu</p>
+          <div class="form-group">
+            <input
+              id="confirmPassword"
+              class="password-input"
+              type="password"
+              placeholder=""
+            />
+            <label>Xác nhận mật khẩu<span class="required"> *</span></label>
+            <span class="error-message"></span>
+            <button type="button" class="toggle-password">
+              <i data-lucide="eye-off"></i>
+            </button>
+          </div>
+          <p>
+            <input type="checkbox" required />Tôi đồng ý với điều khoản và chính
+            sách bảo mật
+          </p>
 
-                <button type="submit">Đăng ký</button>
-            </form>
-            <p>Hoặc đăng ký với</p>
-            <a class="google-btn" href="www.google.com">
-                <img src="../images/icons/google_logo.png" alt="Google">
-                Tiếp tục với Google
-            </a>
-            <p>Đã có tài khoản?<a href="DangNhap.html"> Đăng nhập ngay</a></p>
-        </div>
+          <button type="submit">Đăng ký</button>
+        </form>
+        <p>Hoặc đăng ký với</p>
+        <a class="google-btn" href="www.google.com">
+          <img src="../images/icons/google_logo.png" alt="Google" />
+          Tiếp tục với Google
+        </a>
+        <p>Đã có tài khoản?<a href="DangNhap.html"> Đăng nhập ngay</a></p>
+      </div>
     </main>
     <div class="success-overlay" id="successPopup">
-        <div class="success-popup">
-            <div class="success-icon">✓</div>
-            <h2>Đăng ký thành công!</h2>
-            <button type="button" id="closePopup">
-                <a href="dangNhap.html">Đăng nhập ngay</a>
-            </button>
-        </div>
+      <div class="success-popup">
+        <div class="success-icon">✓</div>
+        <h2>Đăng ký thành công!</h2>
+        <button type="button" id="closePopup">
+          <a href="dangNhap.html">Đăng nhập ngay</a>
+        </button>
+      </div>
     </div>
     <footer>
-        <div class="footer-container">
-            <div class="footer-column first">
-                <button class="footer-heading" type="button">CHÍNH SÁCH<span class="toggle-arrow"></span>
-                </button>
-                <hr>
-                <ul class="footer-links">
-                    <li><a class="highlight" href="#"><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                    <li><a href="#">Điều khoản dịch vụ</a></li>
-                    <li><a href="#">Khách hàng thân thiết</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <button class="footer-heading" type="button">THÔNG TIN<span class="toggle-arrow"></span>
-                </button>
-                <hr>
-                <ul class="footer-links">
-                    <li><a class="highlight" href="#"><strong>Tin tức</strong></a></li>
-                    <li><a href="#">Tin khuyến mãi</a></li>
-                    <li><a href="#">Tuyển dụng</a></li>
-                </ul>
-            </div>
-            <div class=footer-column>
-                <button class="footer-heading" type="button">HỖ TRỢ<span class="toggle-arrow"></span>
-                </button>
-                <hr>
-                <ul class="footer-links">
-                    <li><a class="highlight" href="#"><strong>Liên hệ</strong></a></li>
-                    <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
-                </ul>
-            </div>
-            <div class="footer-column">
-                <button class="footer-heading" type="button">ĐĂNG KÝ NHẬN TIN<span class="toggle-arrow"></span>
-                </button>
-                <hr>
-                <ul class="social-list">
-                    <li>
-                        <a class="facebook-btn" href="#">
-                            <img src="../images/icons/facebook.png" alt="Facebook">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="insta-btn" href="#">
-                            <img src="../images/icons/instagram.png" alt="Instagram">
-                        </a>
-                    </li>
-                </ul>
-            </div>
+      <div class="footer-container">
+        <div class="footer-column first">
+          <button class="footer-heading" type="button">
+            CHÍNH SÁCH<span class="toggle-arrow"></span>
+          </button>
+          <hr />
+          <ul class="footer-links">
+            <li>
+              <a class="highlight" href="#"
+                ><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a
+              >
+            </li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+            <li><a href="#">Điều khoản dịch vụ</a></li>
+            <li><a href="#">Khách hàng thân thiết</a></li>
+          </ul>
         </div>
-        <br>
-        <div class="footer-legal">
-            <div class="legal-info">
-                <p><strong>Công ty TNHH Five overTry</strong> |
-                    Mã số doanh nghiệp: 01038333567 |
-                    Do Sở Kế hoạch - Đầu tư Cần Thơ cấp ngày 24/10/2026.
-                </p>
-                <p>Số điện thoại: 032 867 5409 |
-                        quyenb2408813@freshcake.vn |
-                        KTX A - Dãy A2/ Đại học Cần Thơ/ Phường Xuân Khánh/ Ninh Kiều/ Cần Thơ |
-                        © Bản quyền thuộc về Fresh Cake.
-                </p>
-            </div>
-                <div>
-                    <img class="legal-badge" src="../images/icons/boCongThuong.png">
-                </div>
-            </div>
+        <div class="footer-column">
+          <button class="footer-heading" type="button">
+            THÔNG TIN<span class="toggle-arrow"></span>
+          </button>
+          <hr />
+          <ul class="footer-links">
+            <li>
+              <a class="highlight" href="#"><strong>Tin tức</strong></a>
+            </li>
+            <li><a href="#">Tin khuyến mãi</a></li>
+            <li><a href="#">Tuyển dụng</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <button class="footer-heading" type="button">
+            HỖ TRỢ<span class="toggle-arrow"></span>
+          </button>
+          <hr />
+          <ul class="footer-links">
+            <li>
+              <a class="highlight" href="#"><strong>Liên hệ</strong></a>
+            </li>
+            <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
+          </ul>
+        </div>
+        <div class="footer-column">
+          <button class="footer-heading" type="button">
+            ĐĂNG KÝ NHẬN TIN<span class="toggle-arrow"></span>
+          </button>
+          <hr />
+          <ul class="social-list">
+            <li>
+              <a class="facebook-btn" href="#">
+                <img src="../images/icons/facebook.png" alt="Facebook" />
+              </a>
+            </li>
+            <li>
+              <a class="insta-btn" href="#">
+                <img src="../images/icons/instagram.png" alt="Instagram" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="footer-legal">
+        <div class="legal-info">
+          <p>
+            <strong>Công ty TNHH Five overTry</strong> | Mã số doanh nghiệp:
+            01038333567 | Do Sở Kế hoạch - Đầu tư Cần Thơ cấp ngày 24/10/2026.
+          </p>
+          <p>
+            Số điện thoại: 032 867 5409 | quyenb2408813@freshcake.vn | KTX A -
+            Dãy A2/ Đại học Cần Thơ/ Phường Xuân Khánh/ Ninh Kiều/ Cần Thơ | ©
+            Bản quyền thuộc về Fresh Cake.
+          </p>
+        </div>
+        <div>
+          <img class="legal-badge" src="../images/icons/boCongThuong.png" />
+        </div>
+      </div>
     </footer>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-    lucide.createIcons();
+      lucide.createIcons();
     </script>
-</body>
+  </body>
 </html>
