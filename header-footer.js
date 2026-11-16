@@ -27,7 +27,7 @@ const name = localStorage.getItem('name');
 
 if (name){
     authLink.innerHTML = 
-        `<a>${name}</a>
+        `<span>${name}</span>
         &nbsp;<span class="separator">|</span>&nbsp;
         <a >Đăng xuất</a>`
 } else {
