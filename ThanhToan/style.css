@@ -588,6 +588,7 @@ footer {
 .success-overlay {
   display: none;
   position: fixed;
+  z-index: 1000;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
@@ -602,7 +603,9 @@ footer {
 .success-popup {
   background: white;
   width: 100%;
-  max-width: 420px;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 35px 25px;
   border-radius: 16px;
   text-align: center;
@@ -629,7 +632,7 @@ footer {
   margin-bottom: 12px;
 }
 
-.success-popup p {
+.success-popup > p {
   color: var(--tf);
   font-size: 15px;
   line-height: 1.6;
@@ -650,8 +653,74 @@ footer {
   background: var(--hv);
 }
 
-.success-popup a {
+/* Nút về trang chủ: trước đây là <a> nằm trong <button> (không hợp lệ) */
+.success-popup .popup-home {
+  display: block;
+  background: var(--btn);
+  border-radius: 8px;
+  padding: 14px 25px;
+  font-size: 16px;
   color: white;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.success-popup .popup-home:hover {
+  background: var(--hv);
+}
+
+/* Thông tin đơn hàng trong popup */
+.success-popup .order-info {
+  margin-bottom: 22px;
+  padding: 16px;
+  border: 1px dashed var(--btn);
+  border-radius: 10px;
+  background: #fffafb;
+  text-align: left;
+  font-size: 14px;
+}
+
+.success-popup .info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.success-popup .info-row span {
+  flex-shrink: 0;
+  color: var(--tf);
+}
+
+.success-popup .info-row strong {
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.success-popup .order-items {
+  list-style: none;
+  margin: 10px 0;
+  padding: 10px 0;
+  border-top: 1px solid #eadde1;
+  border-bottom: 1px solid #eadde1;
+}
+
+.success-popup .order-items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 0;
+}
+
+.success-popup .order-total {
+  margin: 8px 0 0;
+  font-size: 16px;
+}
+
+.success-popup .order-total strong {
+  color: var(--btn);
 }
 
 /* Hiệu ứng popup xuất hiện */

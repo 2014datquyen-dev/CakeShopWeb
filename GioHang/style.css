@@ -1,21 +1,3 @@
-.cartBtn {
-  position: relative;
-}
-.so-luong-gio {
-  position: absolute;
-  top: -4px;
-  right: -10px;
-  min-width: 20px;
-  height: 20px;
-  padding: 0px 5px;
-  border-radius: 10px;
-  background: #800020;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 20px;
-  text-align: center;
-}
 .trang-gio-hang {
   padding: 40px 120px 64px;
   background: #fffcf8;
@@ -89,7 +71,7 @@
   height: 100px;
   object-fit: contain;
   border-radius: 9px;
-  background: var(--right);
+  background: var(--tb);
 }
 .ten-sp {
   font-size: 20px;

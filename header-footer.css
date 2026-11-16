@@ -313,3 +313,24 @@ a:hover {
 }
 
 /*------------------------------------------------------------*/
+
+/* ===== Số lượng trên icon giỏ hàng ===== */
+.cartBtn {
+  position: relative;
+}
+
+.so-luong-gio {
+  position: absolute;
+  top: -4px;
+  right: -10px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0px 5px;
+  border-radius: 10px;
+  background: #800020;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+}
