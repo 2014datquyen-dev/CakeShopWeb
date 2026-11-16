@@ -1,29 +1,27 @@
 var anh = [
-    "../images/banner_img/no3.png",
-    "../images/banner_img/no1.png",
-    "../images/banner_img/no2.png"
+    "../images/Anh3.jpg",
+    "../images/Anh2.jpg",
+    "../images/Anh1.jpg"
 ];
 
 var link = [
     "../TrangChu/trangChu.html",
     "../TrangChu/trangChu.html",
-    "../ChiTietSanPham/chiTietSanPham.html"
+    "../SanPham/sanPham.html"
 ];
 
 var i=0;
-
 function doiAnh() {
     i=i+1;
     //het anh thi quanh ve
     if (i==anh.length){
         i=0;
     }
-
     document.getElementById("bannerImg").src=anh[i];
     document.getElementById("bannerLink").href = link[i];
-    }
+}
 
-setInterval(doiAnh,3000); 
+setInterval(doiAnh,3000);
 
 // ===== HỎI ĐÁP: BẤM CÂU HỎI THÌ MỞ / ĐÓNG =====
 var cacCauHoi = document.querySelectorAll(".cau-hoi");
