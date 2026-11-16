@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FreshCake - Thanh toán</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -63,7 +63,7 @@
                         <span class="method-name">Thanh toán khi nhận hàng</span>
                     </label>
                     <label class="payment-card">
-                        <input type="radio" name="payment-method" valud="Vietcombank">
+                        <input type="radio" name="payment-method" value="Vietcombank">
                         <span class="payment-name">Vietcombank</span>
                     </label>
                 </div>
@@ -80,11 +80,11 @@
         <div class="right">
             <button class="order-toggle" id="orderToggle" type="button">
                 <span class="toggle-label">
-                    <img src="../images/icons/cart2.png"></img>
+                    <img src="../images/icons/cart2.png" alt="">
                     <span class="toggle-text"></span>
                     <span class="toggle-arrow"></span>
                 </span>
-                <span class="toggle-price">1,180,000₫</span>
+                <span class="toggle-price">0₫</span>
             </button>
             <div class="order-details" id="orderDetails">
                 <div class="product-list">
@@ -99,7 +99,7 @@
             <div class="summary">
                 <div class="summary-row">
                     <span>Tạm tính</span>
-                    <span>1,180,000₫</span>
+                    <span>0₫</span>
                 </div>
                 <div class="summary-row">
                     <span>Phí vận chuyển</span>
@@ -111,7 +111,7 @@
                 <span>Tổng cộng</span>
                 <div class="total-price">
                     <small>VND</small>
-                    <strong>1,180,000₫</strong>
+                    <strong>0₫</strong>
                 </div>
             </div>
         </div>
@@ -124,9 +124,8 @@
                 Cảm ơn bạn đã mua hàng tại FreshCake.
                 Đơn hàng của bạn đã được ghi nhận.
             </p>
-            <button type="button" id="closePopup">
-                <a href="../TrangChu/trangChu.html">Quay lại trang chủ</a>
-            </button>
+            <div class="order-info"></div>
+            <a class="popup-home" id="closePopup" href="../TrangChu/trangChu.html">Quay lại trang chủ</a>
         </div>
     </div>
 </body>

@@ -15,7 +15,15 @@ function layGioHang() {
   if (localStorage.getItem('cartItems') === null) {
     return [];
   }
-  return JSON.parse(localStorage.getItem('cartItems'));
+  const customerCart = JSON.parse(localStorage.getItem('cartItems'));
+  // Số lượng bị lỗi (trống, chữ, số âm) từ trang Sản phẩm -> đưa về 1
+  customerCart.forEach(item => {
+    item.quantity = Math.floor(Number(item.quantity));
+    if (isNaN(item.quantity) || item.quantity < 1) {
+      item.quantity = 1;
+    }
+  });
+  return customerCart;
 }
 
 function luuGioHang(cartItemArr) {
@@ -51,7 +59,7 @@ function hienThiGioHang() {
   }
 
   capNhatTongTien();
-  capNhatSoLuongTrenIcon();
+  capNhatIconGioHang();   // hàm dùng chung trong header-footer.js
 }
 
 // li.san-pham: [0]nút xóa [1]ảnh [2]div.thong-tin [3]đơn giá [4]div.chon-so-luong [5]thành tiền
@@ -218,18 +226,6 @@ function capNhatTongTien() {
   tongTien.textContent = formatCurrency(total);
 }
 
-// a.cartBtn: [0]img.cart  [1]span.so-luong-gio
-function capNhatSoLuongTrenIcon() {
-  let numberOfItems = 0;
-  layGioHang().forEach(item => {
-    numberOfItems += Number(item.quantity);
-  });
-  const badge = document.querySelectorAll('.cartBtn')[0].lastElementChild;
-  badge.textContent = numberOfItems;
-  badge.hidden = (numberOfItems === 0);
-}
-
-
 function layNgayHomNay() {
   const d = new Date();
   const thang = String(d.getMonth() + 1).padStart(2, '0');
@@ -253,7 +249,26 @@ function kiemTraThanhToan(evt) {
     evt.preventDefault();
     alert('Ngày nhận hàng không được trước hôm nay.');
     oNgay.focus();
+  } else {
+    luuThongTinNhanHang();   // hợp lệ -> lưu lại để trang Thanh toán đọc
   }
+}
+
+// Lưu thông tin hẹn giờ + ghi chú vào localStorage, key 'thongTinNhanHang'
+// .vung-san-pham: [0]div.danh-sach-gio [1]a.tiep-tuc [2]div.ghi-chu > [0]label [1]textarea
+function luuThongTinNhanHang() {
+  const vungHenGio = layVungHenGio();
+  const oGhiChu = vungHenGio.previousElementSibling.lastElementChild.lastElementChild;
+  const oThoiGian = vungHenGio.children[4];
+  const oHoaDon = vungHenGio.children[5].firstElementChild;
+
+  const thongTin = {
+    ngayNhan: vungHenGio.children[2].value,
+    thoiGian: oThoiGian.options[oThoiGian.selectedIndex].text,
+    xuatHoaDon: oHoaDon.checked,
+    ghiChu: oGhiChu.value.trim()
+  };
+  localStorage.setItem('thongTinNhanHang', JSON.stringify(thongTin));
 }
 
 function setup() {

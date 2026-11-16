@@ -36,3 +36,28 @@ if (name){
         &nbsp;<span class="separator">|</span>&nbsp;
         <a href="../DangKiDangNhap/dangKy.html">Đăng ký</a>`
 }
+
+
+// ===== SỐ LƯỢNG SẢN PHẨM TRÊN ICON GIỎ HÀNG (mọi trang) =====
+// a.cartBtn: [0]img.cart  -> thêm [1]span.so-luong-gio bằng createElement
+const cartBtn = document.querySelectorAll('.cartBtn')[0];
+const soLuongGio = document.createElement('span');
+soLuongGio.className = 'so-luong-gio';
+cartBtn.appendChild(soLuongGio);
+
+// Cộng dồn quantity trong localStorage 'cartItems' (giống redirect2ShowCartPage - Dự án 3)
+function capNhatIconGioHang() {
+    let numberOfItems = 0;
+    if (localStorage.getItem('cartItems') !== null) {
+        JSON.parse(localStorage.getItem('cartItems')).forEach(item => {
+            const soLuong = Math.floor(Number(item.quantity));
+            numberOfItems += (soLuong > 0) ? soLuong : 1;   // số lượng lỗi tính là 1, giống trang giỏ
+        });
+    }
+    const badge = cartBtn.lastElementChild;
+    badge.textContent = numberOfItems > 99 ? '99+' : numberOfItems;
+    badge.hidden = (numberOfItems === 0);
+}
+
+capNhatIconGioHang();
+

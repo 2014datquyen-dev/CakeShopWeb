@@ -42,6 +42,7 @@ const orderSelectedProduct = (evt) => {
     }
 
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    capNhatIconGioHang();
     alert("Đã thêm " + soLuongChon + ' "' + newItem.name + '" vào giỏ hàng.');
   } else {
     alert("Trình duyệt của bạn không hỗ trợ Local storage.");
