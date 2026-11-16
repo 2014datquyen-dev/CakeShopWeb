@@ -59,16 +59,15 @@ body {
   flex: 1;
 }
 
-/* Lưới sản phẩm - 4 cột cho Laptop */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, 220px);
   gap: 20px;
 }
 /* 4. MEDIA QUERIES (CO GIÃN MÀN HÌNH THỦ CÔNG) */
 @media screen and (max-width: 992px) {
   .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, 220px);
   }
 }
 
