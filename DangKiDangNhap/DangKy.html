@@ -36,7 +36,7 @@
       <div class="container">
         <h1>Tạo tài khoản mới</h1>
         <p>Đăng ký để nhận ưu đãi dành riêng cho bạn.</p>
-        <form>
+        <form id="registerForm">
           <p class="form-name">Họ và tên</p>
           <div class="form-group">
             <input id="fullname" type="text" placeholder="" />
@@ -83,12 +83,10 @@
               <i data-lucide="eye-off"></i>
             </button>
           </div>
-          <p>
-            <input type="checkbox" required />Tôi đồng ý với điều khoản và chính
-            sách bảo mật
-          </p>
-
-          <button type="submit">Đăng ký</button>
+            <label>
+              <input type="checkbox" required />Tôi đồng ý với điều khoản và chính sách bảo mật
+            </label>
+            <button type="submit">Đăng ký</button>
         </form>
         <p>Hoặc đăng ký với</p>
         <a class="google-btn" href="www.google.com">

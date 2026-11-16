@@ -23,19 +23,27 @@ headings.forEach((heading) => {
 
 
 const authLink = document.querySelector('.auth-link');
+const login = localStorage.getItem('isLogin');
 const name = localStorage.getItem('name');
 
-if (name){
+if (login){
     authLink.innerHTML = 
         `<span>${name}</span>
         &nbsp;<span class="separator">|</span>&nbsp;
-        <a >Đăng xuất</a>`
+        <a id="logOut">Đăng xuất</a>`
+    
+    document.getElementById('logOut').addEventListener('click', () => {
+        localStorage.removeItem('isLogin');
+        window.location.reload();
+    });
 } else {
     authLink.innerHTML =
         `<a href="../DangKiDangNhap/dangNhap.html">Đăng nhập</a>
         &nbsp;<span class="separator">|</span>&nbsp;
         <a href="../DangKiDangNhap/dangKy.html">Đăng ký</a>`
 }
+
+
 
 
 // ===== SỐ LƯỢNG SẢN PHẨM TRÊN ICON GIỎ HÀNG (mọi trang) =====

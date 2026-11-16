@@ -63,10 +63,10 @@ const handleLogin = () => {
         const passwordValid = validationPassword();    
 
         if (emailPhoneValid&&passwordValid){
-            localStorage.setItem('islogin', 'true');
+            localStorage.setItem('isLogin', 'true');
             window.location.href='../TrangChu/trangChu.html';
         }
-    }, 750);
+    }, 1000);
 }
 
 document.querySelector('button[type="submit"]').addEventListener('click', (e) => {

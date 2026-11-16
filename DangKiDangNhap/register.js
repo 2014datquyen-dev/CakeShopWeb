@@ -94,7 +94,8 @@ const validationConfirmPassword = () => {
     }
 }
 
-document.querySelector('button[type="submit"]').addEventListener('click', (event) => {
+const form = document.getElementById('registerForm');
+form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     btn.style.opacity = '0.7';
@@ -118,7 +119,7 @@ document.querySelector('button[type="submit"]').addEventListener('click', (event
             localStorage.setItem('password', passwordInput.value);
             document.getElementById("successPopup").classList.add("show");
         }
-    }, 750);
+    }, 1000);
 });
 
 nameInput.addEventListener('input', () => {

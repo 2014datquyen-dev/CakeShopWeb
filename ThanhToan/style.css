@@ -88,15 +88,15 @@ body {
 
 .container {
   display: flex;
-  height: 100%;
+  min-height: 100vh;
+  height: auto;
 }
-
 .left {
   flex: 55%;
   display: flex;
   flex-direction: column;
   border-right: 2px solid var(--btn);
-  padding: 60px 70px 0px 150px;
+  padding: 60px 70px 20px 150px;
   gap: 15px;
 }
 
@@ -193,7 +193,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 15px;
-  margin-top: 70px;
+  margin-top: auto;
 }
 
 .actions button {
@@ -221,7 +221,7 @@ footer {
 
 .right {
   flex: 45%;
-  padding: 60px 150px 0px 70px;
+  padding: 60px 150px 20px 70px;
   background-color: var(--right);
 }
 
