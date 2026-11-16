@@ -31,16 +31,13 @@ if (login){
         `<span>${name}</span>
         &nbsp;<span class="separator">|</span>&nbsp;
         <a id="logOut">Đăng xuất</a>`
-    
     document.getElementById('logOut').addEventListener('click', () => {
+        const cart = localStorage.getItem('cartItems');
+        if (cart) localStorage.setItem('cartBackup', cart);
         localStorage.removeItem('isLogin');
+        localStorage.removeItem('cartItems');
         window.location.reload();
     });
-} else {
-    authLink.innerHTML =
-        `<a href="../DangKiDangNhap/dangNhap.html">Đăng nhập</a>
-        &nbsp;<span class="separator">|</span>&nbsp;
-        <a href="../DangKiDangNhap/dangKy.html">Đăng ký</a>`
 }
 
 
