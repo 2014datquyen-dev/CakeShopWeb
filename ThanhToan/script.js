@@ -159,19 +159,16 @@ if (products.length === 0) {
 } else {
     products.forEach((product) => {
         const soLuong = laySoLuong(product);
-        const thanhTien = layGiaSo(product.price) * soLuong;
-        tongTien += thanhTien;
+        const donGia = layGiaSo(product.price);
+        tongTien += donGia * soLuong;   // tổng tiền vẫn tính theo số lượng
 
-        // div.product
         const divProduct = document.createElement('div');
         divProduct.className = 'product';
 
-        // img
         const img = document.createElement('img');
         img.src = product.image;
         img.alt = product.name;
 
-        // div.product-info
         const divInfo = document.createElement('div');
         divInfo.className = 'product-info';
 
@@ -183,23 +180,18 @@ if (products.length === 0) {
 
         divInfo.append(pName, small);
 
-        // span.price
         const spanPrice = document.createElement('span');
         spanPrice.className = 'price';
-        spanPrice.textContent = formatCurrency(thanhTien);
+        spanPrice.textContent = formatCurrency(donGia);   // giá gốc 1 sản phẩm
 
-        // ghép tất cả
         divProduct.append(img, divInfo, spanPrice);
         productList.appendChild(divProduct);
     });
 }
 
-// Truy xuất gián tiếp: lấy nút nguồn rồi duyệt tới ô hiển thị tiền
-// .order-toggle: [0]span.toggle-label [1]span.toggle-price
+
 document.querySelectorAll('.order-toggle')[0].lastElementChild.textContent = formatCurrency(tongTien);
-// .summary: [0]dòng Tạm tính > [0]chữ [1]số tiền
 document.querySelectorAll('.summary')[0].firstElementChild.lastElementChild.textContent = formatCurrency(tongTien);
-// .total-price: [0]small "VND" [1]strong
 document.querySelectorAll('.total-price')[0].lastElementChild.textContent = formatCurrency(tongTien);
 
 
