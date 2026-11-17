@@ -142,9 +142,11 @@ input:not(:placeholder-shown)~.toggle-password{
     display: block;
 }
 
-.toggle-password svg {
-    width: 22px;
-    height: 22px;
+.toggle-password img {
+    position: relative;
+    top: -4px;
+    width: 26px;
+    height: 26px;
 }
 
 

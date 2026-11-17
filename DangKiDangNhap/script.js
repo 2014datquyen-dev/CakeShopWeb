@@ -5,11 +5,16 @@ toggleBtns.forEach((toggleBtn) => {
         const password = toggleBtn.parentElement.querySelector('.password-input');
         if (password.type === 'password') {
             password.type = 'text';
-            toggleBtn.innerHTML = '<i data-lucide="eye"></i>';
+            toggleBtn.textContent='';
+            const eye = document.createElement('img');
+            eye.setAttribute('src', '../images/icons/eye.png');
+            toggleBtn.appendChild(eye);
         } else {
             password.type = 'password';
-            toggleBtn.innerHTML = '<i data-lucide="eye-off"></i>';
-        }   
-        lucide.createIcons();
+            toggleBtn.textContent='';
+            const eyeOff = document.createElement('img');
+            eyeOff.setAttribute('src', '../images/icons/eye.png');
+            toggleBtn.appendChild(eyeOff);
+        };
     });
 });

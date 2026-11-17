@@ -27,10 +27,15 @@ const login = localStorage.getItem('isLogin');
 const name = localStorage.getItem('name');
 
 if (login){
-    authLink.innerHTML = 
-        `<span>${name}</span>
-        &nbsp;<span class="separator">|</span>&nbsp;
-        <a id="logOut">Đăng xuất</a>`
+    authLink.textContent='';
+    const sp_name=document.createElement('span');
+    sp_name.textContent=`${name} | `;
+    const a_logOut=document.createElement('a');
+    a_logOut.setAttribute('id', 'logOut');
+    a_logOut.textContent='Đăng xuất';
+
+    authLink.appendChild(sp_name);
+    authLink.appendChild(a_logOut);
     document.getElementById('logOut').addEventListener('click', () => {
         const cart = localStorage.getItem('cartItems');
         if (cart) localStorage.setItem('cartBackup', cart);

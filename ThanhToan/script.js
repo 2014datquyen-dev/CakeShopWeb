@@ -152,23 +152,46 @@ const products = JSON.parse(data) || [];
 const productList = document.querySelector('.product-list');
 let tongTien = 0;
 
-products.forEach((product) => {
-    const thanhTien = layGiaSo(product.price) * laySoLuong(product);
-    tongTien += thanhTien;
-    productList.innerHTML += `
-        <div class="product">
-            <img src="${product.image}" alt="${product.name}">
-            <div class="product-info">
-                <p>${product.name}</p>
-                <small>${laySoLuong(product)} x ${formatCurrency(layGiaSo(product.price))}</small>
-            </div>
-            <span class="price">${formatCurrency(thanhTien)}</span>
-        </div>
-    `;
-});
-
 if (products.length === 0) {
-    productList.innerHTML = '<p>Giỏ hàng đang trống.</p>';
+    const empty = document.createElement('p');
+    empty.textContent = 'Giỏ hàng đang trống.';
+    productList.replaceChildren(empty);
+} else {
+    products.forEach((product) => {
+        const soLuong = laySoLuong(product);
+        const thanhTien = layGiaSo(product.price) * soLuong;
+        tongTien += thanhTien;
+
+        // div.product
+        const divProduct = document.createElement('div');
+        divProduct.className = 'product';
+
+        // img
+        const img = document.createElement('img');
+        img.src = product.image;
+        img.alt = product.name;
+
+        // div.product-info
+        const divInfo = document.createElement('div');
+        divInfo.className = 'product-info';
+
+        const pName = document.createElement('p');
+        pName.textContent = product.name;
+
+        const small = document.createElement('small');
+        small.textContent = `Số lượng: ${soLuong}`;
+
+        divInfo.append(pName, small);
+
+        // span.price
+        const spanPrice = document.createElement('span');
+        spanPrice.className = 'price';
+        spanPrice.textContent = formatCurrency(thanhTien);
+
+        // ghép tất cả
+        divProduct.append(img, divInfo, spanPrice);
+        productList.appendChild(divProduct);
+    });
 }
 
 // Truy xuất gián tiếp: lấy nút nguồn rồi duyệt tới ô hiển thị tiền
@@ -238,7 +261,7 @@ function taoDongThongTin(nhan, giaTri) {
 // .success-popup: [0]icon [1]h2 [2]p [3]div.order-info [4]a
 function hienThiDonHang(donHang) {
     const khung = document.querySelectorAll('.success-popup')[0].children[3];
-    khung.innerHTML = '';
+    khung.textContent = '';
 
     khung.appendChild(taoDongThongTin('Mã đơn hàng', donHang.maDon));
     khung.appendChild(taoDongThongTin('Ngày đặt', donHang.ngayDat));
