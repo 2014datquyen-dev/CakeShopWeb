@@ -1,3 +1,4 @@
+// Lê Thị Khánh Ly - B2404868
 var anh = [
     "../images/Anh3.jpg",
     "../images/Anh2.jpg",

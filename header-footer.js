@@ -1,3 +1,4 @@
+// Tác giả: Diệp Đạt Quyền - B2408813
 const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("navMenu");
 

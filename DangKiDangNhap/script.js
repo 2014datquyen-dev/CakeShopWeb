@@ -1,3 +1,4 @@
+// Tác giả: Diệp Đạt Quyền - B2408813
 const toggleBtns = document.querySelectorAll('.toggle-password');
 
 toggleBtns.forEach((toggleBtn) => {

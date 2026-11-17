@@ -1,3 +1,4 @@
+// Tác giả: Diệp Đạt Quyền - B2408813
 document.getElementById("orderToggle").addEventListener("click", function () {
     const orderBox = document.querySelector(".right");
     orderBox.classList.toggle("order-open");

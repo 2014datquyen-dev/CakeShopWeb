@@ -1,3 +1,4 @@
+// Tác giả: Lê Diệu Ái – B2505507
 function isExistedInCart(item, cartItemArr) {
   let myIndex = -1;
   for (let i = 0; i < cartItemArr.length; i++) {
