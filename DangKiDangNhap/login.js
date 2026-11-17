@@ -1,3 +1,4 @@
+// Tác giả: Diệp Đạt Quyền - B2408813
 const btn = document.querySelector('button[type="submit"]');
 const emailPhoneInput = document.getElementById('emailPhone');
 const emailPhoneError = emailPhoneInput.nextElementSibling.nextElementSibling;

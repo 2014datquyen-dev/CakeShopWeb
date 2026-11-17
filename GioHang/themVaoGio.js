@@ -1,3 +1,4 @@
+// Tác giả: Huỳnh Thiên Bảo - B2405021
 function isExistedInCart(item, cartItemArr) {
   let myIndex = -1;
   for (let i = 0; i < cartItemArr.length; i++) {

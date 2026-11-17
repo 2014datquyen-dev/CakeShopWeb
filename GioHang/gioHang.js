@@ -1,3 +1,4 @@
+// Tác giả: Huỳnh Thiên Bảo - B2405021
 const formatCurrency = (amount, locale = "vi-VN") => {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
