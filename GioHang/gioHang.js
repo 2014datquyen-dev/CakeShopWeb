@@ -45,7 +45,7 @@ function layVungHenGio() {
 function hienThiGioHang() {
   const customerCart = layGioHang();
   const danhSach = layDanhSach();
-  danhSach.innerHTML = '';
+  danhSach.textContent = '';
 
   if (customerCart.length === 0) {
     const dong = document.createElement('li');

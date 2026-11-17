@@ -82,12 +82,12 @@ const validationConfirmPassword = () => {
     if (validationPassword()){
         if (passwordInput.value===confirmPassword){
             confirmPasswordInput.classList.remove('input-error');
-            confirmPasswordError.innerHTML='';
+            confirmPasswordError.textContent='';
             confirmPasswordInput.nextElementSibling.style.color='#4c4b4b';
             return true;
         } else {
             confirmPasswordInput.classList.add('input-error');
-            confirmPasswordError.innerHTML='Mật khẩu xác nhận không khớp với mật khẩu đã nhâp';
+            confirmPasswordError.textContent='Mật khẩu xác nhận không khớp với mật khẩu đã nhâp';
             confirmPasswordInput.nextElementSibling.style.color='red';
             return false;
         }
