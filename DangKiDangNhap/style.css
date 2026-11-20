@@ -1,0 +1,222 @@
+/* Tác giả: Diệp Đạt Quyền - B2408813 */
+*{
+    line-height: 1;
+}
+
+.container{
+    width: min(90%, 600px);
+    padding: 80px 80px;
+    background: white;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.error-message{
+    color: red;
+    font-size: 12px;
+}
+
+input[type="text"].input-error {
+    border: 1px solid red;
+}
+
+.google-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--inactive);
+    border-radius: 30px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.google-btn img{
+    height: 22px;
+    width: auto;
+}
+
+
+
+.form-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group input, select {
+    width: 100%;
+    padding: 22px 14px 6px;
+    border: 2px solid var(--inactive);
+    border-radius: 6px;
+    /* color: var(--tf);
+    background: var(--tb); */
+    font-size: 16px;
+}
+
+select{
+    padding: 14px 14px;
+    color: var(--tf);
+}
+
+.form-group label {
+    position: absolute;
+    top: 25px;
+    left: 14px;
+    transform: translateY(-50%);
+    color: var(--tf);
+    font-size: 16px;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.form-group input:focus, select:focus {
+    border: 2px solid var(--btn);
+    outline:none;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: 8px;
+    transform: translateY(0);
+    font-size: 13px;
+}
+
+.required{
+    color: red;
+}
+
+p{
+    margin: 30px auto;
+}
+
+.form-name{
+    margin: 10px auto;
+    font-weight: bold;
+}
+
+h1{
+    margin-bottom: 40px;
+}
+
+input[type="checkbox"]{
+    accent-color: var(--btn);
+}
+
+button[type="submit"]{
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    padding: 18px;
+    border: none;
+    background: var(--btn);
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+button[type="submit"]:hover{
+    background: var(--hv);
+}
+
+a{
+    color: var(--link);
+}
+
+.toggle-password {
+    display: none;
+    position: absolute;
+    right: 16px;
+    /* top: 50%;
+    transform: translateY(-50%); */
+    top: 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: black;
+}
+
+input:not(:placeholder-shown)~.toggle-password{
+    display: block;
+}
+
+.toggle-password img {
+    position: relative;
+    top: -4px;
+    width: 26px;
+    height: 26px;
+}
+
+
+.success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.success-overlay.show {
+    display: flex;
+}
+
+.success-popup {
+    background: white;
+    width: 100%;
+    max-width: 420px;
+    padding: 35px 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    animation: popupShow 0.3s ease;
+}
+
+.success-icon {
+    width: 75px;
+    height: 75px;
+    background: #e8f7ed;
+    color: #20a65a;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 45px;
+    margin: 0 auto 20px;
+}
+
+.success-popup h2 {
+    margin-bottom: 30px;
+}
+
+.success-popup p {
+    color: var(--tf);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.success-popup button {
+    background: #531804;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.success-popup button:hover {
+    background: var(--hv);
+}
+
+.success-popup a{
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,31 @@
+/* Tác giả: Trần Khôi Nguyên – B2405047 */
+.container{
+    padding: 80px 80px;
+    background: white;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+.container img{
+    display: block;
+    width:70%;
+    margin: 20px auto;
+    object-fit: cover;/*cắt hình tạo thành hình vuông như cao rộng có 1 giá trị cụ thể*/
+}
+
+@media (max-width: 1024px){
+    .container img{
+        width: 90%;
+    }
+}
+
+@media (max-width: 800px){
+    .container{
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+

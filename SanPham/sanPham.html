@@ -1,0 +1,642 @@
+<!-- Tác giả: Lê Diệu Ái – B2505507 -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tất cả sản phẩm - FreshCake</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../header-footer.css" />
+
+    <script src="../header-footer.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-top">
+        <div class="auth-link">
+            <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập | </a>
+            <a href="../DangKiDangNhap/DangKy.html">Đăng ký</a>
+        </div>
+      </div>
+      <a class="logo" href="../TrangChu/trangChu.html">
+        <img src="../images/icons/logo.png" alt="logo" />
+      </a>
+      <form class="search-box" action="../SanPham/sanPham.html" method="get">
+        <input
+          name="search"
+          class="search-input"
+          type="text"
+          placeholder="Freshcake bao ship 0đ - Chốt ngay!"
+        />
+        <img
+          class="search-btn"
+          src="../images/icons/search.png"
+          alt="Tìm kiếm"
+        />
+      </form>
+      <a href="../GioHang/gioHang.html" class="cartBtn">
+        <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng" />
+      </a>
+      <button class="menu-btn" id="menuBtn" type="button">☰</button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
+        <a class="active" href="../SanPham/sanPham.html">Sản phẩm</a>
+        <a href="#">Danh sách cửa hàng</a>
+        <a href="#">Tin tức</a>
+      </nav>
+    </header>
+    <main class="main-container">
+      <aside class="main-aside">
+        <h4>Fresh Cake</h4>
+        <h5>PHÂN LOẠI</h5>
+        <form>
+          <input id="banh_kem" type="checkbox" name="loai" value="banh-kem" />
+          <label for="banh_kem">Bánh kem</label>
+        </form>
+        <form>
+          <input id="banh_mi" type="checkbox" name="loai" value="banh-mi" />
+          <label for="banh_mi">Bánh mì</label>
+        </form>
+        <form>
+          <input id="banh_ngot" type="checkbox" name="loai" value="banh-ngot" />
+          <label for="banh_ngot">Bánh ngọt</label>
+        </form>
+        <form>
+          <input id="banh_quy" type="checkbox" name="loai" value="banh-quy" />
+          <label for="banh_quy">Bánh quy</label>
+        </form>
+        <form>
+          <input id="thuc_uong" type="checkbox" name="loai" value="thuc-uong" />
+          <label for="thuc_uong">Thức uống</label>
+        </form>
+      </aside>
+      <section class="main-section">
+        <div class="product-section product-grid">
+          <div class="product-card" data-loai="banh-kem">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhkem/banhkemchocolatehatde.png"
+                alt="Bánh kem Chocolate"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh kem Chocolate</h4>
+              <p class="product-price">560.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-kem">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhkem/banhkemdautay.png"
+                alt="Bánh kem dâu tây"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh kem dâu tây</h4>
+              <p class="product-price">450.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-kem">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhkem/banhkemhatdecuoi.png"
+                alt="Bánh kem hạt dẻ cười"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh kem hạt dẻ cười</h4>
+              <p class="product-price">500.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-kem">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhkem/banhkemredvelvet.png"
+                alt="Bánh kem redvelvet"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh kem redvelvet</h4>
+              <p class="product-price">550.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-mi">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhmi/banhbonglantruyenthong.png"
+                alt="Bánh bông lan truyền thống"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh bông lan truyền thống</h4>
+              <p class="product-price">15.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-mi">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhmi/banhdonutkemtuoi.png"
+                alt="Bánh donut kem tươi"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh donut kem tươi</h4>
+              <p class="product-price">35.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-mi">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhmi/banhbundtcaramel.png"
+                alt="Bánh bundtcaramel"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh bundt caramel</h4>
+              <p class="product-price">39.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-mi">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhmi/banhcroissantchocolate.png"
+                alt="Bánh croissant"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh croissant</h4>
+              <p class="product-price">50.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-ngot">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhngot/banhtartchocolatehatde.png"
+                alt="Bánh chocolate hạt dẻ"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh chocolate hạt dẻ</h4>
+              <p class="product-price">19.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-ngot">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhngot/cupcakekemdau.png"
+                alt="Cupcake dâu"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Cupcake dâu</h4>
+              <p class="product-price">60.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-ngot">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhngot/banhsukem.png"
+                alt="Bánh su kem"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh su kem</h4>
+              <p class="product-price">30.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-ngot">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhngot/banhmoussemamxoi.png"
+                alt="Bánh mousse mâm xôi"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh mousse mâm xôi</h4>
+              <p class="product-price">30.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-quy">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhquy/banhquychocolate.png"
+                alt="Bánh quy chocolate"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh quy chocolate</h4>
+              <p class="product-price">19.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-quy">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhquy/macaronmuaxuan.png"
+                alt="Macaron mùa xuân"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Macaron mùa xuân</h4>
+              <p class="product-price">130.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-quy">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhquy/banhquykemdau.png"
+                alt="Bánh quy kem dâu"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh quy kem dâu</h4>
+              <p class="product-price">130.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="banh-quy">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/banhquy/banhquykemvani.png"
+                alt="Bánh quy kem vani"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Bánh quy kem vani</h4>
+              <p class="product-price">130.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="thuc-uong">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/thucuong/sodavietquat.png"
+                alt="Soda việt quất"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Soda việt quất</h4>
+              <p class="product-price">25.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="thuc-uong">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/thucuong/travai.png"
+                alt="Trà vải"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Trà vải</h4>
+              <p class="product-price">30.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="thuc-uong">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/thucuong/suachuanhietdoi.png"
+                alt="Sữa chua nhiệt đới"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Sữa chua nhiệt đới</h4>
+              <p class="product-price">40.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="product-card" data-loai="thuc-uong">
+            <div class="product-img-box">
+              <img
+                src="../images/anhsanpham/thucuong/travai.png"
+                alt="Trà cam long nhãn"
+              />
+            </div>
+            <div class="product-details">
+              <h4 class="product-name">Trà cam long nhãn</h4>
+              <p class="product-price">35.000đ</p>
+            </div>
+            <div class="quantity-container">
+              <button class="qty-btn minus-btn">-</button>
+              <input
+                type="number"
+                class="qty-input"
+                value="1"
+                min="1"
+                readonly
+              />
+              <button class="qty-btn plus-btn">+</button>
+            </div>
+            <button class="giohang add-cart">Thêm vào giỏ hàng</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column first">
+          <button class="footer-heading" type="button">
+            CHÍNH SÁCH<span class="toggle-arrow"></span>
+          </button>
+          <hr />
+          <ul class="footer-links">
+            <li>
+              <a class="highlight" href="#"
+                ><strong>Chính sách mua hàng, vận chuyển và đổi trả</strong></a
+              >
+            </li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+            <li><a href="#">Điều khoản dịch vụ</a></li>
+            <li><a href="#">Khách hàng thân thiết</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <button class="footer-heading" type="button">
+            THÔNG TIN<span class="toggle-arrow"></span>
+          </button>
+          <hr />
+          <ul class="footer-links">
+            <li>
+              <a class="highlight" href="#"><strong>Tin tức</strong></a>
+            </li>
+            <li><a href="#">Tin khuyến mãi</a></li>
+            <li><a href="#">Tuyển dụng</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <button class="footer-heading" type="button">
+            HỖ TRỢ<span class="toggle-arrow"></span>
+          </button>
+          <hr />
+          <ul class="footer-links">
+            <li>
+              <a class="highlight" href="#"><strong>Liên hệ</strong></a>
+            </li>
+            <!-- <li><img src="../images/icons/facebook.png" alt="Facebook"></li> -->
+          </ul>
+        </div>
+        <div class="footer-column">
+          <button class="footer-heading" type="button">
+            ĐĂNG KÝ NHẬN TIN<span class="toggle-arrow"></span>
+          </button>
+          <hr />
+          <ul class="social-list">
+            <li>
+              <a class="facebook-btn" href="#">
+                <img src="../images/icons/facebook.png" alt="Facebook" />
+              </a>
+            </li>
+            <li>
+              <a class="insta-btn" href="#">
+                <img src="../images/icons/instagram.png" alt="Instagram" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="footer-legal">
+        <div class="legal-info">
+          <p>
+            <strong>Công ty TNHH Five overTry</strong> | Mã số doanh nghiệp:
+            01038333567 | Do Sở Kế hoạch - Đầu tư Cần Thơ cấp ngày 24/10/2026.
+          </p>
+          <p>
+            Số điện thoại: 032 867 5409 | quyenb2408813@freshcake.vn | KTX A -
+            Dãy A2/ Đại học Cần Thơ/ Phường Xuân Khánh/ Ninh Kiều/ Cần Thơ | ©
+            Bản quyền thuộc về Fresh Cake.
+          </p>
+        </div>
+        <div>
+          <img class="legal-badge" src="../images/icons/boCongThuong.png" />
+        </div>
+      </div>
+    </footer>
+    <script src="sanPham.js"></script>
+  </body>
+</html>

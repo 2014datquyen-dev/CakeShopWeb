@@ -1,0 +1,375 @@
+/* Tác giả: Lê Thị Khánh Ly */
+body {
+    background-color: var(--bg);
+}
+#nutLenDau {
+    position: fixed;      /* cố định, cuộn trang nút vẫn đứng yên */
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #bd6b83;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #deb9b9;
+    z-index: 1000;        /* để nút nằm đè lên các phần khác */
+
+    /* mặc định ẩn */
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+/* khi có class "hien" thì nút hiện ra */
+#nutLenDau.hien {
+    opacity: 1;
+    visibility: visible;
+}
+
+#nutLenDau:hover {
+    background-color: #97465e;
+    transform: translateY(-4px);
+}
+/* ===== TRANG CHỦ / BANNER ===== */
+.trang-chu {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Banner tràn hết bề ngang màn hình, sát header */
+main {
+    padding-top: 0;
+}
+
+.banner-container {
+    width: 100%;
+    aspect-ratio: 1920 / 700;      /* đúng tỉ lệ của ảnh Anh1, Anh2, Anh3 */
+    overflow: hidden;
+    background-color: #fbc9d9;     /* màu hồng của banner, hiện khi ảnh chưa tải */
+}
+
+.banner-container a {
+    display: block;
+    height: 100%;
+}
+
+.banner-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== DANH MỤC ===== */
+.danh-muc {
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.danhmuc-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.danhmuc-item {
+    width: 160px;
+}
+
+/* Thẻ a mặc định là inline nên phải đổi thành block */
+.danhmuc-item a {
+    display: block;
+    color: #3d302b;
+    text-decoration: none;
+}
+
+.danhmuc-item img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #f6d5dc;
+    transition: transform 0.3s ease;
+}
+
+.danhmuc-item p {
+    margin-top: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    color:black;
+    transition: 0.3s ease;
+}
+
+/* Hover gắn vào cả khối: rê vào ảnh hoặc chữ đều có hiệu ứng */
+.danhmuc-item:hover img {
+    transform: scale(1.1) translateY(-8px);
+    border-color: #c56b83;
+    box-shadow: 0px 6px 12px  #deb9b9;
+}
+
+.danhmuc-item:hover p {
+    color: #c56b83;
+}
+
+/* ===== SẢN PHẨM NỔI BẬT ===== */
+.san-pham {
+    background-color: #fffcf8;
+    padding: 40px 8% 60px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #a95770;
+    text-decoration: underline;
+    text-decoration-color: #e9b8c5;
+    text-underline-offset: 6px;
+}
+
+.san-pham-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.san-pham-item {
+    width: 300px;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 0 0 15px;
+    box-shadow: 0 4px 12px #e8d5d5;
+    overflow: hidden; /* để ảnh zoom không tràn ra ngoài thẻ */
+    transition: 0.3s ease;
+}
+
+.san-pham-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px #deb9b9;
+}
+
+.san-pham-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+
+
+.san-pham-item h4 {
+    font-size: 20px;
+    margin: 15px 15px 10px;
+}
+
+/*BEST SELLER*/
+
+.mo-ta {
+    font-size: 14px;
+    color: black;
+    text-align: center;
+    margin: 0 15px 12px;
+}
+
+.gia {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 12px;
+}
+
+.xem-them {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.xem-them a {
+    display: inline-block;
+    padding: 12px 50px;
+    background-color: #bd6b83;
+    color: #fff;
+    text-decoration: underline;
+    font-size: 16px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.xem-them a:hover {
+    background-color: #97465e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px #deb9b9;
+}
+
+/* ===== CÂU CHUYỆN ===== */
+.cau-chuyen {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 20px 8% 60px;
+    padding: 30px;
+    background-color: #fffcf8;
+    box-shadow: 0 4px 12px #e8d5d5;
+}
+
+
+
+.cau-chuyen img {
+    width: 50%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.4s ease;
+}
+
+
+
+.cau-chuyen-content {
+    flex: 1;
+}
+
+.nhan-nho {
+    color: #c56b83;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.cau-chuyen-content h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.cau-chuyen-content p {
+    margin-bottom: 20px;
+}
+
+.cau-chuyen-content a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: underline;
+    font-weight: bold;
+    color: black;
+    transition: 0.3s ease;
+}
+
+.cau-chuyen-content a:hover {
+    color: var(--hv-link);
+    transform: translateX(6px);
+}
+
+/* ===== ƯU ĐÃI ===== */
+.uu-dai {
+    margin: 0 8% 60px;
+    padding: 45px 20px;
+    text-align: center;
+    background-color: #fffcf8;
+    box-shadow: 0 4px 12px #e8d5d5;
+}
+
+.uu-dai-content h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.uu-dai-content p {
+    margin-bottom: 20px;
+}
+
+.uu-dai-content a {
+    display: inline-block;
+    background-color: #bd6b83;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.uu-dai-content a:hover {
+    background-color: #97465e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px #deb9b9;
+}
+
+/*HOI DAP*/
+
+.uu-dai {
+    margin: 0 8% 60px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px #e8d5d5;
+}
+
+.hoi-dap {
+    margin: 0 8% 60px;
+    padding: 45px 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px #e8d5d5;
+}
+
+
+.hoi-dap-container {
+    font-size: 26px;
+    color: #3d302b;
+}
+
+.hoi-dap-extra {
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.hd-item {
+    border-bottom: 1px solid #f6d5dc;
+}
+
+.cau-hoi {
+    width: 100%;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    color: #3d302b;
+    cursor: pointer;
+    position: relative;
+}
+
+.cau-hoi:hover {
+    color: #c56b83;
+}
+
+/* mũi tên nằm bên phải, vẽ bằng 2 cạnh viền xoay 45 độ */
+.cau-hoi::after {
+    content: "";
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #3d302b;
+    border-bottom: 2px solid #3d302b;
+    transform: translateY(-70%) rotate(45deg);
+    transition: 0.3s;
+}
+
+/* câu trả lời mặc định bị ẩn */
+.tra-loi {
+    display: none;
+    padding-bottom: 20px;
+    color: #777;
+}
+
+/* khi khối có thêm class "mo" thì hiện câu trả lời và xoay mũi tên lên */
+.hd-item.mo .tra-loi {
+    display: block;
+}
+
+.hd-item.mo .cau-hoi::after {
+    transform: translateY(-30%) rotate(-135deg);
+}
