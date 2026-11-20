@@ -72,3 +72,20 @@ function capNhatIconGioHang() {
 
 capNhatIconGioHang();
 
+// ===== NÚT QUAY LÊN ĐẦU TRANG (dùng chung mọi trang, chuyển từ TrangChu/trangChu.js - Lê Thị Khánh Ly) =====
+var nutLenDau = document.getElementById("nutLenDau");
+
+// mỗi lần cuộn trang thì kiểm tra
+window.onscroll = function () {
+    // cuộn xuống quá 300px thì hiện nút, ngược lại thì ẩn
+    if (window.scrollY > 300) {
+        nutLenDau.classList.add("hien");
+    } else {
+        nutLenDau.classList.remove("hien");
+    }
+};
+
+// bấm nút thì cuộn mượt về đầu trang
+nutLenDau.onclick = function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
