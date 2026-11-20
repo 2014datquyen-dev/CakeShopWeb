@@ -1,145 +1,140 @@
 // Tác giả: Lê Diệu Ái – B2505507
-function isExistedInCart(item, cartItemArr) {
-  let myIndex = -1;
-  for (let i = 0; i < cartItemArr.length; i++) {
-    if (cartItemArr[i].id === item.id) {
-      myIndex = i;
-      break;
+function timTrongGio(sp, gio) {
+  for (let i = 0; i < gio.length; i++) {
+    if (gio[i].id === sp.id) {
+      return i;
     }
   }
-  return myIndex;
+  return -1;
 }
 
-const orderSelectedProduct = (evt) => {
-  const nut = evt.currentTarget;
-  const sanPham = nut.closest(".product-card");
+// Xử lý khi bấm nút "Thêm vào giỏ hàng"
+function themVaoGio(e) {
+  const nut = e.currentTarget;
+  const the = nut.parentElement; // thẻ .product-card chứa nút (truy vấn gián tiếp)
 
   if (typeof Storage !== "undefined") {
-    const ten = sanPham.querySelector(".product-name").textContent.trim();
-    const gia = sanPham.querySelector(".product-price").textContent.trim();
-    const anh = sanPham.querySelector("img").getAttribute("src");
+    const ten = the.querySelector(".product-name").textContent.trim();
+    const gia = the.querySelector(".product-price").textContent.trim();
+    const anh = the.querySelector("img").getAttribute("src");
+    const soLuong = parseInt(the.querySelector(".qty-input").value);
 
-    const soLuongInput = sanPham.querySelector(".qty-input");
-    const soLuongChon = parseInt(soLuongInput.value);
-
-    let newItem = {
+    // Tên thuộc tính (id, name, price...) giữ nguyên vì trang Giỏ hàng đọc đúng các tên này
+    const spMoi = {
       id: ten,
       name: ten,
       price: gia,
       image: anh,
-      quantity: soLuongChon,
+      quantity: soLuong,
     };
 
-    let updatedCartItems = [];
+    // Lấy giỏ cũ ra, chưa có thì tạo mảng rỗng
+    let gio = [];
     if (localStorage.getItem("cartItems") !== null) {
-      updatedCartItems = JSON.parse(localStorage.getItem("cartItems"));
+      gio = JSON.parse(localStorage.getItem("cartItems"));
     }
 
-    let index = isExistedInCart(newItem, updatedCartItems);
-    if (index >= 0) {
-      updatedCartItems[index].quantity += soLuongChon;
+    // Có rồi thì cộng dồn số lượng, chưa có thì thêm mới
+    const viTri = timTrongGio(spMoi, gio);
+    if (viTri >= 0) {
+      gio[viTri].quantity += soLuong;
     } else {
-      updatedCartItems.push(newItem);
+      gio.push(spMoi);
     }
 
-    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-    capNhatIconGioHang();
-    alert("Đã thêm " + soLuongChon + ' "' + newItem.name + '" vào giỏ hàng.');
+    localStorage.setItem("cartItems", JSON.stringify(gio));
+    capNhatIconGioHang(); // hàm này nằm trong header-footer.js
+    alert("Đã thêm " + soLuong + ' "' + spMoi.name + '" vào giỏ hàng.');
   } else {
     alert("Trình duyệt của bạn không hỗ trợ Local storage.");
   }
-};
+}
 
-function initializeStoreEvents() {
-  const add2CartList = document.querySelectorAll(".add-cart");
-  for (let i = 0; i < add2CartList.length; i++) {
-    add2CartList[i].addEventListener("click", orderSelectedProduct, false);
+// Gắn sự kiện cho nút thêm vào giỏ và nút + / -
+function ganSuKien() {
+  const cacNutThem = document.querySelectorAll(".add-cart");
+  for (let i = 0; i < cacNutThem.length; i++) {
+    cacNutThem[i].addEventListener("click", themVaoGio, false);
   }
-  const minusBtns = document.querySelectorAll(".minus-btn");
-  minusBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const input = this.nextElementSibling;
-      let val = parseInt(input.value);
-      if (val > 1) {
-        input.value = val - 1;
+
+  // Nút giảm: ô số nằm ngay sau nút
+  const cacNutGiam = document.querySelectorAll(".minus-btn");
+  cacNutGiam.forEach((nut) => {
+    nut.addEventListener("click", function () {
+      const oSo = this.nextElementSibling;
+      const so = parseInt(oSo.value);
+      if (so > 1) {
+        oSo.value = so - 1;
       }
     });
   });
 
-  const plusBtns = document.querySelectorAll(".plus-btn");
-  plusBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const input = this.previousElementSibling;
-      let val = parseInt(input.value);
-      input.value = val + 1;
+  // Nút tăng: ô số nằm ngay trước nút
+  const cacNutTang = document.querySelectorAll(".plus-btn");
+  cacNutTang.forEach((nut) => {
+    nut.addEventListener("click", function () {
+      const oSo = this.previousElementSibling;
+      oSo.value = parseInt(oSo.value) + 1;
     });
   });
 }
 
-function locSanPham(arry) {
-  const data = document.querySelectorAll(".product-card");
-  data.forEach((e) => {
-    var check = false;
-    arry.forEach((i) => {
-      const currloai = e.getAttribute("data-loai");
-      if (currloai === i) {
-        check = true;
-        e.classList.remove("hidden");
-      }
-    });
-    if (!check) e.classList.add("hidden");
-  });
-}
-var temp;
-window.addEventListener("load", initializeStoreEvents, false);
-const loais = document.querySelectorAll('input[name="loai"]');
-loais.forEach((e) => {
-  e.addEventListener("change", function () {
-    const duocchon = document.querySelectorAll('input[name="loai"]:checked');
-    var temp = Array.from(duocchon).map(function (item) {
-      return item.value;
-    });
-    if (temp.length) {
-      locSanPham(temp);
-    } else {
-      const data = document.querySelectorAll(".product-card");
-      data.forEach((e) => {
-        e.classList.remove("hidden");
-      });
+// Đọc từ khóa (?search=) và loại (?loai=) trên thanh địa chỉ
+const thamSo = new URLSearchParams(window.location.search);
+const tuKhoa = thamSo.get("search");
+const loaiTuURL = thamSo.get("loai");
+const cacOLoai = document.querySelectorAll('input[name="loai"]');
+
+// Lọc sản phẩm: thẻ chỉ hiện khi
+//  - đúng loại đã tick (không tick ô nào thì hiện mọi loại), VÀ
+//  - tên chứa từ khóa tìm kiếm (không có từ khóa thì bỏ qua)
+function locSanPham() {
+  const dsLoai = [];
+  cacOLoai.forEach((o) => {
+    if (o.checked) {
+      dsLoai.push(o.value);
     }
   });
+
+  const cacThe = document.querySelectorAll(".product-card");
+  cacThe.forEach((the) => {
+    let hien = true;
+
+    if (dsLoai.length > 0 && !dsLoai.includes(the.getAttribute("data-loai"))) {
+      hien = false;
+    }
+
+    if (tuKhoa) {
+      const ten = the.querySelector(".product-name").textContent.toLowerCase();
+      if (!ten.includes(tuKhoa.toLowerCase())) {
+        hien = false;
+      }
+    }
+
+    if (hien) {
+      the.classList.remove("hidden");
+    } else {
+      the.classList.add("hidden");
+    }
+  });
+}
+
+// ===== CHẠY KHI TRANG TẢI XONG (script đặt cuối <body> nên DOM đã có sẵn) =====
+ganSuKien();
+
+// Tick ô lọc thì lọc lại
+cacOLoai.forEach((o) => {
+  o.addEventListener("change", locSanPham);
 });
 
-window.addEventListener("load", initializeStoreEvents, false);
-
-
-const params = new URLSearchParams(window.location.search);
-const keyword = params.get("search");
-if (keyword) {
-    const products = document.querySelectorAll(".product-card");
-
-    products.forEach((product) => {
-        const name = product.querySelector(".product-name")
-                            .textContent.toLowerCase();
-
-        if (name.includes(keyword.toLowerCase())) {
-            product.style.display = "";
-        } else {
-            product.style.display = "none";
-        }
-    });
+// Từ trang chủ bấm vào một loại (?loai=...): tick sẵn ô tương ứng
+if (loaiTuURL) {
+  cacOLoai.forEach((o) => {
+    if (o.value === loaiTuURL) {
+      o.checked = true;
+    }
+  });
 }
 
-// ===== ĐỌC LOẠI TỪ TRANG CHỦ =====
-var loaiTuTrangChu = new URLSearchParams(window.location.search).get("loai");
-console.log("loai nhan duoc:", loaiTuTrangChu);
-
-if (loaiTuTrangChu) {
-  var oTick = document.querySelector('input[name="loai"][value="' + loaiTuTrangChu + '"]');
-  console.log("o tick tim duoc:", oTick);
-
-  if (oTick) {
-    oTick.checked = true;
-    locSanPham([loaiTuTrangChu]);
-  }
-}
+// Lọc ngay lúc tải trang (áp dụng ?loai=, ?search= và cả ô trình duyệt tự tick lại khi F5)
+locSanPham();

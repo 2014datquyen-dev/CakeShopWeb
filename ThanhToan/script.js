@@ -156,7 +156,8 @@ let tongTien = 0;
 if (products.length === 0) {
     const empty = document.createElement('p');
     empty.textContent = 'Giỏ hàng đang trống.';
-    productList.replaceChildren(empty);
+    productList.textContent = '';
+    productList.appendChild(empty);
 } else {
     products.forEach((product) => {
         const soLuong = laySoLuong(product);
@@ -179,13 +180,16 @@ if (products.length === 0) {
         const small = document.createElement('small');
         small.textContent = `Số lượng: ${soLuong}`;
 
-        divInfo.append(pName, small);
+        divInfo.appendChild(pName);
+        divInfo.appendChild(small);
 
         const spanPrice = document.createElement('span');
         spanPrice.className = 'price';
         spanPrice.textContent = formatCurrency(donGia);   // giá gốc 1 sản phẩm
 
-        divProduct.append(img, divInfo, spanPrice);
+        divProduct.appendChild(img);
+        divProduct.appendChild(divInfo);
+        divProduct.appendChild(spanPrice);
         productList.appendChild(divProduct);
     });
 }

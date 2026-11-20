@@ -1,4 +1,5 @@
-/* Tác giả: Lê Diệu Ái – B2505507 */
+/*Tác giả: Lê Diệu Ái – B2505507
+3. MAIN - NỘI DUNG CHÍNH (SẢN PHẨM) */
 body {
   background-color: #fffcf8;
 }
@@ -177,16 +178,16 @@ body {
 }
 
 /* Nút thêm vào giỏ hàng */
+
 .giohang {
   cursor: pointer;
-}
-
-.giohang p {
   padding: 10px;
   background-color: #ffd1dc;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 500;
+  width: 98%;
+  border: none;
 }
 
 .hidden {
