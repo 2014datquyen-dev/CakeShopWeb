@@ -202,21 +202,17 @@ input:not(:placeholder-shown)~.toggle-password{
     margin-bottom: 25px;
 }
 
-.success-popup button {
+/* Nút "Đăng nhập ngay" là thẻ a, định dạng cho giống nút */
+.success-popup a {
+    display: block;
     background: #531804;
-    border: none;
+    color: white;
+    text-decoration: none;
     border-radius: 30px;
     padding: 14px 25px;
     font-size: 16px;
-    cursor: pointer;
-    width: 100%;
 }
 
-.success-popup button:hover {
+.success-popup a:hover {
     background: var(--hv);
-}
-
-.success-popup a{
-    color: white;
-    text-decoration: none;
 }

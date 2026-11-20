@@ -15,30 +15,26 @@
   <body>
     <header class="header">
       <a class="logo" href="../TrangChu/trangChu.html">
-        <img src="../images/icons/logo.png" alt="logo" />
+        <img class="logo-hinh" src="../images/icons/logo-banh.png" alt="Logo FreshCake">
+        <img class="ten-cua-hang" src="../images/icons/ten-freshcake.png" alt="FreshCake">
       </a>
-      <form class="search-box" action="../SanPham/sanPham.html" method="get">
-        <input
-          name="search"
-          class="search-input"
-          type="text"
-          placeholder="Freshcake bao ship 0đ - Chốt ngay!"
-        />
-        <img
-          class="search-btn"
-          src="../images/icons/search.png"
-          alt="Tìm kiếm"
-        />
-      </form>
-      <a href="../GioHang/gioHang.html" class="cartBtn">
-        <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng" />
-      </a>
-      <button class="menu-btn" id="menuBtn" type="button">☰</button>
-
       <nav class="nav-menu" id="navMenu">
         <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
         <a href="../SanPham/sanPham.html">Sản phẩm</a>
       </nav>
+      <form class="search-box" action="../SanPham/sanPham.html" method="get">
+        <input name="search" class="search-input" type="text" placeholder="Tìm bánh bạn thích...">
+        <button class="search-btn" type="button">
+          <img src="../images/icons/search.png" alt="Tìm kiếm">
+        </button>
+      </form>
+      <a href="../GioHang/gioHang.html" class="cartBtn">
+        <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
+      </a>
+      <button class="user-btn" id="userBtn" type="button">
+        <img src="../images/icons/user.svg" alt="Tài khoản">
+      </button>
+      <button class="menu-btn" id="menuBtn" type="button">☰</button>
     </header>
     <main>
       <button id="nutLenDau" type="button">&#8593;</button>
@@ -75,7 +71,7 @@
             <label>Mật khẩu<span class="required"> *</span></label>
             <span class="error-message"></span>
             <button type="button" class="toggle-password">
-              <img src="../images/icons/eye-off.png">
+              <img src="../images/icons/eye.png" alt="Hiện mật khẩu">
             </button>
           </div>
           <p class="form-name">Xác minh mật khẩu</p>
@@ -89,7 +85,7 @@
             <label>Xác nhận mật khẩu<span class="required"> *</span></label>
             <span class="error-message"></span>
             <button type="button" class="toggle-password">
-              <img src="../images/icons/eye-off.png">
+              <img src="../images/icons/eye.png" alt="Hiện mật khẩu">
             </button>
           </div>
             <label>
@@ -109,9 +105,7 @@
       <div class="success-popup">
         <div class="success-icon">✓</div>
         <h2>Đăng ký thành công!</h2>
-        <button type="button" id="closePopup">
-          <a href="DangNhap.html">Đăng nhập ngay</a>
-        </button>
+        <a class="popup-dang-nhap" id="closePopup" href="DangNhap.html">Đăng nhập ngay</a>
       </div>
     </div>
     <footer>
@@ -190,7 +184,7 @@
           </p>
         </div>
         <div>
-          <img class="legal-badge" src="../images/icons/boCongThuong.png" />
+          <img class="legal-badge" src="../images/icons/boCongThuong.png" alt="Đã thông báo Bộ Công Thương" />
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 /*Tác giả: Lê Diệu Ái – B2505507
-3. MAIN - NỘI DUNG CHÍNH (SẢN PHẨM) */
+/* 3. MAIN - NỘI DUNG CHÍNH (SẢN PHẨM) */
 body {
   background-color: #fffcf8;
 }
@@ -139,11 +139,7 @@ body {
   margin: 0 8px;
   border-radius: 5px;
 }
-.qty-input::-webkit-outer-spin-button,
-.qty-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+
 .product-img-box {
   /*hinh anh sp*/
   width: 100%;

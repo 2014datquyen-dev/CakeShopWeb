@@ -13,37 +13,27 @@
   </head>
   <body>
     <header class="header">
-      <div class="header-top">
-        <div class="auth-link">
-            <a href="../DangKiDangNhap/DangNhap.html">Đăng nhập | </a>
-            <a href="../DangKiDangNhap/DangKy.html">Đăng ký</a>
-        </div>
-      </div>
       <a class="logo" href="../TrangChu/trangChu.html">
-        <img src="../images/icons/logo.png" alt="logo" />
+        <img class="logo-hinh" src="../images/icons/logo-banh.png" alt="Logo FreshCake">
+        <img class="ten-cua-hang" src="../images/icons/ten-freshcake.png" alt="FreshCake">
       </a>
-      <form class="search-box" action="../SanPham/sanPham.html" method="get">
-        <input
-          name="search"
-          class="search-input"
-          type="text"
-          placeholder="Freshcake bao ship 0đ - Chốt ngay!"
-        />
-        <img
-          class="search-btn"
-          src="../images/icons/search.png"
-          alt="Tìm kiếm"
-        />
-      </form>
-      <a href="../GioHang/gioHang.html" class="cartBtn">
-        <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng" />
-      </a>
-      <button class="menu-btn" id="menuBtn" type="button">☰</button>
-
       <nav class="nav-menu" id="navMenu">
         <a href="../GioiThieu/gioiThieu.html">Giới thiệu</a>
         <a class="active" href="../SanPham/sanPham.html">Sản phẩm</a>
       </nav>
+      <form class="search-box" action="../SanPham/sanPham.html" method="get">
+        <input name="search" class="search-input" type="text" placeholder="Tìm bánh bạn thích...">
+        <button class="search-btn" type="button">
+          <img src="../images/icons/search.png" alt="Tìm kiếm">
+        </button>
+      </form>
+      <a href="../GioHang/gioHang.html" class="cartBtn">
+        <img class="cart" src="../images/icons/cart2.png" alt="Giỏ hàng">
+      </a>
+      <button class="user-btn" id="userBtn" type="button">
+        <img src="../images/icons/user.svg" alt="Tài khoản">
+      </button>
+      <button class="menu-btn" id="menuBtn" type="button">☰</button>
     </header>
     <main class="main-container">
       <button id="nutLenDau" type="button">&#8593;</button>
@@ -87,10 +77,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -111,10 +100,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -135,10 +123,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -159,10 +146,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -183,10 +169,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -207,10 +192,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -231,10 +215,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -255,10 +238,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -279,10 +261,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -303,10 +284,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -327,10 +307,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -351,10 +330,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -375,10 +353,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -399,10 +376,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -423,10 +399,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -447,10 +422,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -471,10 +445,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -495,10 +468,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -519,10 +491,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -543,10 +514,9 @@
             <div class="quantity-container">
               <button class="qty-btn minus-btn">-</button>
               <input
-                type="number"
+                type="text"
                 class="qty-input"
                 value="1"
-                min="1"
                 readonly
               />
               <button class="qty-btn plus-btn">+</button>
@@ -632,7 +602,7 @@
           </p>
         </div>
         <div>
-          <img class="legal-badge" src="../images/icons/boCongThuong.png" />
+          <img class="legal-badge" src="../images/icons/boCongThuong.png" alt="Đã thông báo Bộ Công Thương" />
         </div>
       </div>
     </footer>
