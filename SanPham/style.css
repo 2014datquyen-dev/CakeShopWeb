@@ -138,13 +138,13 @@ body {
   margin: 0 8px;
   border-radius: 5px;
 }
-.qty-input::-webkit-outer-spin-button,
+/* .qty-input::-webkit-outer-spin-button,
 .qty-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+} */
+/*hinh anh sp*/
 .product-img-box {
-  /*hinh anh sp*/
   width: 100%;
   height: 300px;
   overflow: hidden;
@@ -159,17 +159,15 @@ body {
   object-fit: cover;
   object-position: center;
 }
-
+/*ten sp*/
 .product-name {
-  /*ten sp*/
   font-size: 15px;
   color: #333;
   margin-bottom: 5px;
   font-weight: 600;
 }
-
+/*gia sp*/
 .product-price {
-  /*gia sp*/
   font-size: 16px;
   color: #d9534f;
   font-weight: bold;
@@ -177,16 +175,16 @@ body {
 }
 
 /* Nút thêm vào giỏ hàng */
+
 .giohang {
   cursor: pointer;
-}
-
-.giohang p {
   padding: 10px;
   background-color: #ffd1dc;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 500;
+  width: 98%;
+  border: none;
 }
 
 .hidden {
