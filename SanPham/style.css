@@ -60,20 +60,20 @@ body {
   flex: 1;
 }
 
-.product-grid {
+.main-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, 220px);
   gap: 20px;
 }
 /* 4. MEDIA QUERIES (CO GIÃN MÀN HÌNH THỦ CÔNG) */
 @media screen and (max-width: 992px) {
-  .product-grid {
+  .main-section {
     grid-template-columns: repeat(auto-fit, 220px);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .product-grid {
+  .main-section {
     grid-template-columns: repeat(2, 1fr);
   }
   .main-container {
@@ -82,7 +82,7 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  .product-grid {
+  .main-section {
     grid-template-columns: repeat(1, 1fr);
   }
 }
