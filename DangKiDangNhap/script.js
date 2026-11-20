@@ -8,7 +8,7 @@ toggleBtns.forEach((toggleBtn) => {
             password.type = 'text';
             toggleBtn.textContent='';
             const eye = document.createElement('img');
-            eye.setAttribute('src', '../images/icons/eye.png');
+            eye.setAttribute('src', '../images/icons/eye-off.png');
             toggleBtn.appendChild(eye);
         } else {
             password.type = 'password';

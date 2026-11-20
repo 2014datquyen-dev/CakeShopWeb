@@ -82,8 +82,13 @@ const validationPhone = () => {
 
 const validationPassword = () => {
     const password = passwordInput.value;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}$/;
-    if (passwordRegex.test(password)){
+    // Kiểm tra từng điều kiện: ít nhất 8 ký tự, có chữ thường, chữ hoa, số và ký tự đặc biệt
+    const hopLe = password.length >= 8 &&
+                  /[a-z]/.test(password) &&
+                  /[A-Z]/.test(password) &&
+                  /[0-9]/.test(password) &&
+                  /[^a-zA-Z0-9]/.test(password);
+    if (hopLe){
         passwordInput.classList.remove('input-error');
         passwordError.innerText = '';
         passwordInput.nextElementSibling.style.color='#4c4b4b';
