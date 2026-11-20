@@ -26,8 +26,9 @@ main {
 }
 
 /*HEADER---------------------------------------------------*/
+/* Bố cục: [logo] [menu ở giữa] [ô tìm kiếm] [giỏ hàng] [tài khoản] */
 header {
-  padding: 15px 3%;
+  padding: 12px 3%;
   background: white;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.15);
   position: sticky;
@@ -35,66 +36,66 @@ header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
   z-index: 999;
 }
 
-.header-top {
-  order: -3;
-  width: 100%;
-  display: flex;
-  margin-left: auto;
-  margin-bottom: -15px;
-  font-size: 15px;
-  color: black;
-}
-
-.auth-link {
-  margin-left: auto;
-  color: black;
-}
-
-.auth-link a {
-  text-decoration: none;
-  color: black;
-}
-
 .logo {
-  order: -2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
 
-.logo img {
-  width: 100px;
+/* Logo hình bánh (hình tròn) */
+.logo-hinh {
+  display: block;
+  width: 58px;
+  height: 58px;
+}
+
+/* Chữ FRESHCAKE (ảnh) đặt cạnh logo */
+.ten-cua-hang {
+  display: block;
+  height: 26px;
+  width: auto;
 }
 
 .nav-menu {
-  order: -1;
+  /* Đặt menu ở chính giữa header (không phụ thuộc độ rộng logo / ô tìm kiếm) */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  flex: 1;
-  font-size: 22px;
-  justify-content: space-around;
+  gap: 50px;
 }
 
 .nav-menu a {
+  padding: 6px 0px 4px;   /* trên = dưới + viền 2px -> chữ nằm giữa theo chiều dọc */
+  border-bottom: 2px solid transparent;
   text-decoration: none;
   color: black;
   font-size: 18px;
+  transition: color 0.2s, border-color 0.2s;
 }
 
+.nav-menu a:hover,
 .nav-menu .active {
   color: var(--link);
+  border-bottom-color: var(--link);
 }
 
 .search-box {
-  height: 45px;
-  width: 200px;
+  margin-left: auto;   /* đẩy ô tìm kiếm + giỏ hàng + tài khoản sang bên phải */
+  height: 42px;
+  width: 240px;
   display: flex;
   align-items: center;
   background: var(--tb);
   border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 5px 15px;
+  border-radius: 21px;
+  padding: 5px 8px 5px 16px;
 }
 
 .search-input {
@@ -105,15 +106,62 @@ header {
   font-size: 14px;
 }
 
+/* Kính lúp là nút: bấm vào cũng tìm như khi nhấn Enter (xử lý trong header-footer.js) */
 .search-btn {
-  width: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.search-btn img {
+  width: 26px;
+  transition: transform 0.2s;
+}
+
+.search-btn:hover img {
+  transform: scale(1.1);
+}
+
+.cartBtn {
+  display: flex;
+  align-items: center;
 }
 
 .cart {
-  height: 40px;
+  height: 36px;
   width: auto;
-  position: relative;
-  top: 2px;
+}
+
+/* Nút tài khoản: vòng tròn có biểu tượng người */
+.user-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e3d3d8;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.user-btn img {
+  width: 24px;
+}
+
+.user-btn:hover {
+  border-color: var(--link);
+}
+
+/* Đã đăng nhập: tô nền hồng nhạt để phân biệt */
+.user-btn.da-dang-nhap {
+  background: #fde7ee;
+  border-color: var(--btn);
 }
 
 .menu-btn {
@@ -219,10 +267,13 @@ a:hover {
     display: block;
   }
 
+  /* Menu chuyển thành danh sách thả xuống, nằm dưới cùng header */
   .nav-menu {
+    position: static;
+    transform: none;
     display: none;
     flex: none;
-    order: 4;
+    order: 10;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
@@ -235,8 +286,10 @@ a:hover {
     display: flex;
   }
 
+  /* Ô tìm kiếm lấp khoảng trống giữa logo và các biểu tượng */
   .search-box {
     flex: 1;
+    width: auto;
   }
 
   .footer-container {
@@ -246,6 +299,30 @@ a:hover {
 }
 
 @media (max-width: 600px) {
+  header {
+    gap: 12px;
+  }
+
+  .logo-hinh {
+    width: 48px;
+    height: 48px;
+  }
+
+  .ten-cua-hang {
+    height: 21px;
+  }
+
+  /* Đẩy giỏ hàng + tài khoản + ☰ sang phải, ô tìm kiếm xuống hàng riêng */
+  .cartBtn {
+    margin-left: auto;
+  }
+
+  .search-box {
+    order: 9;
+    flex: none;
+    width: 100%;
+  }
+
   footer {
     padding: 35px 5% 20px;
   }
@@ -366,4 +443,139 @@ a:hover {
 #nutLenDau:hover {
     background-color: #97465e;
     transform: translateY(-4px);
+}
+
+/* Điện thoại rất hẹp: thu nhỏ logo + tên để giỏ hàng, tài khoản, ☰ vẫn nằm cùng hàng */
+@media (max-width: 400px) {
+  header {
+    gap: 10px;
+  }
+
+  .logo {
+    gap: 6px;
+  }
+
+  .logo-hinh {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ten-cua-hang {
+    height: 17px;
+  }
+}
+
+/* ===== POPUP THÔNG TIN TÀI KHOẢN (tạo bằng JS trong header-footer.js) ===== */
+.tk-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  overflow-y: auto;
+  z-index: 2000;
+}
+
+.tk-popup {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+  padding: 32px 36px 28px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: tkHien 0.25s ease;
+}
+
+@keyframes tkHien {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.tk-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  border: none;
+  background: none;
+  font-size: 30px;
+  line-height: 1;
+  color: #888;
+  cursor: pointer;
+}
+
+.tk-close:hover {
+  color: var(--hv);
+}
+
+.tk-popup h2 {
+  margin-bottom: 22px;
+  text-align: center;
+  font-size: 26px;
+}
+
+.tk-dong-tt {
+  margin-bottom: 14px;
+  font-size: 16px;
+}
+
+.tk-lich-su {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 4px 0px 20px;
+  list-style: none;
+}
+
+.tk-lich-su li {
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: #fbeaf0;
+  font-size: 15px;
+}
+
+.tk-lich-su .tk-trong {
+  background: none;
+  padding: 0;
+  color: var(--tf);
+  font-style: italic;
+}
+
+.tk-dang-xuat {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #531804;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tk-dang-xuat:hover {
+  background: var(--hv);
+}
+
+@media (max-width: 600px) {
+  .tk-popup {
+    padding: 28px 22px 22px;
+  }
+
+  .tk-popup h2 {
+    font-size: 22px;
+  }
 }

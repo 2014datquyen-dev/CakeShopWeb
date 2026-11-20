@@ -223,7 +223,9 @@ function taoDonHang() {
             price: layGiaSo(product.price),
             quantity: laySoLuong(product)
         })),
-        tongTien: tongTien
+        tongTien: tongTien,
+        // email tài khoản đang đăng nhập -> để popup Thông tin tài khoản lọc lịch sử mua hàng
+        taiKhoan: localStorage.getItem('isLogin') ? localStorage.getItem('email') : ''
     };
 }
 
