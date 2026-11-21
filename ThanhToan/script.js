@@ -195,9 +195,206 @@ if (products.length === 0) {
 }
 
 
-document.querySelectorAll('.order-toggle')[0].lastElementChild.textContent = formatCurrency(tongTien);
+// .summary: [0]Tạm tính [1]Phí vận chuyển [2]Giảm giá (chỉ có khi đã dùng mã)
 document.querySelectorAll('.summary')[0].firstElementChild.lastElementChild.textContent = formatCurrency(tongTien);
-document.querySelectorAll('.total-price')[0].lastElementChild.textContent = formatCurrency(tongTien);
+
+
+// ===== MÃ GIẢM GIÁ =====
+// Danh sách mã cố định trong code (không dùng back-end)
+//  loai 'phan-tram': giảm giaTri % (tối đa toiDa đồng, 0 = không giới hạn)
+//  loai 'tien'     : giảm thẳng giaTri đồng
+//  donToiThieu     : tạm tính phải từ mức này mới dùng được mã
+const dsMaGiamGia = [
+    { ma: 'FRESH10', moTa: 'Giảm 10%', loai: 'phan-tram', giaTri: 10, toiDa: 0, donToiThieu: 0 },
+    { ma: 'GIAM50K', moTa: 'Giảm 50.000₫', loai: 'tien', giaTri: 50000, toiDa: 0, donToiThieu: 300000 },
+    { ma: 'BANMOI', moTa: 'Giảm 20%, tối đa 100.000₫', loai: 'phan-tram', giaTri: 20, toiDa: 100000, donToiThieu: 200000 }
+];
+
+let maDangDung = null;   // mã đang áp dụng (null = chưa dùng mã)
+let tienGiam = 0;
+
+// div.discount-container: [0]input [1]label [2]span thông báo [3]nút "Sử dụng"
+const nutSuDung = document.querySelectorAll('.discount-container')[0].lastElementChild;
+const oMaGiamGia = nutSuDung.parentElement.firstElementChild;   // truy vấn gián tiếp
+const thongBaoMa = nutSuDung.previousElementSibling;
+// div.ds-ma-giam-gia nằm ngay sau div.discount-container
+const khungDsMa = nutSuDung.parentElement.nextElementSibling;
+
+function timMaGiamGia(ma) {
+    for (let i = 0; i < dsMaGiamGia.length; i++) {
+        if (dsMaGiamGia[i].ma === ma) {
+            return dsMaGiamGia[i];
+        }
+    }
+    return null;
+}
+
+function tinhTienGiam(maGG, tamTinh) {
+    let tien = 0;
+    if (maGG.loai === 'phan-tram') {
+        tien = Math.round(tamTinh * maGG.giaTri / 100);
+        if (maGG.toiDa > 0 && tien > maGG.toiDa) {
+            tien = maGG.toiDa;
+        }
+    } else {
+        tien = maGG.giaTri;
+    }
+    return Math.min(tien, tamTinh);   // không giảm quá số tiền của đơn
+}
+
+function hienThongBaoMa(noiDung, hopLe) {
+    thongBaoMa.textContent = noiDung;
+    if (hopLe) {
+        thongBaoMa.classList.add('ma-hop-le');
+        oMaGiamGia.classList.remove('input-error');
+    } else {
+        thongBaoMa.classList.remove('ma-hop-le');
+        oMaGiamGia.classList.add('input-error');
+    }
+}
+
+function apDungMaGiamGia() {
+    const ma = oMaGiamGia.value.trim().toUpperCase();
+    oMaGiamGia.value = ma;
+
+    // Xóa trống ô rồi bấm "Sử dụng" -> bỏ mã đang dùng
+    if (ma === '') {
+        maDangDung = null;
+        tienGiam = 0;
+        thongBaoMa.textContent = '';
+        oMaGiamGia.classList.remove('input-error');
+        capNhatTienThanhToan();
+        return;
+    }
+
+    const maGG = timMaGiamGia(ma);
+    if (products.length === 0) {
+        hienThongBaoMa('Giỏ hàng đang trống.', false);
+    } else if (maGG === null) {
+        hienThongBaoMa('Mã giảm giá không tồn tại.', false);
+    } else if (tongTien < maGG.donToiThieu) {
+        hienThongBaoMa('Mã ' + ma + ' chỉ dùng cho đơn từ ' + formatCurrency(maGG.donToiThieu) + '.', false);
+    } else {
+        maDangDung = maGG;
+        tienGiam = tinhTienGiam(maGG, tongTien);
+        hienThongBaoMa('Đã áp dụng mã ' + ma + ': ' + maGG.moTa + '.', true);
+        capNhatTienThanhToan();
+        return;
+    }
+
+    // Mã không hợp lệ -> bỏ mã đang dùng trước đó (nếu có)
+    maDangDung = null;
+    tienGiam = 0;
+    capNhatTienThanhToan();
+}
+
+// Cập nhật dòng "Giảm giá" và tổng tiền phải trả
+function capNhatTienThanhToan() {
+    const canTra = tongTien - tienGiam;
+    document.querySelectorAll('.order-toggle')[0].lastElementChild.textContent = formatCurrency(canTra);
+    document.querySelectorAll('.total-price')[0].lastElementChild.textContent = formatCurrency(canTra);
+
+    const khungTien = document.querySelectorAll('.summary')[0];
+    let dongGiam = khungTien.children[2];
+    if (tienGiam > 0) {
+        if (!dongGiam) {
+            dongGiam = document.createElement('div');
+            dongGiam.className = 'summary-row dong-giam-gia';
+            dongGiam.appendChild(document.createElement('span'));
+            dongGiam.appendChild(document.createElement('span'));
+            khungTien.appendChild(dongGiam);
+        }
+        dongGiam.firstElementChild.textContent = 'Giảm giá (' + maDangDung.ma + ')';
+        dongGiam.lastElementChild.textContent = '- ' + formatCurrency(tienGiam);
+    } else if (dongGiam) {
+        khungTien.removeChild(dongGiam);
+    }
+
+    hienThiDanhSachMa();   // vẽ lại danh sách để cập nhật trạng thái từng mã
+}
+
+// ===== DANH SÁCH MÃ GIẢM GIÁ CHO KHÁCH CHỌN =====
+// Mỗi mã: [0]div thông tin (mã, mô tả, điều kiện)  [1]nút Dùng / Bỏ mã
+function taoTheMa(maGG) {
+    const the = document.createElement('div');
+    the.className = 'the-ma';
+
+    const thongTin = document.createElement('div');
+    const tenMa = document.createElement('strong');
+    tenMa.textContent = maGG.ma;
+    const moTa = document.createElement('p');
+    moTa.textContent = maGG.moTa;
+    const dieuKien = document.createElement('small');
+    if (maGG.donToiThieu > 0) {
+        dieuKien.textContent = 'Cho đơn từ ' + formatCurrency(maGG.donToiThieu);
+    } else {
+        dieuKien.textContent = 'Áp dụng cho mọi đơn hàng';
+    }
+    thongTin.appendChild(tenMa);
+    thongTin.appendChild(moTa);
+    thongTin.appendChild(dieuKien);
+
+    const nut = document.createElement('button');
+    nut.type = 'button';
+
+    if (maDangDung !== null && maDangDung.ma === maGG.ma) {
+        // Mã đang dùng -> cho phép bỏ
+        the.classList.add('dang-dung');
+        nut.textContent = 'Bỏ mã';
+        nut.addEventListener('click', () => {
+            oMaGiamGia.value = '';
+            apDungMaGiamGia();   // ô trống -> bỏ mã
+        });
+    } else if (tongTien < maGG.donToiThieu) {
+        // Chưa đủ điều kiện -> làm mờ, báo còn thiếu bao nhiêu
+        the.classList.add('chua-du');
+        nut.textContent = 'Dùng';
+        nut.disabled = true;
+        dieuKien.textContent += ' (mua thêm ' + formatCurrency(maGG.donToiThieu - tongTien) + ')';
+    } else {
+        nut.textContent = 'Dùng';
+        nut.addEventListener('click', () => {
+            oMaGiamGia.value = maGG.ma;
+            apDungMaGiamGia();
+        });
+    }
+
+    the.appendChild(thongTin);
+    the.appendChild(nut);
+    return the;
+}
+
+function hienThiDanhSachMa() {
+    khungDsMa.textContent = '';
+    if (products.length === 0) {
+        return;   // giỏ trống thì không hiện danh sách
+    }
+
+    const tieuDe = document.createElement('h4');
+    tieuDe.textContent = 'Mã giảm giá dành cho bạn';
+    khungDsMa.appendChild(tieuDe);
+
+    dsMaGiamGia.forEach(maGG => {
+        khungDsMa.appendChild(taoTheMa(maGG));
+    });
+}
+
+nutSuDung.addEventListener('click', apDungMaGiamGia);
+// Nhấn Enter trong ô mã cũng áp dụng
+oMaGiamGia.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        apDungMaGiamGia();
+    }
+});
+// Đang gõ lại thì bỏ báo lỗi
+oMaGiamGia.addEventListener('input', () => {
+    oMaGiamGia.classList.remove('input-error');
+    if (!thongBaoMa.classList.contains('ma-hop-le')) {
+        thongBaoMa.textContent = '';
+    }
+});
+
+capNhatTienThanhToan();
 
 
 // ===== TẠO, LƯU VÀ HIỂN THỊ ĐƠN HÀNG =====
@@ -223,7 +420,10 @@ function taoDonHang() {
             price: layGiaSo(product.price),
             quantity: laySoLuong(product)
         })),
-        tongTien: tongTien,
+        tamTinh: tongTien,
+        maGiamGia: maDangDung ? maDangDung.ma : '',
+        tienGiam: tienGiam,
+        tongTien: tongTien - tienGiam,   // số tiền phải trả sau khi giảm
         // email tài khoản đang đăng nhập -> để popup Thông tin tài khoản lọc lịch sử mua hàng
         taiKhoan: localStorage.getItem('isLogin') ? localStorage.getItem('email') : ''
     };
@@ -298,6 +498,11 @@ function hienThiDonHang(donHang) {
         dsSanPham.appendChild(sp);
     });
     khung.appendChild(dsSanPham);
+
+    if (donHang.tienGiam > 0) {
+        khung.appendChild(taoDongThongTin('Tạm tính', formatCurrency(donHang.tamTinh)));
+        khung.appendChild(taoDongThongTin('Giảm giá (' + donHang.maGiamGia + ')', '- ' + formatCurrency(donHang.tienGiam)));
+    }
 
     const tong = taoDongThongTin('Tổng cộng', formatCurrency(donHang.tongTien));
     tong.classList.add('order-total');
