@@ -17,7 +17,7 @@ var link = [
 ];
 
 var i=0;  
-function doiAnh() {  //Hàm đổi an
+function doiAnh() {  //Hàm đổi ảnh
     i=i+1;
     if (i==anh.length){  //đến ảnh cuối thì quay về ảnh đầu
         i=0;
@@ -51,7 +51,7 @@ function timTrongGio(sp, gio) {
 // Xử lý khi bấm nút "Thêm vào giỏ hàng"
 function themVaoGio(e) {
   const nut = e.currentTarget;
-  const the = nut.parentElement; // thẻ .product-card chứa nút (truy vấn gián tiếp)
+  const the = nut.parentElement; // thẻ .san-pham-item chứa nút (truy vấn gián tiếp)
 
   if (typeof Storage !== "undefined") {
     const ten = the.querySelector("h4").textContent.trim();

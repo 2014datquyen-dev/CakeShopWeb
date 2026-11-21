@@ -43,8 +43,7 @@ a:hover {
   width: 100%;
 }
 
-.form-group input,
-select {
+.form-group input {
   width: 100%;
   padding: 22px 14px 6px;
   border: 2px solid var(--inactive);
@@ -52,11 +51,6 @@ select {
   /* color: var(--tf);
     background: var(--tb); */
   font-size: 16px;
-}
-
-select {
-  padding: 14px 14px;
-  color: var(--tf);
 }
 
 .form-group label {
@@ -70,8 +64,7 @@ select {
   pointer-events: none;
 }
 
-.form-group input:focus,
-select:focus {
+.form-group input:focus {
   border: 2px solid var(--btn);
   outline: none;
 }
@@ -124,16 +117,10 @@ body {
   gap: 2px;
 }
 
-.address-row {
-  display: flex;
-  gap: 12px;
+/* Ô địa chỉ là ô cuối của phần thông tin giao hàng -> kẻ đường ngăn với phần thanh toán */
+.dia-chi {
   padding-bottom: 30px;
   border-bottom: 1px solid var(--hr);
-}
-
-#province,
-#ward {
-  cursor: pointer;
 }
 
 .payment-container {
@@ -290,8 +277,124 @@ footer {
   top: 50px;
 }
 
-.discount-container input:focus + label {
+.discount-container input:focus + label,
+.discount-container input:not(:placeholder-shown) + label {
   top: 33px;
+}
+
+/* Thông báo của mã giảm giá xuống hàng riêng, nằm dưới ô nhập */
+.discount-container {
+  flex-wrap: wrap;
+}
+
+.discount-container .error-message {
+  order: 1;
+  width: 100%;
+}
+
+.discount-container .error-message:empty {
+  display: none;
+}
+
+/* Mã hợp lệ -> chữ xanh */
+.discount-container .ma-hop-le {
+  color: green;
+}
+
+/* Danh sách mã giảm giá cho khách chọn (tạo bằng JS) */
+.ds-ma-giam-gia {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--hr);
+}
+
+.ds-ma-giam-gia:empty {
+  display: none;
+}
+
+.ds-ma-giam-gia h4 {
+  font-size: 15px;
+  color: var(--tf);
+}
+
+.the-ma {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px dashed var(--btn);
+  border-radius: 8px;
+  background: #fff7f9;
+  transition: 0.2s;
+}
+
+.the-ma:hover {
+  box-shadow: 0 2px 8px rgba(169, 87, 112, 0.2);
+}
+
+.the-ma strong {
+  color: var(--link);
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.the-ma p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.the-ma small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--tf);
+}
+
+.the-ma button {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid var(--btn);
+  border-radius: 5px;
+  background: var(--btn);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.the-ma button:hover {
+  background: var(--hv);
+}
+
+/* Mã đang dùng: viền liền màu xanh, nút "Bỏ mã" nền trắng */
+.the-ma.dang-dung {
+  border: 1px solid green;
+  background: #eefaf0;
+}
+
+.the-ma.dang-dung button {
+  background: white;
+  color: var(--hv);
+}
+
+/* Chưa đủ điều kiện: làm mờ, không bấm được */
+.the-ma.chua-du {
+  opacity: 0.55;
+}
+
+.the-ma.chua-du button {
+  border-color: var(--inactive);
+  background: var(--inactive);
+  cursor: not-allowed;
+}
+
+/* Dòng "Giảm giá" trong phần tạm tính */
+.dong-giam-gia span:last-child {
+  color: green;
 }
 
 .discount-container button {
@@ -363,8 +466,7 @@ footer {
 /* BỔ SUNG: Đảm bảo cột và form không gây tràn ngang */
 .left,
 .right,
-.form-row > *,
-.address-row > * {
+.form-row > * {
   min-width: 0;
 }
 
@@ -493,6 +595,7 @@ footer {
 
   /* BỔ SUNG: Giữ mã giảm giá hiển thị cả khi đơn hàng đóng */
   .right .discount-container,
+  .right .ds-ma-giam-gia,
   .right .order-details,
   .right .summary,
   .right .total {
@@ -534,13 +637,11 @@ footer {
   }
 
   .form-row,
-  .address-row,
   .payment-methods {
     flex-direction: column;
   }
 
-  .form-row > *,
-  .address-row > * {
+  .form-row > * {
     width: 100%;
   }
 

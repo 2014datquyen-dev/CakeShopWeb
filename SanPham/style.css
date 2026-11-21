@@ -1,8 +1,8 @@
-/*Tác giả: Lê Diệu Ái – B2505507
-/* 3. MAIN - NỘI DUNG CHÍNH (SẢN PHẨM) */
+/*Tác giả: Lê Diệu Ái – B2505507*/
 body {
   background-color: #fffcf8;
 }
+/* LAYOUT: Flexbox ngang, sidebar bên trái + lưới sản phẩm bên phải */
 .main-container {
   display: flex;
   max-width: 1290px;
@@ -12,6 +12,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/*SIDEBAR: bộ lọc phân loại*/
 .main-aside {
   display: flex;
   flex-direction: column;
@@ -56,15 +57,18 @@ body {
 .main-aside label:hover {
   color: #531804;
 }
+/*LƯỚI SẢN PHẨM*/
 .main-section {
   flex: 1;
 }
 
+/* Grid: tự xếp nhiều cột 220px nhất có thể, hết chỗ thì xuống hàng */
 .main-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, 220px);
   gap: 20px;
 }
+/*RESPONSIVE: màn hình càng nhỏ thì lưới càng ít cột (<= 768px: sidebar chuyển lên trên) */
 /* 4. MEDIA QUERIES (CO GIÃN MÀN HÌNH THỦ CÔNG) */
 @media screen and (max-width: 992px) {
   .main-section {
@@ -86,16 +90,17 @@ body {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+/*COMPONENT: thẻ sản phẩm, bộ tăng giảm số lượng, nút giỏ hàng*/
 /* Thẻ sản phẩm */
 .product-card {
   background: #fff;
-  border: none; /* XÓA viền cứng */
-  border-radius: 8px; /* Giữ bo góc khung */
-  overflow: hidden; /* Cực kỳ quan trọng để ảnh ở trên cùng bo theo góc khung */
-  padding: 0; /* XÓA padding để ảnh được tràn sát ra lề */
-  padding-bottom: 15px; /* Chỉ giữ lại khoảng cách ở dưới đáy card */
+  border: none; 
+  border-radius: 8px; 
+  overflow: hidden; 
+  padding: 0; 
+  padding-bottom: 15px; 
   text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Thêm đổ bóng nhẹ thay cho viền */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -103,20 +108,20 @@ body {
 
 .product-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng đậm hơn khi hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
 }
-/* --- CSS CHO CỤM TĂNG GIẢM SỐ LƯỢNG --- */
+/*Cụm tăng giảm số lượng*/
 .quantity-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 12px; /* Tạo khoảng cách với nút giỏ hàng phía dưới */
+  margin-bottom: 12px; 
 }
 
 .qty-btn {
   width: 30px;
   height: 30px;
-  background-color: #f0d0d8; /* Màu hồng giống nút giỏ hàng của bạn */
+  background-color: #f0d0d8; 
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -127,7 +132,7 @@ body {
 }
 
 .qty-btn:hover {
-  background-color: #ffb6c1; /* Đậm hơn một chút khi di chuột vào */
+  background-color: #ffb6c1; 
 }
 
 .qty-input {
@@ -139,9 +144,7 @@ body {
   margin: 0 8px;
   border-radius: 5px;
 }
-
 .product-img-box {
-  /*hinh anh sp*/
   width: 100%;
   height: 300px;
   overflow: hidden;
@@ -149,24 +152,19 @@ body {
   margin-bottom: 10px;
   border-radius: 4px;
 }
-/*Selectors (Bộ chọn) hậu vệ */
 .product-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
-
 .product-name {
-  /*ten sp*/
   font-size: 15px;
   color: #333;
   margin-bottom: 5px;
   font-weight: 600;
 }
-
 .product-price {
-  /*gia sp*/
   font-size: 16px;
   color: #d9534f;
   font-weight: bold;
@@ -174,7 +172,6 @@ body {
 }
 
 /* Nút thêm vào giỏ hàng */
-
 .giohang {
   cursor: pointer;
   padding: 10px;
@@ -186,6 +183,7 @@ body {
   border: none;
 }
 
+/*TIỆN ÍCH: class .hidden do sanPham.js thêm/bỏ để ẩn/hiện thẻ khi lọc*/
 .hidden {
   display: none;
 }

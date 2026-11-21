@@ -60,7 +60,7 @@
 }
 .nut-xoa:hover {
   color: var(--hv);
-  transform: scale(1.2);
+  transform: scale(1.2) rotate(90deg);
 }
 .gio-trong {
   padding: 60px 10px;
@@ -230,12 +230,10 @@
   background: var(--hv);
   color: white;
 }
-.vung-hen-gio input[type="submit"]:active {
-  transform: scale(0.98);
-}
-
 .nut-xoa,
 .chon-so-luong button,
+.anh-sp,
+.san-pham,
 .tiep-tuc,
 .vung-hen-gio input,
 .vung-hen-gio select,
@@ -244,8 +242,108 @@
     color 0.2s,
     background 0.2s,
     border-color 0.2s,
+    box-shadow 0.2s,
     transform 0.2s;
 }
+/* ===== HIỆU ỨNG (ANIMATION) ===== */
+/* Khung trắng hiện dần và trượt nhẹ lên khi mở trang */
+.bo-cuc {
+  animation: hienLen 0.6s ease;
+}
+@keyframes hienLen {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* Lần đầu mở trang: từng dòng sản phẩm lần lượt trượt vào từ trái */
+.moi-vao .san-pham {
+  animation: truotVao 0.5s ease both;
+}
+.moi-vao .san-pham:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.moi-vao .san-pham:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.moi-vao .san-pham:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.moi-vao .san-pham:nth-child(n + 5) {
+  animation-delay: 0.4s;
+}
+@keyframes truotVao {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+/* Rê chuột vào dòng: nền hồng nhạt, ảnh phóng to nhẹ */
+.san-pham:hover {
+  background: #fff5f8;
+}
+.san-pham:hover .anh-sp {
+  transform: scale(1.08);
+}
+
+/* Bấm nút + / - : nút lún xuống */
+.chon-so-luong button:active {
+  transform: scale(0.85);
+}
+
+/* Thành tiền / tổng tiền vừa đổi: nảy lên và đổi màu (class 'nhay' gắn bằng JS) */
+.nhay {
+  animation: nay 0.4s ease;
+}
+@keyframes nay {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+    color: var(--hv);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Xóa sản phẩm: dòng mờ dần và trượt sang phải (class 'dang-xoa' gắn bằng JS) */
+.dang-xoa {
+  animation: xoaDi 0.4s ease forwards;
+  pointer-events: none;   /* đang xóa thì không bấm được nữa */
+}
+@keyframes xoaDi {
+  to {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+}
+
+/* Giỏ trống: dòng thông báo hiện dần */
+.gio-trong {
+  animation: hienLen 0.5s ease;
+}
+
+/* Nút Thanh toán nhấc lên khi rê chuột */
+.vung-hen-gio input[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 14px rgba(169, 87, 112, 0.35);
+}
+.vung-hen-gio input[type="submit"]:active {
+  transform: scale(0.98);
+}
+
 /* Dưới 1400px khung không đủ rộng cho 6 cột -> mỗi sản phẩm hiển thị dạng thẻ */
 @media (max-width: 1399px) {
   .dong-tieu-de {
