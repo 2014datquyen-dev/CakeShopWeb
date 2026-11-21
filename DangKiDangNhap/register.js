@@ -1,6 +1,8 @@
 // Tác giả: Diệp Đạt Quyền - B2408813 
+// Lấy nút gửi form, các ô nhập liệu và vị trí hiển thị lỗi tương ứng từ HTML.
 const btn = document.querySelector('button[type="submit"]');
 const nameInput = document.getElementById('fullname');
+// nextElementSibling.nextElementSibling: tìm phần tử đứng sau ô nhập hai vị trí để ghi thông báo lỗi; phụ thuộc cấu trúc HTML.
 const nameError = nameInput.nextElementSibling.nextElementSibling;
 const emailInput = document.getElementById('email');
 const emailError = emailInput.nextElementSibling.nextElementSibling;
@@ -11,21 +13,26 @@ const passwordError = passwordInput.nextElementSibling.nextElementSibling;
 const confirmPasswordInput = document.getElementById('confirmPassword');
 const confirmPasswordError = confirmPasswordInput.nextElementSibling.nextElementSibling;
 
+// Kiểm tra họ tên: không được để trống và phải có ít nhất 5 ký tự.
 const validationFullname = () => {
     const name = nameInput.value;
+    // Biểu thức chính quy /^.{5,}$/: dấu ^ bắt đầu, . là một ký tự bất kỳ (trừ xuống dòng), {5,} là từ 5 ký tự, $ là kết thúc.
     const nameRegex = /^.{5,}$/;
 
+    // Nếu bỏ trống: đánh dấu lỗi, hiện thông báo và trả về false.
     if (name===''){
         nameInput.classList.add('input-error');
         nameError.innerText = 'Vui lòng nhập tên vào.';
         nameInput.nextElementSibling.style.color='red';
         return false;
     } else if 
+    // test(name) trả về true nếu tên khớp với biểu thức chính quy.
     (nameRegex.test(name)){
         nameInput.classList.remove('input-error');
         nameError.innerText = '';
         nameInput.nextElementSibling.style.color='#4c4b4b';
         return true;
+    // Có nhập nhưng chưa đủ 5 ký tự thì báo lỗi.
     } else {
         nameInput.classList.add('input-error');
         nameError.innerText = 'Tên phải có ít nhất 5 ký tự.';
@@ -34,7 +41,9 @@ const validationFullname = () => {
     } 
 };
 
+// Kiểm tra email theo dạng phần trước @, tên miền, dấu chấm và phần đuôi 2 đến 4 ký tự.
 const validationEmail = () => {
+    // \s là khoảng trắng; [^\s@] nghĩa là một ký tự không phải khoảng trắng hay @.
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/;
     const email = emailInput.value;
     if (email===''){
@@ -56,7 +65,9 @@ const validationEmail = () => {
     }  
 }
 
+// Kiểm tra số điện thoại: bắt đầu bằng số 0 và theo sau là đúng 9 chữ số (tổng 10 chữ số).
 const validationPhone = () => {
+    // \d là một chữ số; {9} yêu cầu xuất hiện đúng 9 lần.
     const phoneRegex = /^0\d{9}$/;
     const phone = phoneInput.value;
     
@@ -80,12 +91,16 @@ const validationPhone = () => {
 }
 
 
+// Kiểm tra độ mạnh của mật khẩu theo nhiều điều kiện kết hợp.
 const validationPassword = () => {
     const password = passwordInput.value;
+    // && yêu cầu TẤT CẢ điều kiện đều đúng: độ dài, chữ thường, chữ hoa, chữ số và ký tự đặc biệt.
     // Kiểm tra từng điều kiện: ít nhất 8 ký tự, có chữ thường, chữ hoa, số và ký tự đặc biệt
     const hopLe = password.length >= 8 &&
+                  // /[a-z]/ là có chữ thường; /[A-Z]/ là có chữ hoa.
                   /[a-z]/.test(password) &&
                   /[A-Z]/.test(password) &&
+                  // /[0-9]/ là có chữ số; /[^a-zA-Z0-9]/ là có ký tự khác chữ và số.
                   /[0-9]/.test(password) &&
                   /[^a-zA-Z0-9]/.test(password);
     if (hopLe){
@@ -101,10 +116,13 @@ const validationPassword = () => {
     }  
 }
 
+// Kiểm tra xác nhận mật khẩu có khớp với ô mật khẩu chính hay không.
 const validationConfirmPassword = () => {
     const confirmPassword=confirmPasswordInput.value;
 
+    // Gọi validationPassword() trước; nếu mật khẩu chính không hợp lệ thì không kiểm tra so khớp tiếp.
     if (validationPassword()){
+        // Toán tử === so sánh bằng cả giá trị lẫn kiểu dữ liệu.
         if (passwordInput.value===confirmPassword){
             confirmPasswordInput.classList.remove('input-error');
             confirmPasswordError.innerText='';
@@ -119,34 +137,43 @@ const validationConfirmPassword = () => {
     }
 }
 
+// Lấy form đăng ký qua id rồi lắng nghe sự kiện submit (gửi biểu mẫu).
 const form = document.getElementById('registerForm');
 form.addEventListener('submit', (event) => {
+    // Ngăn trình duyệt tự gửi form và tải lại trang.
     event.preventDefault();
 
+    // Đổi giao diện nút và con trỏ sang trạng thái chờ.
     btn.style.opacity = '0.7';
     btn.style.cursor='wait';
     document.body.style.cursor = 'wait';
 
+    // setTimeout trì hoãn 1000 ms rồi chạy kiểm tra các ô.
     setTimeout(() => {
         btn.style.opacity = '';
         btn.style.cursor='';      
         document.body.style.cursor = '';
+        // Kiểm tra riêng từng ô và gán kết quả true/false vào biến để không bỏ sót ô nào.
         const nameValid=validationFullname();
         const emailValid=validationEmail();
         const phoneValid=validationPhone();
         const passwordValid=validationPassword();
         const confirmValid=validationConfirmPassword();
 
+        // Chỉ lưu thông tin khi tất cả phép kiểm tra đều hợp lệ.
         if (nameValid&&emailValid&&phoneValid&&passwordValid&&confirmValid){
+            // localStorage.setItem(key, value) lưu dữ liệu theo cặp khóa/giá trị trên trình duyệt.
             localStorage.setItem('name', nameInput.value);
             localStorage.setItem('email', emailInput.value);
             localStorage.setItem('phone', phoneInput.value);
             localStorage.setItem('password', passwordInput.value);
+            // Thêm class show để mở popup thông báo đăng ký thành công.
             document.getElementById("successPopup").classList.add("show");
         }
     }, 1000);
 });
 
+// Các sự kiện input bên dưới chạy mỗi lần người dùng thay đổi nội dung ô nhập; xóa thông báo lỗi cũ.
 nameInput.addEventListener('input', () => {
     nameInput.classList.remove('input-error');
     nameError.innerText = '';
@@ -165,12 +192,14 @@ phoneInput.addEventListener('input', () => {
     phoneInput.nextElementSibling.style.color='#4c4b4b';
 });
 
+// Xóa cảnh báo cũ khi người dùng chỉnh mật khẩu.
 passwordInput.addEventListener('input', () => {
     passwordInput.classList.remove('input-error');
     passwordError.innerText = '';
     passwordInput.nextElementSibling.style.color='#4c4b4b';
 });
 
+// Xóa cảnh báo cũ khi người dùng chỉnh ô xác nhận mật khẩu.
 confirmPasswordInput.addEventListener('input', () => {
     confirmPasswordInput.classList.remove('input-error');
     confirmPasswordError.innerText = '';

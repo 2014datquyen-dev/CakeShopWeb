@@ -1,198 +1,35 @@
 // Tác giả: Diệp Đạt Quyền - B2408813
-document.getElementById("orderToggle").addEventListener("click", function () {
-    const orderBox = document.querySelector(".right");
-    orderBox.classList.toggle("order-open");
-});
+// querySelectorAll trả về danh sách tất cả nút dùng để ẩn/hiện mật khẩu.
+const toggleBtns = document.querySelectorAll('.toggle-password');
 
-const btn = document.getElementById('liquidate');
-const nameInput = document.getElementById('fullname');
-const nameError = nameInput.nextElementSibling.nextElementSibling;
-const emailInput = document.getElementById('email');
-const emailError = emailInput.nextElementSibling.nextElementSibling;
-const phoneInput = document.getElementById('phone');
-const phoneError = phoneInput.nextElementSibling.nextElementSibling;
-const addressInput = document.getElementById('address');
-const addressError = addressInput.nextElementSibling.nextElementSibling;
-
-
-
-const validationFullname = () => {
-    const name = nameInput.value;
-
-    if (name!==""){
-        nameInput.classList.remove('input-error');
-        nameError.innerText = '';
-        return true;
-    } else {
-        nameInput.classList.add('input-error');
-        nameError.innerText = 'Vui lòng nhập họ tên vào';
-        return false;
-    }
-};
-
-const validationEmail = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const email = emailInput.value;
-
-    if (emailRegex.test(email)){
-        emailInput.classList.remove('input-error');
-        emailError.innerText = '';
-        return true;
-    } else {
-        emailInput.classList.add('input-error');
-        emailError.innerText = 'Vui lòng nhập email hợp lệ';
-        return false;
-    }  
-}
-
-const validationPhone = () => {
-    const phoneRegex = /^0\d{9}$/;    
-    const phone = phoneInput.value;
-    
-    if (phoneRegex.test(phone)){
-        phoneInput.classList.remove('input-error');
-        phoneError.innerText='';
-        return true;
-    } else {
-        phoneInput.classList.add('input-error');
-        phoneError.innerText='Vui lòng nhập số điện thoại hợp lệ';
-        return false;
-    }
-}
-
-function validationAddress(){
-    const address=addressInput.value;
-    
-    if (address!==''){
-        addressInput.classList.remove('input-error');
-        addressError.innerText='';
-        return true;
-    } else {
-        addressInput.classList.add('input-error');
-        addressError.innerText='Vui lòng nhập vào địa chỉ';
-        return false;
-    }
-}
-
-btn.addEventListener('click', (event) => {
-    event.preventDefault();
-
-    btn.style.opacity = '0.7';
-    btn.style.cursor='wait';
-    document.body.style.cursor = 'wait';
-    setTimeout( () => {
-        btn.style.opacity = '';
-        btn.style.cursor='';      
-        document.body.style.cursor = '';
-
-        validationFullname();
-        validationEmail();
-        validationPhone();
-        validationAddress();
-
-        if (products.length === 0) {
-            alert('Giỏ hàng đang trống, không thể đặt hàng.');
-            return;
-        }
-
-        if (validationFullname()&&validationEmail()&&validationPhone()&&validationAddress()){
-            const donHang = taoDonHang();
-            luuDonHang(donHang);
-            hienThiDonHang(donHang);
-            document.getElementById("successPopup").classList.add("show");
-        }
-    }, 750);
-
-});
-
-nameInput.addEventListener('input', () => {
-    nameInput.classList.remove('input-error');
-    nameError.innerText = '';
-});
-
-emailInput.addEventListener('input', () => {
-    emailInput.classList.remove('input-error');
-    emailError.innerText = '';
-});
-
-phoneInput.addEventListener('input', () => {
-    phoneInput.classList.remove('input-error');
-    phoneError.innerText = '';
-});
-
-addressInput.addEventListener('input', () => {
-    addressInput.classList.remove('input-error');
-    addressError.innerText = '';
-});
-
-
-// ===== ĐỊNH DẠNG TIỀN (giống formatCurrency trong show-cart.js) =====
-const formatCurrency = (amount, locale = "vi-VN") => {
-    return new Intl.NumberFormat(locale, {
-        style: 'currency',
-        currency: 'VND',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2
-    }).format(amount);
-}
-
-// "450.000đ" -> 450000
-function layGiaSo(price) {
-    return Number(String(price).replace(/[^0-9]/g, ""));
-}
-
-function laySoLuong(product) {
-    const soLuong = Math.floor(Number(product.quantity));
-    return (isNaN(soLuong) || soLuong < 1) ? 1 : soLuong;
-}
-
-
-// ===== HIỂN THỊ SẢN PHẨM VÀ TÍNH TIỀN =====
-const data = localStorage.getItem('cartItems');
-const products = JSON.parse(data) || [];
-const productList = document.querySelector('.product-list');
-let tongTien = 0;
-
-if (products.length === 0) {
-    const empty = document.createElement('p');
-    empty.textContent = 'Giỏ hàng đang trống.';
-    productList.textContent = '';
-    productList.appendChild(empty);
-} else {
-    products.forEach((product) => {
-        const soLuong = laySoLuong(product);
-        const donGia = layGiaSo(product.price);
-        tongTien += donGia * soLuong;   // tổng tiền vẫn tính theo số lượng
-
-        const divProduct = document.createElement('div');
-        divProduct.className = 'product';
-
-        const img = document.createElement('img');
-        img.src = product.image;
-        img.alt = product.name;
-
-        const divInfo = document.createElement('div');
-        divInfo.className = 'product-info';
-
-        const pName = document.createElement('p');
-        pName.textContent = product.name;
-
-        const small = document.createElement('small');
-        small.textContent = `Số lượng: ${soLuong}`;
-
-        divInfo.appendChild(pName);
-        divInfo.appendChild(small);
-
-        const spanPrice = document.createElement('span');
-        spanPrice.className = 'price';
-        spanPrice.textContent = formatCurrency(donGia);   // giá gốc 1 sản phẩm
-
-        divProduct.appendChild(img);
-        divProduct.appendChild(divInfo);
-        divProduct.appendChild(spanPrice);
-        productList.appendChild(divProduct);
+// forEach duyệt từng nút; mỗi nút được gắn một hàm xử lý click.
+toggleBtns.forEach((toggleBtn) => {
+    toggleBtn.addEventListener('click', function () {
+        // parentElement là phần tử cha của nút; querySelector tìm ô mật khẩu ở cùng vùng chứa.
+        const password = toggleBtn.parentElement.querySelector('.password-input');
+        // Nếu input đang có type=password (ký tự bị che), chuyển thành text để hiện mật khẩu.
+        if (password.type === 'password') {
+            password.type = 'text';
+            // Xóa nội dung nút cũ rồi tạo ảnh biểu tượng mắt tương ứng.
+            toggleBtn.textContent='';
+            // createElement tạo thẻ img mới trong bộ nhớ; setAttribute gán thuộc tính src/alt.
+            const eye = document.createElement('img');
+            eye.setAttribute('src', '../images/icons/eye-off.png');
+            eye.setAttribute('alt', 'Ẩn mật khẩu');
+            // appendChild thêm ảnh vào bên trong nút.
+            toggleBtn.appendChild(eye);
+        // Ngược lại: đổi type về password để che mật khẩu và thay biểu tượng.
+        } else {
+            password.type = 'password';
+            toggleBtn.textContent='';
+            const eyeOff = document.createElement('img');
+            // Đường dẫn ảnh là đường dẫn tương đối tính từ trang HTML đang tải script.
+            eyeOff.setAttribute('src', '../images/icons/eye.png');
+            eyeOff.setAttribute('alt', 'Hiện mật khẩu');
+            toggleBtn.appendChild(eyeOff);
+        };
     });
-}
+});
 
 
 document.querySelectorAll('.order-toggle')[0].lastElementChild.textContent = formatCurrency(tongTien);
