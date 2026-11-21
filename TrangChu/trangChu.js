@@ -29,8 +29,8 @@ var cacCauHoi = document.querySelectorAll(".cau-hoi");
 
 for (var n = 0; n < cacCauHoi.length; n++) {
     cacCauHoi[n].onclick = function () {
-        // this là nút vừa bấm, parentElement là khối .hd-item chứa nó
-      var cauTraLoi = this.nextElementSibling; // thẻ <p> ngay sau nút
+        // this là nút câu hỏi vừa bấm
+        var cauTraLoi = this.nextElementSibling; // thẻ <p> ngay sau nút
         cauTraLoi.classList.toggle("hien");
     };
 }
@@ -47,7 +47,7 @@ function timTrongGio(sp, gio) {
 // Xử lý khi bấm nút "Thêm vào giỏ hàng"
 function themVaoGio(e) {
   const nut = e.currentTarget;
-  const the = nut.parentElement; // thẻ .product-card chứa nút (truy vấn gián tiếp)
+  const the = nut.parentElement; // thẻ .san-pham-item chứa nút (truy vấn gián tiếp)
 
   if (typeof Storage !== "undefined") {
     const ten = the.querySelector("h4").textContent.trim();
