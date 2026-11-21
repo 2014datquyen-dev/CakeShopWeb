@@ -1,31 +1,34 @@
 /* Tác giả: Trần Khôi Nguyên – B2405047 */
+
+/* Khung bao ngoài (thẻ trắng chứa nội dung) */
 .container{
-    padding: 80px 80px;
-    background: white;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
-    border-radius: 20px;
-    width: 80%;
-    margin: auto;
+    padding: 80px 80px;                          /* Khoảng cách từ mép khung đến nội dung: 80px trên/dưới, 80px trái/phải */
+    background: white;                         /* Nền trắng */
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);   /* Đổ bóng nhẹ quanh khung: lệch 0px, độ mờ 5px, màu đen trong suốt 10% */
+    border-radius: 20px;                         /* Bo tròn 4 góc khung, bán kính 20px */
+    width: 80%;                                  /* Chiều rộng bằng 80% phần tử cha */
+    margin: auto;                                /* Căn giữa khung theo chiều ngang */
 }
 
+/* Ảnh nằm bên trong khung */
 .container img{
-    display: block;
-    width:70%;
-    margin: 20px auto;
-    object-fit: cover;/*cắt hình tạo thành hình vuông như cao rộng có 1 giá trị cụ thể*/
+    display: block;                              /* Cho ảnh thành khối riêng để margin auto căn giữa được */
+    width:70%;                                   /* Ảnh rộng 70% vùng nội dung của khung */
+    margin: 20px auto;                           /* Cách trên/dưới 20px, căn giữa theo chiều ngang */
+    object-fit: cover;                           /* Lấp đầy khung ảnh và cắt phần thừa. Chỉ có tác dụng khi ảnh có chiều cao cố định (height) hoặc aspect-ratio */
 }
 
+/* Màn hình nhỏ hơn hoặc bằng 1024px (máy tính bảng) */
 @media (max-width: 1024px){
     .container img{
-        width: 90%;
+        width: 90%;                              /* Ảnh rộng hơn, chiếm 90% vùng nội dung */
     }
 }
 
+/* Màn hình nhỏ hơn hoặc bằng 800px (điện thoại) */
 @media (max-width: 800px){
     .container{
-        width: 90%;
-        padding: 20px;
+        width: 90%;                              /* Khung rộng 90% phần tử cha để không sát mép màn hình */
+        padding: 20px;                           /* Giảm khoảng đệm để tiết kiệm không gian */
     }
 }
-
-
