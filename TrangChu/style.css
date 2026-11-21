@@ -2,21 +2,19 @@
 body {
     background-color: var(--bg);
 }
-/* ===== TRANG CHỦ / BANNER ===== */
+/* TRANG CHỦ - PHẦN BANNER */
 .trang-chu {
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 0;  
 }
 
-/* Banner tràn hết bề ngang màn hình, sát header */
 main {
     padding-top: 0;
 }
 
 .banner-container {
     width: 100%;
-    aspect-ratio: 1920 / 700;      /* đúng tỉ lệ của ảnh Anh1, Anh2, Anh3 */
     overflow: hidden;
     background-color: #fbc9d9;     /* màu hồng của banner, hiện khi ảnh chưa tải */
 }
@@ -33,7 +31,7 @@ main {
     object-fit: cover;
 }
 
-/* ===== DANH MỤC ===== */
+/* DANH MỤC */
 .danh-muc {
     padding: 50px 8%;
     text-align: center;
@@ -85,7 +83,7 @@ main {
     color: #c56b83;
 }
 
-/* ===== SẢN PHẨM NỔI BẬT ===== */
+/* SẢN PHẨM NỔI BẬT*/
 .san-pham {
     background-color: #fffcf8;
     padding: 40px 8% 60px;
@@ -102,14 +100,15 @@ main {
 }
 
 .san-pham-list {
-    display: flex;
-    justify-content: center;
+    display: grid;  /* dùng lưới (Grid) để chia các thẻ sản phẩm thành hàng, cột */
+    grid-template-columns: repeat(4, 1fr);  /*chia 4 cột bằng nhau*/
     gap: 20px;
-    flex-wrap: wrap;
+    max-width: 1260px;
+    margin: 0 auto;
 }
 
 .san-pham-item {
-    width: 300px;
+    width: auto;
     box-sizing: border-box;
     background-color: #fff;
     padding: 0 0 15px;
@@ -137,8 +136,6 @@ main {
     font-size: 20px;
     margin: 15px 15px 10px;
 }
-
-/*BEST SELLER*/
 
 .mo-ta {
     font-size: 14px;
@@ -209,11 +206,6 @@ main {
   margin: 0 8px;
   border-radius: 5px;
 }
-.qty-input::-webkit-outer-spin-button,
-.qty-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
 .giohang {
   cursor: pointer;
@@ -230,7 +222,7 @@ main {
   display: none;
 }
 
-/* ===== CÂU CHUYỆN ===== */
+/* CÂU CHUYỆN */
 .cau-chuyen {
     display: flex;
     align-items: center;
@@ -293,7 +285,7 @@ main {
     transform: translateX(6px);
 }
 
-/* ===== ƯU ĐÃI ===== */
+/* PHẦN ƯU ĐÃI */
 .uu-dai {
     margin: 0 8% 60px;
     padding: 45px 20px;
@@ -375,7 +367,6 @@ main {
 
 .cau-hoi span {
     float: right;
-    display: inline-block;
 }
 
 
@@ -388,4 +379,21 @@ main {
 
 .hien {
     display: block;
+}
+
+@media (max-width: 1024px) {
+    .san-pham-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .san-pham-list { grid-template-columns: 1fr; }
+    /* Câu chuyện: ảnh nằm trên, chữ nằm dưới, ảnh rộng hết khung */
+    .cau-chuyen {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    .cau-chuyen img {
+        width: 100%;
+        height: 220px;
+    }
 }
