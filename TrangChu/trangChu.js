@@ -1,41 +1,45 @@
 // Lê Thị Khánh Ly - B2404868
+
+
+
+// Banner tự động chuyển ảnh
+
 var anh = [
-    "../images/Anh3.jpg",
+    "../images/Anh3.jpg",     // mảng hình ảnh
     "../images/Anh2.jpg",
     "../images/Anh1.jpg"
 ];
 
 var link = [
-    "../TrangChu/trangChu.html",
-    "../TrangChu/trangChu.html",
+    "../TrangChu/trangChu.html",    
+    "../TrangChu/trangChu.html",    //mảng đường link
     "../SanPham/sanPham.html"
 ];
 
-var i=0;
-function doiAnh() {
+var i=0;  
+function doiAnh() {  //Hàm đổi ảnh
     i=i+1;
-    //het anh thi quanh ve
-    if (i==anh.length){
+    if (i==anh.length){  //đến ảnh cuối thì quay về ảnh đầu
         i=0;
     }
     document.getElementById("bannerImg").src=anh[i];
     document.getElementById("bannerLink").href = link[i];
 }
 
-setInterval(doiAnh,3000);
+setInterval(doiAnh,3000);  // cứ 3000ms thì gọi doiAnh một lần
 
-// ===== HỎI ĐÁP: BẤM CÂU HỎI THÌ MỞ / ĐÓNG =====
-var cacCauHoi = document.querySelectorAll(".cau-hoi");
+// HỎI ĐÁP: BẤM CÂU HỎI THÌ MỞ / ĐÓNG 
+var cacCauHoi = document.querySelectorAll(".cau-hoi");  // lấy tất cả phần tử có class "cau-hoi"
 
-for (var n = 0; n < cacCauHoi.length; n++) {
-    cacCauHoi[n].onclick = function () {
-        // this là nút câu hỏi vừa bấm
-        var cauTraLoi = this.nextElementSibling; // thẻ <p> ngay sau nút
-        cauTraLoi.classList.toggle("hien");
+for (var n = 0; n < cacCauHoi.length; n++) {  //duyệt qua từng câu hỏi
+    cacCauHoi[n].onclick = function () {  //gán sự kiện bấm cho từng câu hỏi
+      var cauTraLoi = this.nextElementSibling; // this là nút vừa bấm;lấy thẻ <p> ngay sau nó
+        cauTraLoi.classList.toggle("hien");  // có class "hien" thì xóa, chưa có thì thêm (hiện/ẩn)
     };
 }
 
-function timTrongGio(sp, gio) {
+// Tìm sản phẩm trong giỏ hàng: trả về vị trí của nó (so theo id), chưa có thì trả về -1.
+function timTrongGio(sp, gio) { 
   for (let i = 0; i < gio.length; i++) {
     if (gio[i].id === sp.id) {
       return i;
@@ -86,7 +90,7 @@ function themVaoGio(e) {
   }
 }
 
-// Gắn sự kiện cho nút thêm vào giỏ và nút + / -
+// Gắn sự kiện click cho nút thêm vào giỏ và nút + / - của tất cả thẻ sản phẩm.
 function ganSuKien() {
   const cacNutThem = document.querySelectorAll(".add-cart");
   for (let i = 0; i < cacNutThem.length; i++) {
