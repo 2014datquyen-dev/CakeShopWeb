@@ -43,7 +43,9 @@ function layVungHenGio() {
 }
 
 
-function hienThiGioHang() {
+// maVuaDoi: mã sản phẩm vừa đổi (để làm nảy thành tiền của dòng đó).
+// Không truyền gì (lần đầu mở trang) -> không chạy hiệu ứng nảy.
+function hienThiGioHang(maVuaDoi) {
   const customerCart = layGioHang();
   const danhSach = layDanhSach();
   danhSach.textContent = '';
@@ -55,11 +57,15 @@ function hienThiGioHang() {
     danhSach.appendChild(dong);
   } else {
     customerCart.forEach(item => {
-      danhSach.appendChild(taoDongSanPham(item));
+      const dong = taoDongSanPham(item);
+      if (item.id == maVuaDoi) {
+        dong.lastElementChild.classList.add('nhay');   // [5] p.thanh-tien
+      }
+      danhSach.appendChild(dong);
     });
   }
 
-  capNhatTongTien();
+  capNhatTongTien(maVuaDoi !== undefined);
   capNhatIconGioHang();   // hàm dùng chung trong header-footer.js
 }
 
@@ -152,7 +158,7 @@ function layMaSanPham(dong) {
 // button -> li
 function xuLyXoa(evt) {
   const dong = evt.target.parentElement;
-  xoaSanPham(layMaSanPham(dong));
+  xoaSanPham(layMaSanPham(dong), dong);
 }
 
 // button -> div.chon-so-luong -> li ; ô số nằm ngay sau nút giảm
@@ -201,30 +207,44 @@ function capNhatSoLuong(id, soLuongMoi) {
 
   customerCart[index].quantity = soLuongMoi;
   luuGioHang(customerCart);
-  hienThiGioHang();
+  hienThiGioHang(id);
 }
 
-function xoaSanPham(id) {
+// dong: thẻ li của sản phẩm, dùng để chạy hiệu ứng trước khi xóa
+function xoaSanPham(id, dong) {
   const customerCart = layGioHang();
   const index = isExistedInCart(id, customerCart);
   if (index < 0) return;
 
   if (confirm('Xóa "' + customerCart[index].name + '" khỏi giỏ hàng?')) {
-    customerCart.splice(index, 1);
-    luuGioHang(customerCart);
-    hienThiGioHang();
+    dong.classList.add('dang-xoa');   // dòng mờ dần và trượt sang phải (CSS)
+    // Đợi hiệu ứng chạy xong (0.4 giây) rồi mới xóa thật
+    setTimeout(() => {
+      customerCart.splice(index, 1);
+      luuGioHang(customerCart);
+      hienThiGioHang('');   // '' -> không dòng nào nảy, chỉ tổng tiền nảy
+    }, 400);
   }
 }
 
 
 // Vùng hẹn giờ: [0]h2 [1]label [2]input date [3]label [4]select [5]label [6]p.thanh-tien-tong [7]p [8]submit
-function capNhatTongTien() {
+// coHieuUng = true -> tổng tiền nảy lên khi giỏ hàng thay đổi
+function capNhatTongTien(coHieuUng) {
   let total = 0;
   layGioHang().forEach(item => {
     total += layGiaSo(item.price) * Number(item.quantity);
   });
   const tongTien = layVungHenGio().children[6].lastElementChild;
   tongTien.textContent = formatCurrency(total);
+
+  if (coHieuUng) {
+    // Bỏ class rồi gắn lại sau 10ms để hiệu ứng chạy lại ở mỗi lần đổi
+    tongTien.classList.remove('nhay');
+    setTimeout(() => {
+      tongTien.classList.add('nhay');
+    }, 10);
+  }
 }
 
 function layNgayHomNay() {
@@ -276,5 +296,12 @@ function setup() {
   const vungHenGio = layVungHenGio();
   vungHenGio.children[2].min = layNgayHomNay();
   vungHenGio.parentElement.addEventListener('submit', kiemTraThanhToan, false);
+
+  // Chỉ lần đầu mở trang: các dòng lần lượt trượt vào (class 'moi-vao' trong CSS)
+  const danhSach = layDanhSach();
+  danhSach.classList.add('moi-vao');
   hienThiGioHang();
+  setTimeout(() => {
+    danhSach.classList.remove('moi-vao');   // bỏ đi để bấm +/- không bị trượt lại
+  }, 1200);
 }
