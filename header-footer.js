@@ -78,8 +78,12 @@ function layDonHangCuaToi(email) {
 function moPopupTaiKhoan() {
     const email = localStorage.getItem('email');
     const donHang = layDonHangCuaToi(email);
-    // địa chỉ lấy từ đơn hàng gần nhất (lúc đăng ký chưa nhập địa chỉ)
-    const diaChi = donHang.length > 0 ? donHang[donHang.length - 1].diaChi : 'Chưa cập nhật';
+    // Địa chỉ tài khoản: lưu ở đơn hàng đầu tiên (key 'address', xem ThanhToan/script.js).
+    // Tài khoản đặt hàng trước khi có key này thì lấy từ đơn gần nhất.
+    let diaChi = localStorage.getItem('address');
+    if (!diaChi) {
+        diaChi = donHang.length > 0 ? donHang[donHang.length - 1].diaChi : 'Chưa cập nhật';
+    }
 
     const nen = document.createElement('div');
     nen.className = 'tk-overlay';

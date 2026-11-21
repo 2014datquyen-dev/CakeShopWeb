@@ -236,6 +236,12 @@ function luuDonHang(donHang) {
     localStorage.setItem('danhSachDonHang', JSON.stringify(danhSach));
     localStorage.removeItem('cartItems');
     localStorage.removeItem('thongTinNhanHang');
+
+    // Đơn đầu tiên của tài khoản: lưu địa chỉ vừa nhập làm địa chỉ của tài khoản.
+    // Các đơn sau (có thể giao cho người khác) không làm đổi địa chỉ này.
+    if (donHang.taiKhoan !== '' && !localStorage.getItem('address')) {
+        localStorage.setItem('address', donHang.diaChi);
+    }
 }
 
 // "2026-11-20" -> "20/11/2026"
@@ -300,7 +306,7 @@ function hienThiDonHang(donHang) {
 
 // ===== ĐÃ ĐĂNG NHẬP: TỰ ĐIỀN THÔNG TIN GIAO HÀNG =====
 // Tên, email, số điện thoại lấy từ tài khoản (lưu lúc đăng ký).
-// Địa chỉ lấy từ đơn hàng gần nhất của tài khoản (lúc đăng ký chưa nhập địa chỉ).
+// Địa chỉ lấy từ key 'address' (lưu ở đơn đầu tiên, vì lúc đăng ký chưa nhập địa chỉ).
 // Các ô vẫn sửa được, phòng khi người dùng muốn giao cho người khác.
 function dienThongTinTaiKhoan() {
     if (!localStorage.getItem('isLogin')) {
@@ -312,13 +318,19 @@ function dienThongTinTaiKhoan() {
     emailInput.value = email || '';
     phoneInput.value = localStorage.getItem('phone') || '';
 
-    // Duyệt từ đơn mới nhất về đơn cũ nhất, gặp đơn của tài khoản này thì lấy địa chỉ
-    const tatCa = JSON.parse(localStorage.getItem('danhSachDonHang')) || [];
-    for (let i = tatCa.length - 1; i >= 0; i--) {
-        const don = tatCa[i];
-        if (don.taiKhoan === email || (!don.taiKhoan && don.email === email)) {
-            addressInput.value = don.diaChi;
-            break;
+    const diaChi = localStorage.getItem('address');
+    if (diaChi) {
+        addressInput.value = diaChi;
+    } else {
+        // Tài khoản đặt hàng trước khi có key 'address':
+        // duyệt từ đơn mới nhất về đơn cũ nhất, gặp đơn của tài khoản này thì lấy địa chỉ
+        const tatCa = JSON.parse(localStorage.getItem('danhSachDonHang')) || [];
+        for (let i = tatCa.length - 1; i >= 0; i--) {
+            const don = tatCa[i];
+            if (don.taiKhoan === email || (!don.taiKhoan && don.email === email)) {
+                addressInput.value = don.diaChi;
+                break;
+            }
         }
     }
 

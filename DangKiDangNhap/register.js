@@ -142,6 +142,7 @@ form.addEventListener('submit', (event) => {
             localStorage.setItem('email', emailInput.value);
             localStorage.setItem('phone', phoneInput.value);
             localStorage.setItem('password', passwordInput.value);
+            localStorage.removeItem('address');   // tài khoản mới chưa có địa chỉ (lưu ở đơn đầu tiên)
             document.getElementById("successPopup").classList.add("show");
         }
     }, 1000);
