@@ -102,14 +102,15 @@ main {
 }
 
 .san-pham-list {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    flex-wrap: wrap;
+    max-width: 1260px;
+    margin: 0 auto;
 }
 
 .san-pham-item {
-    width: 300px;
+    width: auto;
     box-sizing: border-box;
     background-color: #fff;
     padding: 0 0 15px;
