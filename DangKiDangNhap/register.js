@@ -167,6 +167,7 @@ form.addEventListener('submit', (event) => {
             localStorage.setItem('email', emailInput.value);
             localStorage.setItem('phone', phoneInput.value);
             localStorage.setItem('password', passwordInput.value);
+            localStorage.removeItem('address');   // tài khoản mới chưa có địa chỉ (lưu ở đơn đầu tiên)
             // Thêm class show để mở popup thông báo đăng ký thành công.
             document.getElementById("successPopup").classList.add("show");
         }

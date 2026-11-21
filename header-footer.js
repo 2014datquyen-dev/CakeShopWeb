@@ -118,10 +118,12 @@ function moPopupTaiKhoan() {
     const email = localStorage.getItem('email');
     // Lấy các đơn thuộc email hiện tại để hiển thị lịch sử mua hàng.
     const donHang = layDonHangCuaToi(email);
-    // địa chỉ lấy từ đơn hàng gần nhất (lúc đăng ký chưa nhập địa chỉ)
-    // Nếu có đơn: lấy diaChi ở phần tử cuối (giả định là đơn mới nhất).
-    // Nếu chưa có đơn: hiển thị chuỗi 'Chưa cập nhật'.
-    const diaChi = donHang.length > 0 ? donHang[donHang.length - 1].diaChi : 'Chưa cập nhật';
+    // Địa chỉ tài khoản: lưu ở đơn hàng đầu tiên (key 'address', xem ThanhToan/script.js).
+    // Tài khoản đặt hàng trước khi có key này thì lấy từ đơn gần nhất.
+    let diaChi = localStorage.getItem('address');
+    if (!diaChi) {
+        diaChi = donHang.length > 0 ? donHang[donHang.length - 1].diaChi : 'Chưa cập nhật';
+    }
 
     // Lớp nền phủ (overlay) và hộp thông tin (popup) đều được tạo bằng JS.
     const nen = document.createElement('div');
