@@ -1,4 +1,5 @@
 // Tác giả: Lê Diệu Ái – B2505507
+// Tìm sản phẩm trong giỏ hàng: trả về vị trí của nó (so theo id), chưa có thì trả về -1.
 function timTrongGio(sp, gio) {
   for (let i = 0; i < gio.length; i++) {
     if (gio[i].id === sp.id) {
@@ -50,7 +51,7 @@ function themVaoGio(e) {
   }
 }
 
-// Gắn sự kiện cho nút thêm vào giỏ và nút + / -
+// Gắn sự kiện click cho nút thêm vào giỏ và nút + / - của tất cả thẻ sản phẩm.
 function ganSuKien() {
   const cacNutThem = document.querySelectorAll(".add-cart");
   for (let i = 0; i < cacNutThem.length; i++) {
@@ -85,9 +86,8 @@ const tuKhoa = thamSo.get("search");
 const loaiTuURL = thamSo.get("loai");
 const cacOLoai = document.querySelectorAll('input[name="loai"]');
 
-// Lọc sản phẩm: thẻ chỉ hiện khi
-//  - đúng loại đã tick (không tick ô nào thì hiện mọi loại), VÀ
-//  - tên chứa từ khóa tìm kiếm (không có từ khóa thì bỏ qua)
+// Lọc sản phẩm:
+// Ẩn/hiện từng thẻ sản phẩm theo loại đang tick và từ khóa tìm kiếm.
 function locSanPham() {
   const dsLoai = [];
   cacOLoai.forEach((o) => {
@@ -119,7 +119,7 @@ function locSanPham() {
   });
 }
 
-// ===== CHẠY KHI TRANG TẢI XONG (script đặt cuối <body> nên DOM đã có sẵn) =====
+//Chạy khi trang tải xong
 ganSuKien();
 
 // Tick ô lọc thì lọc lại
