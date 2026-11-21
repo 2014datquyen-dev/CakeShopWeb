@@ -80,11 +80,16 @@ const handleLogin = () => {
         if (emailPhoneValid&&passwordValid){
             // Ghi trạng thái đăng nhập vào localStorage; localStorage lưu giá trị dưới dạng chuỗi.
             localStorage.setItem('isLogin', 'true');
-            // Nếu từng sao lưu giỏ hàng ở cartBackup, khôi phục lại giỏ hàng vào cartItems.
+            // Giỏ hàng sao lưu lúc đăng xuất (cartBackup) chỉ được khôi phục khi giỏ hiện tại đang trống,
+            // để không ghi đè giỏ hàng khách vừa chọn trước khi đăng nhập (ví dụ đang ở trang Thanh toán).
             const saved = localStorage.getItem('cartBackup');
-            if (saved) localStorage.setItem('cartItems', saved);
-            // Chuyển trình duyệt về trang chủ sau khi đăng nhập thành công.
-            window.location.href='../TrangChu/trangChu.html';
+            const gioHienTai = JSON.parse(localStorage.getItem('cartItems')) || [];
+            if (saved && gioHienTai.length === 0) {
+                localStorage.setItem('cartItems', saved);
+            }
+            localStorage.removeItem('cartBackup');   // đã dùng (hoặc bỏ qua) thì xóa, tránh ghi đè ở lần sau
+            // Đi từ trang Thanh toán (?quayLai=thanhtoan) thì quay lại Thanh toán, còn lại về Trang chủ.
+            window.location.href = layTrangQuayLai();
         }
     }, 1000);
 }
@@ -109,3 +114,24 @@ passwordInput.addEventListener('input', () => {
     passwordError.innerText = '';
     passwordInput.nextElementSibling.style.color='#4c4b4b';
 });
+
+// ===== QUAY LẠI TRANG TRƯỚC SAU KHI ĐĂNG NHẬP =====
+// Trang Thanh toán mở trang này bằng địa chỉ DangNhap.html?quayLai=thanhtoan.
+// URLSearchParams đọc phần sau dấu ? của địa chỉ (giống cách trang Sản phẩm đọc ?search=).
+const quayLai = new URLSearchParams(window.location.search).get('quayLai');
+
+// Chỉ nhận đúng giá trị 'thanhtoan', giá trị lạ thì về Trang chủ
+function layTrangQuayLai() {
+    if (quayLai === 'thanhtoan') {
+        return '../ThanhToan/thanhToan.html';
+    }
+    return '../TrangChu/trangChu.html';
+}
+
+// Người dùng bấm sang "Đăng ký ngay" thì gửi tiếp ?quayLai để không bị mất
+if (quayLai === 'thanhtoan') {
+    const cacLinkDangKy = document.querySelectorAll('a[href="DangKy.html"]');
+    cacLinkDangKy.forEach((link) => {
+        link.href = 'DangKy.html?quayLai=thanhtoan';
+    });
+}
