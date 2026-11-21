@@ -297,3 +297,36 @@ function hienThiDonHang(donHang) {
     tong.classList.add('order-total');
     khung.appendChild(tong);
 }
+
+// ===== ĐÃ ĐĂNG NHẬP: TỰ ĐIỀN THÔNG TIN GIAO HÀNG =====
+// Tên, email, số điện thoại lấy từ tài khoản (lưu lúc đăng ký).
+// Địa chỉ lấy từ đơn hàng gần nhất của tài khoản (lúc đăng ký chưa nhập địa chỉ).
+// Các ô vẫn sửa được, phòng khi người dùng muốn giao cho người khác.
+function dienThongTinTaiKhoan() {
+    if (!localStorage.getItem('isLogin')) {
+        return;   // chưa đăng nhập -> khách tự nhập như cũ
+    }
+
+    const email = localStorage.getItem('email');
+    nameInput.value = localStorage.getItem('name') || '';
+    emailInput.value = email || '';
+    phoneInput.value = localStorage.getItem('phone') || '';
+
+    // Duyệt từ đơn mới nhất về đơn cũ nhất, gặp đơn của tài khoản này thì lấy địa chỉ
+    const tatCa = JSON.parse(localStorage.getItem('danhSachDonHang')) || [];
+    for (let i = tatCa.length - 1; i >= 0; i--) {
+        const don = tatCa[i];
+        if (don.taiKhoan === email || (!don.taiKhoan && don.email === email)) {
+            addressInput.value = don.diaChi;
+            break;
+        }
+    }
+
+    // Đã đăng nhập thì thay dòng "Bạn đã có tài khoản? Đăng nhập" bằng lời chào
+    // div.form-group chứa ô họ tên -> phần tử ngay trước nó là thẻ <p> đó (truy vấn gián tiếp)
+    const dongDangNhap = nameInput.parentElement.previousElementSibling;
+    dongDangNhap.textContent = 'Xin chào ' + localStorage.getItem('name')
+        + '! Thông tin đã được điền sẵn, bạn có thể sửa nếu muốn giao cho người khác.';
+}
+
+dienThongTinTaiKhoan();

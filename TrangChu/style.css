@@ -390,3 +390,20 @@ main {
 .hien {
     display: block;
 }
+
+@media (max-width: 1024px) {
+    .san-pham-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .san-pham-list { grid-template-columns: 1fr; }
+    /* Câu chuyện: ảnh nằm trên, chữ nằm dưới, ảnh rộng hết khung */
+    .cau-chuyen {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    .cau-chuyen img {
+        width: 100%;
+        height: 220px;
+    }
+}
