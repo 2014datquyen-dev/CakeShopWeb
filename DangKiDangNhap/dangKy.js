@@ -228,7 +228,7 @@ confirmPasswordInput.addEventListener('input', () => {
 });
 
 // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 231 đến dòng 246: Giữ ?quayLai cho các link Đăng nhập ngay; tick ô điều khoản thì xóa thông báo lỗi
-// ===== GIỮ ?quayLai KHI QUAY VỀ TRANG ĐĂNG NHẬP =====
+// ===== GIỮ quayLai KHI QUAY VỀ TRANG ĐĂNG NHẬP =====
 // Đến từ trang Thanh toán (DangKy.html?quayLai=thanhtoan) thì các link "Đăng nhập ngay"
 // (cuối trang và trong popup đăng ký thành công) gửi tiếp ?quayLai, đăng nhập xong sẽ quay lại Thanh toán.
 if (new URLSearchParams(window.location.search).get('quayLai') === 'thanhtoan') {
