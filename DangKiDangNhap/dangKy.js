@@ -137,6 +137,22 @@ const validationConfirmPassword = () => {
     }
 }
 
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 141 đến dòng 155: Kiểm tra ô đồng ý điều khoản
+// Ô đồng ý điều khoản: checkbox nằm trong <label>, thẻ span báo lỗi nằm ngay sau <label> đó.
+const dieuKhoanInput = document.querySelector('#registerForm input[type="checkbox"]');
+const dieuKhoanError = dieuKhoanInput.parentElement.nextElementSibling;
+
+// Kiểm tra đã tick đồng ý điều khoản chưa.
+function validationDieuKhoan() {
+    if (dieuKhoanInput.checked) {
+        dieuKhoanError.innerText = '';
+        return true;
+    } else {
+        dieuKhoanError.innerText = 'Vui lòng đồng ý với điều khoản và chính sách bảo mật.';
+        return false;
+    }
+}
+
 // Lấy form đăng ký qua id rồi lắng nghe sự kiện submit (gửi biểu mẫu).
 const form = document.getElementById('registerForm');
 form.addEventListener('submit', (event) => {
@@ -159,14 +175,18 @@ form.addEventListener('submit', (event) => {
         const phoneValid=validationPhone();
         const passwordValid=validationPassword();
         const confirmValid=validationConfirmPassword();
+        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 179: Gọi hàm kiểm tra ô điều khoản khi bấm Đăng ký
+        const dieuKhoanValid=validationDieuKhoan();
 
         // Chỉ lưu thông tin khi tất cả phép kiểm tra đều hợp lệ.
-        if (nameValid&&emailValid&&phoneValid&&passwordValid&&confirmValid){
+        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 183: Thêm kết quả kiểm tra điều khoản vào điều kiện đăng ký
+        if (nameValid&&emailValid&&phoneValid&&passwordValid&&confirmValid&&dieuKhoanValid){
             // localStorage.setItem(key, value) lưu dữ liệu theo cặp khóa/giá trị trên trình duyệt.
             localStorage.setItem('name', nameInput.value);
             localStorage.setItem('email', emailInput.value);
             localStorage.setItem('phone', phoneInput.value);
             localStorage.setItem('password', passwordInput.value);
+            // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 190: Đăng ký tài khoản mới thì xóa địa chỉ cũ
             localStorage.removeItem('address');   // tài khoản mới chưa có địa chỉ (lưu ở đơn đầu tiên)
             // Thêm class show để mở popup thông báo đăng ký thành công.
             document.getElementById("successPopup").classList.add("show");
@@ -207,6 +227,7 @@ confirmPasswordInput.addEventListener('input', () => {
     confirmPasswordInput.nextElementSibling.style.color='#4c4b4b';
 });
 
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 231 đến dòng 246: Giữ ?quayLai cho các link Đăng nhập ngay; tick ô điều khoản thì xóa thông báo lỗi
 // ===== GIỮ ?quayLai KHI QUAY VỀ TRANG ĐĂNG NHẬP =====
 // Đến từ trang Thanh toán (DangKy.html?quayLai=thanhtoan) thì các link "Đăng nhập ngay"
 // (cuối trang và trong popup đăng ký thành công) gửi tiếp ?quayLai, đăng nhập xong sẽ quay lại Thanh toán.
@@ -216,3 +237,10 @@ if (new URLSearchParams(window.location.search).get('quayLai') === 'thanhtoan') 
         link.href = 'DangNhap.html?quayLai=thanhtoan';
     });
 }
+
+// Tick vào ô điều khoản thì xóa thông báo lỗi của ô đó.
+dieuKhoanInput.addEventListener('change', () => {
+    if (dieuKhoanInput.checked) {
+        dieuKhoanError.innerText = '';
+    }
+});

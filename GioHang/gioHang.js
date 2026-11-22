@@ -1,4 +1,5 @@
 // Tác giả: Huỳnh Thiên Bảo - B2405021
+// Định dạng số tiền theo tiền Việt Nam (ví dụ 450.000 ₫)
 const formatCurrency = (amount, locale = "vi-VN") => {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
@@ -8,10 +9,12 @@ const formatCurrency = (amount, locale = "vi-VN") => {
   }).format(amount);
 }
 
+// Lấy giá dạng số từ chuỗi giá (ví dụ "450.000đ" -> 450000)
 function layGiaSo(price) {
   return Number(String(price).replace(/[^0-9]/g, ""));
 }
 
+// Đọc giỏ hàng từ localStorage (key cartItems), số lượng bị lỗi thì đưa về 1
 function layGioHang() {
   if (localStorage.getItem('cartItems') === null) {
     return [];
@@ -27,22 +30,26 @@ function layGioHang() {
   return customerCart;
 }
 
+// Lưu giỏ hàng vào localStorage
 function luuGioHang(cartItemArr) {
   localStorage.setItem('cartItems', JSON.stringify(cartItemArr));
 }
 
 
+// Lấy thẻ ul chứa danh sách sản phẩm (truy vấn gián tiếp từ khối .danh-sach-gio)
 // Nút nguồn: khối danh sách và vùng hẹn giờ -> từ đó duyệt tới nút đích
 // .danh-sach-gio: [0]div.dong-tieu-de  [1]ul.ds-san-pham
 function layDanhSach() {
   return document.querySelectorAll('.danh-sach-gio')[0].lastElementChild;
 }
 
+// Lấy vùng hẹn giờ nhận hàng
 function layVungHenGio() {
   return document.querySelectorAll('.vung-hen-gio')[0];
 }
 
 
+// Vẽ lại toàn bộ giỏ hàng (hoặc báo giỏ trống), cập nhật tổng tiền và số trên icon giỏ hàng
 // maVuaDoi: mã sản phẩm vừa đổi (để làm nảy thành tiền của dòng đó).
 // Không truyền gì (lần đầu mở trang) -> không chạy hiệu ứng nảy.
 function hienThiGioHang(maVuaDoi) {
@@ -69,6 +76,7 @@ function hienThiGioHang(maVuaDoi) {
   capNhatIconGioHang();   // hàm dùng chung trong header-footer.js
 }
 
+// Tạo một dòng sản phẩm: nút xóa, ảnh, tên, đơn giá, bộ chọn số lượng, thành tiền
 // li.san-pham: [0]nút xóa [1]ảnh [2]div.thong-tin [3]đơn giá [4]div.chon-so-luong [5]thành tiền
 function taoDongSanPham(item) {
   const dong = document.createElement('li');
@@ -150,17 +158,20 @@ function taoDongSanPham(item) {
 }
 
 
+// Lấy mã sản phẩm từ một dòng li
 // Từ 1 dòng <li>: phần tử con thứ 3 (div.thong-tin) -> con thứ 2 (p.item-id) chứa mã sản phẩm
 function layMaSanPham(dong) {
   return dong.children[2].children[1].textContent;
 }
 
+// Bấm nút × thì xóa sản phẩm của dòng đó
 // button -> li
 function xuLyXoa(evt) {
   const dong = evt.target.parentElement;
   xoaSanPham(layMaSanPham(dong), dong);
 }
 
+// Bấm nút − thì giảm số lượng đi 1
 // button -> div.chon-so-luong -> li ; ô số nằm ngay sau nút giảm
 function xuLyGiam(evt) {
   const nut = evt.target;
@@ -169,6 +180,7 @@ function xuLyGiam(evt) {
   capNhatSoLuong(layMaSanPham(dong), Number(oSo.value) - 1);
 }
 
+// Bấm nút + thì tăng số lượng thêm 1
 // ô số nằm ngay trước nút tăng
 function xuLyTang(evt) {
   const nut = evt.target;
@@ -177,6 +189,7 @@ function xuLyTang(evt) {
   capNhatSoLuong(layMaSanPham(dong), Number(oSo.value) + 1);
 }
 
+// Nhập trực tiếp số lượng vào ô số
 function xuLyNhapSo(evt) {
   const oSo = evt.target;
   const dong = oSo.parentElement.parentElement;
@@ -184,6 +197,7 @@ function xuLyNhapSo(evt) {
 }
 
 
+// Tìm vị trí sản phẩm trong giỏ theo mã (không có thì trả về -1)
 function isExistedInCart(id, cartItemArr) {
   let myIndex = -1;
   for (let i = 0; i < cartItemArr.length; i++) {
@@ -195,6 +209,7 @@ function isExistedInCart(id, cartItemArr) {
   return myIndex;
 }
 
+// Cập nhật số lượng (tối thiểu là 1), lưu lại và vẽ lại giỏ hàng
 function capNhatSoLuong(id, soLuongMoi) {
   const customerCart = layGioHang();
   const index = isExistedInCart(id, customerCart);
@@ -210,6 +225,7 @@ function capNhatSoLuong(id, soLuongMoi) {
   hienThiGioHang(id);
 }
 
+// Hỏi xác nhận, chạy hiệu ứng mờ dần rồi xóa sản phẩm khỏi giỏ hàng
 // dong: thẻ li của sản phẩm, dùng để chạy hiệu ứng trước khi xóa
 function xoaSanPham(id, dong) {
   const customerCart = layGioHang();
@@ -228,6 +244,7 @@ function xoaSanPham(id, dong) {
 }
 
 
+// Tính và hiển thị tổng tiền (nảy lên khi giỏ hàng thay đổi)
 // Vùng hẹn giờ: [0]h2 [1]label [2]input date [3]label [4]select [5]label [6]p.thanh-tien-tong [7]p [8]submit
 // coHieuUng = true -> tổng tiền nảy lên khi giỏ hàng thay đổi
 function capNhatTongTien(coHieuUng) {
@@ -247,6 +264,7 @@ function capNhatTongTien(coHieuUng) {
   }
 }
 
+// Lấy ngày hôm nay dạng yyyy-mm-dd để so sánh với ngày nhận hàng
 function layNgayHomNay() {
   const d = new Date();
   const thang = String(d.getMonth() + 1).padStart(2, '0');
@@ -254,6 +272,7 @@ function layNgayHomNay() {
   return d.getFullYear() + '-' + thang + '-' + ngay;
 }
 
+// Khi bấm Thanh toán: chặn giỏ trống, chưa chọn ngày hoặc ngày đã qua; hợp lệ thì lưu thông tin nhận hàng
 function kiemTraThanhToan(evt) {
   if (layGioHang().length === 0) {
     evt.preventDefault();
@@ -275,6 +294,7 @@ function kiemTraThanhToan(evt) {
   }
 }
 
+// Lưu ngày nhận, thời gian nhận, xuất hóa đơn và ghi chú vào localStorage (key thongTinNhanHang)
 // Lưu thông tin hẹn giờ + ghi chú vào localStorage, key 'thongTinNhanHang'
 // .vung-san-pham: [0]div.danh-sach-gio [1]a.tiep-tuc [2]div.ghi-chu > [0]label [1]textarea
 function luuThongTinNhanHang() {
@@ -292,6 +312,7 @@ function luuThongTinNhanHang() {
   localStorage.setItem('thongTinNhanHang', JSON.stringify(thongTin));
 }
 
+// Khởi động trang: đặt ngày nhỏ nhất, gắn sự kiện Thanh toán, vẽ giỏ hàng (lần đầu có hiệu ứng trượt vào)
 function setup() {
   const vungHenGio = layVungHenGio();
   vungHenGio.children[2].min = layNgayHomNay();

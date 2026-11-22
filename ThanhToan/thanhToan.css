@@ -277,11 +277,13 @@ footer {
   top: 50px;
 }
 
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 281 đến dòng 282 */
 .discount-container input:focus + label,
 .discount-container input:not(:placeholder-shown) + label {
   top: 33px;
 }
 
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 287 đến dòng 401 */
 /* Thông báo của mã giảm giá xuống hàng riêng, nằm dưới ô nhập */
 .discount-container {
   flex-wrap: wrap;
@@ -690,6 +692,7 @@ footer {
 .success-overlay {
   display: none;
   position: fixed;
+  /* Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 696 */
   z-index: 1000;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -705,6 +708,7 @@ footer {
 .success-popup {
   background: white;
   width: 100%;
+  /* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 712 đến dòng 714 */
   max-width: 460px;
   max-height: 90vh;
   overflow-y: auto;
@@ -734,6 +738,7 @@ footer {
   margin-bottom: 12px;
 }
 
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 742 */
 .success-popup > p {
   color: var(--tf);
   font-size: 15px;
@@ -755,7 +760,8 @@ footer {
   background: var(--hv);
 }
 
-/* Nút về trang chủ: trước đây là <a> nằm trong <button> (không hợp lệ) */
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 764 đến dòng 767 */
+/* Nút về trang chủ */
 .success-popup .popup-home {
   display: block;
   background: var(--btn);
@@ -763,6 +769,7 @@ footer {
   padding: 14px 25px;
   font-size: 16px;
   color: white;
+  /* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 773 đến dòng 793 */
   text-decoration: none;
   transition: background 0.2s;
 }
@@ -785,6 +792,7 @@ footer {
 .success-popup .info-row {
   display: flex;
   justify-content: space-between;
+  /* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 796 đến dòng 801 */
   gap: 16px;
   margin-bottom: 6px;
   line-height: 1.5;
@@ -793,6 +801,7 @@ footer {
 .success-popup .info-row span {
   flex-shrink: 0;
   color: var(--tf);
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 805 đến dòng 821 */
 }
 
 .success-popup .info-row strong {
@@ -812,6 +821,7 @@ footer {
 .success-popup .order-items li {
   display: flex;
   justify-content: space-between;
+  /* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 825 đến dòng 835 */
   gap: 12px;
   padding: 3px 0;
 }
