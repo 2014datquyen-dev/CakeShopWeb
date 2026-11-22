@@ -797,9 +797,9 @@ footer {
 .success-popup .info-row span {
   flex-shrink: 0;
   color: var(--tf);
-/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 801 đến dòng 817 */
 }
 
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 803 đến dòng 817 */
 .success-popup .info-row strong {
   font-weight: 600;
   text-align: right;
