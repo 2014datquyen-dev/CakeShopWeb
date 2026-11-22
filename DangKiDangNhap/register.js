@@ -207,7 +207,7 @@ confirmPasswordInput.addEventListener('input', () => {
     confirmPasswordInput.nextElementSibling.style.color='#4c4b4b';
 });
 
-// ===== GIỮ ?quayLai KHI QUAY VỀ TRANG ĐĂNG NHẬP =====
+// ===== GIỮ quayLai KHI QUAY VỀ TRANG ĐĂNG NHẬP =====
 // Đến từ trang Thanh toán (DangKy.html?quayLai=thanhtoan) thì các link "Đăng nhập ngay"
 // (cuối trang và trong popup đăng ký thành công) gửi tiếp ?quayLai, đăng nhập xong sẽ quay lại Thanh toán.
 if (new URLSearchParams(window.location.search).get('quayLai') === 'thanhtoan') {
