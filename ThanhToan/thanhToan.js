@@ -19,54 +19,80 @@ const addressInput = document.getElementById('address');
 const addressError = addressInput.nextElementSibling.nextElementSibling;
 
 
-
-// Kiểm tra họ tên. Trả về true nếu có nhập, false nếu bỏ trống; đồng thời cập nhật giao diện lỗi.
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 24-98: Biểu thức kiểm tra email
+// Kiểm tra họ tên: không được để trống và phải có ít nhất 5 ký tự.
 const validationFullname = () => {
     const name = nameInput.value;
+    // Biểu thức chính quy /^.{5,}$/: dấu ^ bắt đầu, . là một ký tự bất kỳ (trừ xuống dòng), {5,} là từ 5 ký tự, $ là kết thúc.
+    const nameRegex = /^.{5,}$/;
 
-    // !== nghĩa là khác cả giá trị và kiểu dữ liệu. Chuỗi rỗng biểu thị chưa có nội dung.
-    if (name!==""){
+    // Nếu bỏ trống: đánh dấu lỗi, hiện thông báo và trả về false.
+    if (name===''){
+        nameInput.classList.add('input-error');
+        nameError.innerText = 'Vui lòng nhập tên vào.';
+        nameInput.nextElementSibling.style.color='red';
+        return false;
+    } else if 
+    // test(name) trả về true nếu tên khớp với biểu thức chính quy.
+    (nameRegex.test(name)){
         nameInput.classList.remove('input-error');
         nameError.innerText = '';
+        nameInput.nextElementSibling.style.color='#4c4b4b';
         return true;
+    // Có nhập nhưng chưa đủ 5 ký tự thì báo lỗi.
     } else {
         nameInput.classList.add('input-error');
-        nameError.innerText = 'Vui lòng nhập họ tên vào';
+        nameError.innerText = 'Tên phải có ít nhất 5 ký tự.';
+        nameInput.nextElementSibling.style.color='red';
         return false;
-    }
+    } 
 };
 
-// Kiểm tra định dạng email bằng biểu thức chính quy (regular expression).
+// Kiểm tra email theo dạng phần trước @, tên miền, dấu chấm và phần đuôi 2 đến 4 ký tự.
 const validationEmail = () => {
-    // ^[^\s@]+ yêu cầu phần đầu không chứa khoảng trắng/@; \. là dấu chấm thật; $ đánh dấu kết thúc.
-    // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 43: Biểu thức kiểm tra email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // \s là khoảng trắng; [^\s@] nghĩa là một ký tự không phải khoảng trắng hay @.
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/;
     const email = emailInput.value;
-
-    // regex.test(email) trả về true khi chuỗi khớp định dạng yêu cầu.
-    if (emailRegex.test(email)){
+    if (email===''){
+        emailInput.classList.add('input-error');
+        emailError.innerText = 'Vui lòng nhập email vào.';
+        emailInput.nextElementSibling.style.color='red';
+        return false;
+    } else if 
+    (emailRegex.test(email)){
         emailInput.classList.remove('input-error');
         emailError.innerText = '';
+        emailInput.nextElementSibling.style.color='#4c4b4b';
         return true;
     } else {
         emailInput.classList.add('input-error');
-        emailError.innerText = 'Vui lòng nhập email hợp lệ';
+        emailError.innerText = 'Vui lòng nhập email hợp lệ.';
+        emailInput.nextElementSibling.style.color='red';
         return false;
     }  
 }
 
-// Kiểm tra số điện thoại: ký tự đầu là 0, tiếp theo đúng 9 chữ số.
+// Kiểm tra số điện thoại: bắt đầu bằng số 0 và theo sau là đúng 9 chữ số (tổng 10 chữ số).
 const validationPhone = () => {
-    const phoneRegex = /^0\d{9}$/;    
+    // \d là một chữ số; {9} yêu cầu xuất hiện đúng 9 lần.
+    const phoneRegex = /^0\d{9}$/;
     const phone = phoneInput.value;
     
-    if (phoneRegex.test(phone)){
+    if (phone===''){
+        phoneInput.classList.add('input-error');
+        phoneError.innerText = 'Vui lòng nhập số điện thoại vào.';
+        phoneInput.nextElementSibling.style.color='red';
+        return false;
+    } else if
+    (phoneRegex.test(phone)){
         phoneInput.classList.remove('input-error');
         phoneError.innerText='';
+        phoneInput.nextElementSibling.style.color='#4c4b4b';
         return true;
     } else {
         phoneInput.classList.add('input-error');
-        phoneError.innerText='Vui lòng nhập số điện thoại hợp lệ';
+        phoneError.innerText='Vui lòng nhập số điện thoại hợp lệ.';
+        phoneInput.nextElementSibling.style.color='red';
         return false;
     }
 }
