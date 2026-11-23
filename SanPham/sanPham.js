@@ -86,6 +86,12 @@ const tuKhoa = thamSo.get("search");
 const loaiTuURL = thamSo.get("loai");
 const cacOLoai = document.querySelectorAll('input[name="loai"]');
 
+// Dòng báo khi không có sản phẩm nào khớp: tạo một lần, đặt ở cuối lưới sản phẩm
+const luoiSanPham = document.querySelectorAll(".main-section")[0];
+const thongBaoRong = document.createElement("p");
+thongBaoRong.className = "khong-tim-thay hidden";
+luoiSanPham.appendChild(thongBaoRong);
+
 // Lọc sản phẩm:
 // Ẩn/hiện từng thẻ sản phẩm theo loại đang tick và từ khóa tìm kiếm.
 function locSanPham() {
@@ -97,6 +103,7 @@ function locSanPham() {
   });
 
   const cacThe = document.querySelectorAll(".product-card");
+  let soTheHien = 0;   // đếm số sản phẩm còn hiện sau khi lọc
   cacThe.forEach((the) => {
     let hien = true;
 
@@ -113,10 +120,23 @@ function locSanPham() {
 
     if (hien) {
       the.classList.remove("hidden");
+      soTheHien++;
     } else {
       the.classList.add("hidden");
     }
   });
+
+  // Không còn sản phẩm nào -> hiện dòng báo thay vì để trang trống
+  if (soTheHien === 0) {
+    if (tuKhoa) {
+      thongBaoRong.textContent = 'Không tìm thấy sản phẩm nào phù hợp với "' + tuKhoa + '".';
+    } else {
+      thongBaoRong.textContent = "Không có sản phẩm nào thuộc loại đã chọn.";
+    }
+    thongBaoRong.classList.remove("hidden");
+  } else {
+    thongBaoRong.classList.add("hidden");
+  }
 }
 
 //Chạy khi trang tải xong

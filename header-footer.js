@@ -27,9 +27,9 @@ const headings = document.querySelectorAll(".footer-heading");
 headings.forEach((heading) => {
     heading.addEventListener("click", () => {
 
-        // closest tìm phần tử gần nhất từ heading đi ngược lên cây DOM
-        // (kể cả chính nó) khớp .footer-column: cột chứa tiêu đề vừa bấm.
-        const column = heading.closest(".footer-column");
+        // parentElement là phần tử cha của tiêu đề: chính là div.footer-column
+        // chứa tiêu đề vừa bấm (truy vấn gián tiếp).
+        const column = heading.parentElement;
 
         // Thêm/xóa class active để CSS mở/thu nội dung của cột footer.
         column.classList.toggle("active");
@@ -47,6 +47,7 @@ nutTimKiem.addEventListener('click', () => {
     nutTimKiem.parentElement.submit();   // nút kính lúp -> form.search-box (truy vấn gián tiếp)
 });
 
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 51 đến dòng 114: Nút tài khoản: đổi giao diện khi đã đăng nhập, bấm thì mở popup hoặc sang trang Đăng nhập; hàm taoDongTaiKhoan và layDonHangCuaToi (lọc lịch sử mua hàng của tài khoản)
 // ===== TÀI KHOẢN: NÚT NGƯỜI DÙNG + POPUP THÔNG TIN TÀI KHOẢN =====
 // Chưa đăng nhập: bấm nút -> sang trang Đăng nhập
 // Đã đăng nhập : bấm nút -> mở popup (tên, email, địa chỉ, SĐT, lịch sử mua hàng, Đăng xuất)
@@ -112,13 +113,14 @@ function layDonHangCuaToi(email) {
     return ketQua;
 }
 
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 117 đến dòng 221: Popup Thông tin tài khoản: moPopupTaiKhoan (tên, email, địa chỉ, số điện thoại, lịch sử mua hàng, nút Đăng xuất) và dongPopupTaiKhoan (đóng popup)
 // ===== 3. TẠO POPUP TÀI KHOẢN BẰNG DOM =====
 // Hàm chạy khi người dùng nhấn nút tài khoản trong trạng thái đăng nhập.
 function moPopupTaiKhoan() {
     const email = localStorage.getItem('email');
     // Lấy các đơn thuộc email hiện tại để hiển thị lịch sử mua hàng.
     const donHang = layDonHangCuaToi(email);
-    // Địa chỉ tài khoản: lưu ở đơn hàng đầu tiên (key 'address', xem ThanhToan/script.js).
+    // Địa chỉ tài khoản: lưu ở đơn hàng đầu tiên (key 'address', xem ThanhToan/thanhToan.js).
     // Tài khoản đặt hàng trước khi có key này thì lấy từ đơn gần nhất.
     let diaChi = localStorage.getItem('address');
     if (!diaChi) {
@@ -220,6 +222,7 @@ function dongPopupTaiKhoan(evt) {
 
 // Đăng xuất: giữ lại giỏ hàng để lần sau đăng nhập lấy lại (giữ nguyên cách làm cũ)
 // Hàm chỉ xóa cờ đăng nhập và giỏ hiện hành, không xóa thông tin tài khoản.
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 226: Khai báo hàm đăng xuất dangXuat
 function dangXuat() {
     const cart = localStorage.getItem('cartItems');
     // Nếu giỏ có dữ liệu, tạo bản sao để lần đăng nhập sau phục hồi.

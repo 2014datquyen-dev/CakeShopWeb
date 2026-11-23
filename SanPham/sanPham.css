@@ -187,3 +187,12 @@ body {
 .hidden {
   display: none;
 }
+
+/* Dòng báo khi tìm/lọc không ra sản phẩm, trải hết bề ngang lưới */
+.khong-tim-thay {
+  grid-column: 1 / -1;
+  padding: 60px 10px;
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}

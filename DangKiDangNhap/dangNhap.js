@@ -80,6 +80,7 @@ const handleLogin = () => {
         if (emailPhoneValid&&passwordValid){
             // Ghi trạng thái đăng nhập vào localStorage; localStorage lưu giá trị dưới dạng chuỗi.
             localStorage.setItem('isLogin', 'true');
+            // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 84 đến dòng 93: Đăng nhập thành công: chỉ khôi phục giỏ đã sao lưu khi giỏ hiện tại trống, rồi chuyển về trang Thanh toán hoặc Trang chủ
             // Giỏ hàng sao lưu lúc đăng xuất (cartBackup) chỉ được khôi phục khi giỏ hiện tại đang trống,
             // để không ghi đè giỏ hàng khách vừa chọn trước khi đăng nhập (ví dụ đang ở trang Thanh toán).
             const saved = localStorage.getItem('cartBackup');
@@ -115,6 +116,7 @@ passwordInput.addEventListener('input', () => {
     passwordInput.nextElementSibling.style.color='#4c4b4b';
 });
 
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 120 đến dòng 139: Quay lại trang Thanh toán sau khi đăng nhập (đọc ?quayLai=thanhtoan), giữ ?quayLai cho link Đăng ký ngay
 // ===== QUAY LẠI TRANG TRƯỚC SAU KHI ĐĂNG NHẬP =====
 // Trang Thanh toán mở trang này bằng địa chỉ DangNhap.html?quayLai=thanhtoan.
 // URLSearchParams đọc phần sau dấu ? của địa chỉ (giống cách trang Sản phẩm đọc ?search=).

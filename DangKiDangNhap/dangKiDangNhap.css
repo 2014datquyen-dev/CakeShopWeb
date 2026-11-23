@@ -216,3 +216,9 @@ input:not(:placeholder-shown)~.toggle-password{
 .success-popup a:hover {
     background: var(--hv);
 }
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 220 đến dòng 224 */
+/* Lỗi chưa tick điều khoản: nằm trên một dòng riêng, ngay dưới ô tick */
+.loi-dieu-khoan {
+    display: block;
+    margin-top: 4px;
+}

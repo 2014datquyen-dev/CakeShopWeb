@@ -137,6 +137,7 @@ header {
   width: auto;
 }
 
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 141 đến dòng 152 */
 /* Nút tài khoản: vòng tròn có biểu tượng người */
 .user-btn {
   width: 42px;
@@ -154,6 +155,7 @@ header {
     background 0.2s;
 }
 
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 159 đến dòng 171 */
 .user-btn img {
   width: 24px;
 }
@@ -398,7 +400,7 @@ a:hover {
   text-align: center;
 }
 
-/* ===== NÚT QUAY LÊN ĐẦU TRANG (dùng chung mọi trang, chuyển từ TrangChu/style.css - Lê Thị Khánh Ly) ===== */
+/* ===== NÚT QUAY LÊN ĐẦU TRANG (dùng chung mọi trang, chuyển từ TrangChu/trangChu.css - Lê Thị Khánh Ly) ===== */
 #nutLenDau {
   position: fixed; /* cố định, cuộn trang nút vẫn đứng yên */
   bottom: 30px;
@@ -451,6 +453,7 @@ a:hover {
   }
 }
 
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 457 đến dòng 465 */
 /* ===== POPUP THÔNG TIN TÀI KHOẢN (tạo bằng JS trong header-footer.js) ===== */
 .tk-overlay {
   position: fixed;
@@ -460,6 +463,7 @@ a:hover {
   left: 0;
   display: flex;
   align-items: center;
+  /* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 467 đến dòng 524 */
   justify-content: center;
   padding: 20px;
   background: rgba(0, 0, 0, 0.45);
@@ -520,6 +524,7 @@ a:hover {
 .tk-lich-su {
   display: flex;
   flex-direction: column;
+  /* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 528 đến dòng 553 */
   gap: 10px;
   margin: 4px 0px 20px;
   list-style: none;
@@ -548,6 +553,7 @@ a:hover {
   color: white;
   font-size: 16px;
   font-weight: bold;
+  /* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 557 đến dòng 573 */
   cursor: pointer;
   transition: background 0.2s;
 }

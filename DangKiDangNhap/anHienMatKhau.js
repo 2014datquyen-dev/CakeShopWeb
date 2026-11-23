@@ -18,7 +18,7 @@ toggleBtns.forEach((toggleBtn) => {
             eye.setAttribute('alt', 'Ẩn mật khẩu');
             // appendChild thêm ảnh vào bên trong nút.
             toggleBtn.appendChild(eye);
-        // Ngược lại: đổi type về password để che mật khẩu và thay biểu tượng.
+
         } else {
             password.type = 'password';
             toggleBtn.textContent='';
