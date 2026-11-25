@@ -13,7 +13,7 @@
         <header class="mobile-header">
             <h1>Freshcake.vn</h1>
         </header>
-        <div class="left">
+        <section class="left">
             <h1>Freshcake.vn</h1>
             <h3>Thông tin giao hàng</h3>
             <p>Bạn đã có tài khoản? <a href="../DangKiDangNhap/DangNhap.html?quayLai=thanhtoan">Đăng nhập</a></p>
@@ -39,8 +39,8 @@
                 <label>Địa chỉ<span class="required"> *</span></label>
                 <span class="error-message"></span>
             </div>
-            <div class="payment-container">
-                <h3>Phương thức thanh toán</h3>
+            <fieldset class="payment-container">
+                <legend>Phương thức thanh toán</legend>
                 <div class="payment-methods">
                     <label class="payment-card">
                         <input type="radio" name="payment-method" value="COD" checked>
@@ -51,7 +51,7 @@
                         <span class="payment-name">Vietcombank</span>
                     </label>
                 </div>
-            </div>
+            </fieldset>
             <div class="actions">
                 <a href="../GioHang/gioHang.html">Giỏ hàng</a>
                 <button id="liquidate">Đặt hàng</button>
@@ -60,8 +60,8 @@
                 <hr>
                 <p>Powered by Haravan</p>
             </footer>
-        </div>
-        <div class="right">
+        </section>
+        <aside class="right">
             <button class="order-toggle" id="orderToggle" type="button">
                 <span class="toggle-label">
                     <img src="../images/icons/cart2.png" alt="">
@@ -71,8 +71,8 @@
                 <span class="toggle-price">0₫</span>
             </button>
             <div class="order-details" id="orderDetails">
-                <div class="product-list">
-                </div>
+                <ul class="product-list">
+                </ul>
             </div>
             <div class="form-group discount-container">
                 <input id="discount" type="text" placeholder="">
@@ -80,7 +80,7 @@
                 <span class="error-message"></span>
                 <button type="button">Sử dụng</button>
             </div>
-            <div class="ds-ma-giam-gia"></div>
+            <section class="ds-ma-giam-gia"></section>
             <div class="summary">
                 <div class="summary-row">
                     <span>Tạm tính</span>
@@ -99,7 +99,7 @@
                     <strong>0₫</strong>
                 </div>
             </div>
-        </div>
+        </aside>
     </main>
     <div class="success-overlay" id="successPopup">
         <div class="success-popup">
