@@ -51,18 +51,26 @@ const validationEmail = () => {
         emailError.innerText = 'Vui lòng nhập email vào.';
         emailInput.nextElementSibling.style.color='red';
         return false;
-    } else if 
-    (emailRegex.test(email)){
-        emailInput.classList.remove('input-error');
-        emailError.innerText = '';
-        emailInput.nextElementSibling.style.color='#4c4b4b';
-        return true;
-    } else {
+    } else if (!emailRegex.test(email)){
         emailInput.classList.add('input-error');
         emailError.innerText = 'Vui lòng nhập email hợp lệ.';
         emailInput.nextElementSibling.style.color='red';
         return false;
-    }  
+    } else if
+    // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 61 đến dòng 67: Không cho đăng ký trùng email
+    // Email đã có trong danh sách tài khoản thì không cho đăng ký lại
+    // (layDanhSachTaiKhoan, timViTriTaiKhoan khai báo trong header-footer.js, nạp trước file này).
+    (timViTriTaiKhoan(layDanhSachTaiKhoan(), email) !== -1){
+        emailInput.classList.add('input-error');
+        emailError.innerText = 'Email này đã được đăng ký.';
+        emailInput.nextElementSibling.style.color='red';
+        return false;
+    } else {
+        emailInput.classList.remove('input-error');
+        emailError.innerText = '';
+        emailInput.nextElementSibling.style.color='#4c4b4b';
+        return true;
+    }
 }
 
 // Kiểm tra số điện thoại: bắt đầu bằng số 0 và theo sau là đúng 9 chữ số (tổng 10 chữ số).
@@ -76,17 +84,24 @@ const validationPhone = () => {
         phoneError.innerText = 'Vui lòng nhập số điện thoại vào.';
         phoneInput.nextElementSibling.style.color='red';
         return false;
-    } else if
-    (phoneRegex.test(phone)){
-        phoneInput.classList.remove('input-error');
-        phoneError.innerText='';
-        phoneInput.nextElementSibling.style.color='#4c4b4b';
-        return true;
-    } else {
+    } else if (!phoneRegex.test(phone)){
         phoneInput.classList.add('input-error');
         phoneError.innerText='Vui lòng nhập số điện thoại hợp lệ.';
         phoneInput.nextElementSibling.style.color='red';
         return false;
+    } else if
+    // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 94 đến dòng 99: Không cho đăng ký trùng số điện thoại
+    // Số điện thoại đã có tài khoản dùng thì không cho đăng ký lại.
+    (timViTriTaiKhoan(layDanhSachTaiKhoan(), phone) !== -1){
+        phoneInput.classList.add('input-error');
+        phoneError.innerText='Số điện thoại này đã được đăng ký.';
+        phoneInput.nextElementSibling.style.color='red';
+        return false;
+    } else {
+        phoneInput.classList.remove('input-error');
+        phoneError.innerText='';
+        phoneInput.nextElementSibling.style.color='#4c4b4b';
+        return true;
     }
 }
 
@@ -137,7 +152,7 @@ const validationConfirmPassword = () => {
     }
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 141 đến dòng 155: Kiểm tra ô đồng ý điều khoản
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 156 đến dòng 169: Kiểm tra ô đồng ý điều khoản
 // Ô đồng ý điều khoản: checkbox nằm trong <label>, thẻ span báo lỗi nằm ngay sau <label> đó.
 const dieuKhoanInput = document.querySelector('#registerForm input[type="checkbox"]');
 const dieuKhoanError = dieuKhoanInput.parentElement.nextElementSibling;
@@ -175,19 +190,24 @@ form.addEventListener('submit', (event) => {
         const phoneValid=validationPhone();
         const passwordValid=validationPassword();
         const confirmValid=validationConfirmPassword();
-        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 179: Gọi hàm kiểm tra ô điều khoản khi bấm Đăng ký
+        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 194: Gọi hàm kiểm tra ô điều khoản khi bấm Đăng ký
         const dieuKhoanValid=validationDieuKhoan();
 
         // Chỉ lưu thông tin khi tất cả phép kiểm tra đều hợp lệ.
-        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 183: Thêm kết quả kiểm tra điều khoản vào điều kiện đăng ký
+        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 198: Thêm kết quả kiểm tra điều khoản vào điều kiện đăng ký
         if (nameValid&&emailValid&&phoneValid&&passwordValid&&confirmValid&&dieuKhoanValid){
-            // localStorage.setItem(key, value) lưu dữ liệu theo cặp khóa/giá trị trên trình duyệt.
-            localStorage.setItem('name', nameInput.value);
-            localStorage.setItem('email', emailInput.value);
-            localStorage.setItem('phone', phoneInput.value);
-            localStorage.setItem('password', passwordInput.value);
-            // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 190: Đăng ký tài khoản mới thì xóa địa chỉ cũ
-            localStorage.removeItem('address');   // tài khoản mới chưa có địa chỉ (lưu ở đơn đầu tiên)
+            // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 200 đến dòng 210: Lưu tài khoản mới vào mảng danhSachTaiKhoan
+            // Thêm tài khoản mới (một object) vào cuối mảng tài khoản rồi lưu lại.
+            // JSON.stringify đổi mảng thành chuỗi vì localStorage chỉ lưu chuỗi.
+            const danhSach = layDanhSachTaiKhoan();
+            danhSach.push({
+                name: nameInput.value,
+                email: emailInput.value,
+                phone: phoneInput.value,
+                password: passwordInput.value,
+                address: ''   // chưa có địa chỉ, sẽ lưu ở đơn hàng đầu tiên
+            });
+            localStorage.setItem('danhSachTaiKhoan', JSON.stringify(danhSach));
             // Thêm class show để mở popup thông báo đăng ký thành công.
             document.getElementById("successPopup").classList.add("show");
         }
@@ -227,7 +247,7 @@ confirmPasswordInput.addEventListener('input', () => {
     confirmPasswordInput.nextElementSibling.style.color='#4c4b4b';
 });
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 231 đến dòng 246: Giữ ?quayLai cho các link Đăng nhập ngay; tick ô điều khoản thì xóa thông báo lỗi
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 251 đến dòng 266: Giữ ?quayLai cho các link Đăng nhập ngay; tick ô điều khoản thì xóa thông báo lỗi
 // ===== GIỮ quayLai KHI QUAY VỀ TRANG ĐĂNG NHẬP =====
 // Đến từ trang Thanh toán (DangKy.html?quayLai=thanhtoan) thì các link "Đăng nhập ngay"
 // (cuối trang và trong popup đăng ký thành công) gửi tiếp ?quayLai, đăng nhập xong sẽ quay lại Thanh toán.

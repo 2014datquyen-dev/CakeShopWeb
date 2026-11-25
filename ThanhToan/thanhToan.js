@@ -475,7 +475,7 @@ capNhatTienThanhToan();
 
 
 // Các hàm bên dưới đảm nhiệm tạo dữ liệu đơn, lưu xuống trình duyệt và render popup.
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 479 đến dòng 562: Tạo đơn hàng (taoDonHang), lưu đơn và lưu địa chỉ tài khoản ở đơn đầu tiên (luuDonHang), đổi định dạng ngày (doiNgay), tạo dòng thông tin (taoDongThongTin)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 479 đến dòng 568: Tạo đơn hàng (taoDonHang), lưu đơn và lưu địa chỉ tài khoản ở đơn đầu tiên (luuDonHang), đổi định dạng ngày (doiNgay), tạo dòng thông tin (taoDongThongTin)
 // ===== TẠO, LƯU VÀ HIỂN THỊ ĐƠN HÀNG =====
 // Tạo object đơn hàng từ dữ liệu người nhập, giỏ hàng và tùy chọn nhận hàng đã lưu.
 function taoDonHang() {
@@ -513,7 +513,8 @@ function taoDonHang() {
         tongTien: tongTien - tienGiam,   // số tiền phải trả sau khi giảm
         // email tài khoản đang đăng nhập -> để popup Thông tin tài khoản lọc lịch sử mua hàng
         // Gắn email tài khoản nếu có trạng thái đăng nhập để phục vụ lọc lịch sử mua hàng.
-        taiKhoan: localStorage.getItem('isLogin') ? localStorage.getItem('email') : ''
+        // isLogin lưu email của tài khoản đang đăng nhập; chưa đăng nhập thì để chuỗi rỗng.
+        taiKhoan: localStorage.getItem('isLogin') || ''
     };
 }
 
@@ -532,8 +533,13 @@ function luuDonHang(donHang) {
 
     // Đơn đầu tiên của tài khoản: lưu địa chỉ vừa nhập làm địa chỉ của tài khoản.
     // Các đơn sau (có thể giao cho người khác) không làm đổi địa chỉ này.
-    if (donHang.taiKhoan !== '' && !localStorage.getItem('address')) {
-        localStorage.setItem('address', donHang.diaChi);
+    if (donHang.taiKhoan !== '') {
+        const danhSachTK = layDanhSachTaiKhoan();
+        const viTri = timViTriTaiKhoan(danhSachTK, donHang.taiKhoan);
+        if (viTri !== -1 && !danhSachTK[viTri].address) {
+            danhSachTK[viTri].address = donHang.diaChi;
+            localStorage.setItem('danhSachTaiKhoan', JSON.stringify(danhSachTK));
+        }
     }
 }
 
@@ -561,7 +567,7 @@ function taoDongThongTin(nhan, giaTri) {
     return dong;
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 565 đến dòng 619: Hiển thị thông tin đơn hàng trong popup đặt hàng thành công (hienThiDonHang)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 571 đến dòng 625: Hiển thị thông tin đơn hàng trong popup đặt hàng thành công (hienThiDonHang)
 // Hiển thị thông tin đơn hàng trong popup sau khi đặt hàng thành công.
 // .success-popup: [0]icon [1]h2 [2]p [3]div.order-info [4]a
 function hienThiDonHang(donHang) {
@@ -618,26 +624,53 @@ function hienThiDonHang(donHang) {
     khung.appendChild(tong);
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 622 đến dòng 659: Tự điền thông tin giao hàng khi đã đăng nhập (dienThongTinTaiKhoan)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 628 đến dòng 692: Tự điền thông tin giao hàng khi đã đăng nhập (dienThongTinTaiKhoan)
 // ===== ĐÃ ĐĂNG NHẬP: TỰ ĐIỀN THÔNG TIN GIAO HÀNG =====
-// Tên, email, số điện thoại lấy từ tài khoản (lưu lúc đăng ký).
-// Địa chỉ lấy từ key 'address' (lưu ở đơn đầu tiên, vì lúc đăng ký chưa nhập địa chỉ).
+// Trang Thanh toán không nạp header-footer.js nên khai báo lại 3 hàm đọc danh sách tài khoản
+// (giống hệt bản trong header-footer.js). Hàm khai báo bằng function dùng được ở mọi chỗ trong file.
+function layDanhSachTaiKhoan() {
+    return JSON.parse(localStorage.getItem('danhSachTaiKhoan')) || [];
+}
+function timViTriTaiKhoan(danhSach, giaTri) {
+    for (let i = 0; i < danhSach.length; i++) {
+        if (danhSach[i].email === giaTri || danhSach[i].phone === giaTri) {
+            return i;
+        }
+    }
+    return -1;
+}
+function layTaiKhoanDangNhap() {
+    const email = localStorage.getItem('isLogin');
+    if (!email) {
+        return null;
+    }
+    const danhSach = layDanhSachTaiKhoan();
+    const viTri = timViTriTaiKhoan(danhSach, email);
+    if (viTri === -1) {
+        return null;
+    }
+    return danhSach[viTri];
+}
+
+// Tên, email, số điện thoại lấy từ tài khoản đang đăng nhập (lưu lúc đăng ký).
+// Địa chỉ lấy từ trường address của tài khoản (lưu ở đơn đầu tiên, vì lúc đăng ký chưa nhập địa chỉ).
 // Các ô vẫn sửa được, phòng khi người dùng muốn giao cho người khác.
 function dienThongTinTaiKhoan() {
-    if (!localStorage.getItem('isLogin')) {
+    const taiKhoan = layTaiKhoanDangNhap();
+    if (!taiKhoan) {
         return;   // chưa đăng nhập -> khách tự nhập như cũ
     }
 
-    const email = localStorage.getItem('email');
-    nameInput.value = localStorage.getItem('name') || '';
+    const email = taiKhoan.email;
+    nameInput.value = taiKhoan.name || '';
     emailInput.value = email || '';
-    phoneInput.value = localStorage.getItem('phone') || '';
+    phoneInput.value = taiKhoan.phone || '';
 
-    const diaChi = localStorage.getItem('address');
+    const diaChi = taiKhoan.address;
     if (diaChi) {
         addressInput.value = diaChi;
     } else {
-        // Tài khoản đặt hàng trước khi có key 'address':
+        // Tài khoản chưa có địa chỉ:
         // duyệt từ đơn mới nhất về đơn cũ nhất, gặp đơn của tài khoản này thì lấy địa chỉ
         const tatCa = JSON.parse(localStorage.getItem('danhSachDonHang')) || [];
         for (let i = tatCa.length - 1; i >= 0; i--) {
@@ -652,7 +685,7 @@ function dienThongTinTaiKhoan() {
     // Đã đăng nhập thì thay dòng "Bạn đã có tài khoản? Đăng nhập" bằng lời chào
     // div.form-group chứa ô họ tên -> phần tử ngay trước nó là thẻ <p> đó (truy vấn gián tiếp)
     const dongDangNhap = nameInput.parentElement.previousElementSibling;
-    dongDangNhap.textContent = 'Xin chào ' + localStorage.getItem('name')
+    dongDangNhap.textContent = 'Xin chào ' + taiKhoan.name
         + '! Thông tin đã được điền sẵn, bạn có thể sửa nếu muốn giao cho người khác.';
 }
 

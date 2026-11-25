@@ -47,28 +47,94 @@ nutTimKiem.addEventListener('click', () => {
     nutTimKiem.parentElement.submit();   // nút kính lúp -> form.search-box (truy vấn gián tiếp)
 });
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 51 đến dòng 114: Nút tài khoản: đổi giao diện khi đã đăng nhập, bấm thì mở popup hoặc sang trang Đăng nhập; hàm taoDongTaiKhoan và layDonHangCuaToi (lọc lịch sử mua hàng của tài khoản)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 51 đến dòng 180: Danh sách tài khoản (layDanhSachTaiKhoan, timViTriTaiKhoan, layTaiKhoanDangNhap, chuyenTaiKhoanCu); nút tài khoản: đổi giao diện khi đã đăng nhập, bấm thì mở popup hoặc sang trang Đăng nhập; hàm taoDongTaiKhoan và layDonHangCuaToi (lọc lịch sử mua hàng của tài khoản)
 // ===== TÀI KHOẢN: NÚT NGƯỜI DÙNG + POPUP THÔNG TIN TÀI KHOẢN =====
 // Chưa đăng nhập: bấm nút -> sang trang Đăng nhập
 // Đã đăng nhập : bấm nút -> mở popup (tên, email, địa chỉ, SĐT, lịch sử mua hàng, Đăng xuất)
 const userBtn = document.getElementById('userBtn');
-// localStorage lưu dữ liệu dạng chuỗi trong trình duyệt, tồn tại sau khi tải lại trang.
-// getItem trả về chuỗi đã lưu hoặc null nếu khóa chưa tồn tại.
-const daDangNhap = localStorage.getItem('isLogin');
 
-// Nếu có giá trị isLogin thì coi như đã đăng nhập (theo logic hiện tại).
+// ===== DANH SÁCH TÀI KHOẢN (LƯU ĐƯỢC NHIỀU TÀI KHOẢN) =====
+// Mỗi tài khoản là một object { name, email, phone, password, address }.
+// Cả danh sách là một mảng, lưu trong localStorage dưới khóa 'danhSachTaiKhoan'
+// (giống cách giỏ hàng lưu mảng sản phẩm dưới khóa 'cartItems').
+// Khóa 'isLogin' lưu EMAIL của tài khoản đang đăng nhập; chưa đăng nhập thì không có khóa này.
+
+// Đọc mảng tài khoản; chưa có ai đăng ký (null) thì dùng mảng rỗng.
+function layDanhSachTaiKhoan() {
+    return JSON.parse(localStorage.getItem('danhSachTaiKhoan')) || [];
+}
+
+// Duyệt mảng bằng vòng for, tìm tài khoản có email HOẶC số điện thoại trùng giaTri.
+// Tìm thấy thì trả về vị trí (chỉ số) trong mảng, không thấy thì trả về -1.
+function timViTriTaiKhoan(danhSach, giaTri) {
+    for (let i = 0; i < danhSach.length; i++) {
+        if (danhSach[i].email === giaTri || danhSach[i].phone === giaTri) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// Lấy object tài khoản đang đăng nhập; chưa đăng nhập hoặc không tìm thấy thì trả về null.
+function layTaiKhoanDangNhap() {
+    const email = localStorage.getItem('isLogin');
+    if (!email) {
+        return null;
+    }
+    const danhSach = layDanhSachTaiKhoan();
+    const viTri = timViTriTaiKhoan(danhSach, email);
+    if (viTri === -1) {
+        return null;
+    }
+    return danhSach[viTri];
+}
+
+// Chuyển dữ liệu kiểu cũ (mỗi trường một khóa 'name', 'email', 'phone', 'password', 'address')
+// sang danh sách mới, để tài khoản đã đăng ký trước đây vẫn đăng nhập được.
+function chuyenTaiKhoanCu() {
+    const emailCu = localStorage.getItem('email');
+    if (!emailCu) {
+        return;   // không có dữ liệu cũ
+    }
+    const danhSach = layDanhSachTaiKhoan();
+    if (timViTriTaiKhoan(danhSach, emailCu) === -1) {
+        danhSach.push({
+            name: localStorage.getItem('name'),
+            email: emailCu,
+            phone: localStorage.getItem('phone'),
+            password: localStorage.getItem('password'),
+            address: localStorage.getItem('address') || ''
+        });
+        localStorage.setItem('danhSachTaiKhoan', JSON.stringify(danhSach));
+    }
+    // Kiểu cũ lưu isLogin = 'true' -> đổi thành email của tài khoản đó
+    if (localStorage.getItem('isLogin') === 'true') {
+        localStorage.setItem('isLogin', emailCu);
+    }
+    localStorage.removeItem('name');
+    localStorage.removeItem('email');
+    localStorage.removeItem('phone');
+    localStorage.removeItem('password');
+    localStorage.removeItem('address');
+}
+chuyenTaiKhoanCu();
+
+// localStorage lưu dữ liệu dạng chuỗi trong trình duyệt, tồn tại sau khi tải lại trang.
+const daDangNhap = layTaiKhoanDangNhap();
+
+// Tìm được tài khoản đang đăng nhập thì đổi giao diện nút tài khoản.
 if (daDangNhap) {
     // Thêm class để CSS thay đổi giao diện nút tài khoản.
     userBtn.classList.add('da-dang-nhap');
     // title là dòng gợi ý khi rê chuột lên nút.
-    userBtn.title = localStorage.getItem('name');
+    userBtn.title = daDangNhap.name;
 } else {
     userBtn.title = 'Đăng nhập';
 }
 
 // Mỗi lần bấm nút, kiểm tra trạng thái đăng nhập mới nhất.
 userBtn.addEventListener('click', () => {
-    if (localStorage.getItem('isLogin')) {
+    if (layTaiKhoanDangNhap()) {
         // Có đăng nhập: tạo và hiển thị popup tài khoản bằng JS.
         moPopupTaiKhoan();
     } else {
@@ -113,16 +179,18 @@ function layDonHangCuaToi(email) {
     return ketQua;
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 117 đến dòng 221: Popup Thông tin tài khoản: moPopupTaiKhoan (tên, email, địa chỉ, số điện thoại, lịch sử mua hàng, nút Đăng xuất) và dongPopupTaiKhoan (đóng popup)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 183 đến dòng 289: Popup Thông tin tài khoản: moPopupTaiKhoan (tên, email, địa chỉ, số điện thoại, lịch sử mua hàng, nút Đăng xuất) và dongPopupTaiKhoan (đóng popup)
 // ===== 3. TẠO POPUP TÀI KHOẢN BẰNG DOM =====
 // Hàm chạy khi người dùng nhấn nút tài khoản trong trạng thái đăng nhập.
 function moPopupTaiKhoan() {
-    const email = localStorage.getItem('email');
+    // Lấy object tài khoản đang đăng nhập (tên, email, số điện thoại, địa chỉ).
+    const taiKhoan = layTaiKhoanDangNhap();
+    const email = taiKhoan.email;
     // Lấy các đơn thuộc email hiện tại để hiển thị lịch sử mua hàng.
     const donHang = layDonHangCuaToi(email);
-    // Địa chỉ tài khoản: lưu ở đơn hàng đầu tiên (key 'address', xem ThanhToan/thanhToan.js).
-    // Tài khoản đặt hàng trước khi có key này thì lấy từ đơn gần nhất.
-    let diaChi = localStorage.getItem('address');
+    // Địa chỉ tài khoản: lưu ở đơn hàng đầu tiên (trường address, xem ThanhToan/thanhToan.js).
+    // Tài khoản chưa có địa chỉ thì lấy từ đơn gần nhất.
+    let diaChi = taiKhoan.address;
     if (!diaChi) {
         diaChi = donHang.length > 0 ? donHang[donHang.length - 1].diaChi : 'Chưa cập nhật';
     }
@@ -147,10 +215,10 @@ function moPopupTaiKhoan() {
     // appendChild di chuyển/gắn phần tử vào cuối danh sách con của phần tử cha.
     hop.appendChild(nutDong);
     hop.appendChild(tieuDe);
-    hop.appendChild(taoDongTaiKhoan('Tên tài khoản', localStorage.getItem('name')));
+    hop.appendChild(taoDongTaiKhoan('Tên tài khoản', taiKhoan.name));
     hop.appendChild(taoDongTaiKhoan('Email', email));
     hop.appendChild(taoDongTaiKhoan('Địa chỉ', diaChi));
-    hop.appendChild(taoDongTaiKhoan('Số điện thoại', localStorage.getItem('phone')));
+    hop.appendChild(taoDongTaiKhoan('Số điện thoại', taiKhoan.phone));
 
     const tieuDeLichSu = document.createElement('p');
     tieuDeLichSu.className = 'tk-dong-tt';
@@ -220,13 +288,14 @@ function dongPopupTaiKhoan(evt) {
     // bấm vào bên trong hộp thì không làm gì
 }
 
-// Đăng xuất: giữ lại giỏ hàng để lần sau đăng nhập lấy lại (giữ nguyên cách làm cũ)
-// Hàm chỉ xóa cờ đăng nhập và giỏ hiện hành, không xóa thông tin tài khoản.
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 226: Khai báo hàm đăng xuất dangXuat
+// Đăng xuất: giữ lại giỏ hàng để lần sau đăng nhập lấy lại.
+// Giỏ sao lưu gắn với từng tài khoản (khóa 'cartBackup_' + email) để người khác không nhận nhầm.
+// Hàm chỉ xóa trạng thái đăng nhập và giỏ hiện hành, không xóa thông tin tài khoản.
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 295: Khai báo hàm đăng xuất dangXuat
 function dangXuat() {
     const cart = localStorage.getItem('cartItems');
-    // Nếu giỏ có dữ liệu, tạo bản sao để lần đăng nhập sau phục hồi.
-    if (cart) localStorage.setItem('cartBackup', cart);
+    // Nếu giỏ có dữ liệu, tạo bản sao riêng cho tài khoản này để lần đăng nhập sau phục hồi.
+    if (cart) localStorage.setItem('cartBackup_' + localStorage.getItem('isLogin'), cart);
     // removeItem xóa khóa khỏi localStorage; các trang sẽ hiểu là chưa đăng nhập.
     localStorage.removeItem('isLogin');
     localStorage.removeItem('cartItems');
