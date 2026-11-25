@@ -27,7 +27,7 @@ const headings = document.querySelectorAll(".footer-heading");
 headings.forEach((heading) => {
     heading.addEventListener("click", () => {
 
-        // parentElement là phần tử cha của tiêu đề: chính là div.footer-column
+        // parentElement là phần tử cha của tiêu đề: chính là section.footer-column
         // chứa tiêu đề vừa bấm (truy vấn gián tiếp).
         const column = heading.parentElement;
 

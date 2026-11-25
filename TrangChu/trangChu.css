@@ -37,7 +37,9 @@ main {
     text-align: center;
 }
 
+/* Danh mục là danh sách ul/li: bỏ dấu chấm đầu dòng mặc định */
 .danhmuc-list {
+    list-style: none;
     display: flex;
     justify-content: center;
     gap: 20px;

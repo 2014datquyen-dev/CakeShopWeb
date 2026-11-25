@@ -296,7 +296,7 @@ function kiemTraThanhToan(evt) {
 
 // Lưu ngày nhận, thời gian nhận, xuất hóa đơn và ghi chú vào localStorage (key thongTinNhanHang)
 // Lưu thông tin hẹn giờ + ghi chú vào localStorage, key 'thongTinNhanHang'
-// .vung-san-pham: [0]div.danh-sach-gio [1]a.tiep-tuc [2]div.ghi-chu > [0]label [1]textarea
+// .vung-san-pham: [0]div.danh-sach-gio [1]a.tiep-tuc [2]p.ghi-chu > [0]label [1]textarea
 function luuThongTinNhanHang() {
   const vungHenGio = layVungHenGio();
   const oGhiChu = vungHenGio.previousElementSibling.lastElementChild.lastElementChild;

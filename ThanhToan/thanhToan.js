@@ -213,9 +213,9 @@ const productList = document.querySelector('.product-list');
 // Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 188: Biến tổng tiền
 let tongTien = 0;
 
-// Không có sản phẩm thì tạo một thẻ p thông báo giỏ hàng trống.
+// Không có sản phẩm thì tạo một thẻ li thông báo giỏ hàng trống (danh sách là ul).
 if (products.length === 0) {
-    const empty = document.createElement('p');
+    const empty = document.createElement('li');
     empty.textContent = 'Giỏ hàng đang trống.';
     // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 195 đến dòng 196: Giỏ trống thì xóa danh sách cũ và hiện thông báo
     productList.textContent = '';
@@ -229,8 +229,9 @@ if (products.length === 0) {
         tongTien += donGia * soLuong;   // tổng tiền vẫn tính theo số lượng
 
         // Tạo các thẻ HTML bằng document.createElement thay vì nối chuỗi HTML.
-        const divProduct = document.createElement('div');
-        divProduct.className = 'product';
+        // Mỗi sản phẩm là một thẻ li nằm trong danh sách ul.product-list.
+        const liProduct = document.createElement('li');
+        liProduct.className = 'product';
 
         // Gán đường dẫn hình và tên thay thế (alt) cho ảnh sản phẩm.
         const img = document.createElement('img');
@@ -258,21 +259,21 @@ if (products.length === 0) {
         spanPrice.textContent = formatCurrency(donGia);   // giá gốc 1 sản phẩm
 
         // Ghép ảnh, thông tin và giá vào thẻ sản phẩm; sau đó đưa thẻ sản phẩm vào danh sách.
-        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 236 đến dòng 238: Gắn ảnh, thông tin, giá vào thẻ sản phẩm và đưa vào danh sách
-        divProduct.appendChild(img);
-        divProduct.appendChild(divInfo);
-        divProduct.appendChild(spanPrice);
-        productList.appendChild(divProduct);
+        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 237 đến dòng 239: Gắn ảnh, thông tin, giá vào thẻ sản phẩm và đưa vào danh sách
+        liProduct.appendChild(img);
+        liProduct.appendChild(divInfo);
+        liProduct.appendChild(spanPrice);
+        productList.appendChild(liProduct);
     });
 }
 
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 245 đến dòng 246: Hiển thị tạm tính
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 246 đến dòng 247: Hiển thị tạm tính
 // .summary: [0]Tạm tính [1]Phí vận chuyển [2]Giảm giá (chỉ có khi đã dùng mã)
 document.querySelectorAll('.summary')[0].firstElementChild.lastElementChild.textContent = formatCurrency(tongTien);
 
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 250 đến dòng 362: Mã giảm giá: danh sách mã, tìm mã, tính tiền giảm, áp dụng hoặc bỏ mã, cập nhật dòng Giảm giá và tổng tiền
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 251 đến dòng 363: Mã giảm giá: danh sách mã, tìm mã, tính tiền giảm, áp dụng hoặc bỏ mã, cập nhật dòng Giảm giá và tổng tiền
 // ===== MÃ GIẢM GIÁ =====
 // Danh sách mã cố định trong code (không dùng back-end)
 //  loai 'phan-tram': giảm giaTri % (tối đa toiDa đồng, 0 = không giới hạn)
@@ -291,7 +292,7 @@ let tienGiam = 0;
 const nutSuDung = document.querySelectorAll('.discount-container')[0].lastElementChild;
 const oMaGiamGia = nutSuDung.parentElement.firstElementChild;   // truy vấn gián tiếp
 const thongBaoMa = nutSuDung.previousElementSibling;
-// div.ds-ma-giam-gia nằm ngay sau div.discount-container
+// section.ds-ma-giam-gia nằm ngay sau div.discount-container
 const khungDsMa = nutSuDung.parentElement.nextElementSibling;
 
 function timMaGiamGia(ma) {
@@ -387,11 +388,12 @@ function capNhatTienThanhToan() {
     hienThiDanhSachMa();   // vẽ lại danh sách để cập nhật trạng thái từng mã
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 365 đến dòng 446: Danh sách mã giảm giá cho khách chọn và các sự kiện của ô nhập mã
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 366 đến dòng 448: Danh sách mã giảm giá cho khách chọn và các sự kiện của ô nhập mã
 // ===== DANH SÁCH MÃ GIẢM GIÁ CHO KHÁCH CHỌN =====
 // Mỗi mã: [0]div thông tin (mã, mô tả, điều kiện)  [1]nút Dùng / Bỏ mã
 function taoTheMa(maGG) {
-    const the = document.createElement('div');
+    // Mỗi mã giảm giá là một khối nội dung độc lập nên dùng thẻ article.
+    const the = document.createElement('article');
     the.className = 'the-ma';
 
     const thongTin = document.createElement('div');
@@ -473,7 +475,7 @@ capNhatTienThanhToan();
 
 
 // Các hàm bên dưới đảm nhiệm tạo dữ liệu đơn, lưu xuống trình duyệt và render popup.
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 451 đến dòng 534: Tạo đơn hàng (taoDonHang), lưu đơn và lưu địa chỉ tài khoản ở đơn đầu tiên (luuDonHang), đổi định dạng ngày (doiNgay), tạo dòng thông tin (taoDongThongTin)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 453 đến dòng 536: Tạo đơn hàng (taoDonHang), lưu đơn và lưu địa chỉ tài khoản ở đơn đầu tiên (luuDonHang), đổi định dạng ngày (doiNgay), tạo dòng thông tin (taoDongThongTin)
 // ===== TẠO, LƯU VÀ HIỂN THỊ ĐƠN HÀNG =====
 // Tạo object đơn hàng từ dữ liệu người nhập, giỏ hàng và tùy chọn nhận hàng đã lưu.
 function taoDonHang() {
@@ -559,7 +561,7 @@ function taoDongThongTin(nhan, giaTri) {
     return dong;
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 537 đến dòng 591: Hiển thị thông tin đơn hàng trong popup đặt hàng thành công (hienThiDonHang)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 539 đến dòng 593: Hiển thị thông tin đơn hàng trong popup đặt hàng thành công (hienThiDonHang)
 // Hiển thị thông tin đơn hàng trong popup sau khi đặt hàng thành công.
 // .success-popup: [0]icon [1]h2 [2]p [3]div.order-info [4]a
 function hienThiDonHang(donHang) {
@@ -616,7 +618,7 @@ function hienThiDonHang(donHang) {
     khung.appendChild(tong);
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 594 đến dòng 631: Tự điền thông tin giao hàng khi đã đăng nhập (dienThongTinTaiKhoan)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 596 đến dòng 633: Tự điền thông tin giao hàng khi đã đăng nhập (dienThongTinTaiKhoan)
 // ===== ĐÃ ĐĂNG NHẬP: TỰ ĐIỀN THÔNG TIN GIAO HÀNG =====
 // Tên, email, số điện thoại lấy từ tài khoản (lưu lúc đăng ký).
 // Địa chỉ lấy từ key 'address' (lưu ở đơn đầu tiên, vì lúc đăng ký chưa nhập địa chỉ).
