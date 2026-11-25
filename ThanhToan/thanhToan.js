@@ -134,7 +134,7 @@ btn.addEventListener('click', (event) => {
         validationAddress();
 
         // Nếu giỏ hàng không có sản phẩm thì dừng xử lý bằng return.
-        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 112 đến dòng 115: Khi bấm Đặt hàng: giỏ hàng trống thì báo và dừng lại
+        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 138 đến dòng 141: Khi bấm Đặt hàng: giỏ hàng trống thì báo và dừng lại
         if (products.length === 0) {
             alert('Giỏ hàng đang trống, không thể đặt hàng.');
             return;
@@ -143,7 +143,7 @@ btn.addEventListener('click', (event) => {
         // Chỉ khi tất cả trường hợp lệ mới tạo đơn, lưu đơn, hiển thị chi tiết và mở popup.
         if (validationFullname()&&validationEmail()&&validationPhone()&&validationAddress()){
             // taoDonHang() trả về một object chứa dữ liệu đơn hàng.
-            // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 121 đến dòng 123: Thông tin hợp lệ thì tạo đơn, lưu đơn và hiển thị đơn hàng
+            // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 147 đến dòng 149: Thông tin hợp lệ thì tạo đơn, lưu đơn và hiển thị đơn hàng
             const donHang = taoDonHang();
             luuDonHang(donHang);
             hienThiDonHang(donHang);
@@ -176,7 +176,7 @@ addressInput.addEventListener('input', () => {
 
 
 // Hàm định dạng số tiền sang kiểu hiển thị tiền Việt Nam, ví dụ 450000 thành 450.000 ₫.
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 154 đến dòng 177: Định dạng tiền (formatCurrency), lấy giá dạng số (layGiaSo), lấy số lượng hợp lệ (laySoLuong)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 180 đến dòng 203: Định dạng tiền (formatCurrency), lấy giá dạng số (layGiaSo), lấy số lượng hợp lệ (laySoLuong)
 // ===== ĐỊNH DẠNG TIỀN (giống formatCurrency trong show-cart.js) =====
 // locale = "vi-VN" là tham số mặc định nếu lúc gọi hàm không truyền locale.
 const formatCurrency = (amount, locale = "vi-VN") => {
@@ -210,14 +210,14 @@ const data = localStorage.getItem('cartItems');
 // Nếu JSON.parse cho ra null (chưa có giỏ), dùng [] là mảng trống.
 const products = JSON.parse(data) || [];
 const productList = document.querySelector('.product-list');
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 188: Biến tổng tiền
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Dòng 214: Biến tổng tiền
 let tongTien = 0;
 
 // Không có sản phẩm thì tạo một thẻ li thông báo giỏ hàng trống (danh sách là ul).
 if (products.length === 0) {
     const empty = document.createElement('li');
     empty.textContent = 'Giỏ hàng đang trống.';
-    // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 195 đến dòng 196: Giỏ trống thì xóa danh sách cũ và hiện thông báo
+    // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 221 đến dòng 222: Giỏ trống thì xóa danh sách cũ và hiện thông báo
     productList.textContent = '';
     productList.appendChild(empty);
 } else {
@@ -249,7 +249,7 @@ if (products.length === 0) {
         small.textContent = `Số lượng: ${soLuong}`;
 
         // appendChild đưa phần tử con vào phần tử cha.
-        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 226 đến dòng 227: Gắn tên và số lượng vào thẻ sản phẩm
+        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 253 đến dòng 254: Gắn tên và số lượng vào thẻ sản phẩm
         divInfo.appendChild(pName);
         divInfo.appendChild(small);
 
@@ -259,7 +259,7 @@ if (products.length === 0) {
         spanPrice.textContent = formatCurrency(donGia);   // giá gốc 1 sản phẩm
 
         // Ghép ảnh, thông tin và giá vào thẻ sản phẩm; sau đó đưa thẻ sản phẩm vào danh sách.
-        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 237 đến dòng 239: Gắn ảnh, thông tin, giá vào thẻ sản phẩm và đưa vào danh sách
+        // Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 263 đến dòng 266: Gắn ảnh, thông tin, giá vào thẻ sản phẩm và đưa vào danh sách
         liProduct.appendChild(img);
         liProduct.appendChild(divInfo);
         liProduct.appendChild(spanPrice);
@@ -268,12 +268,12 @@ if (products.length === 0) {
 }
 
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 246 đến dòng 247: Hiển thị tạm tính
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 272 đến dòng 273: Hiển thị tạm tính
 // .summary: [0]Tạm tính [1]Phí vận chuyển [2]Giảm giá (chỉ có khi đã dùng mã)
 document.querySelectorAll('.summary')[0].firstElementChild.lastElementChild.textContent = formatCurrency(tongTien);
 
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 251 đến dòng 363: Mã giảm giá: danh sách mã, tìm mã, tính tiền giảm, áp dụng hoặc bỏ mã, cập nhật dòng Giảm giá và tổng tiền
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 277 đến dòng 389: Mã giảm giá: danh sách mã, tìm mã, tính tiền giảm, áp dụng hoặc bỏ mã, cập nhật dòng Giảm giá và tổng tiền
 // ===== MÃ GIẢM GIÁ =====
 // Danh sách mã cố định trong code (không dùng back-end)
 //  loai 'phan-tram': giảm giaTri % (tối đa toiDa đồng, 0 = không giới hạn)
@@ -388,7 +388,7 @@ function capNhatTienThanhToan() {
     hienThiDanhSachMa();   // vẽ lại danh sách để cập nhật trạng thái từng mã
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 366 đến dòng 448: Danh sách mã giảm giá cho khách chọn và các sự kiện của ô nhập mã
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 392 đến dòng 474: Danh sách mã giảm giá cho khách chọn và các sự kiện của ô nhập mã
 // ===== DANH SÁCH MÃ GIẢM GIÁ CHO KHÁCH CHỌN =====
 // Mỗi mã: [0]div thông tin (mã, mô tả, điều kiện)  [1]nút Dùng / Bỏ mã
 function taoTheMa(maGG) {
@@ -475,7 +475,7 @@ capNhatTienThanhToan();
 
 
 // Các hàm bên dưới đảm nhiệm tạo dữ liệu đơn, lưu xuống trình duyệt và render popup.
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 453 đến dòng 536: Tạo đơn hàng (taoDonHang), lưu đơn và lưu địa chỉ tài khoản ở đơn đầu tiên (luuDonHang), đổi định dạng ngày (doiNgay), tạo dòng thông tin (taoDongThongTin)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 479 đến dòng 562: Tạo đơn hàng (taoDonHang), lưu đơn và lưu địa chỉ tài khoản ở đơn đầu tiên (luuDonHang), đổi định dạng ngày (doiNgay), tạo dòng thông tin (taoDongThongTin)
 // ===== TẠO, LƯU VÀ HIỂN THỊ ĐƠN HÀNG =====
 // Tạo object đơn hàng từ dữ liệu người nhập, giỏ hàng và tùy chọn nhận hàng đã lưu.
 function taoDonHang() {
@@ -561,7 +561,7 @@ function taoDongThongTin(nhan, giaTri) {
     return dong;
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 539 đến dòng 593: Hiển thị thông tin đơn hàng trong popup đặt hàng thành công (hienThiDonHang)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 565 đến dòng 619: Hiển thị thông tin đơn hàng trong popup đặt hàng thành công (hienThiDonHang)
 // Hiển thị thông tin đơn hàng trong popup sau khi đặt hàng thành công.
 // .success-popup: [0]icon [1]h2 [2]p [3]div.order-info [4]a
 function hienThiDonHang(donHang) {
@@ -618,7 +618,7 @@ function hienThiDonHang(donHang) {
     khung.appendChild(tong);
 }
 
-// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 596 đến dòng 633: Tự điền thông tin giao hàng khi đã đăng nhập (dienThongTinTaiKhoan)
+// Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 622 đến dòng 659: Tự điền thông tin giao hàng khi đã đăng nhập (dienThongTinTaiKhoan)
 // ===== ĐÃ ĐĂNG NHẬP: TỰ ĐIỀN THÔNG TIN GIAO HÀNG =====
 // Tên, email, số điện thoại lấy từ tài khoản (lưu lúc đăng ký).
 // Địa chỉ lấy từ key 'address' (lưu ở đơn đầu tiên, vì lúc đăng ký chưa nhập địa chỉ).
