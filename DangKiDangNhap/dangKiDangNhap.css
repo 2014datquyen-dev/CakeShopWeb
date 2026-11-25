@@ -4,7 +4,8 @@
 }
 
 .container{
-    width: min(90%, 600px);
+    width: 90%;
+    max-width: 600px;
     padding: 80px 80px;
     background: white;
     margin: auto;
@@ -154,7 +155,10 @@ input:not(:placeholder-shown)~.toggle-password{
 .success-overlay {
     display: none;
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
@@ -216,7 +220,7 @@ input:not(:placeholder-shown)~.toggle-password{
 .success-popup a:hover {
     background: var(--hv);
 }
-/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 220 đến dòng 224 */
+/* Tác giả: Huỳnh Thiên Bảo - B2405021 - Từ dòng 224 đến dòng 228 */
 /* Lỗi chưa tick điều khoản: nằm trên một dòng riêng, ngay dưới ô tick */
 .loi-dieu-khoan {
     display: block;

@@ -267,8 +267,11 @@ function capNhatTongTien(coHieuUng) {
 // Lấy ngày hôm nay dạng yyyy-mm-dd để so sánh với ngày nhận hàng
 function layNgayHomNay() {
   const d = new Date();
-  const thang = String(d.getMonth() + 1).padStart(2, '0');
-  const ngay = String(d.getDate()).padStart(2, '0');
+  let thang = d.getMonth() + 1;   // getMonth() đếm từ 0 nên phải cộng 1
+  let ngay = d.getDate();
+  // Toán tử ba ngôi: số nhỏ hơn 10 thì thêm '0' phía trước (5 -> "05")
+  thang = (thang < 10 ? '0' : '') + thang;
+  ngay = (ngay < 10 ? '0' : '') + ngay;
   return d.getFullYear() + '-' + thang + '-' + ngay;
 }
 

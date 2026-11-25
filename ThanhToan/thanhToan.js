@@ -487,8 +487,8 @@ function taoDonHang() {
 
     // return {...} tạo và trả về object gồm các trường dữ liệu của đơn hàng.
     return {
-        // Date.now() là thời gian tính bằng mili giây; slice(-6) lấy 6 ký tự cuối để tạo mã đơn ngắn.
-        maDon: 'FC' + Date.now().toString().slice(-6),
+        // getTime() trả về thời gian hiện tại tính bằng mili giây; slice(-6) lấy 6 ký tự cuối để tạo mã đơn ngắn.
+        maDon: 'FC' + new Date().getTime().toString().slice(-6),
         ngayDat: new Date().toLocaleString('vi-VN'),
         // trim() xóa khoảng trắng ở đầu và cuối nội dung nhập.
         hoTen: nameInput.value.trim(),

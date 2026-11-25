@@ -107,13 +107,13 @@ function locSanPham() {
   cacThe.forEach((the) => {
     let hien = true;
 
-    if (dsLoai.length > 0 && !dsLoai.includes(the.getAttribute("data-loai"))) {
+    if (dsLoai.length > 0 && dsLoai.indexOf(the.getAttribute("data-loai")) === -1) {
       hien = false;
     }
 
     if (tuKhoa) {
       const ten = the.querySelector(".product-name").textContent.toLowerCase();
-      if (!ten.includes(tuKhoa.toLowerCase())) {
+      if (ten.indexOf(tuKhoa.toLowerCase()) === -1) {
         hien = false;
       }
     }
